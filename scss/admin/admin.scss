@@ -208,9 +208,6 @@
         padding: 16px 24px;
         border: 1px solid $border-grey-color;
         border-radius: 4px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
         transition: .2s ease box-shadow;
 
         &:hover {
@@ -279,12 +276,9 @@
     }
 
     .pro-label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: inline-block;
         background-color: #18b4aa;
         color: $light-color;
-        width: 57px;
         height: 28px;
         padding: 4px 12px;
         border-radius: 25px;

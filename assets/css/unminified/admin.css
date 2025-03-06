@@ -242,9 +242,6 @@
     padding: 16px 24px;
     border: 1px solid #c3c3c3;
     border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     transition: 0.2s ease box-shadow;
 }
 .wpz-grid-wrap > .section:hover {
@@ -299,12 +296,9 @@
     margin: 0;
 }
 .section .pro-label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
     background-color: #18b4aa;
     color: #ffffff;
-    width: 57px;
     height: 28px;
     padding: 4px 12px;
     border-radius: 25px;
