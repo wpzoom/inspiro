@@ -25,7 +25,7 @@
 
     <div class="theme-info-wrap">
         <h3 class="wpz-onboard_content-main-title">
-            <?php esc_html_e( 'Inspiro Premium • 28', 'inspiro' ); ?>
+            <?php esc_html_e( 'Inspiro Premium • 31', 'inspiro' ); ?>
         </h3>
         <div class="theme-buttons filters">
             <a class="button button-common active" data-filter="*">
@@ -216,6 +216,16 @@
                                     ],
                                     [
                                         'class' => 'design_hotel elementor',
+                                        'id' => 'inspiro-insurance',
+                                        'title' => 'Insurance Company',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-insurance/thumbs/home.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-insurance/',
+                                        'name' => 'Insurance Company',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                    ],
+                                    [
+                                        'class' => 'design_hotel elementor',
                                         'id' => 'inspiro-hotel',
                                         'title' => 'Hotel',
                                         'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/home-hotel-thumb.png',
@@ -261,6 +271,16 @@
                                         'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-wellness/home-thumb.png',
                                         'demo_url' => 'https://demo.wpzoom.com/inspiro-wellness/',
                                         'name' => 'Wellness / Spa',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                    ],
+                                    [
+                                        'class' => 'design_wellness elementor',
+                                        'id' => 'inspiro-fitness',
+                                        'title' => 'Gym / Fitness',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro-pro/fitness/fitness-home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-fitness/',
+                                        'name' => 'Gym / Fitness',
                                         'available_for' => 'Elementor',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
@@ -341,6 +361,16 @@
                                         'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-finance/home-thumb.png',
                                         'demo_url' => 'https://demo.wpzoom.com/inspiro-finance/',
                                         'name' => 'Tech / Finance',
+                                        'available_for' => ['Gutenberg'],
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                    ],
+                                    [
+                                        'class' => 'design_tech gutenberg',
+                                        'id' => 'inspiro-freelancer',
+                                        'title' => 'Freelancer (One-pager)',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-freelancer/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-freelancer2/',
+                                        'name' => 'Freelancer (One-pager)',
                                         'available_for' => ['Gutenberg'],
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],

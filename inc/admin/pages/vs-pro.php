@@ -20,7 +20,7 @@
                       <li class="t-row">
                          <div class="content">
                             <div class="h-wrap">
-                               <h4>25+ Premium Starter Sites</h4>
+                               <h4>30+ Premium Starter Sites</h4>
                                <span class="plan">NEW DEMOS</span>
                             </div>
                             <p>Don’t start from scratch. Our ready-to-import starter sites provide a comprehensive foundation for any website. They are easy to deploy and give you a massive head start on your project, no matter what industry you’re in.</p>
