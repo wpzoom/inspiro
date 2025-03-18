@@ -387,6 +387,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'        => 'inspiro-starter-sites',
 					'description' => 'Import starter templates with Gutenberg Blocks, Elementor, and WooCommerce to create a new website in just a few clicks.',
                     'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/inspiro-starter-sites/assets/icon-256x256.png',
                 ),
 
                 array(
@@ -394,6 +395,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'        => 'wpzoom-portfolio',
 					'description' => 'The ultimate solution for creatives, designers, photographers, and businesses looking to showcase their work in an elegant, professional, and fully customizable way.',
                     'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/wpzoom-portfolio/assets/icon-256x256.png',
                 ),
 
                 array(
@@ -401,6 +403,15 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'        => 'wpzoom-forms',
 					'description' => 'WPZOOM Forms is a simple, user-friendly contact form plugin for WordPress that utilizes Gutenberg blocks for easy form building and customization.',
                     'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/wpzoom-forms/assets/icon-256x256.png',
+                ),
+
+                array(
+                    'name'        => 'Elementor Addons by WPZOOM',
+                    'slug'        => 'wpzoom-elementor-addons',
+                    'description' => 'A collection of pre-designed templates and advanced widgets for the Elementor page builder.',
+                    'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/wpzoom-elementor-addons/assets/icon-256x256.png',
                 ),
 
                 array(
@@ -408,6 +419,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'        => 'wpzoom-video-popup-block',
 					'description' => 'Easily add a Gutenberg block to create customizable Play icon that open popups with YouTube, Vimeo, or MP4 videos.',
                     'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/wpzoom-video-popup-block/assets/icon-256x256.png',
                 ),
 
 				array(
@@ -415,6 +427,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
 					'slug'        => 'instagram-widget-by-wpzoom',
 					'description' => 'Formerly known as "Instagram Widget by WPZOOM". Simple and lightweight widget for WordPress to display your Instagram feed.',
 					'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/instagram-widget-by-wpzoom/assets/icon-256x256.png',
 				),
 
 			);

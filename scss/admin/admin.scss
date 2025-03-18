@@ -190,6 +190,17 @@
     }
 
     .inspiro-plugin-item {
+        display: flex;
+        gap: 20px;
+
+        .plugin-item-icon {
+            margin: 0.625rem 0;
+
+            img {
+                border-radius: 5px;
+            }
+        }
+
         .hidden {
             display: none;
         }
