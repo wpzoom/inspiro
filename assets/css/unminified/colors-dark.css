@@ -93,6 +93,12 @@ body.colors-dark .more_link {
 body.colors-dark .search-form button, body.colors-dark .search-form input {
     color: #fff;
 }
+body.colors-dark figcaption.wp-element-caption {
+    color: #ccc;
+}
+body.colors-dark blockquote {
+    color: #ccc;
+}
 body.colors-dark input,
 body.colors-dark textarea {
     background-color: transparent;

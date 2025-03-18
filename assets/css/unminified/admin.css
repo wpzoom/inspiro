@@ -228,6 +228,16 @@
 .wpz-grid-wrap.three {
     grid-template-columns: repeat(3, 1fr);
 }
+.wpz-grid-wrap .inspiro-plugin-item {
+    display: flex;
+    gap: 20px;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-item-icon {
+    margin: 0.625rem 0;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-item-icon img {
+    border-radius: 5px;
+}
 .wpz-grid-wrap .inspiro-plugin-item .hidden {
     display: none;
 }

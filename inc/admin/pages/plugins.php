@@ -46,6 +46,7 @@ $number_of_plugins = count( $plugins );
 										$plugin_description = isset( $plugin['description'] ) ? $plugin['description'] : '';
 										$plugin_path = isset( $plugin['file_path'] ) ? $plugin['file_path'] : '';
 										$plugin_slug = isset( $plugin['slug'] ) ? $plugin['slug'] : '';										
+                                        $plugin_image = isset( $plugin['thumbnail'] ) ? $plugin['thumbnail'] : '';
 
 										$is_plugin_active = is_plugin_active( $plugin_path );
 										
@@ -66,15 +67,18 @@ $number_of_plugins = count( $plugins );
 									?>
 
 									<div class="section inspiro-plugin-item plugin-item-<?php echo esc_attr( $plugin_slug ); ?>">
-										<h4><?php echo esc_html( $plugin_name ); ?></h4>
-										<p class="about"><?php echo wp_kses_post( $plugin_description ); ?></p>
+                                        <div class="plugin-item-icon"><img width="80" height="80" src="<?php echo esc_html( $plugin_image ); ?>" /></div>
+                                        <div clas="plugin-item-info">
+    										<h4><?php echo esc_html( $plugin_name ); ?></h4>
+    										<p class="about"><?php echo wp_kses_post( $plugin_description ); ?></p>
 
-										<footer class="section_footer">
-											<a href="#" data-plugin-path="<?php echo esc_attr( $plugin_path ); ?>" title="Install & Activate" target="_blank" class="button button-secondary <?php echo esc_attr( $plugin_button_class ); ?>">
-												<?php echo esc_html( $plugin_button_label ); ?>
-											</a>
-											<input type="checkbox" class="hidden" id="inspiro-<?php echo esc_attr( $plugin_slug ); ?>-plugin" name="<?php echo esc_attr( $plugin_slug ); ?>" <?php checked( true ); ?><?php disabled( $is_plugin_active ) ?>>
-										</footer>
+    										<footer class="section_footer">
+    											<a href="#" data-plugin-path="<?php echo esc_attr( $plugin_path ); ?>" title="Install & Activate" target="_blank" class="button button-secondary <?php echo esc_attr( $plugin_button_class ); ?>">
+    												<?php echo esc_html( $plugin_button_label ); ?>
+    											</a>
+    											<input type="checkbox" class="hidden" id="inspiro-<?php echo esc_attr( $plugin_slug ); ?>-plugin" name="<?php echo esc_attr( $plugin_slug ); ?>" <?php checked( true ); ?><?php disabled( $is_plugin_active ) ?>>
+    										</footer>
+                                        </div>
 									</div>
 
 								<?php } ?>
