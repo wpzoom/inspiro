@@ -52,7 +52,7 @@ class Inspiro_Theme_Upgrader {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->generic_strings();
+		add_action( 'admin_init', array( $this, 'generic_strings' ) );
 
 		add_filter( 'upgrader_source_selection', array( $this, 'set_upgrader_instance' ), 10, 4 );
 		add_filter( 'upgrader_source_selection', array( $this, 'start_upgrader_process' ), 11, 4 );
