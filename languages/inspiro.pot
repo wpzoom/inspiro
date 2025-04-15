@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Inspiro 1.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/inspiro-lite\n"
-"POT-Creation-Date: 2025-02-20 13:00+0000\n"
+"POT-Creation-Date: 2025-04-15 16:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,6 +25,18 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: Loco https://localise.biz/"
 
+#: inc/starter-content.php:595
+msgid "\"Best Film\""
+msgstr ""
+
+#: inc/starter-content.php:631
+msgid "\"Best Short\""
+msgstr ""
+
+#: inc/starter-content.php:613
+msgid "\"New Film Festival\""
+msgstr ""
+
 #: comments.php:30 inc/template-tags.php:136
 msgid "% Comments"
 msgstr ""
@@ -33,6 +45,13 @@ msgstr ""
 #: inc/common-functions.php:313
 #, php-format
 msgid "%1$s @ %2$s"
+msgstr ""
+
+#. 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:3534
+#: inc/classes/class-tgm-plugin-activation.php:3542
+#, php-format
+msgid "%1$s installed successfully."
 msgstr ""
 
 #: inc/classes/class-inspiro-wp-admin-menu-pointer.php:87
@@ -127,11 +146,19 @@ msgstr ""
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
-#: inc/admin/pages/plugins.php:64
+#: inc/classes/class-tgm-plugin-activation.php:2750
+#: inc/admin/pages/plugins.php:65
 msgid "Activate"
 msgstr ""
 
-#: inc/admin/pages/plugins.php:60
+#. %2$s: plugin name in screen reader markup
+#: inc/classes/class-tgm-plugin-activation.php:2639
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2349
+#: inc/admin/pages/plugins.php:61
 msgid "Active"
 msgstr ""
 
@@ -181,6 +208,20 @@ msgstr ""
 msgid "All Headings (H1-H6)"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:3535
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:3543
+msgid "All installations have been completed."
+msgstr ""
+
+#. 1: dashboard link.
+#: inc/classes/class-tgm-plugin-activation.php:394
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
 #: inc/classes/inspiro-customizer-guided-tour.php:197
 #, php-format
 msgid ""
@@ -193,9 +234,42 @@ msgstr ""
 msgid "All Themes"
 msgstr ""
 
-#: inc/admin/pages/demos.php:349
+#. 1: plugin name, 2: error message.
+#: inc/classes/class-tgm-plugin-activation.php:3526
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2507
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: inc/admin/pages/demos.php:389
 msgid "Available for "
 msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2535
+msgid "Available version:"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:380
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/classes/class-tgm-plugin-activation.php:370
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/classes/class-tgm-plugin-activation.php:375
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
 
 #: inc/admin/pages/vs-pro.php:7
 msgid "Below is a comparison chart of the free and the premium versions."
@@ -292,7 +366,7 @@ msgid ""
 "installation"
 msgstr ""
 
-#: inc/admin/pages/demo.php:29
+#: inc/admin/pages/demo.php:38
 msgid ""
 "Click the button below to install the Inspiro Starter Sites plugin to use "
 "this feature."
@@ -490,6 +564,10 @@ msgstr ""
 msgid "Discover Inspiro Premium!"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:395
+msgid "Dismiss this notice"
+msgstr ""
+
 #: inc/admin-notice.php:90
 msgid "Dismiss this notice."
 msgstr ""
@@ -582,6 +660,10 @@ msgstr ""
 
 #: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-media-config.php:78
 msgid "External Header Video"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2323
+msgid "External Source"
 msgstr ""
 
 #: inc/classes/class-inspiro-font-family-manager.php:232
@@ -749,10 +831,6 @@ msgid ""
 "publish the changes first."
 msgstr ""
 
-#: inc/admin/pages/support.php:34
-msgid "Forums"
-msgstr ""
-
 #: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:94
 msgid "Four Columns"
 msgstr ""
@@ -802,7 +880,7 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: inc/admin/pages/demos.php:364
+#: inc/admin/pages/support.php:124 inc/admin/pages/demos.php:404
 msgid "Get Inspiro Premium"
 msgstr ""
 
@@ -812,12 +890,16 @@ msgstr ""
 msgid "Get Inspiro Premium &#8599;"
 msgstr ""
 
-#: inc/admin/pages/demos.php:532
+#: inc/admin/pages/demos.php:572
 msgid "Get Inspiro PRO"
 msgstr ""
 
 #: inc/admin/pages/demos.php:20
 msgid "Get Inspiro PRO &#8599;"
+msgstr ""
+
+#: inc/admin/pages/support.php:127
+msgid "Get Premium Support"
 msgstr ""
 
 #: inc/admin/pages/support.php:6
@@ -839,9 +921,7 @@ msgid "Hamburger Icon Color"
 msgstr ""
 
 #: inc/admin/pages/support.php:112
-msgid ""
-"Have questions or need help setting up your theme? Contact our Support "
-"Team—we’re here to assist you!"
+msgid "Have questions or need help setting up your theme?"
 msgstr ""
 
 #: inc/admin/pages/quick-start.php:174
@@ -1011,7 +1091,7 @@ msgstr ""
 msgid "Homepage Hero Area"
 msgstr ""
 
-#: inc/admin/pages/demo.php:42
+#: inc/admin/pages/demo.php:51
 msgid "How it works? &rarr;"
 msgstr ""
 
@@ -1037,22 +1117,23 @@ msgid ""
 "a-portfolio-section/"
 msgstr ""
 
-#: inc/admin/pages/quick-start.php:159 inc/admin/pages/demo.php:39
+#: inc/admin/pages/quick-start.php:159 inc/admin/pages/demo.php:48
 msgid ""
 "https://www.wpzoom.com/documentation/inspiro-lite/inspiro-lite-importing-the-"
 "demo-content/"
 msgstr ""
 
 #: inc/admin/pages/demos.php:18
-msgid "https://www.wpzoom.com/themes/inspiro-pro/"
+msgid ""
+"https://www.wpzoom.com/themes/inspiro-pro/?"
+"utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium"
 msgstr ""
 
 #. URI of the theme
 msgid "https://www.wpzoom.com/themes/inspiro/"
 msgstr ""
 
-#: inc/admin/pages/demos.php:14 inc/admin/pages/quick-start.php:17
-#: inc/admin/pages/upgrade.php:22
+#: inc/admin/pages/quick-start.php:17 inc/admin/pages/upgrade.php:22
 msgid ""
 "https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=about-"
 "inspiro-page&utm_campaign=upgrade-premium"
@@ -1062,6 +1143,19 @@ msgstr ""
 msgid ""
 "https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=about-"
 "inspiro-page&utm_campaign=upgrade-table"
+msgstr ""
+
+#: inc/admin/pages/demos.php:14
+msgid ""
+"https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-"
+"inspiro-page&utm_campaign=upgrade-premium"
+msgstr ""
+
+#: inc/admin/pages/demo.php:22
+msgid ""
+"https://www.wpzoom.com/themes/inspiro/starter-sites/?"
+"utm_source=wpadmin&utm_medium=demos-starter-sites&utm_campaign=starter-sites-"
+"inspiro"
 msgstr ""
 
 #: inc/admin/pages/upgrade.php:63
@@ -1140,15 +1234,19 @@ msgstr ""
 
 #. Description of the theme
 msgid ""
-"Inspiro is a professional &amp; lightweight photo and video-focused "
-"WordPress theme with a modern design. Packed with features including a "
-"fullscreen area that supports Vimeo, YouTube &amp; self-hosted video "
-"background, Page Builder integration, Inspiro is perfect for showing off "
-"your photography and video portfolio. Moreover, the theme is compatible with "
-"WooCommerce and popular Page Builders such as Elementor, Beaver Builder. The "
-"theme is fully GDPR-compliant and doesn't use any external Google Fonts. All "
-"fonts are locally hosted. Learn more and check out our powerful PREMIUM "
-"version at https://www.wpzoom.com/themes/inspiro/"
+"Inspiro is a versatile, ultra-lightweight WordPress theme ideal for small "
+"businesses, creative professionals, and visual portfolios. Combining modern "
+"aesthetics with lightning-fast performance, it enhances user experience and "
+"boosts SEO rankings. Get started instantly with 10+ beautiful starter sites "
+"crafted for specific business niches, letting you launch your website "
+"quickly. Inspiro features unique fullscreen video backgrounds supporting "
+"Vimeo, YouTube, and self-hosted videos, perfect for photography and "
+"multimedia projects. It integrates seamlessly with popular page builders "
+"(Elementor, Beaver Builder) and WooCommerce, making it effortless to create "
+"any type of site, from business and agency websites to online shops and "
+"blogs. Fully responsive, GDPR-compliant, and privacy-focused (no external "
+"Google fonts), Inspiro looks perfect on every device. Explore more powerful "
+"features in our Premium version: https://www.wpzoom.com/themes/inspiro/"
 msgstr ""
 
 #. phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_menu_page
@@ -1175,10 +1273,10 @@ msgid "Inspiro Premium"
 msgstr ""
 
 #: inc/admin/pages/demos.php:28
-msgid "Inspiro Premium • 25+"
+msgid "Inspiro Premium • 31"
 msgstr ""
 
-#: inc/admin/pages/demos.php:382
+#: inc/admin/pages/demos.php:422
 msgid "Inspiro Pro • 11"
 msgstr ""
 
@@ -1186,7 +1284,17 @@ msgstr ""
 msgid "Inspiro Starter Sites"
 msgstr ""
 
-#: inc/admin/pages/plugins.php:56
+#: inc/classes/class-tgm-plugin-activation.php:2741
+msgid "Install"
+msgstr ""
+
+#. %2$s: plugin name in screen reader markup
+#: inc/classes/class-tgm-plugin-activation.php:2628
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: inc/admin/pages/plugins.php:57
 msgid "Install & Activate"
 msgstr ""
 
@@ -1204,12 +1312,17 @@ msgstr ""
 msgid "Install Inspiro Premium"
 msgstr ""
 
-#: inc/admin/pages/demo.php:34
+#: inc/admin/pages/demo.php:43
 msgid "Install Inspiro Starter Sites"
+msgstr ""
+
+#: inc/admin/pages/demo.php:35
+msgid "Install Inspiro Starter Sites Plugin"
 msgstr ""
 
 #. parent slug
 #. page title
+#: inc/classes/class-tgm-plugin-activation.php:328
 #: inc/classes/class-inspiro-custom-wp-admin-menu.php:140
 #: inc/classes/class-inspiro-custom-wp-admin-menu.php:141
 msgid "Install Plugins"
@@ -1227,8 +1340,45 @@ msgstr ""
 msgid "Install Premium"
 msgstr ""
 
-#: inc/admin/pages/demo.php:33
+#: inc/classes/class-tgm-plugin-activation.php:327
+msgid "Install Required Plugins"
+msgstr ""
+
+#. 1: install status, 2: update status
+#: inc/classes/class-tgm-plugin-activation.php:2368
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2347
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2515
+msgid "Installed version:"
+msgstr ""
+
+#. 1: plugin name, 2: action number 3: total number of actions.
+#: inc/classes/class-tgm-plugin-activation.php:3537
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/admin/pages/demo.php:42
 msgid "Installing Inspiro Starter Sites"
+msgstr ""
+
+#. 1: plugin name, 2: action number 3: total number of actions.
+#: inc/classes/class-tgm-plugin-activation.php:3545
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#. %s: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:330
+#, php-format
+msgid "Installing Plugin: %s"
 msgstr ""
 
 #: inc/classes/class-inspiro-enqueue-scripts.php:57
@@ -1331,6 +1481,7 @@ msgstr ""
 msgid "Lowercase"
 msgstr ""
 
+#: inc/starter-content.php:823
 #: inc/classes/class-inspiro-after-setup-theme.php:115
 #: inc/customizer/configs/typography/class-inspiro-typo-main-menu-config.php:103
 msgid "Main Menu"
@@ -1406,6 +1557,10 @@ msgstr ""
 msgid "Migrate the Customizer settings to Inspiro Premium"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:2523
+msgid "Minimum required version:"
+msgstr ""
+
 #: inc/customizer/configs/typography/class-inspiro-typo-mobile-menu-config.php:96
 msgid "Mobile Menu"
 msgstr ""
@@ -1448,8 +1603,42 @@ msgstr ""
 msgid "Next step &rarr;"
 msgstr ""
 
+#. 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:390
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
 #: comments.php:30 inc/template-tags.php:134
 msgid "No Comments"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2956
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2823
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2825
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2558
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2930
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2780
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2782
+msgid "No plugins were selected to be updated. No action taken."
 msgstr ""
 
 #: inc/classes/inspiro-customizer-guided-tour.php:149
@@ -1462,6 +1651,10 @@ msgstr ""
 
 #: inc/classes/class-inspiro-font-family-manager.php:224
 msgid "Normal 400"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2343
+msgid "Not Installed"
 msgstr ""
 
 #. %1$s: Documentation URL. %2$s: Link title.
@@ -1519,10 +1712,6 @@ msgstr ""
 
 #: inc/customizer/configs/homepage-media/class-inspiro-homepage-media-content-config.php:129
 msgid "Open link on new tab"
-msgstr ""
-
-#: inc/admin/pages/support.php:115
-msgid "Open Support Desk"
 msgstr ""
 
 #: inc/classes/class-inspiro-theme-upgrader.php:160
@@ -1753,6 +1942,36 @@ msgstr ""
 msgid "Play background video"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:397
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:946
+#: inc/classes/class-tgm-plugin-activation.php:956
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2572
+msgid "Plugin"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:1144
+#: inc/classes/class-tgm-plugin-activation.php:2970
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:387
+#: inc/classes/class-tgm-plugin-activation.php:3181
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:3180
+msgid "Plugin activation failed."
+msgstr ""
+
 #: inc/admin/pluginInstaller/class-inspiro-plugin-installer.php:146
 msgid "Plugin installed and activated successfully."
 msgstr ""
@@ -1761,9 +1980,26 @@ msgstr ""
 msgid "Plugin is already installed and activated!"
 msgstr ""
 
+#. 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:392
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
 #: inc/admin/pluginInstaller/class-inspiro-plugin-installer.php:96
 msgid "Plugin was already installed! We activated it for you."
 msgstr ""
+
+#. 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2414
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
 
 #: inc/admin/pages/quick-start.php:60
 msgid "Portfolio"
@@ -1785,6 +2021,10 @@ msgstr ""
 msgid "Post title"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:2326
+msgid "Pre-Packaged"
+msgstr ""
+
 #: inc/admin/pages/quick-start.php:342
 msgid "Premium Features"
 msgstr ""
@@ -1793,11 +2033,15 @@ msgstr ""
 msgid "Premium Starter Sites"
 msgstr ""
 
+#: inc/admin/pages/support.php:101
+msgid "PREMIUM SUPPORT"
+msgstr ""
+
 #: inc/customizer/custom-controls/font-presets/class-inspiro-customize-font-presets-control.php:35
 msgid "Presets"
 msgstr ""
 
-#: inc/admin/pages/demos.php:367 inc/admin/pages/demos.php:535
+#: inc/admin/pages/demos.php:407 inc/admin/pages/demos.php:575
 msgid "Preview"
 msgstr ""
 
@@ -1805,11 +2049,11 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: inc/admin/pages/support.php:101 inc/admin/pages/quick-start.php:347
-#: inc/admin/pages/quick-start.php:365 inc/admin/pages/quick-start.php:380
-#: inc/admin/pages/quick-start.php:398 inc/admin/pages/quick-start.php:413
-#: inc/admin/pages/quick-start.php:431 inc/admin/pages/quick-start.php:447
-#: inc/admin/pages/quick-start.php:471 inc/admin/pages/quick-start.php:489
+#: inc/admin/pages/quick-start.php:347 inc/admin/pages/quick-start.php:365
+#: inc/admin/pages/quick-start.php:380 inc/admin/pages/quick-start.php:398
+#: inc/admin/pages/quick-start.php:413 inc/admin/pages/quick-start.php:431
+#: inc/admin/pages/quick-start.php:447 inc/admin/pages/quick-start.php:471
+#: inc/admin/pages/quick-start.php:489
 #: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:115
 #: inc/customizer/configs/header/class-inspiro-header-area-config.php:183
 msgid "PRO"
@@ -1840,6 +2084,10 @@ msgstr ""
 msgid "Ready to publish your first post? <a href=\"%s\">Get started here</a>."
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:2304
+msgid "Recommended"
+msgstr ""
+
 #: inc/admin/pages/main-menu.php:139 inc/admin/pages/plugins.php:28
 msgid "Recommended Plugins"
 msgstr ""
@@ -1860,6 +2108,29 @@ msgstr ""
 
 #: inc/common-functions.php:323
 msgid "Reply"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2301
+msgid "Required"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2355
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2357
+msgid "Requires Update"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:385
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:386
+#: inc/classes/class-tgm-plugin-activation.php:837
+#: inc/classes/class-tgm-plugin-activation.php:2558
+#: inc/classes/class-tgm-plugin-activation.php:3605
+msgid "Return to the Dashboard"
 msgstr ""
 
 #: comments.php:103
@@ -1977,10 +2248,18 @@ msgstr ""
 msgid "Something went wrong to create a new slider item!"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:333
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
 #: search.php:55
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2573
+msgid "Source"
 msgstr ""
 
 #: theme.json:1
@@ -2012,6 +2291,10 @@ msgstr ""
 msgid "Starter Sites"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:2579
+msgid "Status"
+msgstr ""
+
 #: searchform.php:20
 msgctxt "submit button"
 msgid "Search"
@@ -2033,8 +2316,8 @@ msgstr ""
 msgid "Support Desk"
 msgstr ""
 
-#: inc/admin/pages/quick-start.php:105
-msgid "Support Forums"
+#: inc/admin/pages/support.php:34 inc/admin/pages/quick-start.php:105
+msgid "Support Forum"
 msgstr ""
 
 #: inc/customizer/class-inspiro-customizer.php:474
@@ -2102,13 +2385,79 @@ msgctxt "text transform"
 msgid "None"
 msgstr ""
 
+#. %s: version number
+#: inc/classes/class-tgm-plugin-activation.php:2010
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
 #: inc/admin/pages/quick-start.php:11
 msgid ""
-"Thank you for installing the free version of our theme! Below you can find "
-"quick links to different sections in the Customizer where you can configure "
-"and customize the theme. The free version includes limited features and "
+"Thank you for installing the Inspiro Lite theme! Below you can find quick "
+"links to different sections in the Customizer where you can configure and "
+"customize the theme. The free version includes limited features and "
 "customization options, but if you need more flexibility and plan to take "
-"your website to the next level, make sure to check the Premium version."
+"your website to the next level, make sure to check out the Premium version."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:346
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/classes/class-tgm-plugin-activation.php:388
+#: inc/classes/class-tgm-plugin-activation.php:2974
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:364
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/classes/class-tgm-plugin-activation.php:358
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/classes/class-tgm-plugin-activation.php:3532
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#. 1: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:3528
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:3540
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:956
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:946
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
 msgstr ""
 
 #: inc/admin/pages/upgrade.php:51
@@ -2134,18 +2483,69 @@ msgstr ""
 msgid "Theme Options Panel"
 msgstr ""
 
+#: inc/starter-content.php:517
+msgctxt "Theme starter content"
+msgid "About"
+msgstr ""
+
+#: inc/starter-content.php:803
+msgctxt "Theme starter content"
+msgid "Aerial Land"
+msgstr ""
+
+#: inc/starter-content.php:646 inc/starter-content.php:807
+msgctxt "Theme starter content"
+msgid "Contact"
+msgstr ""
+
+#: inc/starter-content.php:54
+msgctxt "Theme starter content"
+msgid "Homepage"
+msgstr ""
+
 #. Hidden accessibility text.
 #: inc/admin/pages/upgrade.php:47
 msgid "Theme zip file"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:396
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:352
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
 #: inc/classes/class-inspiro-font-family-manager.php:218
 msgid "Thin 100"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:522
+msgid "This plugin needs to be updated to be compatible with your theme."
 msgstr ""
 
 #: inc/customizer/configs/colors/class-inspiro-color-general-config.php:205
 msgid "This text appears on the Blog page."
 msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:340
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/classes/class-tgm-plugin-activation.php:334
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
 
 #. %s: WordPress Version.
 #: inc/back-compat.php:42 inc/back-compat.php:61 inc/back-compat.php:86
@@ -2168,11 +2568,27 @@ msgstr ""
 msgid "Three Columns"
 msgstr ""
 
+#. 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2426
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
 #: inc/admin/pages/support.php:48
 msgid ""
 "To help you get started with Inspiro, we’re sharing tips and tricks to "
 "ensure the best experience while building your website."
 msgstr ""
+
+#. 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2418
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
 
 #: sidebar.php:20
 msgid "Toggle navigation"
@@ -2184,6 +2600,10 @@ msgstr ""
 
 #: inc/customizer/configs/footer/class-inspiro-footer-widget-areas-config.php:86
 msgid "Two Columns"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2574
+msgid "Type"
 msgstr ""
 
 #: template-parts/header/search-form.php:16
@@ -2213,12 +2633,54 @@ msgstr ""
 
 #: inc/customizer/class-inspiro-customizer.php:282
 msgid ""
-"Unlock premium features: 25+ Elementor and Gutenberg Demos, 7 Style Kits, "
+"Unlock premium features: 30+ Elementor and Gutenberg Demos, 7 Style Kits, "
 "Video Backgrounds, Portfolio Integration, Premium Support and much more!"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2747
+msgid "Update"
+msgstr ""
+
+#. %2$s: plugin name in screen reader markup
+#: inc/classes/class-tgm-plugin-activation.php:2633
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#. 1: number of plugins.
+#: inc/classes/class-tgm-plugin-activation.php:2422
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2359
+msgid "Update recommended"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:523
+msgid "Update Required"
 msgstr ""
 
 #: inc/admin/pages/quick-start.php:122
 msgid "Update to Inspiro Premium"
+msgstr ""
+
+#. 1: plugin name, 2: action number 3: total number of actions.
+#: inc/classes/class-tgm-plugin-activation.php:3523
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#. %s: plugin name.
+#: inc/classes/class-tgm-plugin-activation.php:332
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2709
+msgid "Upgrade message from the plugin author:"
 msgstr ""
 
 #: inc/customizer/class-inspiro-customizer.php:281
@@ -2269,12 +2731,20 @@ msgstr ""
 msgid "Variants"
 msgstr ""
 
+#: inc/classes/class-tgm-plugin-activation.php:2578
+msgid "Version"
+msgstr ""
+
 #: inc/customizer/class-inspiro-customizer.php:283
 msgid "View All Features"
 msgstr ""
 
 #: inc/customizer/class-inspiro-customizer.php:285
 msgid "View Demos"
+msgstr ""
+
+#: inc/admin/pages/demo.php:24
+msgid "View Premium Starter Sites &#8599;"
 msgstr ""
 
 #: inc/customizer/custom-controls/font-presets/class-inspiro-customize-font-presets-control.php:41
@@ -2334,6 +2804,11 @@ msgstr ""
 msgid "Widget Title"
 msgstr ""
 
+#: inc/starter-content.php:595 inc/starter-content.php:613
+#: inc/starter-content.php:631
+msgid "Winner"
+msgstr ""
+
 #: inc/admin/pages/quick-start.php:389
 msgid "WooCommerce Features"
 msgstr ""
@@ -2342,6 +2817,10 @@ msgstr ""
 msgid ""
 "WooCommerce integration offers extensive customization options for shop "
 "pages and product displays, tailored to your needs."
+msgstr ""
+
+#: inc/classes/class-tgm-plugin-activation.php:2320
+msgid "WordPress Repository"
 msgstr ""
 
 #. Author of the theme
@@ -2359,6 +2838,14 @@ msgstr ""
 #: inc/customizer/configs/footer/class-inspiro-footer-copyright-config.php:71
 msgid ""
 "You can insert the following tags: {copyright}, {current-year}, {site-title}"
+msgstr ""
+
+#: inc/admin/pages/support.php:117
+#, php-format
+msgid ""
+"You can receive access to direct support from our team by purchasing the <a "
+"href=\"%1$s\" target=\"_blank\">Premium</a> version of the theme or the <a "
+"href=\"%2$s\" target=\"_blank\">Premium Support service</a>."
 msgstr ""
 
 #: inc/admin-notice.php:57
