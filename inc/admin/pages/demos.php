@@ -254,16 +254,6 @@
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/photography-wedding/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
                                     [
-                                        'class' => 'design_hotel elementor',
-                                        'id' => 'inspiro-education',
-                                        'title' => 'Education / University',
-                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-education/thumbs/home.png',
-                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-school/',
-                                        'name' => 'Education / University',
-                                        'available_for' => 'Elementor',
-                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
-                                    ],
-                                    [
                                         'class' => 'design_food elementor',
                                         'id' => 'inspiro-food',
                                         'title' => 'Food Blog',
@@ -282,16 +272,6 @@
                                         'name' => 'Coffee Shop',
                                         'available_for' => 'Elementor',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/coffee-shop/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
-                                    ],
-                                    [
-                                        'class' => 'design_hotel elementor',
-                                        'id' => 'inspiro-lawyer',
-                                        'title' => 'Lawyer / Legal',
-                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-lawyer/thumbs/home.png',
-                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-lawyer/',
-                                        'name' => 'Lawyer / Legal',
-                                        'available_for' => 'Elementor',
-                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
                                     [
                                         'class' => 'design_hotel elementor',
