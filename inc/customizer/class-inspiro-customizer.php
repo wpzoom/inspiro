@@ -486,6 +486,7 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 			}
 
 			?>
+			</optgroup>
 			<optgroup label="Google">
 
 			<?php
@@ -498,6 +499,9 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 
 				<?php
 			}
+			?>
+			</optgroup>
+			<?php
 
 			return ob_get_clean();
 		}
