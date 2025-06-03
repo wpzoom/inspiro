@@ -140,7 +140,7 @@ if ( ! class_exists( 'Inspiro_Fonts_Manager' ) ) {
 			 * Other Font Variants
 			 */
 
-			$other_font_family   = array( "'Inter', sans-serif", "'Montserrat', sans-serif" );
+			$other_font_family   = array( "'Inter', sans-serif", "'Onest', sans-serif" );
 			$other_font_variants = array( '200,300,500,600', '700' );
 
 			foreach ( $other_font_family as $key => $font_name ) {

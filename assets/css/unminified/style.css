@@ -1025,7 +1025,7 @@ input[type=search]::-webkit-search-results-decoration {
 .more-link,
 .more_link,
 .side-nav .search-form .search-submit {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: bold;
     display: inline-block;
     padding: 10px 25px;
@@ -1069,7 +1069,7 @@ div.wpforms-container-full .wpforms-form input[type=submit],
 div.wpforms-container-full .wpforms-form button[type=submit],
 div.wpforms-container-full .wpforms-form .wpforms-page-button,
 button, input[type=button], input[type=reset], input[type=submit] {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     display: inline;
     width: auto;
     padding: 12px 25px;
@@ -1110,7 +1110,7 @@ button:hover, input[type=button]:hover, input[type=reset]:hover, input[type=subm
 
 /* Read More button */
 .wp-block-read-more {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: 600;
 }
 
@@ -1572,7 +1572,7 @@ a:hover .nav-title,
 }
 .navbar-nav a {
     padding: 0.3125em 0 0.1875em;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: 500;
     border-bottom: 1px solid transparent;
     transition: 0.2s ease border-color, 0.2s ease color;
@@ -1648,7 +1648,7 @@ a:hover .nav-title,
     color: #fff;
     text-transform: uppercase;
     margin-bottom: 20px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
 }
 .side-nav .wp-block-group > .wp-block-group__inner-container {
     padding: 0;
@@ -2099,7 +2099,7 @@ body.has-header-image .custom-header-button:hover, body.has-header-video .custom
     margin: 0;
     font-weight: bold;
     letter-spacing: 1px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
 }
 .custom-logo-link img {
     display: inline-block;
@@ -2128,7 +2128,7 @@ body:not(.wp-custom-logo) a.custom-logo-text {
     margin: 0;
     font-weight: bold;
     letter-spacing: 1px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-size: 26px;
     font-size: 1.625rem;
     text-transform: uppercase;
@@ -2423,7 +2423,7 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
     font-size: 1.625rem;
     font-weight: bold;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     text-align: left;
 }
 .home.blog .entry-meta {
@@ -2577,7 +2577,7 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
 .comments-pagination .page-numbers {
     font-size: 20px;
     font-size: 1.25rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     line-height: 40px;
     padding: 0.625em 0.9375em;
     color: #444;
@@ -2922,7 +2922,7 @@ body > .is-root-container,
 .wp-block-button a {
     transition: background-color 0.3s ease;
     text-decoration: none;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 .wp-block-button a:hover {
@@ -3002,7 +3002,7 @@ body > .is-root-container,
 /* Entry footer */
 .entry-footer {
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     color: #666;
 }
 .entry-footer .tags-links {
@@ -3191,7 +3191,7 @@ h4.jp-relatedposts-post-title {
     color: #666;
     font-size: 16px;
     font-weight: normal;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     text-transform: uppercase;
 }
 .single #jp-relatedposts h3.jp-relatedposts-headline em {
@@ -3217,7 +3217,7 @@ h4.jp-relatedposts-post-title {
     font-size: 1.625rem;
     font-weight: bold;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     text-transform: uppercase;
 }
 
@@ -3240,7 +3240,7 @@ h4.jp-relatedposts-post-title {
 
 .wpzoom-blocks_portfolio-block .wpz-portfolio-button__link {
     border-radius: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -3356,7 +3356,7 @@ h4.jp-relatedposts-post-title {
     margin: 0;
     font-size: 20px;
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: 700;
     color: #fff;
 }
@@ -3381,7 +3381,7 @@ h4.jp-relatedposts-post-title {
     position: relative;
     margin-top: 40px;
     margin-bottom: 80px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
 }
 #comments > h3:after,
 #respond > h3:after {
@@ -3537,7 +3537,7 @@ h4.jp-relatedposts-post-title {
     margin: 0 0 20px;
     font-size: 20px;
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: bold;
 }
 .widget_block ul,
@@ -3703,7 +3703,7 @@ h4.jp-relatedposts-post-title {
 .site-footer .search-form .search-submit,
 .side-nav .wp-block-search__button,
 .side-nav .search-form .search-submit {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: bold;
     display: inline-block;
     padding: 0.625em 1.5625em;
@@ -3966,7 +3966,7 @@ h4.jp-relatedposts-post-title {
     border: none;
     font-weight: 600 !important;
     border-radius: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     line-height: 1.5em;
     padding: 10px 18px;
     font-size: 12px;
@@ -4361,7 +4361,7 @@ figure.aligncenter:not(.wp-block-gallery) {
     text-transform: uppercase;
     position: relative;
     font-size: 20px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
 }
 
 .product .related h2 {
@@ -4412,7 +4412,7 @@ figure.aligncenter:not(.wp-block-gallery) {
 .woocommerce-page input.button,
 .woocommerce-page #respond input#submit,
 #main .woocommerce-page #content input.button {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-weight: bold;
     font-size: 12px;
     padding: 11px 25px;
@@ -4450,7 +4450,7 @@ figure.aligncenter:not(.wp-block-gallery) {
 
 .woocommerce ul.products li.product .price,
 .woocommerce-page ul.products li.product .price {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     color: var(--inspiro-primary-color);
 }
 
@@ -4462,7 +4462,7 @@ figure.aligncenter:not(.wp-block-gallery) {
 .woocommerce-page #content div.product span.price,
 .woocommerce-page div.product p.price,
 .woocommerce-page div.product span.price {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     color: var(--inspiro-primary-color);
 }
 
@@ -4712,7 +4712,7 @@ figure.aligncenter:not(.wp-block-gallery) {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Onest", sans-serif;
     font-size: 14px;
 }
 

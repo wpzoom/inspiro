@@ -40,7 +40,7 @@ class Inspiro_Typo_Headings_Config {
 					'args' => array(
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'sanitize_text_field',
-						'default'           => "'Inter', sans-serif",
+						'default'           => "'Onest', sans-serif",
 					),
 				),
 				array(
@@ -48,13 +48,13 @@ class Inspiro_Typo_Headings_Config {
 					'args' => array(
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_font_variant',
-						'default'           => '700',
+						'default'           => '600',
 					),
 				),
 				array(
 					'id'   => 'headings-font-weight',
 					'args' => array(
-						'default'           => '700',
+						'default'           => '600',
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_font_weight',
 					),

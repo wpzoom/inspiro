@@ -40,7 +40,7 @@ class Inspiro_Typo_Main_Menu_Config {
 					'args' => array(
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'sanitize_text_field',
-						'default'           => "'Montserrat', sans-serif",
+						'default'           => "'Onest', sans-serif",
 					),
 				),
 				array(
