@@ -458,3 +458,12 @@ function inspiro_check_plugin_status( $plugin_slug ) {
     // If not active or installed, it's not installed.
     return 'not_installed';
 }
+
+
+// Elementor tweaks
+add_action( 'after_switch_theme', function() {
+    update_option( 'elementor_disable_color_schemes', 'yes' );
+    update_option( 'elementor_disable_typography_schemes', 'yes' );
+    update_option( 'elementor_experiment-e_local_google_fonts', 'inactive' );
+
+} );
