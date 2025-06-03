@@ -36,7 +36,7 @@ Description: Used to style the TinyMCE editor.
 }
 
 .editor-post-title__block .editor-post-title__input {
-    font-family: "Inter", sans-serif;
+    font-family: "Onest", sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -48,6 +48,9 @@ Description: Used to style the TinyMCE editor.
     -moz-osx-font-smoothing: grayscale;
 }
 
+.wpzoom-blocks_portfolio-block .wpz-portfolio-button__link,
+.wp-block-post-title,
+.wp-block-heading,
 .wp-block-button .wp-block-button__link {
     font-family: "Onest", sans-serif;
 }
@@ -62,7 +65,6 @@ Description: Used to style the TinyMCE editor.
 
 .wpzoom-blocks_portfolio-block .wpz-portfolio-button__link {
     border-radius: 0;
-    font-family: "Onest", sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
