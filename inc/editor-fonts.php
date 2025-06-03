@@ -1,6 +1,6 @@
 <?php
 /**
- * Editor Font Functions
+ * Editor Typography
  *
  * @package Inspiro
  * @subpackage Inspiro_Lite
@@ -8,108 +8,108 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly.
+	exit; // Exit if accessed directly.
 }
 
 /**
- * Get the current font families from Customizer settings
+ * Enqueue editor styles and fonts
  */
-function inspiro_get_customizer_fonts() {
-    $font_families = array();
-
+function inspiro_block_editor_fonts_styles() {
     // Get font settings from customizer
     $body_font = get_theme_mod('body-font-family', "'Inter', sans-serif");
     $headings_font = get_theme_mod('headings-font-family', "'Onest', sans-serif");
 
-    // Clean up font family strings
-    $body_font = str_replace(array('"', "'"), '', $body_font);
-    $headings_font = str_replace(array('"', "'"), '', $headings_font);
-
-    // Only add each font family once
-    if ($body_font !== 'inherit' && !in_array($body_font, $font_families)) {
-        $font_families[] = $body_font;
-    }
-
-    if ($headings_font !== 'inherit' && !in_array($headings_font, $font_families)) {
-        $font_families[] = $headings_font;
-    }
-
-    return $font_families;
-}
-
-/**
- * Generate Google Fonts URL based on Customizer settings
- */
-function inspiro_get_google_fonts_url() {
-    $font_families = inspiro_get_customizer_fonts();
-
-    if (empty($font_families)) {
-        return '';
-    }
-
-    // Convert font families array to Google Fonts format
-    $formatted_fonts = array();
-    foreach ($font_families as $font) {
-        // Add default font weights
-        $formatted_fonts[] = $font . ':100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i';
-    }
-
-    $query_args = array(
-        'family'  => urlencode(implode('|', $formatted_fonts)),
-        'display' => 'swap',
-        'subset'  => 'latin,latin-ext',
-    );
-
-    return add_query_arg($query_args, 'https://fonts.googleapis.com/css');
-}
-
-/**
- * Enqueue Google Fonts in Block Editor
- */
-function inspiro_block_editor_fonts() {
-    // Add custom fonts
-    wp_enqueue_style('inspiro-google-fonts', inspiro_get_google_fonts_url(), array(), null);
-}
-add_action('enqueue_block_editor_assets', 'inspiro_block_editor_fonts');
-
-/**
- * Enqueue dynamic styles for block editor
- */
-function inspiro_block_editor_dynamic_css() {
-    // Get font settings from customizer
-    $body_font = get_theme_mod('body-font-family', "'Inter', sans-serif");
-    $headings_font = get_theme_mod('headings-font-family', "'Onest', sans-serif");
-
-    // Add editor styles
-    add_editor_style(array(
-        'assets/css/' . ((SCRIPT_DEBUG) ? 'unminified' : 'minified') . '/editor-style' . ((SCRIPT_DEBUG) ? '' : '.min') . '.css',
-        Inspiro_Fonts_Manager::get_google_font_url()
-    ));
-
-    // Add dynamic CSS
+    // Generate dynamic CSS
     $css = "
         /* Editor Typography */
-        .editor-styles-wrapper,
+        body .editor-styles-wrapper,
+        body .editor-styles-wrapper p,
+        body .editor-styles-wrapper .wp-block,
         .wp-block {
             font-family: {$body_font} !important;
         }
 
-        .editor-post-title__block .editor-post-title__input,
         .wpzoom-blocks_portfolio-block .wpz-portfolio-button__link,
         .wp-block-post-title,
         .wp-block-heading,
         .wp-block-button .wp-block-button__link,
-        .editor-styles-wrapper .wp-block h1,
-        .editor-styles-wrapper .wp-block h2,
-        .editor-styles-wrapper .wp-block h3,
-        .editor-styles-wrapper .wp-block h4,
-        .editor-styles-wrapper .wp-block h5,
-        .editor-styles-wrapper .wp-block h6 {
+        body .editor-styles-wrapper .editor-post-title__block .editor-post-title__input,
+        body .editor-styles-wrapper h1,
+        body .editor-styles-wrapper h2,
+        body .editor-styles-wrapper h3,
+        body .editor-styles-wrapper h4,
+        body .editor-styles-wrapper h5,
+        body .editor-styles-wrapper h6,
+        body .editor-styles-wrapper .wp-block h1,
+        body .editor-styles-wrapper .wp-block h2,
+        body .editor-styles-wrapper .wp-block h3,
+        body .editor-styles-wrapper .wp-block h4,
+        body .editor-styles-wrapper .wp-block h5,
+        body .editor-styles-wrapper .wp-block h6,
+        body .editor-styles-wrapper .wp-block-heading,
+        body .editor-styles-wrapper .wp-block-button .wp-block-button__link {
             font-family: {$headings_font} !important;
         }
     ";
 
-    wp_add_inline_style('wp-block-editor', $css);
+    // Create editor-specific stylesheet
+    $editor_style = array(
+        'assets/css/' . ((SCRIPT_DEBUG) ? 'unminified' : 'minified') . '/editor-style' . ((SCRIPT_DEBUG) ? '' : '.min') . '.css'
+    );
+
+    // Get Google Fonts URL
+    $google_fonts_url = Inspiro_Fonts_Manager::get_google_font_url();
+    if (!empty($google_fonts_url)) {
+        $editor_style[] = $google_fonts_url;
+    }
+
+    // Create a temporary file for our dynamic styles
+    $upload_dir = wp_upload_dir();
+    $editor_css_dir = $upload_dir['basedir'] . '/inspiro-editor';
+    $editor_css_file = $editor_css_dir . '/editor-typography.css';
+
+    // Create directory if it doesn't exist
+    if (!file_exists($editor_css_dir)) {
+        wp_mkdir_p($editor_css_dir);
+    }
+
+    // Only write file if it doesn't exist or content has changed
+    $current_css = file_exists($editor_css_file) ? file_get_contents($editor_css_file) : '';
+    if ($current_css !== $css) {
+        file_put_contents($editor_css_file, $css);
+    }
+
+    // Get the file URL
+    $editor_css_url = $upload_dir['baseurl'] . '/inspiro-editor/editor-typography.css';
+
+    // Add all styles to editor
+    $editor_style[] = $editor_css_url;
+
+    // Remove existing editor styles first
+    remove_editor_styles();
+
+    // Add our compiled styles
+    add_editor_style($editor_style);
 }
-add_action('enqueue_block_editor_assets', 'inspiro_block_editor_dynamic_css');
+
+// Use both hooks to ensure styles are loaded in all contexts
+add_action('admin_init', 'inspiro_block_editor_fonts_styles');
+add_action('enqueue_block_editor_assets', 'inspiro_block_editor_fonts_styles');
+
+/**
+ * Clean up editor styles on theme deactivation
+ */
+function inspiro_cleanup_editor_styles() {
+    $upload_dir = wp_upload_dir();
+    $editor_css_dir = $upload_dir['basedir'] . '/inspiro-editor';
+
+    if (is_dir($editor_css_dir)) {
+        $files = glob($editor_css_dir . '/*');
+        foreach ($files as $file) {
+            unlink($file);
+        }
+        rmdir($editor_css_dir);
+    }
+}
+register_deactivation_hook(get_template_directory() . '/functions.php', 'inspiro_cleanup_editor_styles');
 
