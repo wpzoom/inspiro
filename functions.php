@@ -150,33 +150,3 @@ require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-desc.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-button.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/main-menu.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/mobile-menu.php';
-
-/**
- * Set default theme mods for fresh installations.
- * Uses WordPress's fresh_site option which is true only on fresh installations.
- */
-function inspiro_set_fresh_site_mods() {
-	// Only run on fresh sites
-	if (get_option('fresh_site')) {
-		set_theme_mod('hero_enable', false);
-	}
-}
-add_action('after_setup_theme', 'inspiro_set_fresh_site_mods');
-
-/**
- * Set default theme mods when switching from another theme.
- * This runs when a user switches from a different theme to this one.
- *
- * @param string $old_name Old theme name
- * @param WP_Theme $old_theme Instance of the old theme
- */
-function inspiro_after_switch_theme($old_name, $old_theme) {
-	// Don't run on fresh sites as that's handled by inspiro_set_fresh_site_mods
-	if (!get_option('fresh_site')) {
-		// Only set if the setting hasn't been explicitly set before
-		if (!get_theme_mod('hero_enable', null)) {
-			set_theme_mod('hero_enable', false);
-		}
-	}
-}
-add_action('after_switch_theme', 'inspiro_after_switch_theme', 10, 2);
