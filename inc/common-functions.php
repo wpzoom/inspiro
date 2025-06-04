@@ -467,3 +467,109 @@ add_action( 'after_switch_theme', function() {
     update_option( 'elementor_experiment-e_local_google_fonts', 'inactive' );
 
 } );
+
+
+
+
+/**
+ * Set Elementor Global Colors and Typography on Theme Activation
+ */
+function inspiro_set_elementor_global_settings() {
+    // Ensure Elementor is active and properly loaded
+    if ( ! did_action( 'elementor/loaded' ) ) {
+        return;
+    }
+
+    // Get Elementor's instance
+    if ( ! class_exists( 'Elementor\Plugin' ) ) {
+        return;
+    }
+
+    // Get the active kit
+    $elementor = \Elementor\Plugin::instance();
+    if ( ! isset( $elementor->kits_manager ) ) {
+        return;
+    }
+
+    $kit = $elementor->kits_manager->get_active_kit();
+    if ( ! $kit ) {
+        return;
+    }
+
+    // Get the current kit settings
+    $kit_id = get_option('elementor_active_kit');
+    $existing_settings = get_post_meta($kit_id, '_elementor_page_settings', true);
+
+    // Only set defaults if no custom settings exist or if they're empty
+    if (empty($existing_settings) || (!isset($existing_settings['system_colors']) && !isset($existing_settings['system_typography']))) {
+        // Define the default settings
+        $default_settings = [
+            'system_colors' => [
+                [
+                    '_id' => 'primary',
+                    'title' => 'Primary',
+                    'color' => '#101010',
+                ],
+                [
+                    '_id' => 'secondary',
+                    'title' => 'Secondary',
+                    'color' => '#18b4aa',
+                ],
+                [
+                    '_id' => 'text',
+                    'title' => 'Text',
+                    'color' => '#444',
+                ],
+                [
+                    '_id' => 'accent',
+                    'title' => 'Accent',
+                    'color' => '#18b4aa',
+                ],
+            ],
+            'system_typography' => [
+                [
+                    '_id' => 'primary',
+                    'title' => 'Primary',
+                    'typography_typography' => 'custom',
+                    'typography_font_family' => 'Onest',
+                    'typography_font_weight' => '600',
+                ],
+                [
+                    '_id' => 'secondary',
+                    'title' => 'Secondary',
+                    'typography_typography' => 'custom',
+                    'typography_font_family' => 'Inter',
+                    'typography_font_weight' => '400',
+                ],
+                [
+                    '_id' => 'text',
+                    'title' => 'Text',
+                    'typography_typography' => 'custom',
+                    'typography_font_family' => 'Inter',
+                    'typography_font_weight' => '400',
+                ],
+                [
+                    '_id' => 'accent',
+                    'title' => 'Accent',
+                    'typography_typography' => 'custom',
+                    'typography_font_family' => 'Inter',
+                    'typography_font_weight' => '500',
+                ],
+            ],
+        ];
+
+        // Merge with any existing settings to preserve other configurations
+        $settings = is_array($existing_settings) ? array_merge($existing_settings, $default_settings) : $default_settings;
+
+        // Update the kit settings
+        $kit->save(['settings' => $settings]);
+
+        // Update kit settings directly in post meta for redundancy
+        update_post_meta($kit_id, '_elementor_page_settings', $settings);
+
+    }
+
+}
+
+// Hook into theme activation only, not Elementor init
+add_action('after_switch_theme', 'inspiro_set_elementor_global_settings');
