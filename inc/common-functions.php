@@ -469,23 +469,78 @@ add_action( 'after_switch_theme', function() {
 } );
 
 
+function inspiro_store_elementor_defaults_on_theme_activation() {
+    $default_settings = [
+        'system_colors' => [
+            [
+                '_id' => 'primary',
+                'title' => 'Primary',
+                'color' => '#101010',
+            ],
+            [
+                '_id' => 'secondary',
+                'title' => 'Secondary',
+                'color' => '#18b4aa',
+            ],
+            [
+                '_id' => 'text',
+                'title' => 'Text',
+                'color' => '#444',
+            ],
+            [
+                '_id' => 'accent',
+                'title' => 'Accent',
+                'color' => '#18b4aa',
+            ],
+        ],
+        'system_typography' => [
+            [
+                '_id' => 'primary',
+                'title' => 'Primary',
+                'typography_typography' => 'custom',
+                'typography_font_family' => 'Onest',
+                'typography_font_weight' => '600',
+            ],
+            [
+                '_id' => 'secondary',
+                'title' => 'Secondary',
+                'typography_typography' => 'custom',
+                'typography_font_family' => 'Inter',
+                'typography_font_weight' => '400',
+            ],
+            [
+                '_id' => 'text',
+                'title' => 'Text',
+                'typography_typography' => 'custom',
+                'typography_font_family' => 'Inter',
+                'typography_font_weight' => '400',
+            ],
+            [
+                '_id' => 'accent',
+                'title' => 'Accent',
+                'typography_typography' => 'custom',
+                'typography_font_family' => 'Inter',
+                'typography_font_weight' => '500',
+            ],
+        ],
+    ];
+
+    update_option('inspiro_pending_elementor_defaults', $default_settings);
+}
+add_action('after_switch_theme', 'inspiro_store_elementor_defaults_on_theme_activation');
 
 
-/**
- * Set Elementor Global Colors and Typography on Theme Activation
- */
-function inspiro_set_elementor_global_settings() {
-    // Ensure Elementor is active and properly loaded
+function inspiro_apply_pending_elementor_defaults() {
+    // Exit if Elementor isn't ready
     if ( ! did_action( 'elementor/loaded' ) ) {
         return;
     }
 
-    // Get Elementor's instance
-    if ( ! class_exists( 'Elementor\Plugin' ) ) {
+    $defaults = get_option('inspiro_pending_elementor_defaults');
+    if (empty($defaults)) {
         return;
     }
 
-    // Get the active kit
     $elementor = \Elementor\Plugin::instance();
     if ( ! isset( $elementor->kits_manager ) ) {
         return;
@@ -496,80 +551,16 @@ function inspiro_set_elementor_global_settings() {
         return;
     }
 
-    // Get the current kit settings
     $kit_id = get_option('elementor_active_kit');
     $existing_settings = get_post_meta($kit_id, '_elementor_page_settings', true);
 
-    // Only set defaults if no custom settings exist or if they're empty
     if (empty($existing_settings) || (!isset($existing_settings['system_colors']) && !isset($existing_settings['system_typography']))) {
-        // Define the default settings
-        $default_settings = [
-            'system_colors' => [
-                [
-                    '_id' => 'primary',
-                    'title' => 'Primary',
-                    'color' => '#101010',
-                ],
-                [
-                    '_id' => 'secondary',
-                    'title' => 'Secondary',
-                    'color' => '#18b4aa',
-                ],
-                [
-                    '_id' => 'text',
-                    'title' => 'Text',
-                    'color' => '#444',
-                ],
-                [
-                    '_id' => 'accent',
-                    'title' => 'Accent',
-                    'color' => '#18b4aa',
-                ],
-            ],
-            'system_typography' => [
-                [
-                    '_id' => 'primary',
-                    'title' => 'Primary',
-                    'typography_typography' => 'custom',
-                    'typography_font_family' => 'Onest',
-                    'typography_font_weight' => '600',
-                ],
-                [
-                    '_id' => 'secondary',
-                    'title' => 'Secondary',
-                    'typography_typography' => 'custom',
-                    'typography_font_family' => 'Inter',
-                    'typography_font_weight' => '400',
-                ],
-                [
-                    '_id' => 'text',
-                    'title' => 'Text',
-                    'typography_typography' => 'custom',
-                    'typography_font_family' => 'Inter',
-                    'typography_font_weight' => '400',
-                ],
-                [
-                    '_id' => 'accent',
-                    'title' => 'Accent',
-                    'typography_typography' => 'custom',
-                    'typography_font_family' => 'Inter',
-                    'typography_font_weight' => '500',
-                ],
-            ],
-        ];
-
-        // Merge with any existing settings to preserve other configurations
-        $settings = is_array($existing_settings) ? array_merge($existing_settings, $default_settings) : $default_settings;
-
-        // Update the kit settings
+        $settings = is_array($existing_settings) ? array_merge($existing_settings, $defaults) : $defaults;
         $kit->save(['settings' => $settings]);
-
-        // Update kit settings directly in post meta for redundancy
         update_post_meta($kit_id, '_elementor_page_settings', $settings);
-
     }
 
+    // Remove option to prevent re-applying
+    delete_option('inspiro_pending_elementor_defaults');
 }
-
-// Hook into theme activation only, not Elementor init
-add_action('after_switch_theme', 'inspiro_set_elementor_global_settings');
+add_action('elementor/init', 'inspiro_apply_pending_elementor_defaults');
