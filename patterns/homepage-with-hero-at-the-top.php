@@ -104,8 +104,8 @@ register_block_pattern_category( 'inspiro-pages', [ 'label' => __( 'Inspiro Page
 <!-- /wp:column -->
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}}} -->
-<div class="wp-block-column" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:cover {"url":"<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_P9QYJ8AAL8.jpg","id":7497,"dimRatio":70,"overlayColor":"primary","contentPosition":"bottom left","style":{"spacing":{"padding":{"top":"var:preset|spacing|small","right":"var:preset|spacing|x-small","bottom":"var:preset|spacing|small","left":"var:preset|spacing|x-small"}}}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="padding-top:var(--wp--preset--spacing--small);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--small);padding-left:var(--wp--preset--spacing--x-small)"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-70 has-background-dim"></span><img class="wp-block-cover__image-background wp-image-7497" alt="" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_P9QYJ8AAL8.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"left":"0","top":"0","right":"0","bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
+<div class="wp-block-column" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:cover {"url":"<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg","id":7497,"dimRatio":70,"overlayColor":"primary","contentPosition":"bottom left","style":{"spacing":{"padding":{"top":"var:preset|spacing|small","right":"var:preset|spacing|x-small","bottom":"var:preset|spacing|small","left":"var:preset|spacing|x-small"}}}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="padding-top:var(--wp--preset--spacing--small);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--small);padding-left:var(--wp--preset--spacing--x-small)"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-70 has-background-dim"></span><img class="wp-block-cover__image-background wp-image-7497" alt="" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"left":"0","top":"0","right":"0","bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
 <h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0">Aerial<br>Video</h3>
 <!-- /wp:heading -->
 
@@ -150,7 +150,7 @@ register_block_pattern_category( 'inspiro-pages', [ 'label' => __( 'Inspiro Page
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"id":26,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_JKMGVEJMPU.jpg" alt="" class="wp-image-26"/></figure>
+<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg" alt="" class="wp-image-26"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
@@ -170,7 +170,7 @@ register_block_pattern_category( 'inspiro-pages', [ 'label' => __( 'Inspiro Page
 <!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|small"}}}} -->
 <div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
 <div class="wp-block-column is-vertically-aligned-center"><!-- wp:image {"id":27,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_ECZV5RZKSZ.jpg" alt="" class="wp-image-27"/></figure>
+<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg" alt="" class="wp-image-27"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
@@ -407,8 +407,8 @@ register_block_pattern_category( 'inspiro-pages', [ 'label' => __( 'Inspiro Page
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_89BQZ89TLH.jpg","id":24,"hasParallax":true,"dimRatio":40,"overlayColor":"black","minHeightUnit":"px","contentPosition":"center center","align":"full","style":{"border":{"radius":"0px"}},"className":"is-position-center-center"} -->
-<div class="wp-block-cover alignfull has-parallax is-position-center-center" style="border-radius:0px"><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-40 has-background-dim"></span><div role="img" class="wp-block-cover__image-background wp-image-24 has-parallax" style="background-position:50% 50%;background-image:url(<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_89BQZ89TLH.jpg)"></div><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained"}} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg","id":24,"hasParallax":true,"dimRatio":40,"overlayColor":"black","minHeightUnit":"px","contentPosition":"center center","align":"full","style":{"border":{"radius":"0px"}},"className":"is-position-center-center"} -->
+<div class="wp-block-cover alignfull has-parallax is-position-center-center" style="border-radius:0px"><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-40 has-background-dim"></span><div role="img" class="wp-block-cover__image-background wp-image-24 has-parallax" style="background-position:50% 50%;background-image:url(<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg)"></div><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center","level":3,"style":{"color":{"text":"#fffffa"},"typography":{"textTransform":"uppercase"}},"fontSize":"medium"} -->
 <h3 class="wp-block-heading has-text-align-center has-text-color has-medium-font-size" style="color:#fffffa;text-transform:uppercase">Unleash your creativity with Inspiro</h3>
 <!-- /wp:heading -->

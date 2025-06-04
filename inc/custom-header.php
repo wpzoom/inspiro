@@ -50,14 +50,9 @@ function inspiro_custom_header_setup() {
 	register_default_headers(
 		array(
 			'default-image' => array(
-				'url'           => '%s/assets/images/StockSnap_ECZV5RZKSZ.jpg',
-				'thumbnail_url' => '%s/assets/images/StockSnap_ECZV5RZKSZ.jpg',
-				'description'   => __( 'Default Header Image', 'inspiro' ),
-			),
-			'old-image'     => array(
 				'url'           => '%s/assets/images/StockSnap_M6D1GS9PSL.jpg',
 				'thumbnail_url' => '%s/assets/images/StockSnap_M6D1GS9PSL.jpg',
-				'description'   => __( 'Ocean Header Image', 'inspiro' ),
+				'description'   => __( 'Default Header Image', 'inspiro' ),
 			),
 		)
 	);

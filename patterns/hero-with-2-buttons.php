@@ -12,8 +12,8 @@
  */
 ?>
 <!-- wp:group {"align":"full","style":{"spacing":{"blockGap":"0px","margin":{"top":"0px","bottom":"0px"}}},"layout":{"type":"default"}} -->
-<div class="wp-block-group alignfull" id="cover" style="margin-top:0px;margin-bottom:0px"><!-- wp:cover {"url":"<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_89BQZ89TLH.jpg","id":40,"dimRatio":50,"overlayColor":"black","minHeight":549,"minHeightUnit":"px","contentPosition":"center center","align":"full","layout":{"type":"constrained"}} -->
-<div class="wp-block-cover alignfull" style="min-height:549px"><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim"></span><img class="wp-block-cover__image-background wp-image-40" alt="" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_89BQZ89TLH.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group alignfull" id="cover" style="margin-top:0px;margin-bottom:0px"><!-- wp:cover {"url":"<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg","id":40,"dimRatio":50,"overlayColor":"black","minHeight":549,"minHeightUnit":"px","contentPosition":"center center","align":"full","layout":{"type":"constrained"}} -->
+<div class="wp-block-cover alignfull" style="min-height:549px"><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim"></span><img class="wp-block-cover__image-background wp-image-40" alt="" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/StockSnap_M6D1GS9PSL.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textColor":"white","fontSize":"large"} -->
 <h2 class="wp-block-heading has-white-color has-text-color has-large-font-size">Section with 2 Buttons</h2>
 <!-- /wp:heading -->
