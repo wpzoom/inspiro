@@ -600,6 +600,12 @@ class Inspiro_Theme_Upgrader {
 	 * @return void
 	 */
 	public function setup_slider_item() {
+		// Check if Hero Area is enabled in customizer
+		$hero_enabled = get_theme_mod('hero_enable', true);
+		if (!$hero_enabled) {
+			return;
+		}
+
 		$slider_cpt = $this->create_temporary_slider_cpt();
 
 		if ( is_wp_error( $slider_cpt ) ) {
@@ -716,6 +722,12 @@ class Inspiro_Theme_Upgrader {
 	 * @return WP_Post_Type|WP_Error The registered post type object on success, WP_Error object on failure.
 	 */
 	private function create_temporary_slider_cpt() {
+		// Check if Hero Area is enabled in customizer
+		$hero_enabled = get_theme_mod('hero_enable', true);
+		if (!$hero_enabled) {
+			return new WP_Error('hero_disabled', __('Hero Area is disabled in customizer settings.', 'inspiro'));
+		}
+
 		show_message( $this->strings['create_temporary_slider_cpt'] );
 
 		$args = array(
