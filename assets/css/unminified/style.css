@@ -1038,7 +1038,6 @@ input[type=search]::-webkit-search-results-decoration {
     border: 2px solid rgba(68, 68, 68, 0.19);
     background-image: none;
     -webkit-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -3717,7 +3716,6 @@ h4.jp-relatedposts-post-title {
     border: 2px solid var(--inspiro-primary-color);
     background-image: none;
     -webkit-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }

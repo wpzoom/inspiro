@@ -139,7 +139,6 @@ module.exports = function (grunt) {
 					autoprefixer({
 						overrideBrowserslist: [
 							'> 1%',
-							'ie >= 11',
 							'last 1 Android versions',
 							'last 1 ChromeAndroid versions',
 							'last 2 Chrome versions',
