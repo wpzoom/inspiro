@@ -150,3 +150,37 @@ require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-desc.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-button.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/main-menu.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/mobile-menu.php';
+
+/**
+ * Check if this is a fresh theme installation
+ * 
+ * @return bool True if this is a fresh install, false otherwise
+ */
+function inspiro_is_fresh_install() {
+	// Check if we've already run the check
+	static $is_fresh = null;
+	
+	if ($is_fresh !== null) {
+		return $is_fresh;
+	}
+	
+	// Get all theme mods
+	$theme_mods = get_theme_mods();
+	
+	// If there are no theme mods at all, this is definitely a fresh install
+	if (empty($theme_mods)) {
+		$is_fresh = true;
+		return true;
+	}
+	
+	// If hero_enable has never been set (not even to the default value)
+	// we can consider this a fresh install
+	if (!isset($theme_mods['hero_enable'])) {
+		$is_fresh = true;
+		return true;
+	}
+	
+	// Otherwise, this is not a fresh install
+	$is_fresh = false;
+	return false;
+}
