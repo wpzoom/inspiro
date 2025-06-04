@@ -50,7 +50,7 @@ function inspiro_get_starter_content() {
 		'posts'       => array(
 			'front' => array(
 				'post_type'    => 'page',
-                'template' => 'page-templates/homepage-no-hero.php',
+                'template' => 'page-templates/homepage-builder-bb.php',
 				'post_title'   => esc_html_x( 'Homepage', 'Theme starter content', 'inspiro' ),
 				'post_content' => '
                     <!-- wp:cover {"url":"https://demo.wpzoom.com/inspiro-lite/files/2022/03/Pexels-Videos-1409899-1.mp4","id":6672,"dimRatio":20,"backgroundType":"video","minHeight":100,"minHeightUnit":"vh","contentPosition":"center center","isDark":false,"align":"full","layout":{"type":"constrained"}} -->
