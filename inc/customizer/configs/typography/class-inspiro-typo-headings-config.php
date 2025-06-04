@@ -48,13 +48,13 @@ class Inspiro_Typo_Headings_Config {
 					'args' => array(
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_font_variant',
-						'default'           => '600',
+						'default'           => '700',
 					),
 				),
 				array(
 					'id'   => 'headings-font-weight',
 					'args' => array(
-						'default'           => '600',
+						'default'           => '700',
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_font_weight',
 					),
