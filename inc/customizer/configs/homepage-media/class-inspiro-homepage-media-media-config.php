@@ -47,7 +47,7 @@ class Inspiro_Homepage_Media_Media_Config {
                     'id'   => 'hero_enable',
                     'args' => array(
                         'capability'        => 'edit_theme_options',
-                        'default'           => function_exists('inspiro_is_fresh_install') ? inspiro_is_fresh_install() ? false : true : true,
+                        'default'           => true,
                         'sanitize_callback' => 'inspiro_sanitize_checkbox',
                     ),
                 ),

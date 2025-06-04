@@ -152,35 +152,31 @@ require INSPIRO_THEME_DIR . 'inc/dynamic-css/main-menu.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/mobile-menu.php';
 
 /**
- * Check if this is a fresh theme installation
- * 
- * @return bool True if this is a fresh install, false otherwise
+ * Set default theme mods for fresh installations.
+ * Uses WordPress's fresh_site option which is true only on fresh installations.
  */
-function inspiro_is_fresh_install() {
-	// Check if we've already run the check
-	static $is_fresh = null;
-	
-	if ($is_fresh !== null) {
-		return $is_fresh;
+function inspiro_set_fresh_site_mods() {
+	// Only run on fresh sites
+	if (get_option('fresh_site')) {
+		set_theme_mod('hero_enable', false);
 	}
-	
-	// Get all theme mods
-	$theme_mods = get_theme_mods();
-	
-	// If there are no theme mods at all, this is definitely a fresh install
-	if (empty($theme_mods)) {
-		$is_fresh = true;
-		return true;
-	}
-	
-	// If hero_enable has never been set (not even to the default value)
-	// we can consider this a fresh install
-	if (!isset($theme_mods['hero_enable'])) {
-		$is_fresh = true;
-		return true;
-	}
-	
-	// Otherwise, this is not a fresh install
-	$is_fresh = false;
-	return false;
 }
+add_action('after_setup_theme', 'inspiro_set_fresh_site_mods');
+
+/**
+ * Set default theme mods when switching from another theme.
+ * This runs when a user switches from a different theme to this one.
+ *
+ * @param string $old_name Old theme name
+ * @param WP_Theme $old_theme Instance of the old theme
+ */
+function inspiro_after_switch_theme($old_name, $old_theme) {
+	// Don't run on fresh sites as that's handled by inspiro_set_fresh_site_mods
+	if (!get_option('fresh_site')) {
+		// Only set if the setting hasn't been explicitly set before
+		if (!get_theme_mod('hero_enable', null)) {
+			set_theme_mod('hero_enable', false);
+		}
+	}
+}
+add_action('after_switch_theme', 'inspiro_after_switch_theme', 10, 2);
