@@ -82,7 +82,7 @@ class Inspiro_Color_Hero_Config {
 					'id'   => 'color_scroll_to_content_arrow',
 					'args' => array(
 						'theme_supports'       => array( 'custom-header', 'header-text' ),
-						'default'              => '',
+						'default'              => '#fff',
 						'transport'            => 'refresh',
 						'sanitize_callback'    => 'sanitize_hex_color',
 						'sanitize_js_callback' => 'maybe_hash_hex_color',
