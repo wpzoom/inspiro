@@ -114,6 +114,8 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 * Bug fix in the Customizer with Google Fonts not showing in the list
 * Improvements to the block editor
 * The Montserrat font was replaced with the Onest font for headings
+* Minor improvements to the Elementor integration
+* Change default value for the Homepage Hero to be disabled by default
 
 = 2.0.5 =
 * Minor bug fixes
