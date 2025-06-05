@@ -244,11 +244,6 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
         public function ocdi_register_plugins( $plugins ) {
           $theme_plugins = [
             [
-                'name'     => 'Instagram Widget by WPZOOM',
-                'slug'     => 'instagram-widget-by-wpzoom',
-                'required' => false,
-            ],
-            [
                 'name'     => 'WPZOOM Forms',
                 'slug'     => 'wpzoom-forms',
                 'required' => true,
@@ -395,7 +390,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'        => 'wpzoom-portfolio',
 					'description' => 'The ultimate solution for creatives, designers, photographers, and businesses looking to showcase their work in an elegant, professional, and fully customizable way.',
                     'required'    => false,
-                    'thumbnail' => 'https://ps.w.org/wpzoom-portfolio/assets/icon-256x256.png',
+                    'thumbnail' => 'https://ps.w.org/wpzoom-portfolio/assets/icon-256x256.png?rev=3277086',
                 ),
 
                 array(
@@ -422,13 +417,13 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'thumbnail' => 'https://ps.w.org/wpzoom-video-popup-block/assets/icon-256x256.png',
                 ),
 
-				array(
-					'name'        => 'Instagram Widget by WPZOOM',
-					'slug'        => 'instagram-widget-by-wpzoom',
-					'description' => 'Formerly known as "Instagram Widget by WPZOOM". Simple and lightweight widget for WordPress to display your Instagram feed.',
-					'required'    => false,
-                    'thumbnail' => 'https://ps.w.org/instagram-widget-by-wpzoom/assets/icon-256x256.png',
-				),
+				// array(
+				// 	'name'        => 'Instagram Widget by WPZOOM',
+				// 	'slug'        => 'instagram-widget-by-wpzoom',
+				// 	'description' => 'Formerly known as "Instagram Widget by WPZOOM". Simple and lightweight widget for WordPress to display your Instagram feed.',
+				// 	'required'    => false,
+                //     'thumbnail' => 'https://ps.w.org/instagram-widget-by-wpzoom/assets/icon-256x256.png',
+				// ),
 
 			);
 

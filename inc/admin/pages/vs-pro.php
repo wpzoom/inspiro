@@ -298,7 +298,7 @@
                    <li class="t-head">
                       <div></div>
                       <div class="c">&nbsp;</div>
-                      <div class="c"><a class="button button-primary" href="https://www.wpzoom.com/themes/inspiro/?utm_source=wpzoom&amp;utm_medium=inspiro-lite&amp;utm_campaign=comparison-table"><strong>Learn More</strong></a></div>
+                      <div class="c"><a class="button button-primary" href="https://www.wpzoom.com/themes/inspiro/?utm_source=wpzoom&amp;utm_medium=inspiro-lite&amp;utm_campaign=comparison-table"><strong>Upgrade Now</strong></a></div>
                    </li>
                 </ul>
 
