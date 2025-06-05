@@ -23,23 +23,29 @@ $header_hide_menu_option  = inspiro_get_theme_mod( 'header_hide_main_menu' );
 			<?php inspiro_custom_logo(); ?>
 		</div>
 
-		<?php if ( has_nav_menu( 'primary' ) ) : ?>
-			<div class="header-navigation-wrapper">
-				<?php if ( !$header_hide_menu_option ) : ?>
-				<nav class="primary-menu-wrapper navbar-collapse collapse" aria-label="<?php echo esc_attr_x( 'Top Horizontal Menu', 'menu', 'inspiro' ); ?>" role="navigation">
-					<?php
-						wp_nav_menu(
-							array(
-								'menu_class'     => 'nav navbar-nav dropdown sf-menu',
-								'theme_location' => 'primary',
-								'container'      => '',
-							)
-						);
-					?>
-				</nav>
-				<?php endif ?>
-			</div>
-		<?php endif ?>
+		<div class="header-navigation-wrapper">
+            <?php if ( ! $header_hide_menu_option ) : ?>
+            <nav class="primary-menu-wrapper navbar-collapse collapse" aria-label="<?php echo esc_attr_x( 'Top Horizontal Menu', 'menu', 'inspiro' ); ?>" role="navigation">
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'primary',
+                        'container'      => false,
+                        'menu_class'     => 'nav navbar-nav dropdown sf-menu',
+                        // fallback_cb outputs <div>, so we wrap it manually below
+                        'fallback_cb'    => function() {
+                            echo '<ul class="nav navbar-nav dropdown sf-menu">';
+                            wp_list_pages(array(
+                                'title_li' => '',
+                            ));
+                            echo '</ul>';
+                        },
+                    )
+                );
+                ?>
+            </nav>
+            <?php endif; ?>
+        </div>
 
 		<div class="header-widgets-wrapper">
 			<?php if ( is_active_sidebar( 'header_social' ) ) : ?>
