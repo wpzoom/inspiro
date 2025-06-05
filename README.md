@@ -7,16 +7,8 @@
 
 **Contributors:** [wpzoom](https://profiles.wordpress.org/wpzoom/)
 **Requires at least:** 6.0
-**Tested up to:** 6.7
-**Version:** 2.0.0
-**License:** GPLv2 or later
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
-**Tags:** one-column, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
-
-**Contributors:** [wpzoom](https://profiles.wordpress.org/wpzoom/)
-**Requires at least:** 6.0
-**Tested up to:** 6.7
-**Version:** 2.0.3
+**Tested up to:** 6.8
+**Version:** 2.0.6
 **License:** GPLv2 or later
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 **Tags:** one-column, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -124,7 +116,20 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
 ## Changelog
 
-### 2.0.3###
+### 2.0.6
+* Bug fix in the Customizer with Google Fonts not showing in the list
+* Improvements to the block editor
+* The Montserrat font was replaced with the Onest font for headings
+* Minor improvements to the Elementor integration
+* Change default value for the Homepage Hero to be disabled by default
+
+### 2.0.5
+* Minor bug fixes
+
+### 2.0.4
+* Bug fix for WordPress 6.8
+
+### 2.0.3
 * Multiple bug fixes
 
 ### 2.0.2
