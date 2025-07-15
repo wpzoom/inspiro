@@ -675,13 +675,43 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 		const contentSize = isBlogContext ? containerWidthNarrow : containerWidth;
 		const wideSize = contentSize + 250;
 		
+		// Calculate responsive padding breakpoints
+		const containerPadding = 30; // 30px padding
+		const containerWidthBreakpoint = containerWidth + 60; // container width + 60px buffer
+		const containerWidthNarrowBreakpoint = containerWidthNarrow + 60; // narrow container width + 60px buffer
+		
 		let css = ':root {\n';
 		css += '\t--container-width: ' + containerWidth + 'px;\n';
 		css += '\t--container-width-narrow: ' + containerWidthNarrow + 'px;\n';
+		css += '\t--container-padding: ' + containerPadding + 'px;\n';
 		
 		// Update WordPress block editor variables for live preview
 		css += '\t--wp--style--global--content-size: ' + contentSize + 'px;\n';
 		css += '\t--wp--style--global--wide-size: ' + wideSize + 'px;\n';
+		css += '}\n';
+		
+		// Dynamic responsive padding media queries
+		css += '@media (max-width: ' + containerWidthBreakpoint + 'px) {\n';
+		css += '\t.wrap,\n';
+		css += '\t.inner-wrap,\n';
+		css += '\t.page .entry-content,\n';
+		css += '\t.page:not(.inspiro-front-page) .entry-footer,\n';
+		css += '\t.single .entry-wrapper,\n';
+		css += '\t.single.has-sidebar.page-layout-sidebar-right .entry-header .inner-wrap,\n';
+		css += '\t.wp-block-group > .wp-block-group__inner-container {\n';
+		css += '\t\tpadding-left: ' + containerPadding + 'px;\n';
+		css += '\t\tpadding-right: ' + containerPadding + 'px;\n';
+		css += '\t}\n';
+		css += '}\n';
+		
+		css += '@media (max-width: ' + containerWidthNarrowBreakpoint + 'px) {\n';
+		css += '\t.single .entry-header .inner-wrap,\n';
+		css += '\t.single .entry-content,\n';
+		css += '\t.single .entry-footer,\n';
+		css += '\t#comments {\n';
+		css += '\t\tpadding-left: ' + containerPadding + 'px;\n';
+		css += '\t\tpadding-right: ' + containerPadding + 'px;\n';
+		css += '\t}\n';
 		css += '}\n';
 
 		// Update wide alignment blocks based on context

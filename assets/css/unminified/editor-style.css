@@ -20,6 +20,7 @@ Description: Used to style the TinyMCE editor.
 :root {
     --container-width: 1200px;
     --container-width-narrow: 950px;
+    --container-padding: 30px;
 }
 
 :root {

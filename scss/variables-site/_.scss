@@ -13,6 +13,7 @@ $sidebar-nav-width-mobile: 320px;
 :root {
 	--container-width: #{$content-width};
 	--container-width-narrow: #{$content-width-small};
+	--container-padding: 30px;
 }
 
 @import "colors", "typography";

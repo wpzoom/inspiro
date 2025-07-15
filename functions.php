@@ -241,10 +241,40 @@ if ( ! function_exists( 'inspiro_add_container_width_css_variables' ) ) :
 		$container_width_narrow = get_theme_mod( 'container_width_narrow', 950 );
 		$container_width_elementor = get_theme_mod( 'container_width_elementor', false );
 		
+		// Calculate responsive padding breakpoints
+		$container_padding = 30; // 30px padding
+		$container_width_breakpoint = $container_width + 60; // container width + 60px buffer
+		$container_width_narrow_breakpoint = $container_width_narrow + 60; // narrow container width + 60px buffer
+		
 		$css = "
 		:root {
 			--container-width: {$container_width}px;
 			--container-width-narrow: {$container_width_narrow}px;
+			--container-padding: {$container_padding}px;
+		}
+		
+		/* Dynamic responsive padding media queries */
+		@media (max-width: {$container_width_breakpoint}px) {
+			.wrap,
+			.inner-wrap,
+			.page .entry-content,
+			.page:not(.inspiro-front-page) .entry-footer,
+			.single .entry-wrapper,
+			.single.has-sidebar.page-layout-sidebar-right .entry-header .inner-wrap,
+			.wp-block-group > .wp-block-group__inner-container {
+				padding-left: {$container_padding}px;
+				padding-right: {$container_padding}px;
+			}
+		}
+		
+		@media (max-width: {$container_width_narrow_breakpoint}px) {
+			.single .entry-header .inner-wrap,
+			.single .entry-content,
+			.single .entry-footer,
+			#comments {
+				padding-left: {$container_padding}px;
+				padding-right: {$container_padding}px;
+			}
 		}
 		";
 		

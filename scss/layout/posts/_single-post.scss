@@ -4,8 +4,12 @@
 .single .entry-wrapper {
     max-width: var(--container-width);
     margin: em(60) auto;
-    padding-left: em(30);
-    padding-right: em(30);
+    
+    // Dynamic responsive padding - only applies when screen is smaller than container width + buffer
+    @media (max-width: var(--container-width-breakpoint)) {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+    }
 }
 
 .single.has-sidebar.page-layout-sidebar-right .entry-header .inner-wrap {
@@ -17,17 +21,25 @@
 .page:not(.inspiro-front-page) .entry-footer {
     margin: em(45) auto;
     max-width: var(--container-width);
-    padding-left: em(30);
-    padding-right: em(30);
+    
+    // Dynamic responsive padding - only applies when screen is smaller than container width + buffer
+    @media (max-width: var(--container-width-breakpoint)) {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+    }
 }
 
 .single .entry-header .inner-wrap,
 .single .entry-content,
 .single .entry-footer {
     margin: em(45) auto;
-    max-width: calc( var(--container-width-narrow) + 20px );
-    padding-left: em(30);
-    padding-right: em(30);
+    max-width: var(--container-width-narrow);
+    
+    // Dynamic responsive padding - only applies when screen is smaller than narrow container width + buffer
+    @media (max-width: calc(var(--container-width-narrow) + 60px)) {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+    }
 }
 
 .page .entry-content,
@@ -131,7 +143,7 @@
             .inner-wrap {
                 // padding-left: 10px;
                 // padding-right: 10px;
-                max-width: calc( var(--container-width-narrow) + 20px );
+                max-width: var(--container-width-narrow);
             }
         }
     }
@@ -238,7 +250,7 @@
     p,
     p.has-text-align-center {
         margin: 2.8125em auto;
-        max-width: calc(var(--container-width-narrow) + 20px);
+        max-width: var(--container-width-narrow);
         padding-left: 2em;
         padding-right: 2em;
     }
@@ -249,8 +261,12 @@
     max-width: var(--container-width);
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2em;
-    padding-right: 2em;
+    
+    // Dynamic responsive padding - only applies when screen is smaller than container width + buffer
+    @media (max-width: var(--container-width-breakpoint)) {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+    }
 }
 
 
