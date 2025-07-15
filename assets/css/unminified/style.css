@@ -4809,11 +4809,12 @@ figure.aligncenter:not(.wp-block-gallery) {
 --------------------------------------------------------------*/
 @media (min-width: 75em) {
     .wp-block-query.alignwide,
-    .single .entry-content .alignwide {
+    .single .entry-content .alignwide,
+    .page .entry-content .alignwide {
         margin-left: -125px;
         margin-right: -125px;
-        max-width: var(--container-width);
-        width: var(--container-width);
+        max-width: calc(var(--container-width-narrow) + 250px);
+        width: calc(var(--container-width-narrow) + 250px);
     }
 }
 @media (min-width: 64.0625em) {

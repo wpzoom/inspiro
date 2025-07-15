@@ -668,15 +668,24 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 		let css = ':root {\n';
 		css += '\t--container-width: ' + containerWidth + 'px;\n';
 		css += '\t--container-width-narrow: ' + containerWidthNarrow + 'px;\n';
-		css += '}';
+		css += '}\n';
+
+		// Update wide alignment blocks to use narrow width + 250px for better proportionality
+		css += '@media (min-width: 75em) {\n';
+		css += '\t.wp-block-query.alignwide,\n';
+		css += '\t.single .entry-content .alignwide,\n';
+		css += '\t.page .entry-content .alignwide {\n';
+		css += '\t\tmax-width: calc(' + containerWidthNarrow + 'px + 250px);\n';
+		css += '\t\twidth: calc(' + containerWidthNarrow + 'px + 250px);\n';
+		css += '\t}\n';
+		css += '}\n';
 
 		// Add Elementor container width override if enabled
 		if (containerWidthElementor) {
-			css += '\n.elementor-container {\n';
+			css += '.elementor-container {\n';
 			css += '\tmax-width: ' + containerWidth + 'px !important;\n';
 			css += '}';
 		}
-
 
 		$('<style id="container-width-css">' + css + '</style>').appendTo('head');
 	}
