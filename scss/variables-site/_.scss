@@ -1,6 +1,18 @@
+/*--------------------------------------------------------------
+## Layout Container Variables
+--------------------------------------------------------------*/
+
+// Default SCSS variables for backward compatibility
 $content-width: 1200px;
 $content-width-small: 950px;
 $sidebar-nav-width: 380px;
 $sidebar-nav-width-mobile: 320px;
+
+// CSS custom properties for dynamic container widths
+// These are updated via JavaScript from customizer settings
+:root {
+	--container-width: #{$content-width};
+	--container-width-narrow: #{$content-width-small};
+}
 
 @import "colors", "typography";

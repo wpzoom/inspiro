@@ -9,7 +9,7 @@
     /* Layout */
 
     .inner-wrap {
-        max-width: $content-width;
+        max-width: var(--container-width);
     }
 
     .page-layout-sidebar-right {

@@ -4,8 +4,8 @@
     .single .entry-content .alignwide {
         margin-left: -125px;
         margin-right: -125px;
-        max-width: $content-width;
-        width: $content-width;
+        max-width: var(--container-width);
+        width: var(--container-width);
     }
 
 }

@@ -54,7 +54,7 @@ body:not(.inspiro-front-page) .entry-header {
 
 body:not(.page-layout-sidebar-right) {
     #primary {
-        max-width: calc( #{ $content-width } + 20px );
+        max-width: calc( var(--container-width) + 20px );
         margin: 0 auto;
         // margin: 0 auto em(48);
         padding-left: 10px;
@@ -73,7 +73,7 @@ body:not(.page-layout-sidebar-right) {
     &.search {
 
         #primary {
-            max-width: calc( #{ $content-width-small } + 20px );
+            max-width: calc( var(--container-width-narrow) + 20px );
         }
 
     }

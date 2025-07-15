@@ -1,6 +1,6 @@
 #comments {
     clear: both;
-    max-width: calc( #{ $content-width-small } + 20px );
+    max-width: calc( var(--container-width-narrow) + 20px );
     margin: 0 auto;
     padding: 0 10px;
 }

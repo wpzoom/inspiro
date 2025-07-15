@@ -150,3 +150,97 @@ require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-desc.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-button.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/main-menu.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/mobile-menu.php';
+
+/**
+ * Container Width Functions
+ */
+
+/**
+ * Filter theme.json to make contentSize dynamic based on customizer container width
+ */
+if ( ! function_exists( 'inspiro_filter_theme_json_data' ) ) :
+	function inspiro_filter_theme_json_data( $theme_json_data ) {
+		$container_width = get_theme_mod( 'container_width', 1200 );
+		
+		// Get the data array from the WP_Theme_JSON_Data object
+		$theme_json = $theme_json_data->get_data();
+		
+		// Update the contentSize in theme.json to match our customizer setting
+		if ( isset( $theme_json['settings']['layout']['contentSize'] ) ) {
+			$theme_json['settings']['layout']['contentSize'] = $container_width . 'px';
+		}
+		
+		// Also update wideSize to be slightly larger than contentSize
+		if ( isset( $theme_json['settings']['layout']['wideSize'] ) ) {
+			$wide_size = $container_width + 80; // Add 80px for wide size
+			$theme_json['settings']['layout']['wideSize'] = $wide_size . 'px';
+		}
+		
+		// Update the data in the object and return it
+		$theme_json_data->update_with( $theme_json );
+		return $theme_json_data;
+	}
+endif;
+add_filter( 'wp_theme_json_data_user', 'inspiro_filter_theme_json_data' );
+
+/**
+ * Also apply the container width to block editor
+ */
+if ( ! function_exists( 'inspiro_filter_theme_json_theme' ) ) :
+	function inspiro_filter_theme_json_theme( $theme_json_data ) {
+		return inspiro_filter_theme_json_data( $theme_json_data );
+	}
+endif;
+add_filter( 'wp_theme_json_data_theme', 'inspiro_filter_theme_json_theme' );
+
+/**
+ * Update editor styles to reflect container width changes
+ */
+if ( ! function_exists( 'inspiro_add_editor_container_width_styles' ) ) :
+	function inspiro_add_editor_container_width_styles() {
+		$container_width = get_theme_mod( 'container_width', 1200 );
+		$wide_size = $container_width + 80;
+		
+		$editor_styles = "
+		.editor-styles-wrapper .wp-block {
+			max-width: {$container_width}px;
+		}
+		.editor-styles-wrapper .wp-block[data-align='wide'] {
+			max-width: {$wide_size}px;
+		}
+		";
+		
+		wp_add_inline_style( 'wp-edit-blocks', $editor_styles );
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'inspiro_add_editor_container_width_styles' );
+
+/**
+ * Add dynamic CSS variables for container widths
+ */
+if ( ! function_exists( 'inspiro_add_container_width_css_variables' ) ) :
+	function inspiro_add_container_width_css_variables() {
+		$container_width = get_theme_mod( 'container_width', 1200 );
+		$container_width_narrow = get_theme_mod( 'container_width_narrow', 950 );
+		$container_width_elementor = get_theme_mod( 'container_width_elementor', false );
+		
+		$css = "
+		:root {
+			--container-width: {$container_width}px;
+			--container-width-narrow: {$container_width_narrow}px;
+		}
+		";
+		
+		// Add Elementor container width override if enabled
+		if ( $container_width_elementor ) {
+			$css .= "
+			.elementor-container {
+				max-width: {$container_width}px !important;
+			}
+			";
+		}
+		
+		wp_add_inline_style( 'inspiro-style', $css );
+	}
+endif;
+add_action( 'wp_enqueue_scripts', 'inspiro_add_container_width_css_variables' );

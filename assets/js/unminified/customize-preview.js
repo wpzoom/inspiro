@@ -655,4 +655,48 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			});
 		}
 	);
+
+	// Container Width Settings - Live Preview
+	function updateContainerWidthCSS() {
+		const containerWidth = wp.customize('container_width')();
+		const containerWidthNarrow = wp.customize('container_width_narrow')();
+		const containerWidthElementor = wp.customize('container_width_elementor')();
+
+		// Remove existing style tag and create new one
+		$('#container-width-css').remove();
+		
+		let css = ':root {\n';
+		css += '\t--container-width: ' + containerWidth + 'px;\n';
+		css += '\t--container-width-narrow: ' + containerWidthNarrow + 'px;\n';
+		css += '}';
+
+		// Add Elementor container width override if enabled
+		if (containerWidthElementor) {
+			css += '\n.elementor-container {\n';
+			css += '\tmax-width: ' + containerWidth + 'px !important;\n';
+			css += '}';
+		}
+
+
+		$('<style id="container-width-css">' + css + '</style>').appendTo('head');
+	}
+
+	wp.customize('container_width', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
+	wp.customize('container_width_narrow', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
+	wp.customize('container_width_elementor', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
 })(jQuery);

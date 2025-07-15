@@ -14,6 +14,14 @@ Description: Used to style the TinyMCE editor.
  * 7.0 - Media Elements
  * 8.0 - RTL
  */
+/*--------------------------------------------------------------
+## Layout Container Variables
+--------------------------------------------------------------*/
+:root {
+    --container-width: 1200px;
+    --container-width-narrow: 950px;
+}
+
 :root {
     --inspiro-primary-color: #0bb4aa;
     --inspiro-dark-color: #101010;
