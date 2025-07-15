@@ -166,14 +166,21 @@ if ( ! function_exists( 'inspiro_filter_theme_json_data' ) ) :
 		// Get the data array from the WP_Theme_JSON_Data object
 		$theme_json = $theme_json_data->get_data();
 		
-		// Update the contentSize in theme.json to use narrow container width for consistency
-		if ( isset( $theme_json['settings']['layout']['contentSize'] ) ) {
-			$theme_json['settings']['layout']['contentSize'] = $container_width_narrow . 'px';
+		// Determine which width to use based on context
+		// Pages use default container width, single posts use narrow width
+		$content_size = $container_width; // Default to full width for pages
+		if ( is_single() || is_home() || is_archive() || is_category() || is_tag() || is_author() || is_date() ) {
+			$content_size = $container_width_narrow; // Use narrow width for blog contexts
 		}
 		
-		// Set wideSize to be narrow width + 250px to match CSS .alignwide styles
+		// Update the contentSize in theme.json
+		if ( isset( $theme_json['settings']['layout']['contentSize'] ) ) {
+			$theme_json['settings']['layout']['contentSize'] = $content_size . 'px';
+		}
+		
+		// Set wideSize to be content width + 250px to match CSS .alignwide styles
 		if ( isset( $theme_json['settings']['layout']['wideSize'] ) ) {
-			$wide_size = $container_width_narrow + 250; // Match CSS calc(var(--container-width-narrow) + 250px)
+			$wide_size = $content_size + 250;
 			$theme_json['settings']['layout']['wideSize'] = $wide_size . 'px';
 		}
 		
@@ -199,12 +206,21 @@ add_filter( 'wp_theme_json_data_theme', 'inspiro_filter_theme_json_theme' );
  */
 if ( ! function_exists( 'inspiro_add_editor_container_width_styles' ) ) :
 	function inspiro_add_editor_container_width_styles() {
+		$container_width = get_theme_mod( 'container_width', 1200 );
 		$container_width_narrow = get_theme_mod( 'container_width_narrow', 950 );
-		$wide_size = $container_width_narrow + 250;
+		
+		// Determine which width to use based on context
+		// Pages use default container width, single posts use narrow width
+		$content_size = $container_width; // Default to full width for pages
+		if ( is_single() || is_home() || is_archive() || is_category() || is_tag() || is_author() || is_date() ) {
+			$content_size = $container_width_narrow; // Use narrow width for blog contexts
+		}
+		
+		$wide_size = $content_size + 250;
 		
 		$editor_styles = "
 		.editor-styles-wrapper .wp-block {
-			max-width: {$container_width_narrow}px;
+			max-width: {$content_size}px;
 		}
 		.editor-styles-wrapper .wp-block[data-align='wide'] {
 			max-width: {$wide_size}px;

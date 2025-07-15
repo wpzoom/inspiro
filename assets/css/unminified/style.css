@@ -2657,8 +2657,6 @@ body:not(.inspiro-front-page) .entry-header {
 body:not(.page-layout-sidebar-right) #primary {
     max-width: calc(var(--container-width) + 20px);
     margin: 0 auto;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 body:not(.page-layout-sidebar-right) #primary .entry-header .inner-wrap,
 body:not(.page-layout-sidebar-right) #primary .entry-content {
@@ -3004,6 +3002,10 @@ body > .is-root-container,
 .wp-block-latest-posts li,
 .wc-block-grid__product.wc-block-grid__product {
     list-style-type: none !important;
+}
+
+.wp-block-post-template {
+    margin-left: 0;
 }
 
 /* Entry footer */
@@ -4809,12 +4811,17 @@ figure.aligncenter:not(.wp-block-gallery) {
 --------------------------------------------------------------*/
 @media (min-width: 75em) {
     .wp-block-query.alignwide,
-    .single .entry-content .alignwide,
-    .page .entry-content .alignwide {
+    .single .entry-content .alignwide {
         margin-left: -125px;
         margin-right: -125px;
         max-width: calc(var(--container-width-narrow) + 250px);
         width: calc(var(--container-width-narrow) + 250px);
+    }
+    .page .entry-content .alignwide {
+        margin-left: -125px;
+        margin-right: -125px;
+        max-width: calc(var(--container-width) + 250px);
+        width: calc(var(--container-width) + 250px);
     }
 }
 @media (min-width: 64.0625em) {

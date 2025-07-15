@@ -665,18 +665,35 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 		// Remove existing style tag and create new one
 		$('#container-width-css').remove();
 		
+		// Determine if we're on a blog-related page (single post, blog, archive, etc.)
+		const isBlogContext = $('body').hasClass('single') || $('body').hasClass('home') || 
+							  $('body').hasClass('archive') || $('body').hasClass('category') || 
+							  $('body').hasClass('tag') || $('body').hasClass('author') || 
+							  $('body').hasClass('date');
+		
+		// Choose the appropriate content size based on context
+		const contentSize = isBlogContext ? containerWidthNarrow : containerWidth;
+		const wideSize = contentSize + 250;
+		
 		let css = ':root {\n';
 		css += '\t--container-width: ' + containerWidth + 'px;\n';
 		css += '\t--container-width-narrow: ' + containerWidthNarrow + 'px;\n';
+		
+		// Update WordPress block editor variables for live preview
+		css += '\t--wp--style--global--content-size: ' + contentSize + 'px;\n';
+		css += '\t--wp--style--global--wide-size: ' + wideSize + 'px;\n';
 		css += '}\n';
 
-		// Update wide alignment blocks to use narrow width + 250px for better proportionality
+		// Update wide alignment blocks based on context
 		css += '@media (min-width: 75em) {\n';
 		css += '\t.wp-block-query.alignwide,\n';
-		css += '\t.single .entry-content .alignwide,\n';
-		css += '\t.page .entry-content .alignwide {\n';
+		css += '\t.single .entry-content .alignwide {\n';
 		css += '\t\tmax-width: calc(' + containerWidthNarrow + 'px + 250px);\n';
 		css += '\t\twidth: calc(' + containerWidthNarrow + 'px + 250px);\n';
+		css += '\t}\n';
+		css += '\t.page .entry-content .alignwide {\n';
+		css += '\t\tmax-width: calc(' + containerWidth + 'px + 250px);\n';
+		css += '\t\twidth: calc(' + containerWidth + 'px + 250px);\n';
 		css += '\t}\n';
 		css += '}\n';
 

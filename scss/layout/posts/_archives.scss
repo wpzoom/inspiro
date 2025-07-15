@@ -56,9 +56,6 @@ body:not(.page-layout-sidebar-right) {
     #primary {
         max-width: calc( var(--container-width) + 20px );
         margin: 0 auto;
-        // margin: 0 auto em(48);
-        padding-left: 10px;
-        padding-right: 10px;
 
         .entry-header .inner-wrap,
         .entry-content {
