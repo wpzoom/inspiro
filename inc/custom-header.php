@@ -525,7 +525,7 @@ function inspiro_validate_header_video( $validity, $value ) {
                 'size_too_large',
                 sprintf(
                     __( 'This video file is too large. The free version is limited to videos of 8MB or less, while the Premium and PRO versions do not have this limitation. Try a smaller video or consider upgrading to <a href="%1$s" target="_blank">Inspiro Premium</a>.', 'inspiro' ),
-                    esc_url( 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=video8mb' )
+                    esc_url( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=video8mb' )
                 )
             );
         }

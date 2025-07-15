@@ -134,7 +134,7 @@ class Inspiro_Color_Footer_Config {
 						'label'       => esc_html__( '🎨 There are 68 more color & font options in Inspiro Premium!', 'inspiro' ),
 						'description' => esc_html__( 'Unlock all customization options by upgrading to the Premium version of the theme. Customize colors, fonts, header, footer & much more!', 'inspiro' ),
 						'pro_text'    => esc_html__( '👉 Unlock all customizations', 'inspiro' ),
-						'pro_url'     => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=colorsbutton',
+						'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=colorsbutton',
 						'section'     => 'colors',
 						'priority'    => 40,
 					),

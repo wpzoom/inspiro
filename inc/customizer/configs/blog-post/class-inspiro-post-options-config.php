@@ -92,7 +92,7 @@ class Inspiro_Post_Options_Config {
                         'label' => esc_html__( '⚙️ You can control every detail in your theme with Inspiro Premium!', 'inspiro' ),
                         'description' => esc_html__( 'Unlock all customization and post options by upgrading to the Premium version of the theme. Disable specific elements and features, customize colors, fonts, header, footer & much more!', 'inspiro' ),
                         'pro_text'    => esc_html__( '👉 Unlock all options and features', 'inspiro' ),
-                        'pro_url'     => 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=blogpostbutton',
+                        'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=blogpostbutton',
                         'section' => 'blog_post_options',
                     ),
                 ),

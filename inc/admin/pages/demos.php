@@ -11,7 +11,7 @@
                 <?php esc_html_e( 'Explore the available demos in the Inspiro Premium theme below. Unlock access to all demos by upgrading to the premium version.', 'inspiro' ); ?>
             </p>
             <p class="section_footer">
-                <a href="<?php echo esc_url( __( 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium', 'inspiro' ) ); ?>"
+                <a href="<?php echo esc_url( __( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium', 'inspiro' ) ); ?>"
                     target="_blank" class="button button-primary">
                         <?php esc_html_e( 'Discover Inspiro Premium &#8599;', 'inspiro' ); ?>
                 </a>

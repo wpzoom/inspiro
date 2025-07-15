@@ -115,12 +115,12 @@
                     <?php
                     printf(
                         __( 'You can receive access to direct support from our team by purchasing the <a href="%1$s" target="_blank">Premium</a> version of the theme or the <a href="%2$s" target="_blank">Premium Support service</a>.', 'inspiro' ),
-                        esc_url( 'https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=inspiro-lite-about&utm_campaign=upgrade-support' ),
+                        esc_url( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=inspiro-lite-about&utm_campaign=upgrade-support' ),
                         esc_url( 'https://www.wpzoom.com/downloads/inspiro-premium-support/?utm_source=wpadmin&utm_medium=inspiro-lite-about&utm_campaign=upgrade-support' ),
                     ); ?>
                 </p>
                 <p class="section_footer">
-                    <a href="https://www.wpzoom.com/themes/inspiro/?utm_source=wpadmin&utm_medium=inspiro-lite-about&utm_campaign=upgrade-support" title="Read documentation"
+                    <a href="https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=inspiro-lite-about&utm_campaign=upgrade-support" title="Read documentation"
                         target="_blank" class="button button-secondary"><?php esc_html_e( 'Get Inspiro Premium', 'inspiro' ); ?>
                     </a>
                     <a href="https://www.wpzoom.com/downloads/inspiro-premium-support/?utm_source=wpadmin&utm_medium=inspiro-lite-about&utm_campaign=upgrade-support/" title="Read documentation"
