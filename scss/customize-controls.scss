@@ -134,57 +134,89 @@
 
 .inspiro-control-range {
 	&::-webkit-slider-runnable-track {
-		height: 3px;
-		background: #d7dade;
+		height: 6px;
+		background: #e1e5e9;
 		border: none;
+		border-radius: 3px;
 	}
 
 	&::-moz-range-track {
-		height: 3px;
-		background: #d7dade;
+		height: 6px;
+		background: #e1e5e9;
 		border: none;
+		border-radius: 3px;
 	}
 
 	&::-ms-track {
-		height: 3px;
-		background: #d7dade;
+		height: 6px;
+		background: #e1e5e9;
 		border: none;
+		border-radius: 3px;
 		color: transparent;
 	}
 
 	&::-webkit-slider-thumb {
 		appearance: none;
 		border: none;
-		height: 15px;
-		width: 15px;
+		height: 20px;
+		width: 20px;
 		border-radius: 50%;
-		background-color: #fff;
-		border: 1px solid rgb(126, 137, 147);
-		margin-top: -6px;
+		background: #0085ba;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		margin-top: -7px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+
+		&:hover {
+			transform: scale(1.1);
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		&:active {
+			transform: scale(0.95);
+		}
 	}
 
 	&:focus::-webkit-slider-thumb {
-		border-color: #00669b;
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 	}
 
 	&::-moz-range-thumb {
 		border: none;
-		height: 15px;
-		width: 15px;
+		height: 20px;
+		width: 20px;
 		border-radius: 50%;
-		background-color: #fff;
-		border: 1px solid rgb(126, 137, 147);
-		margin-top: -6px;
+		background: #0085ba;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		margin-top: -7px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+
+		&:hover {
+			transform: scale(1.1);
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		&:active {
+			transform: scale(0.95);
+		}
 	}
 
 	&::-ms-thumb {
 		border: none;
-		height: 15px;
-		width: 15px;
+		height: 20px;
+		width: 20px;
 		border-radius: 50%;
-		background-color: #fff;
-		border: 1px solid rgb(126, 137, 147);
-		margin-top: -6px;
+		background: #0085ba;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		margin-top: -7px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	&:focus {
+		outline: none;
 	}
 }
 

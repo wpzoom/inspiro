@@ -21,10 +21,10 @@
                                 <p class="section_footer">
                                     <a href="<?php echo esc_url( __( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=about-inspiro-page&utm_campaign=upgrade-premium', 'inspiro' ) ); ?>"
                                         target="_blank" class="button button-primary">
-                                            <?php esc_html_e( 'Get Inspiro Premium &#8599;', 'inspiro' ); ?>
+                                            <?php esc_html_e( 'Get Inspiro Premium &rarr;', 'inspiro' ); ?>
                                     </a>
                                     <a href="https://www.wpzoom.com/themes/inspiro/starter-sites/?utm_source=wpadmin&utm_medium=about-inspiro-page&utm_campaign=upgrade-premium" target="_blank" class="button button-secondary">
-                                        <?php esc_html_e( 'View starter sites &#8599;', 'inspiro' ); ?>
+                                        <?php esc_html_e( 'View starter sites &rarr;', 'inspiro' ); ?>
                                     </a>
                                 </p>
                             </div>
