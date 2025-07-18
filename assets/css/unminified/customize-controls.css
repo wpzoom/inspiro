@@ -120,51 +120,48 @@
 }
 
 .inspiro-control-range::-webkit-slider-runnable-track {
-    height: 3px;
-    background: #d7dade;
+    height: 0.6em;
+    background: #fff;
     border: none;
 }
 .inspiro-control-range::-moz-range-track {
-    height: 3px;
-    background: #d7dade;
+    height: 0.6em;
+    background: #fff;
     border: none;
 }
 .inspiro-control-range::-ms-track {
-    height: 3px;
-    background: #d7dade;
+    height: 0.6em;
+    background: #fff;
     border: none;
     color: transparent;
 }
 .inspiro-control-range::-webkit-slider-thumb {
     appearance: none;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: 1.2em;
+    width: 1.2em;
     border-radius: 50%;
-    background-color: #fff;
-    border: 1px solid rgb(126, 137, 147);
-    margin-top: -6px;
-}
-.inspiro-control-range:focus::-webkit-slider-thumb {
-    border-color: #00669b;
+    background-color: #0085ba;
+    border: none;
+    margin-top: -0.4em;
 }
 .inspiro-control-range::-moz-range-thumb {
     border: none;
-    height: 15px;
-    width: 15px;
+    height: 1.2em;
+    width: 1.2em;
     border-radius: 50%;
-    background-color: #fff;
-    border: 1px solid rgb(126, 137, 147);
-    margin-top: -6px;
+    background-color: #0085ba;
+    border: none;
+    margin-top: -0.4em;
 }
 .inspiro-control-range::-ms-thumb {
     border: none;
-    height: 15px;
-    width: 15px;
+    height: 1.2em;
+    width: 1.2em;
     border-radius: 50%;
-    background-color: #fff;
-    border: 1px solid rgb(126, 137, 147);
-    margin-top: -6px;
+    background-color: #0085ba;
+    border: none;
+    margin-top: -0.4em;
 }
 
 .wp-customizer .select2-container {

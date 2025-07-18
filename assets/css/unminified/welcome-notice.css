@@ -86,7 +86,7 @@
 .wpz-review-notice .button:hover,
 .wpz-review-notice .button:active {
     color: #fff;
-    background-color: #575c61 !important;
+    background-color: rgb(87.3947368421, 92.25, 97.1052631579) !important;
 }
 .wpz-welcome-notice .button.button-secondary,
 .wpz-review-notice .button.button-secondary {
