@@ -123,16 +123,19 @@
     height: 0.6em;
     background: #fff;
     border: none;
+    border-radius: 3px;
 }
 .inspiro-control-range::-moz-range-track {
     height: 0.6em;
     background: #fff;
     border: none;
+    border-radius: 3px;
 }
 .inspiro-control-range::-ms-track {
     height: 0.6em;
     background: #fff;
     border: none;
+    border-radius: 3px;
     color: transparent;
 }
 .inspiro-control-range::-webkit-slider-thumb {

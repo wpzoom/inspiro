@@ -582,6 +582,7 @@
     color: #666666;
 }
 .wpz-onboard_wrapper .wpz-onboard_header .wpz-onboard_tabs li a .dashicons,
+.wpz-onboard_wrapper .wpz-onboard_header .wpz-onboard_tabs li a img,
 .wpz-onboard_wrapper .wpz-onboard_header .wpz-onboard_tabs li a svg {
     display: inline-block;
     vertical-align: middle;

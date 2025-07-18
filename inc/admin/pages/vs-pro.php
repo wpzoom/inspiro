@@ -389,11 +389,11 @@
             <div class="wpz-onboard_content-side-section-button">
                 <a href="https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=about-inspiro-page&utm_campaign=upgrade-premium"
                     title="Inspiro Premium" target="_blank" class="button">
-					<?php esc_html_e( 'Get Inspiro Premium &#8599;', 'inspiro' ); ?>
+					<?php esc_html_e( 'Get Inspiro Premium &rarr;', 'inspiro' ); ?>
 				</a>
                 <a href="https://www.wpzoom.com/themes/inspiro/starter-sites/?utm_source=wpadmin&utm_medium=about-inspiro-page&utm_campaign=upgrade-premium"
                     title="Inspiro Premium" target="_blank" class="button button-starter">
-					<?php esc_html_e( 'View Starter Sites &#8599;', 'inspiro' ); ?>
+					<?php esc_html_e( 'View Starter Sites &rarr;', 'inspiro' ); ?>
 				</a>
             </div>
         </div>

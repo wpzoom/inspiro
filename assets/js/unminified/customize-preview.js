@@ -665,11 +665,17 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 		// Remove existing style tag and create new one
 		$('#container-width-css').remove();
 		
+		// Check if front page is set to display latest posts
+		const showOnFront = wp.customize('show_on_front') ? wp.customize('show_on_front')() : 'posts';
+		const isFrontPage = $('body').hasClass('home');
+		const isFrontPageWithPosts = isFrontPage && showOnFront === 'posts';
+		
 		// Determine if we're on a blog-related page (single post, blog, archive, etc.)
-		const isBlogContext = $('body').hasClass('single') || $('body').hasClass('home') || 
+		// For front page, only apply narrow width if it's set to display latest posts
+		const isBlogContext = $('body').hasClass('single') || isFrontPageWithPosts || 
 							  $('body').hasClass('archive') || $('body').hasClass('category') || 
 							  $('body').hasClass('tag') || $('body').hasClass('author') || 
-							  $('body').hasClass('date');
+							  $('body').hasClass('date') || $('body').hasClass('blog');
 		
 		// Choose the appropriate content size based on context
 		const contentSize = isBlogContext ? containerWidthNarrow : containerWidth;
@@ -750,6 +756,13 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 	});
 
 	wp.customize('container_width_elementor', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
+	// Listen for front page display setting changes
+	wp.customize('show_on_front', function (value) {
 		value.bind(function (to) {
 			updateContainerWidthCSS();
 		});
