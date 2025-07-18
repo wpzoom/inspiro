@@ -21,6 +21,7 @@
 .page:not(.inspiro-front-page) .entry-footer {
     margin: em(45) auto;
     max-width: var(--container-width);
+
     
     // Dynamic responsive padding - only applies when screen is smaller than container width + buffer
     @media (max-width: var(--container-width-breakpoint)) {
@@ -136,13 +137,10 @@
     }
 }
 
-.page,
 .single {
     &.page-layout-full-width {
         article:not(.has-post-thumbnail) {
             .inner-wrap {
-                // padding-left: 10px;
-                // padding-right: 10px;
                 max-width: var(--container-width-narrow);
             }
         }

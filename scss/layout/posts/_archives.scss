@@ -1,19 +1,5 @@
 /* Blog landing, search, archives */
 
-body:not(.has-archive-description):not(.has-header-image) {
-    .page-title,
-    &.page .entry-title {
-        &:after {
-            content: '';
-            display: block;
-            width: 130px;
-            height: 1px;
-            background: $color-border;
-            margin: 40px auto 48px;
-        }
-    }
-}
-
 .blog,
 .search,
 .archive {
