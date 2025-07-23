@@ -2769,6 +2769,11 @@ body > .is-root-container,
     }
 }
 
+.page.inspiro-front-page .entry-content {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .single .entry-header .inner-wrap,
 .single .entry-content,
 .single .entry-footer {

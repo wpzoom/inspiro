@@ -120,20 +120,20 @@
 }
 
 .inspiro-control-range::-webkit-slider-runnable-track {
-    height: 0.6em;
-    background: #fff;
+    height: 6px;
+    background: #e1e5e9;
     border: none;
     border-radius: 3px;
 }
 .inspiro-control-range::-moz-range-track {
-    height: 0.6em;
-    background: #fff;
+    height: 6px;
+    background: #e1e5e9;
     border: none;
     border-radius: 3px;
 }
 .inspiro-control-range::-ms-track {
-    height: 0.6em;
-    background: #fff;
+    height: 6px;
+    background: #e1e5e9;
     border: none;
     border-radius: 3px;
     color: transparent;
@@ -141,30 +141,60 @@
 .inspiro-control-range::-webkit-slider-thumb {
     appearance: none;
     border: none;
-    height: 1.2em;
-    width: 1.2em;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    background-color: #0085ba;
-    border: none;
-    margin-top: -0.4em;
+    background: #0085ba;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -7px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.inspiro-control-range::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.inspiro-control-range::-webkit-slider-thumb:active {
+    transform: scale(0.95);
+}
+.inspiro-control-range:focus::-webkit-slider-thumb {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
 .inspiro-control-range::-moz-range-thumb {
     border: none;
-    height: 1.2em;
-    width: 1.2em;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    background-color: #0085ba;
-    border: none;
-    margin-top: -0.4em;
+    background: #0085ba;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -7px;
+    cursor: pointer;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.inspiro-control-range::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.inspiro-control-range::-moz-range-thumb:active {
+    transform: scale(0.95);
 }
 .inspiro-control-range::-ms-thumb {
     border: none;
-    height: 1.2em;
-    width: 1.2em;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    background-color: #0085ba;
-    border: none;
-    margin-top: -0.4em;
+    background: #0085ba;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -7px;
+    cursor: pointer;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.inspiro-control-range:focus {
+    outline: none;
 }
 
 .wp-customizer .select2-container {
