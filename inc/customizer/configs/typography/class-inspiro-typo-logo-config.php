@@ -48,7 +48,7 @@ class Inspiro_Typo_Logo_Config {
 					'args' => array(
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_font_variant',
-						'default'           => '700',
+						'default'           => '600',
 					),
 				),
 				array(
@@ -62,7 +62,7 @@ class Inspiro_Typo_Logo_Config {
 				array(
 					'id'   => 'logo-font-weight',
 					'args' => array(
-						'default'           => '700',
+						'default'           => '600',
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_font_weight',
 					),

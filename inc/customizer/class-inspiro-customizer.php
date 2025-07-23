@@ -151,7 +151,7 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 					'typo-headings',
 					// phpcs:disable Squiz.PHP.CommentedOutCode.Found
 					// TODO: Enable all panels in the next update
-					// 'typo-h1',
+					// 'typo-h1', // Integrated into typo-headings
 					// 'typo-h2',
 					// 'typo-h3',
 					// 'typo-h4',

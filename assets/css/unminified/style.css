@@ -1120,6 +1120,7 @@ button:hover, input[type=button]:hover, input[type=reset]:hover, input[type=subm
 .wp-block-read-more {
     font-family: "Onest", sans-serif;
     font-weight: 600;
+    text-decoration: none !important;
 }
 
 .wp-block-read-more:hover {
@@ -2027,7 +2028,7 @@ body.wp-custom-logo .headroom--not-top .custom-logo-link img {
     clear: none;
     font-size: 80px;
     font-size: 5rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.25;
     margin: 0;
     padding: 0;
@@ -2495,7 +2496,7 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
 .entry-content h6 {
     margin-bottom: 20px;
     line-height: 1.3;
-    font-weight: 700;
+    font-weight: 600;
 }
 .entry-content .wp-block-image img,
 .entry-content img.alignnone,
@@ -2850,7 +2851,6 @@ body > .is-root-container,
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 0;
-    font-family: inherit;
 }
 .page .entry-cover-image .entry-header .entry-meta,
 .single .entry-cover-image .entry-header .entry-meta {

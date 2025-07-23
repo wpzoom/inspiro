@@ -64,7 +64,7 @@ class Inspiro_Typo_H5_Config {
 		$wp_customize->add_setting(
 			'heading5-font-weight',
 			array(
-				'default'           => '700',
+				'default'           => '600',
 				'transport'         => 'postMessage',
 				'sanitize_callback' => 'inspiro_sanitize_font_weight',
 			)
