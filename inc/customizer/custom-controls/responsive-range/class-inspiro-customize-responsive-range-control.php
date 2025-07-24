@@ -64,24 +64,26 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		public function content_template() { ?>
 			<label>
 				<# if ( data.label ) { #>
-					<span class="customize-control-title">{{{ data.label }}}</span>
+					<span class="customize-control-title">
+						{{{ data.label }}}
+						<!-- Device Toggle Buttons -->
+						<div class="inspiro-responsive-device-buttons">
+							<button type="button" class="preview-desktop active" data-device="desktop">
+								<span class="dashicons dashicons-desktop"></span>
+							</button>
+							<button type="button" class="preview-tablet" data-device="tablet">
+								<span class="dashicons dashicons-tablet"></span>
+							</button>
+							<button type="button" class="preview-smartphone" data-device="mobile">
+								<span class="dashicons dashicons-smartphone"></span>
+							</button>
+						</div>
+					</span>
 				<# } #>
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<div class="customize-control-content">
-					<!-- Device Toggle Buttons -->
-					<div class="inspiro-responsive-device-buttons">
-						<button type="button" class="preview-desktop active" data-device="desktop">
-							<span class="dashicons dashicons-desktop"></span>
-						</button>
-						<button type="button" class="preview-tablet" data-device="tablet">
-							<span class="dashicons dashicons-tablet"></span>
-						</button>
-						<button type="button" class="preview-smartphone" data-device="mobile">
-							<span class="dashicons dashicons-smartphone"></span>
-						</button>
-					</div>
 					
 					<!-- Desktop Controls -->
 					<div class="inspiro-device-controls inspiro-device-desktop">
