@@ -566,7 +566,6 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			'body-font-size',
 			'logo-font-size',
 			'headings-font-size',
-			'heading1-font-size',
 			'heading2-font-size',
 			'heading3-font-size',
 			'heading4-font-size',
@@ -600,6 +599,61 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			});
 		}
 	);
+
+	/**
+	 * Handle responsive font size changes for Page & Post Titles (H1)
+	 * 
+	 * @since 2.0.8
+	 */
+	function updateResponsiveHeading1FontSize() {
+		const desktopSize = wp.customize('heading1-font-size')();
+		const tabletSize = wp.customize('heading1-font-size-tablet')();
+		const mobileSize = wp.customize('heading1-font-size-mobile')();
+		const selector = 'h1, .home.blog .entry-title, .page .entry-title, .page-title, .page .entry-cover-image .entry-header .entry-title, .single .entry-cover-image .entry-header .entry-title';
+		
+		// Remove existing responsive styles
+		$('style#heading1-responsive-font-size').remove();
+		
+		// Build responsive CSS
+		let css = '';
+		
+		// Mobile base styles (mobile-first)
+		if (mobileSize && mobileSize >= 24 && mobileSize <= 80) {
+			css += selector + ' { font-size: ' + mobileSize + 'px; }\n';
+		}
+		
+		// Tablet styles
+		if (tabletSize && tabletSize >= 24 && tabletSize <= 80) {
+			css += '@media screen and (min-width: 641px) and (max-width: 1024px) {\n';
+			css += '  ' + selector + ' { font-size: ' + tabletSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Desktop styles
+		if (desktopSize && desktopSize >= 24 && desktopSize <= 80) {
+			css += '@media screen and (min-width: 1025px) {\n';
+			css += '  ' + selector + ' { font-size: ' + desktopSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Add new styles
+		if (css) {
+			$('head').append('<style id="heading1-responsive-font-size">' + css + '</style>');
+		}
+	}
+
+	// Bind responsive font size handlers
+	wp.customize('heading1-font-size', function (value) {
+		value.bind(updateResponsiveHeading1FontSize);
+	});
+	
+	wp.customize('heading1-font-size-tablet', function (value) {
+		value.bind(updateResponsiveHeading1FontSize);
+	});
+	
+	wp.customize('heading1-font-size-mobile', function (value) {
+		value.bind(updateResponsiveHeading1FontSize);
+	});
 
 	$.each(
 		[

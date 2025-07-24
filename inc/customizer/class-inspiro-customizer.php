@@ -213,6 +213,13 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 			);
 
 			Inspiro_Customizer_Control_Base::register_custom_control(
+				'inspiro-responsive-range',
+				array(
+					'callback' => 'Inspiro_Customize_Responsive_Range_Control',
+				)
+			);
+
+			Inspiro_Customizer_Control_Base::register_custom_control(
 				'inspiro-title',
 				array(
 					'callback' => 'Inspiro_Customize_Title_Control',

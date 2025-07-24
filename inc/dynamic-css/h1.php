@@ -22,6 +22,8 @@ if ( ! function_exists( 'inspiro_selector_h1' ) ) {
 	 */
 	function inspiro_selector_h1( $selectors ) {
 		$selectors['typo-heading1'] = 'h1, .home.blog .entry-title, .page .entry-title, .page-title, .page .entry-cover-image .entry-header .entry-title, .single .entry-cover-image .entry-header .entry-title';
+		$selectors['heading1-tablet-media'] = '@media screen and (min-width: 641px) and (max-width: 1024px)';
+		$selectors['heading1-desktop-media'] = '@media screen and (min-width: 1025px)';
 		return $selectors;
 	}
 }
@@ -35,17 +37,22 @@ add_filter( 'inspiro/dynamic_theme_css', 'inspiro_dynamic_theme_css_h1' );
  * @return string Generated dynamic CSS for H1 headings.
  */
 function inspiro_dynamic_theme_css_h1( $dynamic_css ) {
-	$heading1_font_size      = inspiro_get_theme_mod( 'heading1-font-size' );
-	$heading1_font_weight    = inspiro_get_theme_mod( 'heading1-font-weight' );
-	$heading1_text_transform = inspiro_get_theme_mod( 'heading1-text-transform' );
-	$heading1_line_height    = inspiro_get_theme_mod( 'heading1-line-height' );
+	$heading1_font_size         = inspiro_get_theme_mod( 'heading1-font-size' );
+	$heading1_font_size_tablet  = inspiro_get_theme_mod( 'heading1-font-size-tablet' );
+	$heading1_font_size_mobile  = inspiro_get_theme_mod( 'heading1-font-size-mobile' );
+	$heading1_font_weight       = inspiro_get_theme_mod( 'heading1-font-weight' );
+	$heading1_text_transform    = inspiro_get_theme_mod( 'heading1-text-transform' );
+	$heading1_line_height       = inspiro_get_theme_mod( 'heading1-line-height' );
 
-	$selectors = apply_filters( 'inspiro/dynamic_theme_css/selectors', array() );
-	$selector  = inspiro_get_prop( $selectors, 'typo-heading1' );
+	$selectors           = apply_filters( 'inspiro/dynamic_theme_css/selectors', array() );
+	$selector            = inspiro_get_prop( $selectors, 'typo-heading1' );
+	$tablet_media_query  = inspiro_get_prop( $selectors, 'heading1-tablet-media' );
+	$desktop_media_query = inspiro_get_prop( $selectors, 'heading1-desktop-media' );
 
+	// Base styles (mobile-first approach)
 	$dynamic_css .= "{$selector} {\n";
-	if ( absint( $heading1_font_size ) >= 24 && absint( $heading1_font_size ) <= 80 ) {
-		$dynamic_css .= "font-size: {$heading1_font_size}px;\n";
+	if ( absint( $heading1_font_size_mobile ) >= 24 && absint( $heading1_font_size_mobile ) <= 80 ) {
+		$dynamic_css .= "font-size: {$heading1_font_size_mobile}px;\n";
 	}
 	if ( ! empty( $heading1_font_weight ) && 'inherit' !== $heading1_font_weight ) {
 		$dynamic_css .= "font-weight: {$heading1_font_weight};\n";
@@ -57,6 +64,22 @@ function inspiro_dynamic_theme_css_h1( $dynamic_css ) {
 		$dynamic_css .= "line-height: {$heading1_line_height};\n";
 	}
 	$dynamic_css .= "}\n";
+
+	// Tablet styles
+	if ( $tablet_media_query && absint( $heading1_font_size_tablet ) >= 24 && absint( $heading1_font_size_tablet ) <= 80 ) {
+		$dynamic_css .= "{$tablet_media_query} {\n";
+		$dynamic_css .= "{$selector} {\n";
+		$dynamic_css .= "font-size: {$heading1_font_size_tablet}px;\n";
+		$dynamic_css .= "} }\n";
+	}
+
+	// Desktop styles
+	if ( $desktop_media_query && absint( $heading1_font_size ) >= 24 && absint( $heading1_font_size ) <= 80 ) {
+		$dynamic_css .= "{$desktop_media_query} {\n";
+		$dynamic_css .= "{$selector} {\n";
+		$dynamic_css .= "font-size: {$heading1_font_size}px;\n";
+		$dynamic_css .= "} }\n";
+	}
 
 	return $dynamic_css;
 }

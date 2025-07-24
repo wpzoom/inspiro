@@ -86,6 +86,22 @@ class Inspiro_Typo_Headings_Config {
 					),
 				),
 				array(
+					'id'   => 'heading1-font-size-tablet',
+					'args' => array(
+						'default'           => 30,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				array(
+					'id'   => 'heading1-font-size-mobile',
+					'args' => array(
+						'default'           => 24,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				array(
 					'id'   => 'heading1-font-weight',
 					'args' => array(
 						'default'           => '600',
@@ -357,11 +373,15 @@ class Inspiro_Typo_Headings_Config {
 				),
 				array(
 					'id'           => 'heading1-font-size',
-					'control_type' => 'Inspiro_Customize_Range_Control',
+					'control_type' => 'Inspiro_Customize_Responsive_Range_Control',
 					'args'         => array(
-						'label'       => __( 'Font Size (px)', 'inspiro' ),
-						'section'     => 'inspiro_typography_section_headings',
-						'input_attrs' => array(
+						'label'           => __( 'Font Size (px)', 'inspiro' ),
+						'section'         => 'inspiro_typography_section_headings',
+						'device_settings' => array(
+							'tablet' => 'heading1-font-size-tablet',
+							'mobile' => 'heading1-font-size-mobile',
+						),
+						'input_attrs'     => array(
 							'min'  => 24,
 							'max'  => 80,
 							'step' => 1,

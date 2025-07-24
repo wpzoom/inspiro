@@ -29,19 +29,33 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 *
 		 * @var array
 		 */
-		public $devices = array();
+		public $device_settings = array();
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.
 		 */
 		public function to_json() {
 			parent::to_json();
+			
+			// Get default value from the main setting
 			$this->json['defaultValue'] = $this->setting->default;
 			$this->json['id']           = $this->id;
 			$this->json['value']        = $this->value();
 			$this->json['link']         = $this->get_link();
 			$this->json['input_attrs']  = $this->input_attrs;
-			$this->json['devices']      = $this->devices;
+			
+			// Get device-specific values
+			$devices = array();
+			if ( ! empty( $this->device_settings['tablet'] ) ) {
+				$tablet_setting = $this->manager->get_setting( $this->device_settings['tablet'] );
+				$devices['tablet'] = $tablet_setting ? $tablet_setting->default : '';
+			}
+			if ( ! empty( $this->device_settings['mobile'] ) ) {
+				$mobile_setting = $this->manager->get_setting( $this->device_settings['mobile'] );
+				$devices['mobile'] = $mobile_setting ? $mobile_setting->default : '';
+			}
+			
+			$this->json['devices'] = $devices;
 		}
 
 		/**
@@ -95,8 +109,8 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 * Enqueue control related scripts/styles.
 		 */
 		public function enqueue() {
-			wp_enqueue_script( 'inspiro-responsive-range-control', get_template_directory_uri() . '/inc/customizer/custom-controls/responsive-range/responsive-range.js', array( 'jquery' ), '1.0.0', true );
-			wp_enqueue_style( 'inspiro-responsive-range-control', get_template_directory_uri() . '/inc/customizer/custom-controls/responsive-range/responsive-range.css', array(), '1.0.0' );
+			wp_enqueue_script( 'inspiro-responsive-range-control', get_template_directory_uri() . '/inc/customizer/custom-controls/responsive-range/responsive-range.js', array( 'jquery', 'customize-controls' ), INSPIRO_THEME_VERSION, true );
+			wp_enqueue_style( 'inspiro-responsive-range-control', get_template_directory_uri() . '/inc/customizer/custom-controls/responsive-range/responsive-range.css', array(), INSPIRO_THEME_VERSION );
 		}
 	}
 }
