@@ -80,7 +80,7 @@ class Inspiro_Typo_Headings_Config {
 				array(
 					'id'   => 'heading1-font-size',
 					'args' => array(
-						'default'           => 36,
+						'default'           => 45,
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_integer',
 					),
@@ -88,7 +88,7 @@ class Inspiro_Typo_Headings_Config {
 				array(
 					'id'   => 'heading1-font-size-tablet',
 					'args' => array(
-						'default'           => 30,
+						'default'           => 32,
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_integer',
 					),

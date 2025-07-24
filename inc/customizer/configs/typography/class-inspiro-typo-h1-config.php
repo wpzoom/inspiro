@@ -31,7 +31,7 @@ class Inspiro_Typo_H1_Config {
 				array(
 					'id'   => 'heading1-font-size',
 					'args' => array(
-						'default'           => 36,
+						'default'           => 45,
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_integer',
 					),
