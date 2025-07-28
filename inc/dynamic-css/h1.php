@@ -21,7 +21,7 @@ if ( ! function_exists( 'inspiro_selector_h1' ) ) {
 	 * @return array The array with HTML selectors.
 	 */
 	function inspiro_selector_h1( $selectors ) {
-		$selectors['typo-heading1'] = 'h1, .home.blog .entry-title, .page .entry-title, .page-title, .page .entry-cover-image .entry-header .entry-title, .single .entry-cover-image .entry-header .entry-title';
+		$selectors['typo-heading1'] = 'h1, .home.blog .entry-title, .single .entry-title, .single .entry-cover-image .entry-header .entry-title';
 		$selectors['heading1-tablet-media'] = '@media screen and (min-width: 641px) and (max-width: 1024px)';
 		$selectors['heading1-desktop-media'] = '@media screen and (min-width: 1025px)';
 		return $selectors;
@@ -31,10 +31,10 @@ if ( ! function_exists( 'inspiro_selector_h1' ) ) {
 add_filter( 'inspiro/dynamic_theme_css', 'inspiro_dynamic_theme_css_h1' );
 
 /**
- * Typography -> H1 Headings
+ * Typography -> Post Titles (H1)
  *
  * @param string $dynamic_css Dynamic CSS from Customizer.
- * @return string Generated dynamic CSS for H1 headings.
+ * @return string Generated dynamic CSS for Post titles.
  */
 function inspiro_dynamic_theme_css_h1( $dynamic_css ) {
 	$heading1_font_size         = inspiro_get_theme_mod( 'heading1-font-size' );

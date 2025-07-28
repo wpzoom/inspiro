@@ -146,6 +146,7 @@ require INSPIRO_THEME_DIR . 'inc/dynamic-css/body.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/logo.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/headings.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/h1.php';
+require INSPIRO_THEME_DIR . 'inc/dynamic-css/page-title.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/content-headings.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-title.php';
 require INSPIRO_THEME_DIR . 'inc/dynamic-css/hero-header-desc.php';

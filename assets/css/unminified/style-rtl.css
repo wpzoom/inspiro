@@ -4864,10 +4864,6 @@ figure.aligncenter:not(.wp-block-gallery) {
     }
 }
 @media screen and (min-width: 48em) {
-    .single h1.entry-title {
-        font-size: 42px;
-        font-size: 2.625rem;
-    }
     /* Layout */
     .inner-wrap {
         max-width: var(--container-width);

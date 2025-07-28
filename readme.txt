@@ -26,7 +26,7 @@ More customization options & features are available in the paid version.
 
 == Copyright ==
 
-Inspiro WordPress Theme, Copyright 2016-2021 WordPress.org
+Inspiro WordPress Theme, Copyright 2025 WPZOOM BV
 Inspiro is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify

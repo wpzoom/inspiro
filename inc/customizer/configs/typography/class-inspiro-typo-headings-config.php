@@ -76,7 +76,7 @@ class Inspiro_Typo_Headings_Config {
 						'sanitize_callback' => 'inspiro_sanitize_float',
 					),
 				),
-				// Page & Post Titles Settings (H1)
+				// Post Titles Settings (H1)
 				array(
 					'id'   => 'heading1-font-size',
 					'args' => array(
@@ -99,6 +99,55 @@ class Inspiro_Typo_Headings_Config {
 						'default'           => 24,
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				// Page Titles Settings
+				array(
+					'id'   => 'page-title-font-size',
+					'args' => array(
+						'default'           => 45,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				array(
+					'id'   => 'page-title-font-size-tablet',
+					'args' => array(
+						'default'           => 32,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				array(
+					'id'   => 'page-title-font-size-mobile',
+					'args' => array(
+						'default'           => 24,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				array(
+					'id'   => 'page-title-font-weight',
+					'args' => array(
+						'default'           => '600',
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_font_weight',
+					),
+				),
+				array(
+					'id'   => 'page-title-text-transform',
+					'args' => array(
+						'default'           => '',
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_choices',
+					),
+				),
+				array(
+					'id'   => 'page-title-line-height',
+					'args' => array(
+						'default'           => 1.4,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_float',
 					),
 				),
 				array(
@@ -360,12 +409,12 @@ class Inspiro_Typo_Headings_Config {
 						),
 					),
 				),
-				// Page & Post Titles Accordion
+				// Post Titles Accordion
 				array(
 					'id'           => 'for_typography_headings_h1_section',
 					'control_type' => 'Inspiro_Customize_Accordion_UI_Control',
 					'args'         => array(
-						'label'            => __( 'Page & Post Titles', 'inspiro' ),
+						'label'            => __( 'Post Titles', 'inspiro' ),
 						'section'          => 'inspiro_typography_section_headings',
 						'settings'         => array(),
 						'controls_to_wrap' => 4,
@@ -418,6 +467,75 @@ class Inspiro_Typo_Headings_Config {
 				),
 				array(
 					'id'           => 'heading1-line-height',
+					'control_type' => 'Inspiro_Customize_Range_Control',
+					'args'         => array(
+						'label'       => __( 'Line Height', 'inspiro' ),
+						'section'     => 'inspiro_typography_section_headings',
+						'input_attrs' => array(
+							'min'  => 1,
+							'max'  => 2,
+							'step' => 0.1,
+						),
+					),
+				),
+				// Page Titles Accordion
+				array(
+					'id'           => 'for_typography_headings_page_section',
+					'control_type' => 'Inspiro_Customize_Accordion_UI_Control',
+					'args'         => array(
+						'label'            => __( 'Page Titles', 'inspiro' ),
+						'section'          => 'inspiro_typography_section_headings',
+						'settings'         => array(),
+						'controls_to_wrap' => 4,
+					),
+				),
+				array(
+					'id'           => 'page-title-font-size',
+					'control_type' => 'Inspiro_Customize_Responsive_Range_Control',
+					'args'         => array(
+						'label'           => __( 'Font Size (px)', 'inspiro' ),
+						'section'         => 'inspiro_typography_section_headings',
+						'device_settings' => array(
+							'tablet' => 'page-title-font-size-tablet',
+							'mobile' => 'page-title-font-size-mobile',
+						),
+						'input_attrs'     => array(
+							'min'  => 24,
+							'max'  => 80,
+							'step' => 1,
+						),
+					),
+				),
+				array(
+					'id'               => 'page-title-font-weight',
+					'args'             => array(
+						'label'   => __( 'Font Weight', 'inspiro' ),
+						'section' => 'inspiro_typography_section_headings',
+						'type'    => 'select',
+						'choices' => array(),
+					),
+					'callable_choices' => array(
+						array( 'Inspiro_Font_Family_Manager', 'get_font_family_weight' ),
+						array( 'headings-font-family', $wp_customize ),
+					),
+				),
+				array(
+					'id'   => 'page-title-text-transform',
+					'args' => array(
+						'label'   => __( 'Text Transform', 'inspiro' ),
+						'section' => 'inspiro_typography_section_headings',
+						'type'    => 'select',
+						'choices' => array(
+							''           => _x( 'Inherit', 'text transform', 'inspiro' ),
+							'none'       => _x( 'None', 'text transform', 'inspiro' ),
+							'capitalize' => __( 'Capitalize', 'inspiro' ),
+							'uppercase'  => __( 'Uppercase', 'inspiro' ),
+							'lowercase'  => __( 'Lowercase', 'inspiro' ),
+						),
+					),
+				),
+				array(
+					'id'           => 'page-title-line-height',
 					'control_type' => 'Inspiro_Customize_Range_Control',
 					'args'         => array(
 						'label'       => __( 'Line Height', 'inspiro' ),

@@ -1,11 +1,4 @@
 @media screen and (min-width: em(768)) {
-    .single {
-        h1.entry-title {
-            @include font-size(42);
-        }
-    }
-
-
     /* Layout */
 
     .inner-wrap {
