@@ -205,7 +205,6 @@ body:not(.wp-custom-logo) {
     a.custom-logo-text {
         margin: 0;
         font-weight: bold;
-        letter-spacing: 1px;
         font-family: $font-headings;
         @include font-size(26);
         text-transform: uppercase;

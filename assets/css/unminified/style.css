@@ -2141,7 +2141,6 @@ body.wp-custom-logo .custom-logo-link a {
 body:not(.wp-custom-logo) a.custom-logo-text {
     margin: 0;
     font-weight: bold;
-    letter-spacing: 1px;
     font-family: "Onest", sans-serif;
     font-size: 26px;
     font-size: 1.625rem;
