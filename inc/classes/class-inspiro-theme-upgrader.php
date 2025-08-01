@@ -492,6 +492,169 @@ class Inspiro_Theme_Upgrader {
 				set_theme_mod( 'menu-background-scroll', maybe_hash_hex_color( $theme_mod ) );
 			}
 
+			// --- Typography Migration --- //
+			// Post Title (H1) Typography
+			if ( 'heading1-font-size' === $name ) {
+				$post_title_typography = get_theme_mod( 'post-title', array() );
+				$post_title_typography['font-size'] = $theme_mod;
+				set_theme_mod( 'post-title', $post_title_typography );
+			}
+			if ( 'heading1-font-size-tablet' === $name ) {
+				$post_title_typography = get_theme_mod( 'post-title', array() );
+				$post_title_typography['font-size-tablet'] = $theme_mod;
+				set_theme_mod( 'post-title', $post_title_typography );
+			}
+			if ( 'heading1-font-size-mobile' === $name ) {
+				$post_title_typography = get_theme_mod( 'post-title', array() );
+				$post_title_typography['font-size-mobile'] = $theme_mod;
+				set_theme_mod( 'post-title', $post_title_typography );
+			}
+			if ( 'heading1-font-weight' === $name ) {
+				$post_title_typography = get_theme_mod( 'post-title', array() );
+				$post_title_typography['font-weight'] = $theme_mod;
+				set_theme_mod( 'post-title', $post_title_typography );
+			}
+			if ( 'heading1-text-transform' === $name ) {
+				$post_title_typography = get_theme_mod( 'post-title', array() );
+				$post_title_typography['text-transform'] = $theme_mod;
+				set_theme_mod( 'post-title', $post_title_typography );
+			}
+			if ( 'heading1-line-height' === $name ) {
+				$post_title_typography = get_theme_mod( 'post-title', array() );
+				$post_title_typography['line-height'] = $theme_mod;
+				set_theme_mod( 'post-title', $post_title_typography );
+			}
+
+			// Page Title Typography
+			if ( 'page-title-font-size' === $name ) {
+				$page_title_typography = get_theme_mod( 'page-title', array() );
+				$page_title_typography['font-size'] = $theme_mod;
+				set_theme_mod( 'page-title', $page_title_typography );
+			}
+			if ( 'page-title-font-size-tablet' === $name ) {
+				$page_title_typography = get_theme_mod( 'page-title', array() );
+				$page_title_typography['font-size-tablet'] = $theme_mod;
+				set_theme_mod( 'page-title', $page_title_typography );
+			}
+			if ( 'page-title-font-size-mobile' === $name ) {
+				$page_title_typography = get_theme_mod( 'page-title', array() );
+				$page_title_typography['font-size-mobile'] = $theme_mod;
+				set_theme_mod( 'page-title', $page_title_typography );
+			}
+			if ( 'page-title-font-weight' === $name ) {
+				$page_title_typography = get_theme_mod( 'page-title', array() );
+				$page_title_typography['font-weight'] = $theme_mod;
+				set_theme_mod( 'page-title', $page_title_typography );
+			}
+			if ( 'page-title-text-transform' === $name ) {
+				$page_title_typography = get_theme_mod( 'page-title', array() );
+				$page_title_typography['text-transform'] = $theme_mod;
+				set_theme_mod( 'page-title', $page_title_typography );
+			}
+			if ( 'page-title-line-height' === $name ) {
+				$page_title_typography = get_theme_mod( 'page-title', array() );
+				$page_title_typography['line-height'] = $theme_mod;
+				set_theme_mod( 'page-title', $page_title_typography );
+			}
+			// NEW: Page Title Alignment (not in premium yet, save for future compatibility)
+			if ( 'page-title-text-align' === $name ) {
+				set_theme_mod( 'page-title-text-align', $theme_mod );
+			}
+
+			// Content H1 Typography (maps to headings in premium)
+			if ( 'h1-content-font-size' === $name ) {
+				$headings_typography = get_theme_mod( 'headings', array() );
+				$headings_typography['h1-font-size'] = $theme_mod;
+				set_theme_mod( 'headings', $headings_typography );
+			}
+			if ( 'h1-content-font-size-tablet' === $name ) {
+				$headings_typography = get_theme_mod( 'headings', array() );
+				$headings_typography['h1-font-size-tablet'] = $theme_mod;
+				set_theme_mod( 'headings', $headings_typography );
+			}
+			if ( 'h1-content-font-size-mobile' === $name ) {
+				$headings_typography = get_theme_mod( 'headings', array() );
+				$headings_typography['h1-font-size-mobile'] = $theme_mod;
+				set_theme_mod( 'headings', $headings_typography );
+			}
+			if ( 'h1-content-font-weight' === $name ) {
+				$headings_typography = get_theme_mod( 'headings', array() );
+				$headings_typography['h1-font-weight'] = $theme_mod;
+				set_theme_mod( 'headings', $headings_typography );
+			}
+			if ( 'h1-content-text-transform' === $name ) {
+				$headings_typography = get_theme_mod( 'headings', array() );
+				$headings_typography['h1-text-transform'] = $theme_mod;
+				set_theme_mod( 'headings', $headings_typography );
+			}
+			if ( 'h1-content-line-height' === $name ) {
+				$headings_typography = get_theme_mod( 'headings', array() );
+				$headings_typography['h1-line-height'] = $theme_mod;
+				set_theme_mod( 'headings', $headings_typography );
+			}
+
+			// Global Headings Typography
+			if ( 'headings-font-family' === $name ) {
+				$headings_global = get_theme_mod( 'headings-global', array() );
+				$font_family = Inspiro_Font_Family_Manager::clean_google_fonts( $theme_mod );
+				$headings_global['font-family'] = $font_family;
+				set_theme_mod( 'headings-global', $headings_global );
+			}
+			if ( 'headings-font-variant' === $name ) {
+				$headings_global = get_theme_mod( 'headings-global', array() );
+				$headings_global['font-variant'] = $theme_mod;
+				set_theme_mod( 'headings-global', $headings_global );
+			}
+			if ( 'headings-font-weight' === $name ) {
+				$headings_global = get_theme_mod( 'headings-global', array() );
+				$headings_global['font-weight'] = ( '400' === $theme_mod ) ? 'normal' : $theme_mod;
+				set_theme_mod( 'headings-global', $headings_global );
+			}
+			if ( 'headings-text-transform' === $name ) {
+				$headings_global = get_theme_mod( 'headings-global', array() );
+				$headings_global['text-transform'] = empty( $theme_mod ) ? 'inherit' : $theme_mod;
+				set_theme_mod( 'headings-global', $headings_global );
+			}
+			if ( 'headings-line-height' === $name ) {
+				$headings_global = get_theme_mod( 'headings-global', array() );
+				$headings_global['line-height'] = $theme_mod;
+				set_theme_mod( 'headings-global', $headings_global );
+			}
+
+			// Individual Headings (H2-H6) Typography
+			for ( $i = 2; $i <= 6; $i++ ) {
+				if ( "heading{$i}-font-size" === $name ) {
+					$headings_typography = get_theme_mod( 'headings', array() );
+					$headings_typography["h{$i}-font-size"] = $theme_mod;
+					set_theme_mod( 'headings', $headings_typography );
+				}
+				if ( "heading{$i}-font-size-tablet" === $name ) {
+					$headings_typography = get_theme_mod( 'headings', array() );
+					$headings_typography["h{$i}-font-size-tablet"] = $theme_mod;
+					set_theme_mod( 'headings', $headings_typography );
+				}
+				if ( "heading{$i}-font-size-mobile" === $name ) {
+					$headings_typography = get_theme_mod( 'headings', array() );
+					$headings_typography["h{$i}-font-size-mobile"] = $theme_mod;
+					set_theme_mod( 'headings', $headings_typography );
+				}
+				if ( "heading{$i}-font-weight" === $name ) {
+					$headings_typography = get_theme_mod( 'headings', array() );
+					$headings_typography["h{$i}-font-weight"] = $theme_mod;
+					set_theme_mod( 'headings', $headings_typography );
+				}
+				if ( "heading{$i}-text-transform" === $name ) {
+					$headings_typography = get_theme_mod( 'headings', array() );
+					$headings_typography["h{$i}-text-transform"] = $theme_mod;
+					set_theme_mod( 'headings', $headings_typography );
+				}
+				if ( "heading{$i}-line-height" === $name ) {
+					$headings_typography = get_theme_mod( 'headings', array() );
+					$headings_typography["h{$i}-line-height"] = $theme_mod;
+					set_theme_mod( 'headings', $headings_typography );
+				}
+			}
+
 			// - Hero section - //
 			// these values are transferred from hero to slider section
 			// set only Hero Title Text Color
