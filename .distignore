@@ -42,3 +42,4 @@ webpack.config.js
 wp-cli.local.yml
 vendor
 yarn.lock
+CLAUDE.md
