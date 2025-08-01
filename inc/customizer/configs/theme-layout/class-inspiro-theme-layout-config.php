@@ -51,6 +51,30 @@ class Inspiro_Theme_Layout_Config {
 						'transport'         => 'refresh',
 					),
 				),
+				array(
+					'id'   => 'container_width',
+					'args' => array(
+						'default'           => 1200,
+						'sanitize_callback' => 'absint',
+						'transport'         => 'postMessage',
+					),
+				),
+				array(
+					'id'   => 'container_width_narrow',
+					'args' => array(
+						'default'           => 950,
+						'sanitize_callback' => 'absint',
+						'transport'         => 'postMessage',
+					),
+				),
+				array(
+					'id'   => 'container_width_elementor',
+					'args' => array(
+						'default'           => false,
+						'sanitize_callback' => 'inspiro_sanitize_checkbox',
+						'transport'         => 'postMessage',
+					),
+				),
 			),
 			'control' => array(
 				array(
@@ -77,6 +101,46 @@ class Inspiro_Theme_Layout_Config {
 							'side-right' => esc_html__( 'Sidebar on the right', 'inspiro' ),
 						),
 						'active_callback' => 'inspiro_is_view_with_layout_option',
+					),
+				),
+				array(
+					'id'                => 'container_width',
+					'control_type'      => 'Inspiro_Customize_Range_Control',
+					'args'              => array(
+						'label'       => esc_html__( 'Default Container Width (px)', 'inspiro' ),
+						'description' => esc_html__( 'Controls the width of main content containers and block editor content width. Default: 1200px', 'inspiro' ),
+						'section'     => 'theme_layout',
+						'input_attrs' => array(
+							'min'  => 600,
+							'max'  => 1600,
+							'step' => 10,
+						),
+						'priority'    => 15,
+					),
+				),
+				array(
+					'id'   => 'container_width_elementor',
+					'args' => array(
+						'label'       => esc_html__( 'Apply container width to Elementor pages', 'inspiro' ),
+						'description' => esc_html__( '⚠️ Warning: This will override the width of boxed containers in your existing Elementor pages. When enabled, boxed containers in Elementor will use the same width as set above, ensuring alignment with your theme\'s layout.', 'inspiro' ),
+						'section'     => 'theme_layout',
+						'type'        => 'checkbox',
+						'priority'    => 16,
+					),
+				),
+				array(
+					'id'                => 'container_width_narrow',
+					'control_type'      => 'Inspiro_Customize_Range_Control',
+					'args'              => array(
+						'label'       => esc_html__( 'Narrow Container Width (px)', 'inspiro' ),
+						'description' => esc_html__( 'Controls the width of narrow content containers (used in posts and pages). Default: 950px', 'inspiro' ),
+						'section'     => 'theme_layout',
+						'input_attrs' => array(
+							'min'  => 600,
+							'max'  => 1400,
+							'step' => 10,
+						),
+						'priority'    => 17,
 					),
 				),
 			),

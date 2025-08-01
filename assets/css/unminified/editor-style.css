@@ -14,6 +14,15 @@ Description: Used to style the TinyMCE editor.
  * 7.0 - Media Elements
  * 8.0 - RTL
  */
+/*--------------------------------------------------------------
+## Layout Container Variables
+--------------------------------------------------------------*/
+:root {
+    --container-width: 1200px;
+    --container-width-narrow: 950px;
+    --container-padding: 30px;
+}
+
 :root {
     --inspiro-primary-color: #0bb4aa;
     --inspiro-dark-color: #101010;
@@ -110,8 +119,8 @@ body > .is-root-container,
 .wp-block-cover.alignfull,
 .is-root-container .wp-block[data-align=full] > .wp-block-group,
 .is-root-container .wp-block[data-align=full] > .wp-block-cover {
-    padding-left: var(--wp--custom--spacing--outer);
-    padding-right: var(--wp--custom--spacing--outer);
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .wp-site-blocks .alignfull,
@@ -138,7 +147,7 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
     width: inherit;
 }
 
-.alignfull {
+.editor-styles-wrapper .has-global-padding > .alignfull {
     margin-right: -30px;
     margin-left: -30px;
 }

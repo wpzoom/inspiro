@@ -1,0 +1,72 @@
+/**
+ * Alignment Control Styles
+ *
+ * @package Inspiro
+ * @subpackage Inspiro_Lite
+ * @since Inspiro 2.0.8
+ */
+
+.customize-control-inspiro-alignment .inspiro-alignment-buttons {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.inspiro-alignment-buttons button {
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-right: 1px solid #ddd;
+    color: #666;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+}
+
+.inspiro-alignment-buttons button:last-child {
+    border-right: none;
+}
+
+.inspiro-alignment-buttons button:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.inspiro-alignment-buttons button.active {
+    background: #0073aa;
+    color: #fff;
+}
+
+.inspiro-alignment-buttons button .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+}
+
+/* Focus styles for accessibility */
+.inspiro-alignment-buttons button:focus {
+    outline: 2px solid #005ccc;
+    outline-offset: -2px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 640px) {
+    .inspiro-alignment-buttons button {
+        padding: 6px 8px;
+        min-height: 32px;
+    }
+    
+    .inspiro-alignment-buttons button .dashicons {
+        font-size: 14px;
+        width: 14px;
+        height: 14px;
+    }
+} 

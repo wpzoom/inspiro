@@ -2,7 +2,7 @@
 Contributors: WPZOOM
 Requires at least: 6.0
 Tested up to: 6.8
-Version: 2.0.7
+Version: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -26,7 +26,7 @@ More customization options & features are available in the paid version.
 
 == Copyright ==
 
-Inspiro WordPress Theme, Copyright 2016-2021 WordPress.org
+Inspiro WordPress Theme, Copyright 2025 WPZOOM BV
 Inspiro is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
@@ -109,6 +109,11 @@ License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
 == Changelog ==
+
+= 2.1.0 =
+* New: Change Theme Width in Customizer > Theme Layout.
+* New Typography options in Customizer > Typography > Headings
+* Numerous fixes and improvements
 
 = 2.0.7 =
 * Minor bug fix

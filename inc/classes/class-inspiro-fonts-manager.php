@@ -93,7 +93,7 @@ if ( ! class_exists( 'Inspiro_Fonts_Manager' ) ) {
             // Default fonts to check
             $default_fonts = array(
                 "'Inter', sans-serif" => '200,300,500,600',
-                "'Onest', sans-serif" => '700'
+                "'Onest', sans-serif" => '600'
             );
 
             // Only load default fonts if they're still being used

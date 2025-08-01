@@ -151,7 +151,7 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 					'typo-headings',
 					// phpcs:disable Squiz.PHP.CommentedOutCode.Found
 					// TODO: Enable all panels in the next update
-					// 'typo-h1',
+					// 'typo-h1', // Integrated into typo-headings
 					// 'typo-h2',
 					// 'typo-h3',
 					// 'typo-h4',
@@ -213,6 +213,13 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 			);
 
 			Inspiro_Customizer_Control_Base::register_custom_control(
+				'inspiro-responsive-range',
+				array(
+					'callback' => 'Inspiro_Customize_Responsive_Range_Control',
+				)
+			);
+
+			Inspiro_Customizer_Control_Base::register_custom_control(
 				'inspiro-title',
 				array(
 					'callback' => 'Inspiro_Customize_Title_Control',
@@ -246,6 +253,14 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 				array(
 					'callback'          => 'Inspiro_Customize_Font_Variant_Control',
 					'sanitize_callback' => 'sanitize_text_field',
+				)
+			);
+
+			Inspiro_Customizer_Control_Base::register_custom_control(
+				'inspiro-alignment',
+				array(
+					'callback'          => 'Inspiro_Customize_Alignment_Control',
+					'sanitize_callback' => 'inspiro_sanitize_choices',
 				)
 			);
 

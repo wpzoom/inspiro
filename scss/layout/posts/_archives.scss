@@ -1,19 +1,5 @@
 /* Blog landing, search, archives */
 
-body:not(.has-archive-description):not(.has-header-image) {
-    .page-title,
-    &.page .entry-title {
-        &:after {
-            content: '';
-            display: block;
-            width: 130px;
-            height: 1px;
-            background: $color-border;
-            margin: 40px auto 48px;
-        }
-    }
-}
-
 .blog,
 .search,
 .archive {
@@ -54,11 +40,8 @@ body:not(.inspiro-front-page) .entry-header {
 
 body:not(.page-layout-sidebar-right) {
     #primary {
-        max-width: calc( #{ $content-width } + 20px );
+        max-width: calc( var(--container-width) + 20px );
         margin: 0 auto;
-        // margin: 0 auto em(48);
-        padding-left: 10px;
-        padding-right: 10px;
 
         .entry-header .inner-wrap,
         .entry-content {
@@ -73,7 +56,7 @@ body:not(.page-layout-sidebar-right) {
     &.search {
 
         #primary {
-            max-width: calc( #{ $content-width-small } + 20px );
+            max-width: calc( var(--container-width-narrow) + 20px );
         }
 
     }

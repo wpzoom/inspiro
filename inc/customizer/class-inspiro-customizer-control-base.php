@@ -215,6 +215,9 @@ if ( ! class_exists( 'Inspiro_Customizer_Control_Base' ) ) {
 				if ( isset( $config->control ) && is_array( $config->control ) ) {
 					$this->add_controls( $wp_customize, $config->control );
 				}
+				if ( isset( $config->partial ) && is_array( $config->partial ) ) {
+					$this->add_partials( $wp_customize, $config->partial );
+				}
 			}
 		}
 
@@ -409,6 +412,41 @@ if ( ! class_exists( 'Inspiro_Customizer_Control_Base' ) ) {
 						$wp_customize->add_control( $control_id, $control_args );
 					}
 				}
+			}
+		}
+
+		/**
+		 * Add selective refresh partials.
+		 *
+		 * @since 1.3.0
+		 *
+		 * @param WP_Customize_Manager $wp_customize instance of WP_Customize_Manager.
+		 * @param array                $partials Array of partials to register.
+		 * @return void
+		 */
+		public function add_partials( WP_Customize_Manager $wp_customize, $partials ) {
+			// Check if selective refresh is supported
+			if ( ! isset( $wp_customize->selective_refresh ) ) {
+				return;
+			}
+
+			if ( ! is_array( $partials ) ) {
+				return;
+			}
+
+			foreach ( $partials as $partial ) {
+				if ( ! is_array( $partial ) ) {
+					continue;
+				}
+
+				$partial_id   = inspiro_get_prop( $partial, 'id' );
+				$partial_args = inspiro_get_prop( $partial, 'args' );
+
+				if ( ! $partial_id || ! is_array( $partial_args ) ) {
+					continue;
+				}
+
+				$wp_customize->selective_refresh->add_partial( $partial_id, $partial_args );
 			}
 		}
 	}

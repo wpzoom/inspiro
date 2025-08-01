@@ -10,6 +10,7 @@ node_modules/
 *.map
 .sass-cache
 package-lock.json
+CLAUDE.md
 
 /vendor/
 /inspiro-lite
