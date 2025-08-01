@@ -43,6 +43,7 @@ function inspiro_dynamic_theme_css_page_title( $dynamic_css ) {
 	$page_title_font_weight       = inspiro_get_theme_mod( 'page-title-font-weight' );
 	$page_title_text_transform    = inspiro_get_theme_mod( 'page-title-text-transform' );
 	$page_title_line_height       = inspiro_get_theme_mod( 'page-title-line-height' );
+	$page_title_text_align        = inspiro_get_theme_mod( 'page-title-text-align' );
 
 	$selectors           = apply_filters( 'inspiro/dynamic_theme_css/selectors', array() );
 	$selector            = inspiro_get_prop( $selectors, 'typo-page-title' );
@@ -62,6 +63,9 @@ function inspiro_dynamic_theme_css_page_title( $dynamic_css ) {
 	}
 	if ( ! empty( $page_title_line_height ) && 'inherit' !== $page_title_line_height ) {
 		$dynamic_css .= "line-height: {$page_title_line_height};\n";
+	}
+	if ( ! empty( $page_title_text_align ) ) {
+		$dynamic_css .= "text-align: {$page_title_text_align};\n";
 	}
 	$dynamic_css .= "}\n";
 

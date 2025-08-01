@@ -257,6 +257,14 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 			);
 
 			Inspiro_Customizer_Control_Base::register_custom_control(
+				'inspiro-alignment',
+				array(
+					'callback'          => 'Inspiro_Customize_Alignment_Control',
+					'sanitize_callback' => 'inspiro_sanitize_choices',
+				)
+			);
+
+			Inspiro_Customizer_Control_Base::register_custom_control(
 				'accordion-section-ui-wrapper',
 				array(
 					'callback'          => 'Inspiro_Customize_Accordion_UI_Control',

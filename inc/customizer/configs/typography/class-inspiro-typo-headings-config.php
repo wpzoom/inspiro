@@ -150,6 +150,14 @@ class Inspiro_Typo_Headings_Config {
 						'sanitize_callback' => 'inspiro_sanitize_float',
 					),
 				),
+				array(
+					'id'   => 'page-title-text-align',
+					'args' => array(
+						'default'           => 'left',
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_choices',
+					),
+				),
 				// H1 Content Headings Settings
 				array(
 					'id'   => 'h1-content-font-size',
@@ -535,7 +543,7 @@ class Inspiro_Typo_Headings_Config {
 						'label'            => __( 'Page Titles', 'inspiro' ),
 						'section'          => 'inspiro_typography_section_headings',
 						'settings'         => array(),
-						'controls_to_wrap' => 4,
+						'controls_to_wrap' => 5,
 					),
 				),
 				array(
@@ -593,6 +601,19 @@ class Inspiro_Typo_Headings_Config {
 							'min'  => 1,
 							'max'  => 2,
 							'step' => 0.1,
+						),
+					),
+				),
+				array(
+					'id'           => 'page-title-text-align',
+					'control_type' => 'Inspiro_Customize_Alignment_Control',
+					'args'         => array(
+						'label'   => __( 'Text Alignment', 'inspiro' ),
+						'section' => 'inspiro_typography_section_headings',
+						'choices' => array(
+							'left'   => __( 'Left', 'inspiro' ),
+							'center' => __( 'Center', 'inspiro' ),
+							'right'  => __( 'Right', 'inspiro' ),
 						),
 					),
 				),

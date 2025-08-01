@@ -755,6 +755,31 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 	
 	wp.customize('h1-content-font-size-mobile', function (value) {
 		value.bind(updateResponsiveH1ContentFontSize);
+	}	);
+
+
+
+	/**
+	 * Handle page title text alignment with custom preview handler
+	 * 
+	 * @since 2.0.8
+	 */
+	wp.customize('page-title-text-align', function (value) {
+		value.bind(function (newValue) {
+			const selector = '.page .entry-title, .page-title, .page .entry-cover-image .entry-header .entry-title';
+			const cssProperty = 'text-align';
+			const controlId = 'page-title-text-align';
+			
+			// Remove existing styles
+			$('style#' + controlId + '-' + cssProperty).remove();
+			
+			// Add new styles
+			const style = '<style id="' + controlId + '-' + cssProperty + '">' +
+				selector + ' { ' + cssProperty + ': ' + newValue + '; }' +
+				'</style>';
+			
+			$('head').append(style);
+		});
 	});
 
 	$.each(
