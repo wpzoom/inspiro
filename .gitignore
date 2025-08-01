@@ -24,3 +24,8 @@ package-old-backup.json
 /package-old-backup.json
 Gruntfile-old-backup.js
 
+backups
+backups/latest_backup.txt
+FONT_MIGRATION_FIXES.md
+switch-to-premium.sh
+upgrade-to-premium.sh
