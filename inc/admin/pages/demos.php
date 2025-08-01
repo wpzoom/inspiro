@@ -13,11 +13,11 @@
             <p class="section_footer">
                 <a href="<?php echo esc_url( __( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium', 'inspiro' ) ); ?>"
                     target="_blank" class="button button-primary">
-                        <?php esc_html_e( 'Discover Inspiro Premium &#8599;', 'inspiro' ); ?>
+                        <?php esc_html_e( 'Discover Inspiro Premium', 'inspiro' ); ?>
                 </a>
                 <a href="<?php echo esc_url( __( 'https://www.wpzoom.com/themes/inspiro/starter-sites/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium', 'inspiro' ) ); ?>"
                     target="_blank" class="button button-primary">
-                        <?php esc_html_e( 'Premium Starter Sites &#8599;', 'inspiro' ); ?>
+                        <?php esc_html_e( 'Premium Starter Sites', 'inspiro' ); ?>
                 </a>
             </p>
         </div>

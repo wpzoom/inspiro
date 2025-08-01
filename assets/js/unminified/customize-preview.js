@@ -485,6 +485,14 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			'body-font-weight',
 			'logo-font-weight',
 			'headings-font-weight',
+			'heading1-font-weight',
+			'page-title-font-weight',
+			'h1-content-font-weight',
+			'heading2-font-weight',
+			'heading3-font-weight',
+			'heading4-font-weight',
+			'heading5-font-weight',
+			'heading6-font-weight',
 			'slider-title-font-weight',
 			'slider-text-font-weight',
 			'slider-button-font-weight',
@@ -560,6 +568,11 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			'body-font-size',
 			'logo-font-size',
 			'headings-font-size',
+			'heading2-font-size',
+			'heading3-font-size',
+			'heading4-font-size',
+			'heading5-font-size',
+			'heading6-font-size',
 			'slider-title-font-size',
 			'slider-text-font-size',
 			'slider-button-font-size',
@@ -589,11 +602,199 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 		}
 	);
 
+	/**
+	 * Handle responsive font size changes for Page & Post Titles (H1)
+	 * 
+	 * @since 2.0.8
+	 */
+	function updateResponsiveHeading1FontSize() {
+		const desktopSize = wp.customize('heading1-font-size')();
+		const tabletSize = wp.customize('heading1-font-size-tablet')();
+		const mobileSize = wp.customize('heading1-font-size-mobile')();
+		const selector = '.home.blog .entry-title, .single .entry-title, .single .entry-cover-image .entry-header .entry-title';
+		
+		// Remove existing responsive styles
+		$('style#heading1-responsive-font-size').remove();
+		
+		// Build responsive CSS
+		let css = '';
+		
+		// Mobile base styles (mobile-first)
+		if (mobileSize && mobileSize >= 24 && mobileSize <= 80) {
+			css += selector + ' { font-size: ' + mobileSize + 'px; }\n';
+		}
+		
+		// Tablet styles
+		if (tabletSize && tabletSize >= 24 && tabletSize <= 80) {
+			css += '@media screen and (min-width: 641px) and (max-width: 1024px) {\n';
+			css += '  ' + selector + ' { font-size: ' + tabletSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Desktop styles
+		if (desktopSize && desktopSize >= 24 && desktopSize <= 80) {
+			css += '@media screen and (min-width: 1025px) {\n';
+			css += '  ' + selector + ' { font-size: ' + desktopSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Add new styles
+		if (css) {
+			$('head').append('<style id="heading1-responsive-font-size">' + css + '</style>');
+		}
+	}
+
+	function updateResponsivePageTitleFontSize() {
+		const desktopSize = wp.customize('page-title-font-size')();
+		const tabletSize = wp.customize('page-title-font-size-tablet')();
+		const mobileSize = wp.customize('page-title-font-size-mobile')();
+		const selector = '.page .entry-title, .page-title, .page .entry-cover-image .entry-header .entry-title';
+		
+		// Remove existing responsive styles
+		$('style#page-title-responsive-font-size').remove();
+		
+		// Build responsive CSS
+		let css = '';
+		
+		// Mobile base styles (mobile-first)
+		if (mobileSize && mobileSize >= 24 && mobileSize <= 80) {
+			css += selector + ' { font-size: ' + mobileSize + 'px; }\n';
+		}
+		
+		// Tablet styles
+		if (tabletSize && tabletSize >= 24 && tabletSize <= 80) {
+			css += '@media screen and (min-width: 641px) and (max-width: 1024px) {\n';
+			css += '  ' + selector + ' { font-size: ' + tabletSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Desktop styles
+		if (desktopSize && desktopSize >= 24 && desktopSize <= 80) {
+			css += '@media screen and (min-width: 1025px) {\n';
+			css += '  ' + selector + ' { font-size: ' + desktopSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Add new styles
+		if (css) {
+			$('head').append('<style id="page-title-responsive-font-size">' + css + '</style>');
+		}
+	}
+
+	function updateResponsiveH1ContentFontSize() {
+		const desktopSize = wp.customize('h1-content-font-size')();
+		const tabletSize = wp.customize('h1-content-font-size-tablet')();
+		const mobileSize = wp.customize('h1-content-font-size-mobile')();
+		const selector = '.entry-content h1, .widget-area h1, h1:not(.entry-title):not(.page-title):not(.site-title)';
+		
+		// Remove existing responsive styles
+		$('style#h1-content-responsive-font-size').remove();
+		
+		// Build responsive CSS
+		let css = '';
+		
+		// Mobile base styles (mobile-first)
+		if (mobileSize && mobileSize >= 24 && mobileSize <= 80) {
+			css += selector + ' { font-size: ' + mobileSize + 'px; }\n';
+		}
+		
+		// Tablet styles
+		if (tabletSize && tabletSize >= 24 && tabletSize <= 80) {
+			css += '@media screen and (min-width: 641px) and (max-width: 1024px) {\n';
+			css += '  ' + selector + ' { font-size: ' + tabletSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Desktop styles
+		if (desktopSize && desktopSize >= 24 && desktopSize <= 80) {
+			css += '@media screen and (min-width: 1025px) {\n';
+			css += '  ' + selector + ' { font-size: ' + desktopSize + 'px; }\n';
+			css += '}\n';
+		}
+		
+		// Add new styles
+		if (css) {
+			$('head').append('<style id="h1-content-responsive-font-size">' + css + '</style>');
+		}
+	}
+
+	// Bind responsive font size handlers
+	wp.customize('heading1-font-size', function (value) {
+		value.bind(updateResponsiveHeading1FontSize);
+	});
+	
+	wp.customize('heading1-font-size-tablet', function (value) {
+		value.bind(updateResponsiveHeading1FontSize);
+	});
+	
+	wp.customize('heading1-font-size-mobile', function (value) {
+		value.bind(updateResponsiveHeading1FontSize);
+	});
+
+	// Page Title responsive font size handlers
+	wp.customize('page-title-font-size', function (value) {
+		value.bind(updateResponsivePageTitleFontSize);
+	});
+	
+	wp.customize('page-title-font-size-tablet', function (value) {
+		value.bind(updateResponsivePageTitleFontSize);
+	});
+	
+	wp.customize('page-title-font-size-mobile', function (value) {
+		value.bind(updateResponsivePageTitleFontSize);
+	});
+
+	// H1 Content responsive font size handlers
+	wp.customize('h1-content-font-size', function (value) {
+		value.bind(updateResponsiveH1ContentFontSize);
+	});
+	
+	wp.customize('h1-content-font-size-tablet', function (value) {
+		value.bind(updateResponsiveH1ContentFontSize);
+	});
+	
+	wp.customize('h1-content-font-size-mobile', function (value) {
+		value.bind(updateResponsiveH1ContentFontSize);
+	}	);
+
+
+
+	/**
+	 * Handle page title text alignment with custom preview handler
+	 * 
+	 * @since 2.0.8
+	 */
+	wp.customize('page-title-text-align', function (value) {
+		value.bind(function (newValue) {
+			const selector = '.page .entry-title, .page-title, .page .entry-cover-image .entry-header .entry-title';
+			const cssProperty = 'text-align';
+			const controlId = 'page-title-text-align';
+			
+			// Remove existing styles
+			$('style#' + controlId + '-' + cssProperty).remove();
+			
+			// Add new styles
+			const style = '<style id="' + controlId + '-' + cssProperty + '">' +
+				selector + ' { ' + cssProperty + ': ' + newValue + '; }' +
+				'</style>';
+			
+			$('head').append(style);
+		});
+	});
+
 	$.each(
 		[
 			'body-text-transform',
 			'logo-text-transform',
 			'headings-text-transform',
+			'heading1-text-transform',
+			'page-title-text-transform',
+			'h1-content-text-transform',
+			'heading2-text-transform',
+			'heading3-text-transform',
+			'heading4-text-transform',
+			'heading5-text-transform',
+			'heading6-text-transform',
 			'slider-title-text-transform',
 			'slider-text-text-transform',
 			'slider-button-text-transform',
@@ -628,6 +829,14 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			'body-line-height',
 			'logo-line-height',
 			'headings-line-height',
+			'heading1-line-height',
+			'page-title-line-height',
+			'h1-content-line-height',
+			'heading2-line-height',
+			'heading3-line-height',
+			'heading4-line-height',
+			'heading5-line-height',
+			'heading6-line-height',
 			'slider-title-line-height',
 			'slider-text-line-height',
 			'slider-button-line-height',
@@ -655,4 +864,117 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			});
 		}
 	);
+
+	// Container Width Settings - Live Preview
+	function updateContainerWidthCSS() {
+		const containerWidth = wp.customize('container_width')();
+		const containerWidthNarrow = wp.customize('container_width_narrow')();
+		const containerWidthElementor = wp.customize('container_width_elementor')();
+
+		// Remove existing style tag and create new one
+		$('#container-width-css').remove();
+		
+		// Check if front page is set to display latest posts
+		const showOnFront = wp.customize('show_on_front') ? wp.customize('show_on_front')() : 'posts';
+		const isFrontPage = $('body').hasClass('home');
+		const isFrontPageWithPosts = isFrontPage && showOnFront === 'posts';
+		
+		// Determine if we're on a blog-related page (single post, blog, archive, etc.)
+		// For front page, only apply narrow width if it's set to display latest posts
+		const isBlogContext = $('body').hasClass('single') || isFrontPageWithPosts || 
+							  $('body').hasClass('archive') || $('body').hasClass('category') || 
+							  $('body').hasClass('tag') || $('body').hasClass('author') || 
+							  $('body').hasClass('date') || $('body').hasClass('blog');
+		
+		// Choose the appropriate content size based on context
+		const contentSize = isBlogContext ? containerWidthNarrow : containerWidth;
+		const wideSize = contentSize + 250;
+		
+		// Calculate responsive padding breakpoints
+		const containerPadding = 30; // 30px padding
+		const containerWidthBreakpoint = containerWidth + 60; // container width + 60px buffer
+		const containerWidthNarrowBreakpoint = containerWidthNarrow + 60; // narrow container width + 60px buffer
+		
+		let css = ':root {\n';
+		css += '\t--container-width: ' + containerWidth + 'px;\n';
+		css += '\t--container-width-narrow: ' + containerWidthNarrow + 'px;\n';
+		css += '\t--container-padding: ' + containerPadding + 'px;\n';
+		
+		// Update WordPress block editor variables for live preview
+		css += '\t--wp--style--global--content-size: ' + contentSize + 'px;\n';
+		css += '\t--wp--style--global--wide-size: ' + wideSize + 'px;\n';
+		css += '}\n';
+		
+		// Dynamic responsive padding media queries
+		css += '@media (max-width: ' + containerWidthBreakpoint + 'px) {\n';
+		css += '\t.wrap,\n';
+		css += '\t.inner-wrap,\n';
+		css += '\t.page .entry-content,\n';
+		css += '\t.page:not(.inspiro-front-page) .entry-footer,\n';
+		css += '\t.single .entry-wrapper,\n';
+		css += '\t.single.has-sidebar.page-layout-sidebar-right .entry-header .inner-wrap,\n';
+		css += '\t.wp-block-group > .wp-block-group__inner-container {\n';
+		css += '\t\tpadding-left: ' + containerPadding + 'px;\n';
+		css += '\t\tpadding-right: ' + containerPadding + 'px;\n';
+		css += '\t}\n';
+		css += '}\n';
+		
+		css += '@media (max-width: ' + containerWidthNarrowBreakpoint + 'px) {\n';
+		css += '\t.single .entry-header .inner-wrap,\n';
+		css += '\t.single .entry-content,\n';
+		css += '\t.single .entry-footer,\n';
+		css += '\t#comments {\n';
+		css += '\t\tpadding-left: ' + containerPadding + 'px;\n';
+		css += '\t\tpadding-right: ' + containerPadding + 'px;\n';
+		css += '\t}\n';
+		css += '}\n';
+
+		// Update wide alignment blocks based on context
+		css += '@media (min-width: 75em) {\n';
+		css += '\t.wp-block-query.alignwide,\n';
+		css += '\t.single .entry-content .alignwide {\n';
+		css += '\t\tmax-width: calc(' + containerWidthNarrow + 'px + 250px);\n';
+		css += '\t\twidth: calc(' + containerWidthNarrow + 'px + 250px);\n';
+		css += '\t}\n';
+		css += '\t.page .entry-content .alignwide {\n';
+		css += '\t\tmax-width: calc(' + containerWidth + 'px + 250px);\n';
+		css += '\t\twidth: calc(' + containerWidth + 'px + 250px);\n';
+		css += '\t}\n';
+		css += '}\n';
+
+		// Add Elementor container width override if enabled
+		if (containerWidthElementor) {
+			css += '.elementor-container {\n';
+			css += '\tmax-width: ' + containerWidth + 'px !important;\n';
+			css += '}';
+		}
+
+		$('<style id="container-width-css">' + css + '</style>').appendTo('head');
+	}
+
+	wp.customize('container_width', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
+	wp.customize('container_width_narrow', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
+	wp.customize('container_width_elementor', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
+	// Listen for front page display setting changes
+	wp.customize('show_on_front', function (value) {
+		value.bind(function (to) {
+			updateContainerWidthCSS();
+		});
+	});
+
 })(jQuery);

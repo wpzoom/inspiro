@@ -90,6 +90,7 @@ button:hover, input[type=button]:hover, input[type=reset]:hover, input[type=subm
 .wp-block-read-more {
     font-family: $font-headings;
     font-weight: 600;
+    text-decoration: none !important;
 }
 
 .wp-block-read-more:hover {

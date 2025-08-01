@@ -38,32 +38,32 @@ h3 {
 
 h1 {
     @include font-size(36);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 h2 {
     @include font-size(30);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 h3 {
     @include font-size(24);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 h4 {
     @include font-size($font-size-root);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 h5 {
     @include font-size(14);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 h6 {
     @include font-size(13);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 p {

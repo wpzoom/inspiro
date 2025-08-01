@@ -1,8 +1,13 @@
 #comments {
     clear: both;
-    max-width: calc( #{ $content-width-small } + 20px );
+    max-width: var(--container-width-narrow);
     margin: 0 auto;
-    padding: 0 10px;
+    
+    // Dynamic responsive padding - only applies when screen is smaller than narrow container width + buffer
+    @media (max-width: calc(var(--container-width-narrow) + 60px)) {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+    }
 }
 
 #comments > h3,

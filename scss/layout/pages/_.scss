@@ -2,14 +2,11 @@
 
 .page-title,
 .page .entry-title {
-    // margin-top: em(32);
-    margin-top: 0;
+    margin-top: em(32);
     color: #222;
-    @include font-size(26);
-    font-weight: bold;
-    text-align: center;
+    @include font-size(42);
+    font-weight: 500;
     font-family: $font-headings;
-    text-transform: uppercase;
 }
 
 .page #comments {

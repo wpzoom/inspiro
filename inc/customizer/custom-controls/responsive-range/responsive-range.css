@@ -1,0 +1,190 @@
+/**
+ * Responsive Range Control Styles
+ *
+ * @package Inspiro
+ * @since Inspiro 2.0.8
+ */
+
+/* Control Header with Label and Device Buttons */
+.customize-control-inspiro-responsive-range .customize-control-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Device Toggle Buttons */
+.inspiro-responsive-device-buttons {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.inspiro-responsive-device-buttons button {
+    padding: 4px 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-right: 1px solid #ddd;
+    color: #666;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inspiro-responsive-device-buttons button:last-child {
+    border-right: none;
+}
+
+.inspiro-responsive-device-buttons button:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.inspiro-responsive-device-buttons button.active {
+    background: #0073aa;
+    color: #fff;
+}
+
+.inspiro-responsive-device-buttons button .dashicons {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+/* Device Controls */
+.inspiro-device-controls {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.customize-control-inspiro-responsive-range .customize-control-content {
+    margin-top: 8px;
+}
+
+.inspiro-device-controls .inspiro-control-range {
+    flex: 1;
+    margin-bottom: 0;
+    min-width: 0;
+}
+
+.inspiro-device-controls .inspiro-control-range-value {
+    width: 65px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.inspiro-device-controls .inspiro-control-range {
+    -webkit-appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin: 0;
+    width: 100%;
+}
+
+.inspiro-device-controls .inspiro-control-range:hover {
+    opacity: 1;
+}
+
+.inspiro-device-controls .inspiro-control-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0073aa;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.inspiro-device-controls .inspiro-control-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0073aa;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.inspiro-device-controls .inspiro-control-range-value {
+    padding: 5px 8px;
+    max-width: 70px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: center;
+    background: #fff;
+    height: 28px;
+    box-sizing: border-box;
+    line-height: 1.2;
+}
+
+.inspiro-device-controls .inspiro-control-range-value:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 1px #0073aa;
+}
+
+/* Device-specific styling */
+.inspiro-device-desktop {
+    /* Desktop styles */
+}
+
+.inspiro-device-tablet {
+    /* Tablet styles */
+}
+
+.inspiro-device-mobile {
+    /* Mobile styles */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+    .customize-control-inspiro-responsive-range .customize-control-title {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .inspiro-responsive-device-buttons {
+        margin-left: auto;
+        order: 2;
+    }
+
+    .inspiro-responsive-device-buttons button {
+        padding: 4px 6px;
+        min-width: 28px;
+    }
+    
+    .inspiro-responsive-device-buttons button .dashicons {
+        width: 12px;
+        height: 12px;
+        font-size: 12px;
+    }
+
+    .inspiro-device-controls {
+        gap: 8px;
+    }
+
+    .inspiro-device-controls .inspiro-control-range-value {
+        width: 55px;
+        font-size: 12px;
+        padding: 4px 6px;
+        height: 26px;
+    }
+} 

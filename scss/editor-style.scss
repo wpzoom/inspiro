@@ -114,8 +114,8 @@ body > .is-root-container,
 .wp-block-cover.alignfull,
 .is-root-container .wp-block[data-align="full"] > .wp-block-group,
 .is-root-container .wp-block[data-align="full"] > .wp-block-cover {
-    padding-left: var(--wp--custom--spacing--outer);
-    padding-right: var(--wp--custom--spacing--outer);
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .wp-site-blocks .alignfull,
@@ -143,10 +143,11 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
     width: inherit;
 }
 
-.alignfull {
+.editor-styles-wrapper .has-global-padding > .alignfull {
     margin-right: -30px;
     margin-left: -30px;
 }
+
 
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
     background: none;

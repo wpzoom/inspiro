@@ -1,15 +1,8 @@
 @media screen and (min-width: em(768)) {
-    .single {
-        h1.entry-title {
-            @include font-size(42);
-        }
-    }
-
-
     /* Layout */
 
     .inner-wrap {
-        max-width: $content-width;
+        max-width: var(--container-width);
     }
 
     .page-layout-sidebar-right {
