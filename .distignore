@@ -43,3 +43,9 @@ wp-cli.local.yml
 vendor
 yarn.lock
 CLAUDE.md
+scss
+backups
+README_DEV.md
+FONT_MIGRATION_FIXES.md
+switch-to-premium.sh
+upgrade-to-premium.sh
