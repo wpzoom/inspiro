@@ -119,6 +119,8 @@ module.exports = function (grunt) {
 							'scss/admin/welcome-notice.scss',
 						'assets/css/unminified/admin.css':
 							'scss/admin/admin.scss',
+						'assets/css/unminified/theme-deactivation.css':
+							'scss/theme-deactivation.scss',
 					},
 					{
 						expand: true,

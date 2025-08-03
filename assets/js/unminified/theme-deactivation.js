@@ -47,6 +47,10 @@
 			if ( choice.text_field ) {
 				formData[ choice.text_field ] = '';
 			}
+			if ( choice.features_options ) {
+				formData.choice_missing_features = '';
+				formData.choice_missing_features_other_text = '';
+			}
 		});
 
 		/**
@@ -70,7 +74,26 @@
 				modalHtml += choice.label;
 				modalHtml += '</label>';
 				
-				if ( choice.text_field ) {
+				// Handle features options (multi-select)
+				if ( choice.features_options ) {
+					modalHtml += '<div class="inspiro-features-options" style="margin-top: 12px; padding-left: 25px;">';
+					modalHtml += '<div style="margin-bottom: 8px; font-size: 13px; color: #666;">Which features? (Select all that apply)</div>';
+					
+					for ( var featureKey in choice.features_options ) {
+						modalHtml += '<label class="inspiro-feature-label" style="display: block; margin-bottom: 6px; font-size: 13px;">';
+						modalHtml += '<input type="checkbox" name="missing_features" value="' + featureKey + '" style="margin-right: 8px;" /> ';
+						modalHtml += choice.features_options[featureKey];
+						modalHtml += '</label>';
+						
+						// Add text field for "Other" option
+						if ( featureKey === 'other-feature' ) {
+							modalHtml += '<textarea name="choice_missing_features_other_text" class="inspiro-feature-other-text" placeholder="Please specify..." rows="2" style="width: 100%; margin-top: 6px; margin-left: 20px; display: none;"></textarea>';
+						}
+					}
+					modalHtml += '</div>';
+				}
+				// Handle regular text field
+				else if ( choice.text_field ) {
 					modalHtml += '<textarea name="' + choice.text_field + '" class="inspiro-choice-text" placeholder="Please specify..." rows="2"></textarea>';
 				}
 				modalHtml += '</div>';
@@ -128,28 +151,56 @@
 				}
 			});
 
-			// Handle checkbox changes.
-			modal.find( 'input[type="checkbox"]' ).on( 'change', function() {
+			// Handle main choice checkbox changes.
+			modal.find( 'input[name="deactivation_reason"]' ).on( 'change', function() {
 				var choice = $( this ).val();
 				var isChecked = $( this ).is( ':checked' );
-				var textField = $( this ).closest( '.inspiro-choice-wrapper' ).find( '.inspiro-choice-text' );
+				var choiceWrapper = $( this ).closest( '.inspiro-choice-wrapper' );
+				var textField = choiceWrapper.find( '.inspiro-choice-text' );
+				var featuresOptions = choiceWrapper.find( '.inspiro-features-options' );
 
 				if ( isChecked ) {
 					if ( formData.choices.indexOf( choice ) === -1 ) {
 						formData.choices.push( choice );
 					}
 					textField.show();
+					featuresOptions.show();
 				} else {
 					var index = formData.choices.indexOf( choice );
 					if ( index !== -1 ) {
 						formData.choices.splice( index, 1 );
 					}
 					textField.hide().val( '' );
+					featuresOptions.hide();
+					// Clear features selections
+					featuresOptions.find( 'input[type="checkbox"]' ).prop( 'checked', false );
+					featuresOptions.find( '.inspiro-feature-other-text' ).hide().val( '' );
+					formData.choice_missing_features = '';
+					formData.choice_missing_features_other_text = '';
+				}
+			});
+
+			// Handle features checkbox changes.
+			modal.find( 'input[name="missing_features"]' ).on( 'change', function() {
+				var selectedFeatures = [];
+				modal.find( 'input[name="missing_features"]:checked' ).each( function() {
+					selectedFeatures.push( $( this ).val() );
+				});
+				formData.choice_missing_features = selectedFeatures.join( ',' );
+
+				// Show/hide "Other" text field
+				var otherChecked = $( this ).val() === 'other-feature' && $( this ).is( ':checked' );
+				var otherTextField = $( this ).closest( '.inspiro-features-options' ).find( '.inspiro-feature-other-text' );
+				if ( otherChecked ) {
+					otherTextField.show();
+				} else if ( $( this ).val() === 'other-feature' ) {
+					otherTextField.hide().val( '' );
+					formData.choice_missing_features_other_text = '';
 				}
 			});
 
 			// Handle text field changes.
-			modal.find( '.inspiro-choice-text' ).on( 'input', function() {
+			modal.find( '.inspiro-choice-text, .inspiro-feature-other-text' ).on( 'input', function() {
 				var fieldName = $( this ).attr( 'name' );
 				formData[ fieldName ] = $( this ).val();
 			});
@@ -169,8 +220,8 @@
 				submitSurvey();
 			});
 
-			// Hide text fields initially.
-			modal.find( '.inspiro-choice-text' ).hide();
+			// Hide text fields and features options initially.
+			modal.find( '.inspiro-choice-text, .inspiro-features-options' ).hide();
 		}
 
 		/**
@@ -193,8 +244,12 @@
 			// Prepare survey data
 			var surveyData = {
 				choices: formData.choices.join( ',' ),
+				choice_technical_issues_text: formData.choice_technical_issues_text || '',
+				choice_plugin_compatibility_text: formData.choice_plugin_compatibility_text || '',
+				choice_missing_features: formData.choice_missing_features || '',
+				choice_missing_features_other_text: formData.choice_missing_features_other_text || '',
+				choice_lack_of_support_text: formData.choice_lack_of_support_text || '',
 				choice_other_text: formData.choice_other_text || '',
-				choice_not_enough_features_text: formData.choice_not_enough_features_text || '',
 				domain: formData.domain,
 				hostname: formData.hostname,
 				inspiro_theme_version: formData.inspiro_theme_version,
@@ -305,10 +360,12 @@
 			// If not found, try from URL parameters
 			if ( !themeName ) {
 				var href = $( element ).attr( 'href' );
-				var urlParams = new URLSearchParams( href.split( '?' )[1] );
-				var stylesheet = urlParams.get( 'stylesheet' ) || urlParams.get( 'template' );
-				if ( stylesheet ) {
-					themeName = stylesheet.replace( /-/g, ' ' ).replace( /\b\w/g, l => l.toUpperCase() );
+				if ( href ) {
+					var urlParams = new URLSearchParams( href.split( '?' )[1] );
+					var stylesheet = urlParams.get( 'stylesheet' ) || urlParams.get( 'template' );
+					if ( stylesheet ) {
+						themeName = stylesheet.replace( /-/g, ' ' ).replace( /\b\w/g, l => l.toUpperCase() );
+					}
 				}
 			}
 			
@@ -322,6 +379,11 @@
 			// Only show survey if Inspiro is currently active
 			if ( isInspiroActive() ) {
 				var href = $( this ).attr( 'href' );
+				
+				// Skip if this is an install action (not activate)
+				if ( href && href.indexOf( 'action=install' ) !== -1 ) {
+					return; // Don't intercept install actions
+				}
 				
 				// Don't intercept if clicking on Inspiro itself
 				var clickedTheme = $( this ).closest( '.theme' ).find( '.theme-name' ).text();

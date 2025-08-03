@@ -24,6 +24,7 @@ class Inspiro_Theme_Deactivation {
 	 */
 	public function __construct() {
 		add_action( 'admin_footer-themes.php', array( $this, 'admin_deactivation_modal' ) );
+		add_action( 'admin_footer-theme-install.php', array( $this, 'admin_deactivation_modal' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'wp_ajax_inspiro_theme_deactivation_survey', array( $this, 'handle_survey_submission' ) );
 	}
@@ -34,7 +35,7 @@ class Inspiro_Theme_Deactivation {
 	 * @param string $hook_suffix The current admin page.
 	 */
 	public function enqueue_scripts( $hook_suffix ) {
-		if ( 'themes.php' !== $hook_suffix ) {
+		if ( 'themes.php' !== $hook_suffix && 'theme-install.php' !== $hook_suffix ) {
 			return;
 		}
 
@@ -49,43 +50,54 @@ class Inspiro_Theme_Deactivation {
 
 		$deactivation_form_choices = array(
 			array(
-				'slug'       => 'broken-or-breaks-plugins',
-				'label'      => "It's broken or broke other plugins I'm using",
+				'slug'       => 'technical-issues',
+				'label'      => 'I experienced technical issues or bugs',
 				'is_checked' => false,
-				'text_field' => null,
+				'text_field' => 'choice_technical_issues_text',
 			),
 			array(
-				'slug'       => 'not-enough-features',
+				'slug'       => 'plugin-compatibility',
+				'label'      => 'Not compatible with plugins I use',
+				'is_checked' => false,
+				'text_field' => 'choice_plugin_compatibility_text',
+			),
+			array(
+				'slug'       => 'missing-features',
 				'label'      => "It doesn't have the features I am looking for",
 				'is_checked' => false,
-				'text_field' => 'choice_not_enough_features_text',
-			),
-			array(
-				'slug'       => 'not-responsive',
-				'label'      => "It isn't responsive to screen size",
-				'is_checked' => false,
 				'text_field' => null,
+				'features_options' => array(
+					'more-starter-sites' => 'More starter sites/demos',
+					'more-customization' => 'More customization options (colors, fonts, layouts)',
+					'better-integration' => 'Better integration with plugins (WooCommerce, Elementor, etc.)',
+					'seo-performance' => 'SEO/Performance features',
+					'other-feature' => 'Other',
+				),
 			),
 			array(
-				'slug'       => 'slow-website-performance',
+				'slug'       => 'slow-performance',
 				'label'      => "It slows down my website's speed/load time",
 				'is_checked' => false,
 				'text_field' => null,
 			),
 			array(
-				'slug'       => 'lack-of-support',
-				'label'      => 'Lack of help or support from WPZOOM',
+				'slug'       => 'found-better-theme',
+				'label'      => 'I found another theme that better fits my needs',
 				'is_checked' => false,
 				'text_field' => null,
 			),
-		);
-
-		// Add "Other Reason" at the end (no randomization).
-		$deactivation_form_choices[] = array(
-			'slug'       => 'other',
-			'label'      => 'Other reason:',
-			'is_checked' => false,
-			'text_field' => 'choice_other_text',
+			array(
+				'slug'       => 'lack-of-support',
+				'label'      => 'Lack of help or support',
+				'is_checked' => false,
+				'text_field' => 'choice_lack_of_support_text',
+			),
+			array(
+				'slug'       => 'other',
+				'label'      => 'Other reason',
+				'is_checked' => false,
+				'text_field' => 'choice_other_text',
+			),
 		);
 
 		$deactivation_labels = array(
@@ -149,23 +161,27 @@ class Inspiro_Theme_Deactivation {
 		$has_consent = filter_var( $_POST['user_consent'] ?? false, FILTER_VALIDATE_BOOLEAN );
 		
 		$survey_data = array(
-			'choices'              => sanitize_text_field( $_POST['choices'] ?? '' ),
-			'choice_other_text'    => sanitize_textarea_field( $_POST['choice_other_text'] ?? '' ),
-			'choice_not_enough_features_text' => sanitize_textarea_field( $_POST['choice_not_enough_features_text'] ?? '' ),
-			'domain'               => sanitize_url( $_POST['domain'] ?? '' ),
-			'hostname'             => sanitize_text_field( $_POST['hostname'] ?? '' ),
-			'inspiro_theme_version' => sanitize_text_field( $_POST['inspiro_theme_version'] ?? '' ),
-			'wp_version'           => sanitize_text_field( $_POST['wp_version'] ?? '' ),
-			'language'             => sanitize_text_field( $_POST['language'] ?? '' ),
-			'php_version'          => sanitize_text_field( $_POST['php_version'] ?? '' ),
-			'is_multisite'         => sanitize_text_field( $_POST['is_multisite'] ?? '' ),
-			'active_plugins_count' => sanitize_text_field( $_POST['active_plugins_count'] ?? '' ),
-			'timezone_offset'      => sanitize_text_field( $_POST['timezone_offset'] ?? '' ),
-			'user_agent'           => sanitize_textarea_field( $_POST['user_agent'] ?? '' ),
-			'referrer'             => sanitize_url( $_POST['referrer'] ?? '' ),
-			'switching_to_theme'   => sanitize_text_field( $_POST['switching_to_theme'] ?? '' ),
-			'user_consent'         => $has_consent,
-			'timestamp'            => current_time( 'mysql' ),
+			'choices'                           => sanitize_text_field( $_POST['choices'] ?? '' ),
+			'choice_technical_issues_text'      => sanitize_textarea_field( $_POST['choice_technical_issues_text'] ?? '' ),
+			'choice_plugin_compatibility_text'  => sanitize_textarea_field( $_POST['choice_plugin_compatibility_text'] ?? '' ),
+			'choice_missing_features'           => sanitize_text_field( $_POST['choice_missing_features'] ?? '' ),
+			'choice_missing_features_other_text' => sanitize_textarea_field( $_POST['choice_missing_features_other_text'] ?? '' ),
+			'choice_lack_of_support_text'       => sanitize_textarea_field( $_POST['choice_lack_of_support_text'] ?? '' ),
+			'choice_other_text'                 => sanitize_textarea_field( $_POST['choice_other_text'] ?? '' ),
+			'domain'                            => sanitize_url( $_POST['domain'] ?? '' ),
+			'hostname'                          => sanitize_text_field( $_POST['hostname'] ?? '' ),
+			'inspiro_theme_version'             => sanitize_text_field( $_POST['inspiro_theme_version'] ?? '' ),
+			'wp_version'                        => sanitize_text_field( $_POST['wp_version'] ?? '' ),
+			'language'                          => sanitize_text_field( $_POST['language'] ?? '' ),
+			'php_version'                       => sanitize_text_field( $_POST['php_version'] ?? '' ),
+			'is_multisite'                      => sanitize_text_field( $_POST['is_multisite'] ?? '' ),
+			'active_plugins_count'              => sanitize_text_field( $_POST['active_plugins_count'] ?? '' ),
+			'timezone_offset'                   => sanitize_text_field( $_POST['timezone_offset'] ?? '' ),
+			'user_agent'                        => sanitize_textarea_field( $_POST['user_agent'] ?? '' ),
+			'referrer'                          => sanitize_url( $_POST['referrer'] ?? '' ),
+			'switching_to_theme'                => sanitize_text_field( $_POST['switching_to_theme'] ?? '' ),
+			'user_consent'                      => $has_consent,
+			'timestamp'                         => current_time( 'mysql' ),
 		);
 
 		// Only include admin email if user consented
