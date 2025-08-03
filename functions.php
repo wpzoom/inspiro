@@ -131,6 +131,7 @@ if ( is_admin() ) {
 	if ( current_user_can( 'manage_options' ) ) {
 		require INSPIRO_THEME_DIR . 'inc/classes/class-inspiro-notices.php';
 		require INSPIRO_THEME_DIR . 'inc/classes/class-inspiro-notice-review.php';
+		require INSPIRO_THEME_DIR . 'inc/classes/class-inspiro-theme-deactivation.php';
 	}
 }
 
