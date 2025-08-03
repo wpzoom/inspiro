@@ -114,7 +114,7 @@ class Inspiro_Theme_Deactivation {
 				'adminEmail'          => get_option( 'admin_email' ),
 				'ajaxUrl'             => admin_url( 'admin-ajax.php' ),
 				'nonce'               => wp_create_nonce( 'inspiro_deactivation_survey' ),
-				'remoteApiUrl'        => 'https://ai.wpzoom.com/inspiro-analytics/simple-survey-endpoint.php', // Simple standalone endpoint
+				'remoteApiUrl'        => 'https://ai.wpzoom.com/simple-survey-endpoint.php', // Simple standalone endpoint
 			)
 		);
 
