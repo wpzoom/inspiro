@@ -77,7 +77,7 @@
 				// Handle features options (multi-select)
 				if ( choice.features_options ) {
 					modalHtml += '<div class="inspiro-features-options" style="margin-top: 12px; padding-left: 25px;">';
-					modalHtml += '<div style="margin-bottom: 8px; font-size: 13px; color: #666;">Which features? (Select all that apply)</div>';
+					modalHtml += '<div style="margin-bottom: 8px; font-size: 13px; color: #111;">Which features? (Select all that apply)</div>';
 					
 					for ( var featureKey in choice.features_options ) {
 						modalHtml += '<label class="inspiro-feature-label" style="display: block; margin-bottom: 6px; font-size: 13px;">';

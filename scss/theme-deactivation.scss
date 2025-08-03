@@ -36,8 +36,7 @@
 
 /* Modal Header */
 .inspiro-deactivation-modal-header {
-	padding: 20px 24px;
-	border-bottom: 1px solid #e2e4e7;
+	padding: 20px 24px 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -117,7 +116,7 @@
 .inspiro-features-options > div:first-child {
 	margin-bottom: 8px;
 	font-size: 13px;
-	color: #666;
+	color: #000;
 	font-weight: 500;
 }
 
