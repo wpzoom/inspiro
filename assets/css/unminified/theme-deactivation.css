@@ -22,7 +22,7 @@
 /* Modal Container */
 .inspiro-deactivation-modal {
     background: #fff;
-    border-radius: 8px;
+    border-radius: 2px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     max-width: 500px;
     width: 90%;
@@ -40,7 +40,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f8f9fa;
 }
 
 .inspiro-deactivation-modal-header h2 {
@@ -68,7 +67,6 @@
 }
 
 .inspiro-deactivation-modal-close:hover {
-    background: #e2e4e7;
     color: #1d2327;
 }
 
@@ -82,10 +80,6 @@
 /* Choice Wrapper */
 .inspiro-choice-wrapper {
     margin-bottom: 16px;
-    border: 1px solid #e2e4e7;
-    border-radius: 6px;
-    padding: 12px;
-    transition: border-color 0.2s ease;
 }
 
 .inspiro-choice-wrapper:hover {
@@ -114,9 +108,9 @@
     margin-top: 12px;
     padding-left: 25px;
     background: #f9f9f9;
-    border-radius: 4px;
     padding: 12px;
-    border-left: 3px solid #2271b1;
+    border-radius: 5px;
+    border: 1px solid #eee;
 }
 
 .inspiro-features-options > div:first-child {
@@ -193,8 +187,8 @@
 .inspiro-consent-section {
     margin-bottom: 16px;
     padding: 12px;
-    background: #f0f6fc;
-    border: 1px solid #c3e4ff;
+    background: #edf0f2;
+    border: 1px solid #eee;
     border-radius: 6px;
 }
 
@@ -202,7 +196,7 @@
     display: flex;
     align-items: flex-start;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.5;
     color: #1d2327;
     margin: 0;
@@ -243,7 +237,7 @@
 .inspiro-btn {
     padding: 8px 16px;
     border: 1px solid #c3c4c7;
-    border-radius: 4px;
+    border-radius: 2px;
     font-size: 13px;
     cursor: pointer;
     text-decoration: none;
@@ -258,14 +252,14 @@
 }
 
 .inspiro-btn-primary {
-    background: #2271b1;
-    border-color: #2271b1;
+    background: #3958e9;
+    border-color: #3958e9;
     color: #fff;
 }
 
 .inspiro-btn-primary:hover {
-    background: #135e96;
-    border-color: #135e96;
+    background: #111;
+    border-color: #111;
     color: #fff;
 }
 

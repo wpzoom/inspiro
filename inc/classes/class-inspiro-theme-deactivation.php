@@ -101,11 +101,11 @@ class Inspiro_Theme_Deactivation {
 		);
 
 		$deactivation_labels = array(
-			'privacy_disclaimer' => __( 'Please do not include any personal information in your submission. We do not collect or need this information. Please see our <a href="https://www.wpzoom.com/privacy-policy/" target="_blank">privacy policy</a> for details.', 'inspiro' ),
+			'privacy_disclaimer' => __( 'Please do not include any personal information in your submission. Please see our <a href="https://www.wpzoom.com/privacy-policy/" target="_blank">privacy policy</a> for details.', 'inspiro' ),
 			'consent_checkbox'   => __( 'I consent to sharing my website address, admin email, and technical details to help WPZOOM improve the Inspiro theme.', 'inspiro' ),
 			'skip_deactivate'    => __( 'Skip & Switch Theme', 'inspiro' ),
 			'submit_deactivate'  => __( 'Submit & Switch Theme', 'inspiro' ),
-			'title'              => __( 'Thanks for trying Inspiro. Let us know how we can improve.', 'inspiro' ),
+			'title'              => __( 'Help us improve Inspiro Lite!', 'inspiro' ),
 		);
 
 		// Pass data to JavaScript.
