@@ -13,7 +13,7 @@
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags:** one-column, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready  
 
-## Description
+## Description ##
 
 A professional Photo and Video focused theme with a modern design. Packed with features including a fullscreen custom header that supports YouTube, Vimeo & self-hosted videos in the background, Inspiro is perfect for showing off your portfolio, images, and videos.
 
@@ -22,7 +22,7 @@ For more information about Inspiro, please go to https://wordpress.org/themes/in
 Please note:
 More customization options & features are available in the paid version.
 
-## Installation
+## Installation ##
 
 1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
 2. Type in Inspiro in the search form and press the 'Enter' key on your keyboard.
@@ -30,7 +30,7 @@ More customization options & features are available in the paid version.
 4. Go to https://www.wpzoom.com/documentation/inspiro-lite for a guide on how to customize this theme.
 5. Navigate to Appearance > Customize in your admin panel and customize to taste.
 
-## Copyright
+## Copyright ##
 
 Inspiro WordPress Theme, Copyright 2025 WPZOOM BV
 Inspiro is distributed under the terms of the GNU GPL
@@ -114,165 +114,165 @@ Starter content image, Copyright Bonnie Moreland
 License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
-## Changelog
+## Changelog ##
 
-### 2.1.1
+### 2.1.1 ###
 * Minor bug fixes
 * Added a survey to collect feedback after theme switch
 
-### 2.1.0
+### 2.1.0 ###
 * New: Change Theme Width in Customizer > Theme Layout.
 * New Typography options in Customizer > Typography > Headings
 * Numerous fixes and improvements
 
-### 2.0.7
+### 2.0.7 ###
 * Minor bug fix
 
-### 2.0.6
+### 2.0.6 ###
 * Bug fix in the Customizer with Google Fonts not showing in the list
 * Improvements to the block editor
 * The Montserrat font was replaced with the Onest font for headings
 * Minor improvements to the Elementor integration
 * Change default value for the Homepage Hero to be disabled by default
 
-### 2.0.5
+### 2.0.5 ###
 * Minor bug fixes
 
-### 2.0.4
+### 2.0.4 ###
 * Bug fix for WordPress 6.8
 
-### 2.0.3
+### 2.0.3 ###
 * Multiple bug fixes
 
-### 2.0.2
+### 2.0.2 ###
 * Minor bug fixes
 * New Magazine demo
 
-### 2.0.1
+### 2.0.1 ###
 * Minor bug fixes
 
-### 2.0.0
+### 2.0.0 ###
 * New re-designed dashboard
 * Integration with our new Inspiro Starter Sites plugin
 * New demos
 * New: Imported demo content can be deleted
 
-### 1.9.10
+### 1.9.10 ###
 * Custom background support
 * Multiple improvements
 
-### 1.9.9
+### 1.9.9 ###
 * Improvements to demos and dark mode
 
-### 1.9.8
+### 1.9.8 ###
 * Multiple bug fixes
 
-### 1.9.7
+### 1.9.7 ###
 * Bug fixes for WordPress 6.7
 * New option in Customizer > WooCommerce to hide the product image zoom icon
 
-### 1.9.6
+### 1.9.6 ###
 * Added a new WooCommerce demo
 * Minor bug fixes
 
-### 1.9.5
+### 1.9.5 ###
 * Improvements to the demo content importer & onboarding process for new users
 
-### 1.9.4
+### 1.9.4 ###
 * Multiple bug fixes
 
-### 1.9.3
+### 1.9.3 ###
 * Multiple improvements and bug fixes
 
-### 1.9.2
+### 1.9.2 ###
 * Added new options to customize in the Customizer > Colors section
 
-### 1.9.1
+### 1.9.1 ###
 * Fix the default hero image
 
-### 1.9.0
+### 1.9.0 ###
 * Multiple Improvements to the Customizer
 * New Footer option to edit the Copyright text
 * Minor code improvements
 * Add Header hamburger icon color option
 
-### 1.8.8
+### 1.8.8 ###
 * Minor bug fixes
 
-### 1.8.7
+### 1.8.7 ###
 * Update WooCommerce templates
 
-### 1.8.6
+### 1.8.6 ###
 * Minor bug fixes
 
-### 1.8.5
+### 1.8.5 ###
 * Minor bug fixes
 
-### 1.8.4
+### 1.8.4 ###
 * Minor bug fixes
 
-### 1.8.3
+### 1.8.3 ###
 * Bug fix with images
 
-### 1.8.2
+### 1.8.2 ###
 * Multiple improvements to the styling, CSS code etc.
 * Improved WooCommerce styling
 
-### 1.8.1
+### 1.8.1 ###
 * Minor bug fix with a block pattern
 
-### 1.8.0
+### 1.8.0 ###
 * Major update with numerous improvements and fixes
 * Added new block patterns
 * Improved the demo content
 
-### 1.7.13
+### 1.7.13 ###
 * Minor fixes and improvements
 
-### 1.7.12
+### 1.7.12 ###
 * Improvements to the block patterns
 * Minor styling fixes
 
-### 1.7.11
+### 1.7.11 ###
 * Added a new option to hide the Featured Image in the header in single blog posts (See Customizer > Blog Post Options)
 
-### 1.7.10
+### 1.7.10 ###
 * Fixed a bug with block patterns
 
-### 1.7.9
+### 1.7.9 ###
 * The Welcome page was re-designed and completed with useful information to set up the theme
 
-### 1.7.8
+### 1.7.8 ###
 * Bug fix with font family for logo not saving after change
 
-### 1.7.7
+### 1.7.7 ###
 * Minor fixes to color customizations
 
-### 1.7.6
+### 1.7.6 ###
 * Improvements to the Typography section. Added a new stack with system fonts.
 * Google Fonts are now downloaded and hosted locally automatically using WPTT Webfont Loader (GDPR-compliant, as fonts are not loaded from Google's servers)
 
-### 1.7.5
+### 1.7.5 ###
 * Added new option to make the Featured Image fullscreen in posts and pages (Customizer > Header)
 * Fixed a bug with page title not visible on mobile devices
 
-### 1.7.4
+### 1.7.4 ###
 * Added new color options in the Customizer
 * Header menu will stay at the top on mobile devices too
 * Multiple fixes and improvements
 
-### 1.7.3
+### 1.7.3 ###
 * Added new styles for Header and Footer layouts in the Customizer
 
-### 1.7.2
+### 1.7.2 ###
 * Improved the migration process to Inspiro PRO theme
 
-### 1.7.1
+### 1.7.1 ###
 * Multiple improvements to the demo content
 * Added some styling for WPZOOM Portfolio
 * Block and widget style enhancements
 
-### 1.7.0
+### 1.7.0 ###
 * Multiple improvements & fixes
 * Added new Patterns in the block editor
 * Added WPZOOM Portfolio plugin recommendation
@@ -281,89 +281,89 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 * Improvements to the blocks styling (Query Loop, etc.)
 * Added a new page template that doesn't include the hero area on the homepage
 
-### 1.6.4
+### 1.6.4 ###
 * Fixed a bug happening on old PHP versions (7.2)
 
-### 1.6.3
+### 1.6.3 ###
 * Added support for multilingual plugins (WPML, Polylang)
 
-### 1.6.2
+### 1.6.2 ###
 * Bug fix with the mobile navigation
 
-### 1.6.1
+### 1.6.1 ###
 * Minor bug fixes
 * New option to hide the Search icon in the header (Customizer > Header Settings)
 
-### 1.6.0
+### 1.6.0 ###
 * Added Demo Content Importer with 2 Demos: Elementor & Gutenberg
 * Improvements to the WooCommerce pages styling
 * Multiple bug fixes
 
-### 1.5.2
+### 1.5.2 ###
 * Improvements to the styling of the block editor
 * Minor bug fixes
 
-### 1.5.1
+### 1.5.1 ###
 * Improved migration process to Inspiro PRO theme
 
-### 1.5.0
+### 1.5.0 ###
 * Added Elementor Integration. Thanks to Elementor Addons by WPZOOM plugin you can get access to a dozen of new templates & custom widgets
 * Multiple bug fixes
 
-### 1.4.1
+### 1.4.1 ###
 * Minor bug fix with the search form not closing
 
-### 1.4.0
+### 1.4.0 ###
 * Added feature to easily migrate to Inspiro Premium and keep all settings
 * Added option to make external header video responsive (Customize -> Homepage Media -> Media)
 * Added typography settings for Logo in Customizer
 * Multiple improvements and issues fixed in Customizer
 
-### 1.3.4
+### 1.3.4 ###
 * Fixed duplicate "wp_head" tag in the header.php
 
-### 1.3.3
+### 1.3.3 ###
 * Fix missing tags
 * Fix link to Inspiro Premium on theme info page
 
-### 1.3.2
+### 1.3.2 ###
 * Removed `jquery-fitvids.js` to use instead `add_theme_support( 'responsive-embeds' );`
 * Fixed empty space above embed video in post
 * Added `font-size` to `#scroll-to-content` to prevent issue when body font size is changed
 
-### 1.3.1
+### 1.3.1 ###
 * Fixed video header autoplay on mobile
 * Removed border around images with link
 
-### 1.3.0
+### 1.3.0 ###
 * NEW: Typography options for Body, Headings, Menu, Hero Header
 * Improvements and code refactor
 * Fixed editor styles
 * Fixed blurred hero header image when sidebar menu is open
 
-### 1.2.8
+### 1.2.8 ###
 * Improvements to the starter content
 * Visual improvements
 * Bug fixes
 
-### 1.2.7
+### 1.2.7 ###
 * Fixed header text appearing slow in hero header area
 * Fixed image quality when is aligned wide or to full width
 * Changed 'page_on_front' for starter content
 
-### 1.2.6
+### 1.2.6 ###
 * Small change to the screenshot to reflect the new button
 
-### 1.2.5
+### 1.2.5 ###
 * Added Call To Action button in header on homepage
 * Added options for header button in Customizer -> Homepage Media -> Content
 * Added options to change header button colors in Customizer -> Colors
 
-### 1.2.4
+### 1.2.4 ###
 * Added admin notice to Dashboard
 
-### 1.2.3
+### 1.2.3 ###
 * Added TGM Plugin Activation with a few recommended plugins
 
-### 1.2.2
+### 1.2.2 ###
 * Initial release
