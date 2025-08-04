@@ -120,7 +120,7 @@ class Inspiro_Theme_Deactivation {
 				'hostname'            => gethostname(),
 				'choices'             => $deactivation_form_choices,
 				'labels'              => $deactivation_labels,
-				'domain'              => site_url(),
+				'domain'              => home_url(),
 				'inspiroThemeVersion' => INSPIRO_THEME_VERSION,
 				'wpVersion'           => $GLOBALS['wp_version'],
 				'phpVersion'          => PHP_VERSION,
