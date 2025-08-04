@@ -9,20 +9,9 @@
 
 	$( document ).ready( function() {
 		
-		console.log( 'Inspiro deactivation script loaded' );
-		
 		if ( typeof inspiroThemeDeactivateData === 'undefined' ) {
-			console.log( 'inspiroThemeDeactivateData not found' );
 			return;
 		}
-		
-		console.log( 'inspiroThemeDeactivateData:', inspiroThemeDeactivateData );
-		
-		// Add a test function to manually trigger modal
-		window.testInspiroModal = function() {
-			console.log( 'Testing Inspiro modal...' );
-			showModal();
-		};
 
 		var modal = null;
 		var formData = {
@@ -39,7 +28,11 @@
 			timezone_offset: new Date().getTimezoneOffset(),
 			user_agent: navigator.userAgent,
 			referrer: document.referrer || 'Direct',
-			user_consent: true // Default to true (checkbox checked by default)
+			user_consent: true, // Default to true (checkbox checked by default)
+			usage_duration_seconds: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.usage_seconds : 0,
+			usage_duration_days: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.usage_days : 0,
+			usage_duration_formatted: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.formatted : 'Unknown',
+			theme_activated_at: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.activated_at : null
 		};
 
 		// Initialize text fields for choices that have them.
@@ -64,6 +57,7 @@
 			modalHtml += '<button class="inspiro-deactivation-modal-close">&times;</button>';
 			modalHtml += '</div>';
 			modalHtml += '<div class="inspiro-deactivation-modal-body">';
+			modalHtml += '<p class="inspiro-deactivation-intro">Please tell us why you\'re switching themes. Your feedback will help us make Inspiro Lite better for everyone!</p>';
 			modalHtml += '<form id="inspiro-deactivation-form">';
 
 			// Add choices.
@@ -262,7 +256,11 @@
 				user_agent: formData.user_agent,
 				referrer: formData.referrer,
 				switching_to_theme: window.inspiroDestinationTheme || 'Unknown',
-				user_consent: formData.user_consent
+				user_consent: formData.user_consent,
+				usage_duration_seconds: formData.usage_duration_seconds,
+				usage_duration_days: formData.usage_duration_days,
+				usage_duration_formatted: formData.usage_duration_formatted,
+				theme_activated_at: formData.theme_activated_at
 			};
 
 			// Only include admin email if user consented
@@ -302,20 +300,9 @@
 				contentType: false, // This prevents jQuery from setting content-type
 				timeout: 5000,
 				success: function( response ) {
-					console.log( 'Survey submitted successfully to WPZOOM' );
-					console.log( 'Server response:', response );
-					try {
-						var responseData = typeof response === 'string' ? JSON.parse( response ) : response;
-						console.log( 'Response data:', responseData );
-					} catch ( e ) {
-						console.log( 'Could not parse response:', e );
-					}
 					proceedWithDeactivation();
 				},
 				error: function( xhr, status, error ) {
-					console.log( 'Failed to submit to remote server:', error );
-					console.log( 'XHR status:', xhr.status );
-					console.log( 'Response text:', xhr.responseText );
 					// Even if remote submission fails, proceed with deactivation
 					proceedWithDeactivation();
 				}
@@ -394,8 +381,6 @@
 				// Store destination theme info
 				window.inspiroDestinationTheme = getDestinationTheme( this );
 				
-				console.log( 'Inspiro deactivation intercepted:', href );
-				console.log( 'Switching to theme:', window.inspiroDestinationTheme );
 				e.preventDefault();
 				window.inspiroDeactivationHref = href;
 				showModal();
@@ -408,7 +393,6 @@
 			
 			// Check if this is for the Inspiro theme.
 			if ( href.indexOf( 'stylesheet=inspiro' ) !== -1 || href.indexOf( 'template=inspiro' ) !== -1 ) {
-				console.log( 'Inspiro deletion intercepted:', href );
 				e.preventDefault();
 				window.inspiroDeactivationHref = href;
 				showModal();

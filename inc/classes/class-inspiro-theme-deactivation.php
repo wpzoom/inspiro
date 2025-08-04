@@ -105,8 +105,11 @@ class Inspiro_Theme_Deactivation {
 			'consent_checkbox'   => __( 'I consent to sharing my website address, admin email, and technical details to help WPZOOM improve the Inspiro theme.', 'inspiro' ),
 			'skip_deactivate'    => __( 'Skip & Switch Theme', 'inspiro' ),
 			'submit_deactivate'  => __( 'Submit & Switch Theme', 'inspiro' ),
-			'title'              => __( 'Help us improve Inspiro Lite!', 'inspiro' ),
+			'title'              => __( 'Help us improve Inspiro Lite', 'inspiro' ),
 		);
+
+		// Get theme usage duration
+		$usage_data = inspiro_get_theme_usage_duration();
 
 		// Pass data to JavaScript.
 		wp_localize_script(
@@ -127,6 +130,7 @@ class Inspiro_Theme_Deactivation {
 				'ajaxUrl'             => admin_url( 'admin-ajax.php' ),
 				'nonce'               => wp_create_nonce( 'inspiro_deactivation_survey' ),
 				'remoteApiUrl'        => 'https://ai.wpzoom.com/simple-survey-endpoint.php', // Simple standalone endpoint
+				'usageData'           => $usage_data,
 			)
 		);
 
@@ -160,6 +164,9 @@ class Inspiro_Theme_Deactivation {
 		// Check consent status
 		$has_consent = filter_var( $_POST['user_consent'] ?? false, FILTER_VALIDATE_BOOLEAN );
 		
+		// Get current usage duration for the survey
+		$usage_data = inspiro_get_theme_usage_duration();
+		
 		$survey_data = array(
 			'choices'                           => sanitize_text_field( $_POST['choices'] ?? '' ),
 			'choice_technical_issues_text'      => sanitize_textarea_field( $_POST['choice_technical_issues_text'] ?? '' ),
@@ -182,6 +189,10 @@ class Inspiro_Theme_Deactivation {
 			'switching_to_theme'                => sanitize_text_field( $_POST['switching_to_theme'] ?? '' ),
 			'user_consent'                      => $has_consent,
 			'timestamp'                         => current_time( 'mysql' ),
+			'usage_duration_seconds'            => $usage_data['usage_seconds'] ?? 0,
+			'usage_duration_days'               => $usage_data['usage_days'] ?? 0,
+			'usage_duration_formatted'          => $usage_data['formatted'] ?? 'Unknown',
+			'theme_activated_at'                => $usage_data['activated_at'] ?? null,
 		);
 
 		// Only include admin email if user consented

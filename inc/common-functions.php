@@ -586,6 +586,9 @@ add_action('after_setup_theme', 'inspiro_set_fresh_site_mods');
  * @param WP_Theme $old_theme Instance of the old theme
  */
 function inspiro_after_switch_theme($old_name, $old_theme) {
+    // Store theme activation timestamp for usage tracking
+    update_option('inspiro_theme_activated_at', current_time('timestamp'));
+    
     // Don't run on fresh sites as that's handled by inspiro_set_fresh_site_mods
     if (!get_option('fresh_site')) {
         // Only set if the setting hasn't been explicitly set before
@@ -595,3 +598,58 @@ function inspiro_after_switch_theme($old_name, $old_theme) {
     }
 }
 add_action('after_switch_theme', 'inspiro_after_switch_theme', 10, 2);
+
+/**
+ * Get theme usage duration in human-readable format.
+ *
+ * @return array Array with usage time data or null if not available
+ */
+function inspiro_get_theme_usage_duration() {
+    $activated_at = get_option('inspiro_theme_activated_at');
+    
+    if (!$activated_at) {
+        return null;
+    }
+    
+    $current_time = current_time('timestamp');
+    $usage_seconds = $current_time - $activated_at;
+    
+    // Convert to days, hours, minutes
+    $days = floor($usage_seconds / DAY_IN_SECONDS);
+    $hours = floor(($usage_seconds % DAY_IN_SECONDS) / HOUR_IN_SECONDS);
+    $minutes = floor(($usage_seconds % HOUR_IN_SECONDS) / MINUTE_IN_SECONDS);
+    
+    return array(
+        'activated_at' => $activated_at,
+        'current_time' => $current_time,
+        'usage_seconds' => $usage_seconds,
+        'usage_days' => $days,
+        'usage_hours' => $hours,
+        'usage_minutes' => $minutes,
+        'formatted' => inspiro_format_usage_duration($days, $hours, $minutes)
+    );
+}
+
+/**
+ * Format usage duration into human-readable string.
+ *
+ * @param int $days Days
+ * @param int $hours Hours  
+ * @param int $minutes Minutes
+ * @return string Formatted duration string
+ */
+function inspiro_format_usage_duration($days, $hours, $minutes) {
+    if ($days > 0) {
+        return sprintf(
+            _n('%d day', '%d days', $days, 'inspiro'), $days
+        ) . ($hours > 0 ? sprintf(', %d %s', $hours, _n('hour', 'hours', $hours, 'inspiro')) : '');
+    } elseif ($hours > 0) {
+        return sprintf(
+            _n('%d hour', '%d hours', $hours, 'inspiro'), $hours
+        ) . ($minutes > 0 ? sprintf(', %d %s', $minutes, _n('minute', 'minutes', $minutes, 'inspiro')) : '');
+    } elseif ($minutes > 0) {
+        return sprintf(_n('%d minute', '%d minutes', $minutes, 'inspiro'), $minutes);
+    } else {
+        return __('Less than a minute', 'inspiro');
+    }
+}
