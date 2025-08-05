@@ -117,6 +117,12 @@ function inspiro_body_classes( $classes ) {
 	$colors    = inspiro_sanitize_colorscheme( inspiro_get_theme_mod( 'colorscheme' ) );
 	$classes[] = 'colors-' . $colors;
 
+	// Add demo layout class if set
+	$demo_layout = get_option( 'inspiro_demo_layout' );
+	if ( ! empty( $demo_layout ) ) {
+		$classes[] = 'layout-' . sanitize_html_class( $demo_layout );
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'inspiro_body_classes' );

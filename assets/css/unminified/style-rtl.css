@@ -2377,6 +2377,45 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
 }
 
 /*--------------------------------------------------------------
+13.1.1 Demo Layouts
+--------------------------------------------------------------*/
+/**
+ * Demo-specific layout styles
+ * Each demo can have its own custom styles by using the layout-{demo-name} class on the body
+ */
+/* Remix Demo Layout */
+.layout-remix.has-header-image .site-header.headroom--top .navbar-brand,
+.layout-remix.has-header-image .site-header.headroom--top .navbar-brand a,
+.layout-remix.has-header-image .site-header.headroom--top a.custom-logo-text, .layout-remix.has-header-video .site-header.headroom--top .navbar-brand,
+.layout-remix.has-header-video .site-header.headroom--top .navbar-brand a,
+.layout-remix.has-header-video .site-header.headroom--top a.custom-logo-text, .layout-remix.page-template-template-page-builder .site-header.headroom--top .navbar-brand,
+.layout-remix.page-template-template-page-builder .site-header.headroom--top .navbar-brand a,
+.layout-remix.page-template-template-page-builder .site-header.headroom--top a.custom-logo-text {
+    color: #ffffff !important;
+}
+.layout-remix.has-header-image .site-header.headroom--top .navbar-nav > li > a,
+.layout-remix.has-header-image .site-header.headroom--top .nav-link, .layout-remix.has-header-video .site-header.headroom--top .navbar-nav > li > a,
+.layout-remix.has-header-video .site-header.headroom--top .nav-link, .layout-remix.page-template-template-page-builder .site-header.headroom--top .navbar-nav > li > a,
+.layout-remix.page-template-template-page-builder .site-header.headroom--top .nav-link {
+    color: #ffffff !important;
+}
+.layout-remix.has-header-image .site-header.headroom--top .navbar-nav .menu-item-has-children .svg-icon, .layout-remix.has-header-video .site-header.headroom--top .navbar-nav .menu-item-has-children .svg-icon, .layout-remix.page-template-template-page-builder .site-header.headroom--top .navbar-nav .menu-item-has-children .svg-icon {
+    fill: #ffffff !important;
+}
+.layout-remix.has-header-image .site-header.headroom--top .btn-open-menu, .layout-remix.has-header-video .site-header.headroom--top .btn-open-menu, .layout-remix.page-template-template-page-builder .site-header.headroom--top .btn-open-menu {
+    color: #ffffff !important;
+}
+.layout-remix.has-header-image .site-header.headroom--top .navbar-toggle .icon-bar, .layout-remix.has-header-video .site-header.headroom--top .navbar-toggle .icon-bar, .layout-remix.page-template-template-page-builder .site-header.headroom--top .navbar-toggle .icon-bar {
+    background-color: #ffffff !important;
+}
+.layout-remix.has-header-image .site-header.headroom--top .search-form__toggle, .layout-remix.has-header-video .site-header.headroom--top .search-form__toggle, .layout-remix.page-template-template-page-builder .site-header.headroom--top .search-form__toggle {
+    color: #ffffff !important;
+}
+.layout-remix.has-header-image .site-header.headroom--top .sb-search-button-open .sb-icon-search .svg-icon, .layout-remix.has-header-video .site-header.headroom--top .sb-search-button-open .sb-icon-search .svg-icon, .layout-remix.page-template-template-page-builder .site-header.headroom--top .sb-search-button-open .sb-icon-search .svg-icon {
+    fill: #ffffff !important;
+}
+
+/*--------------------------------------------------------------
 13.2 Front Page
 --------------------------------------------------------------*/
 /* Front Page - Recent Posts */

@@ -1,0 +1,52 @@
+/**
+ * Demo-specific layout styles
+ * Each demo can have its own custom styles by using the layout-{demo-name} class on the body
+ */
+
+/* Remix Demo Layout */
+.layout-remix {
+	// White text for transparent headers - only when at top (not scrolled)
+	&.has-header-image,
+	&.has-header-video,
+	&.page-template-template-page-builder {
+		.site-header.headroom--top {
+			// Logo and site title
+			.navbar-brand,
+			.navbar-brand a,
+			a.custom-logo-text {
+				color: #ffffff !important;
+			}
+
+			// Navigation menu items
+			.navbar-nav > li > a,
+			.nav-link {
+				color: #ffffff !important;
+			}
+
+			// Submenu dropdown arrow
+			.navbar-nav .menu-item-has-children .svg-icon {
+				fill: #ffffff !important;
+			}
+
+			// Mobile menu button
+			.btn-open-menu {
+				color: #ffffff !important;
+			}
+
+			// Hamburger menu icon bars
+			.navbar-toggle .icon-bar {
+				background-color: #ffffff !important;
+			}
+
+			// Search form toggle button
+			.search-form__toggle {
+				color: #ffffff !important;
+			}
+
+			// Search icon SVG
+			.sb-search-button-open .sb-icon-search .svg-icon {
+				fill: #ffffff !important;
+			}
+		}
+	}
+}
