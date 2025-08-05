@@ -49,6 +49,11 @@ require INSPIRO_THEME_DIR . 'inc/theme-media.php';
 require INSPIRO_THEME_DIR . 'inc/classes/class-inspiro-enqueue-scripts.php';
 
 /**
+ * Starter Content Notice
+ */
+require INSPIRO_THEME_DIR . 'inc/classes/class-inspiro-starter-content-notice.php';
+
+/**
  * Setup custom wp-admin options pages
  */
 require INSPIRO_THEME_DIR . 'inc/classes/class-inspiro-custom-wp-admin-menu.php';
