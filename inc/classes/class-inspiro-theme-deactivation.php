@@ -102,7 +102,7 @@ class Inspiro_Theme_Deactivation {
 
 		$deactivation_labels = array(
 			'privacy_disclaimer' => __( 'Please do not include any personal information in your submission. Please see our <a href="https://www.wpzoom.com/privacy-policy/" target="_blank">privacy policy</a> for details.', 'inspiro' ),
-			'consent_checkbox'   => __( 'I consent to sharing my website address, admin email, and technical details to help WPZOOM improve the Inspiro theme.', 'inspiro' ),
+			'consent_checkbox'   => __( 'I consent to sharing my website technical details to help WPZOOM improve the Inspiro theme.', 'inspiro' ),
 			'skip_deactivate'    => __( 'Skip & Switch Theme', 'inspiro' ),
 			'submit_deactivate'  => __( 'Submit & Switch Theme', 'inspiro' ),
 			'title'              => __( 'Help us improve Inspiro Lite', 'inspiro' ),

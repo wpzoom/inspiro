@@ -362,7 +362,7 @@
 		/**
 		 * Intercept theme activation clicks (when switching away from Inspiro).
 		 */
-		$( document ).on( 'click', '.theme-actions .activate, .theme .theme-actions .button-primary, a[href*="action=activate"]', function( e ) {
+		$( document ).on( 'click', '.theme-actions .activate, a[href*="action=activate"]', function( e ) {
 			// Only show survey if Inspiro is currently active
 			if ( isInspiroActive() ) {
 				var href = $( this ).attr( 'href' );
@@ -370,6 +370,21 @@
 				// Skip if this is an install action (not activate)
 				if ( href && href.indexOf( 'action=install' ) !== -1 ) {
 					return; // Don't intercept install actions
+				}
+				
+				// Skip if this is a live preview action
+				if ( href && ( href.indexOf( 'customize.php' ) !== -1 || href.indexOf( 'return=' ) !== -1 ) ) {
+					return; // Don't intercept live preview actions
+				}
+				
+				// Skip if this button has preview-related classes or text
+				var buttonText = $( this ).text().trim().toLowerCase();
+				var buttonClass = $( this ).attr( 'class' ) || '';
+				if ( buttonText.indexOf( 'preview' ) !== -1 || 
+					 buttonText.indexOf( 'live preview' ) !== -1 ||
+					 buttonText.indexOf( 'customize' ) !== -1 ||
+					 buttonClass.indexOf( 'preview' ) !== -1 ) {
+					return; // Don't intercept preview buttons
 				}
 				
 				// Don't intercept if clicking on Inspiro itself
