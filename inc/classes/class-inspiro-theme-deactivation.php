@@ -193,6 +193,7 @@ class Inspiro_Theme_Deactivation {
 			'usage_duration_days'               => $usage_data['usage_days'] ?? 0,
 			'usage_duration_formatted'          => $usage_data['formatted'] ?? 'Unknown',
 			'theme_activated_at'                => $usage_data['activated_at'] ?? null,
+			'nps_score'                         => intval( $_POST['nps_score'] ?? null ),
 		);
 
 		// Only include admin email if user consented
