@@ -12,19 +12,17 @@ get_header(); ?>
 
 <main id="content" class="clearfix" role="main">
 
-	<div class="builder-wrap">
+	<div class="builder-wrap full-width">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
-			?>
+        <article id="post-<?php the_ID(); ?>">
+
             <div class="entry-content">
                 <?php the_content(); ?>
-            </div>
+            </div><!-- .entry-content -->
 
-		<?php endwhile; // end of the loop. ?>
+        </article><!-- #post-## -->
 
-	</div>
+    </div><!-- .full-width -->
 
 </main><!-- #content -->
 
