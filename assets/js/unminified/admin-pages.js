@@ -217,6 +217,90 @@ jQuery(document).ready(($) => {
 
 	} );
 
+	// Demo selection functionality for importer page
+	$( '.wpz-onboard_content-main-steps' ).on( 'click', 'li[data-import-id] figure', function( event ) {
+		// Only proceed if not clicking on links
+		if ( $( event.target ).is( 'a' ) || $( event.target ).closest( 'a' ).length ) {
+			return;
+		}
+		
+		event.preventDefault();
+		event.stopPropagation();
+
+		const $li = $( this ).closest( 'li[data-import-id]' );
+		const importId = $li.data( 'import-id' );
+		
+		// Toggle selection
+		if ( $li.hasClass( 'selected-demo' ) ) {
+			// Deselect
+			$li.removeClass( 'selected-demo' );
+			
+			// Clear the saved demo
+			$.ajax({
+				url: ajaxurl,
+				type: 'POST',
+				data: {
+					action: 'inspiro_save_selected_demo',
+					demo_id: '',
+					nonce: inspiro_admin_pages_vars.nonce
+				}
+			});
+		} else {
+			// Remove selection from other demos
+			$( '.wpz-onboard_content-main-steps li[data-import-id]' ).removeClass( 'selected-demo' );
+			
+			// Select this demo
+			$li.addClass( 'selected-demo' );
+			
+			// Save the selected demo using the actual import_id
+			$.ajax({
+				url: ajaxurl,
+				type: 'POST',
+				data: {
+					action: 'inspiro_save_selected_demo',
+					demo_id: importId,
+					nonce: inspiro_admin_pages_vars.nonce
+				},
+				success: function( response ) {
+					if ( response.success ) {
+						// Show a subtle notification
+						const $notification = $( '<div class="demo-selected-notification">Demo layout applied! Refresh your site to see the changes.</div>' );
+						$( 'body' ).append( $notification );
+						$notification.fadeIn( 300 ).delay( 3000 ).fadeOut( 300, function() {
+							$( this ).remove();
+						});
+					}
+				}
+			});
+		}
+	});
+
+	// Highlight currently selected demo on page load
+	$( document ).ready( function() {
+		const selectedDemo = inspiro_admin_pages_vars.selected_demo;
+		if ( selectedDemo ) {
+			// Find the demo with matching layout name
+			$( '.wpz-onboard_content-main-steps li[data-import-id]' ).each( function() {
+				const $li = $( this );
+				const importId = $li.data( 'import-id' );
+				
+				// Extract the layout name from import_id (e.g., 'inspiro-lite-remix' -> 'remix')
+				let layoutName = '';
+				if ( importId ) {
+					if ( importId.indexOf( 'inspiro-lite-' ) === 0 ) {
+						layoutName = importId.replace( 'inspiro-lite-', '' );
+					} else if ( importId.indexOf( 'inspiro-' ) === 0 ) {
+						layoutName = importId.replace( 'inspiro-', '' );
+					}
+				}
+				
+				if ( layoutName === selectedDemo ) {
+					$li.addClass( 'selected-demo' );
+				}
+			});
+		}
+	});
+
 });
 
 

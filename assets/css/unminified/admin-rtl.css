@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .inspiro-notice {
     position: relative;
 }
@@ -1575,4 +1576,50 @@
 
 #setting-error-tgmpa.notice-warning {
     border-right-color: #7e8c93;
+}
+
+/* Demo selection styles for importer */
+.wpz-onboard_content-main-steps li[data-import-id] figure {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.wpz-onboard_content-main-steps li[data-import-id]:hover figure {
+    transform: translateY(-2px);
+}
+
+.wpz-onboard_content-main-steps li[data-import-id].selected-demo figure::after {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #0073aa;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Notification for demo selection */
+.demo-selected-notification {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    background: #0073aa;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: none;
+    font-size: 14px;
+    max-width: 300px;
 }

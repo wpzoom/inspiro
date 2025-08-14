@@ -57,6 +57,7 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 					'installingText'  => esc_html__( 'Installing...', 'inspiro' ),
 					'redirectingText' => esc_html__( 'Redirecting...', 'inspiro' ),
 					'import_url'      => esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ),
+					'selected_demo'   => get_option( 'inspiro_demo_layout', '' ),
 				) );
 		
 				wp_enqueue_script( 'jquery-ui' );
