@@ -140,7 +140,7 @@ jQuery(document).ready(($) => {
 			url: ajaxurl,
 			data:        {
 				action: 'inspiro_install_plugin',
-				//security: ocdi.ajax_nonce,
+				security: inspiro_admin_pages_vars.nonce,
 				slug: slug,
 			},
 			beforeSend:  function() {

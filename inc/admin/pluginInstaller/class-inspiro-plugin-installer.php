@@ -66,7 +66,10 @@ if ( ! class_exists( 'Inspiro_Plugin_Installer' ) ) {
 
 		function inspiro_install_plugin() {
 
-			//check_ajax_referer( 'inspiro-ajax-verification', 'security' );
+			// Verify nonce for CSRF protection
+			if ( ! isset( $_POST['security'] ) || ! wp_verify_nonce( $_POST['security'], 'inspiro-admin-pages' ) ) {
+				wp_send_json_error( esc_html__( 'Security verification failed. Please refresh the page and try again.', 'inspiro' ) );
+			}
 		
 			// Check if user has the WP capability to install plugins.
 			if ( ! current_user_can( 'install_plugins' ) ) {
