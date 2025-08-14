@@ -52,10 +52,10 @@ function inspiro_has_dismissed_banner() {
  */
 function dismiss_inspiro_black_friday_banner() {
 	// Check the nonce
-//	if ( !isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'inspiro_bf_nonce') ) {
-//		wp_send_json_error('Invalid nonce');
-//		exit;
-//	}
+	if ( !isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'inspiro_bf_nonce') ) {
+		wp_send_json_error('Invalid nonce');
+		exit;
+	}
 	update_user_meta(get_current_user_id(), BF_DISMISS_BANNER_ACTION, true);
 	wp_send_json_success();
 }
@@ -269,9 +269,10 @@ function inspiro_display_black_friday_banner() {
 			jQuery(document).on('click', '#inspiro-bf-banner-container button.notice-dismiss', function (e) {
 				jQuery.ajax({
 					url: ajaxurl,
-					type: 'GET',
+					type: 'POST',
 					data: {
 						action: 'inspiro_dismiss_bf_banner',
+						nonce: '<?php echo wp_create_nonce( 'inspiro_bf_nonce' ); ?>',
 					},
 					// data: Your Data Here,
 					// success: function(response) {

@@ -62,6 +62,11 @@ if ( ! class_exists( 'Inspiro_Customizer_Guided_Tour' ) ) {
 		 * @since 1.9.4
 		 */
 		public function ajax_handler() {
+			// Verify nonce for CSRF protection
+			if ( ! isset( $_POST['security'] ) || ! wp_verify_nonce( $_POST['security'], 'inspiro-guided-tour' ) ) {
+				wp_send_json_error( 'Security verification failed. Please refresh the page and try again.' );
+			}
+
 			$response_message       = 'No data received';
 			$theme_mode_name        = 'inspiro_guided_tour_checked_status';
 			$is_checked_status_set  = isset( $_POST['checked_status_value'] );
@@ -117,6 +122,9 @@ if ( ! class_exists( 'Inspiro_Customizer_Guided_Tour' ) ) {
 				'wp-backbone'
 			], INSPIRO_THEME_VERSION, true );
 			wp_localize_script( 'inspiro-guided-tour', '_wpCustomizeInspiroGuidedTourSteps', $this->get_guided_tour_steps() );
+			wp_localize_script( 'inspiro-guided-tour', 'inspiroGuidedTourVars', array(
+				'nonce' => wp_create_nonce( 'inspiro-guided-tour' ),
+			) );
 		}
 
 		/**

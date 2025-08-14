@@ -66,7 +66,8 @@
 					method: 'POST',
 					data: {
 						action: 'customize_guided_tour_action',
-						checked_status_value: true
+						checked_status_value: true,
+						security: inspiroGuidedTourVars ? inspiroGuidedTourVars.nonce : ''
 					},
 					// success(response) {
 					// 	if (response.success && response.data) {

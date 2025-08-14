@@ -18,6 +18,7 @@ jQuery(document).ready(($) => {
 			data: {
 				action: ACTION_NAME,
 				plugin_slug: PLUGIN_SLUG,
+				security: inspiro_admin_pages_vars.nonce,
 			},
 			success: () => {
 				spinIcon.addClass('hidden-element');
@@ -71,6 +72,7 @@ jQuery(document).ready(($) => {
 			data: {
 				action: ACTION_NAME,
 				plugin_slug: 'inspiro-starter-sites',
+				security: inspiro_admin_pages_vars.nonce,
 			},
 			success: () => {
 				btn.text( redirectingText );  // Restore original button text

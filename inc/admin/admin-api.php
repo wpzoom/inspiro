@@ -10,7 +10,9 @@
 add_action( 'wp_ajax_install_activate_inspiro_starter_sites_plugin', 'install_activate_inspiro_starter_sites_plugin' );
 function install_activate_inspiro_starter_sites_plugin() {
 	// Check for nonce security
-	//	check_ajax_referer( 'install_activate_inspiro_starter-sites_plugin_nonce', 'nonce' );
+	if ( ! isset( $_POST['security'] ) || ! wp_verify_nonce( $_POST['security'], 'inspiro-admin-pages' ) ) {
+		wp_send_json_error( array( 'message' => 'Security verification failed. Please refresh the page and try again.' ) );
+	}
 
 	// Ensure the user has the capability to install plugins
 	if ( current_user_can( 'install_plugins' ) ) {

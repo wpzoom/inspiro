@@ -13,7 +13,8 @@ jQuery(document).ready(function ($) {
 				// Perform any action after the pointer is closed (like updating user meta to avoid showing it again).
 				$.post(ajaxurl, {
 					action: 'dismiss_wp_pointer',
-					pointer: 'custom_admin_pointer' // Unique identifier for the pointer.
+					pointer: 'custom_admin_pointer', // Unique identifier for the pointer.
+					security: customAdminPointer.nonce
 				})
 				.done(function (response) {
 					console.log('Success:', response);
