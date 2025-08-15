@@ -32,7 +32,8 @@
 			usage_duration_seconds: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.usage_seconds : 0,
 			usage_duration_days: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.usage_days : 0,
 			usage_duration_formatted: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.formatted : 'Unknown',
-			theme_activated_at: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.activated_at : null
+			theme_activated_at: inspiroThemeDeactivateData.usageData ? inspiroThemeDeactivateData.usageData.activated_at : null,
+			nps_score: null // NPS score from 0-10
 		};
 
 		// Initialize text fields for choices that have them.
@@ -92,6 +93,27 @@
 				}
 				modalHtml += '</div>';
 			});
+
+			// Add NPS Section
+			modalHtml += '<div class="inspiro-nps-section">';
+			modalHtml += '<h3 style="margin: 20px 0 10px 0; font-size: 16px; color: #333;">One more quick question:</h3>';
+			modalHtml += '<p style="margin-bottom: 15px; color: #555;">How likely are you to recommend Inspiro to a friend or colleague?</p>';
+			modalHtml += '<div class="inspiro-nps-scale" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">';
+			modalHtml += '<span style="flex: 0 0 auto; font-size: 12px; color: #666; margin-right: 15px;">Not at all likely</span>';
+			modalHtml += '<div class="inspiro-nps-buttons" style="display: flex; gap: 8px;">';
+			for (var i = 0; i <= 5; i++) {
+				modalHtml += '<button type="button" class="inspiro-nps-btn" data-score="' + i + '" style="';
+				modalHtml += 'width: 40px; height: 40px; border: 1px solid #ddd; background: #fff; ';
+				modalHtml += 'border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s;';
+				modalHtml += '">' + i + '</button>';
+			}
+			modalHtml += '</div>';
+			modalHtml += '<span style="flex: 0 0 auto; font-size: 12px; color: #666; margin-left: 15px;">Extremely likely</span>';
+			modalHtml += '</div>';
+			modalHtml += '<div class="inspiro-nps-labels" style="display: flex; justify-content: space-between; font-size: 11px; color: #999; margin-bottom: 15px;">';
+			modalHtml += '<span>Unsatisfied</span><span>Neutral</span><span>Satisfied</span>';
+			modalHtml += '</div>';
+			modalHtml += '</div>';
 
 			modalHtml += '</form>';
 			modalHtml += '</div>';
@@ -204,6 +226,35 @@
 				formData.user_consent = $( this ).is( ':checked' );
 			});
 
+			// Handle NPS button clicks.
+			modal.find( '.inspiro-nps-btn' ).on( 'click', function() {
+				var score = parseInt( $( this ).attr( 'data-score' ) );
+				formData.nps_score = score;
+				
+				// Update button styles
+				modal.find( '.inspiro-nps-btn' ).css({
+					'background': '#fff',
+					'border-color': '#ddd',
+					'color': '#333'
+				});
+				
+				// Highlight selected button with appropriate color for 0-5 scale
+				var buttonColor = '#007cba'; // Default blue
+				if ( score <= 2 ) {
+					buttonColor = '#dc3545'; // Red for unsatisfied (0-2)
+				} else if ( score <= 3 ) {
+					buttonColor = '#ffc107'; // Yellow for neutral (3)
+				} else {
+					buttonColor = '#28a745'; // Green for satisfied (4-5)
+				}
+				
+				$( this ).css({
+					'background': buttonColor,
+					'border-color': buttonColor,
+					'color': '#fff'
+				});
+			});
+
 			// Handle skip button.
 			modal.find( '#inspiro-skip-survey' ).on( 'click', function() {
 				proceedWithDeactivation();
@@ -260,7 +311,8 @@
 				usage_duration_seconds: formData.usage_duration_seconds,
 				usage_duration_days: formData.usage_duration_days,
 				usage_duration_formatted: formData.usage_duration_formatted,
-				theme_activated_at: formData.theme_activated_at
+				theme_activated_at: formData.theme_activated_at,
+				nps_score: formData.nps_score
 			};
 
 			// Only include admin email if user consented

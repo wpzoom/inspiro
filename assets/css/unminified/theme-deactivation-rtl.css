@@ -24,13 +24,34 @@
     background: #fff;
     border-radius: 2px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    max-width: 500px;
+    max-width: 550px;
     width: 90%;
     max-height: 90vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     animation: inspiro-modal-slide-in 0.3s ease-out;
+}
+
+.inspiro-nps-btn[data-score="0"]:hover,
+.inspiro-nps-btn[data-score="1"]:hover,
+.inspiro-nps-btn[data-score="2"]:hover {
+    background: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.inspiro-nps-btn[data-score="3"]:hover {
+    border-color: #ffc107 !important;
+    background: #ffc107 !important;
+    color: #fff !important;
+}
+
+.inspiro-nps-btn[data-score="4"]:hover,
+.inspiro-nps-btn[data-score="5"]:hover {
+    background: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #fff !important;
 }
 
 /* Modal Header */
