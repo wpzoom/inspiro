@@ -477,10 +477,10 @@
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 17.0039C0.246582 16.5897 0.582368 16.2539 0.996582 16.2539H7.9995C8.41371 16.2539 8.7495 16.5897 8.7495 17.0039C8.7495 17.4181 8.41371 17.7539 7.9995 17.7539H0.996582C0.582368 17.7539 0.246582 17.4181 0.246582 17.0039Z" fill="#242628"/>
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 1.99707C0.246582 1.03057 1.03008 0.24707 1.99658 0.24707H16.0032C16.9697 0.24707 17.7532 1.03057 17.7532 1.99707V3.99874C17.7532 4.96523 16.9697 5.74874 16.0032 5.74874H1.99658C1.03008 5.74874 0.246582 4.96523 0.246582 3.99874V1.99707ZM1.99658 1.74707C1.85851 1.74707 1.74658 1.859 1.74658 1.99707V3.99874C1.74658 4.13681 1.85851 4.24874 1.99658 4.24874H16.0032C16.1413 4.24874 16.2532 4.13681 16.2532 3.99874V1.99707C16.2532 1.859 16.1413 1.74707 16.0032 1.74707H1.99658Z" fill="#242628"/>
 					</svg>
-					<?php esc_html_e( 'Multiple Header Layouts', 'inspiro' ); ?>
+					<?php esc_html_e( 'Header Builder', 'inspiro' ); ?> <sup><small><?php esc_html_e( 'NEW', 'inspiro' ); ?></small></sup>
 				</h4>
 				<p class="about">
-					<?php esc_html_e( 'Select from 6 unique Header Styles to customize your website’s top section for a personalized design.', 'inspiro' ); ?>
+					<?php esc_html_e( 'Select from 6 unique Header Styles to customize your website’s header or use the new built-in header builder to design your own header.', 'inspiro' ); ?>
 				</p>
 			</div>
 

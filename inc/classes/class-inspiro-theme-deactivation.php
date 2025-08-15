@@ -201,9 +201,6 @@ class Inspiro_Theme_Deactivation {
 			$survey_data['admin_email'] = sanitize_email( $_POST['admin_email'] ?? '' );
 		}
 
-		// Log the data (you can modify this to send to your analytics service).
-		error_log( 'Inspiro Theme Deactivation Survey: ' . wp_json_encode( $survey_data ) );
-
 		// Store in database option for later retrieval.
 		$existing_data = get_option( 'inspiro_deactivation_surveys', array() );
 		$existing_data[] = $survey_data;
