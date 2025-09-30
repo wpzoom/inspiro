@@ -48,6 +48,91 @@ function inspiro_get_color_palettes() {
 				'color_footer_background'         => '#1a2332',
 			),
 		),
+		'brown' => array(
+			'label'   => esc_html__( 'Brown', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#8b5a3c',  // Primary brown
+				'secondary' => '#a67c52',  // Lighter brown
+				'tertiary'  => '#5d3a22',  // Dark brown
+				'accent'    => '#c89b6e',  // Warm brown accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#8b5a3c',
+				'color_sidebar_widgets_link'      => '#c89b6e',
+				'color_sidebar_widgets_background'=> '#2a1f1a',
+				'color_menu_background'           => '#5d3a22',
+				'color-menu-background-scroll'    => 'rgba(93,58,34,0.95)',
+				'color_footer_background'         => '#2a1f1a',
+			),
+		),
+		'red' => array(
+			'label'   => esc_html__( 'Red', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#c62828',  // Primary red
+				'secondary' => '#e53935',  // Lighter red
+				'tertiary'  => '#8e0000',  // Dark red
+				'accent'    => '#ff5252',  // Bright red accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#c62828',
+				'color_sidebar_widgets_link'      => '#ff5252',
+				'color_sidebar_widgets_background'=> '#2b1616',
+				'color_menu_background'           => '#8e0000',
+				'color-menu-background-scroll'    => 'rgba(142,0,0,0.95)',
+				'color_footer_background'         => '#2b1616',
+			),
+		),
+		'orange' => array(
+			'label'   => esc_html__( 'Orange', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#e65100',  // Primary orange
+				'secondary' => '#ff6f00',  // Lighter orange
+				'tertiary'  => '#bf360c',  // Dark orange
+				'accent'    => '#ff9800',  // Bright orange accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#e65100',
+				'color_sidebar_widgets_link'      => '#ff9800',
+				'color_sidebar_widgets_background'=> '#2d1a0f',
+				'color_menu_background'           => '#bf360c',
+				'color-menu-background-scroll'    => 'rgba(191,54,12,0.95)',
+				'color_footer_background'         => '#2d1a0f',
+			),
+		),
+		'dark-green' => array(
+			'label'   => esc_html__( 'Dark Green', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#2e7d32',  // Primary green
+				'secondary' => '#43a047',  // Lighter green
+				'tertiary'  => '#1b5e20',  // Dark green
+				'accent'    => '#66bb6a',  // Bright green accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#2e7d32',
+				'color_sidebar_widgets_link'      => '#66bb6a',
+				'color_sidebar_widgets_background'=> '#1a2820',
+				'color_menu_background'           => '#1b5e20',
+				'color-menu-background-scroll'    => 'rgba(27,94,32,0.95)',
+				'color_footer_background'         => '#1a2820',
+			),
+		),
+		'purple' => array(
+			'label'   => esc_html__( 'Purple', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#6a1b9a',  // Primary purple
+				'secondary' => '#8e24aa',  // Lighter purple
+				'tertiary'  => '#4a148c',  // Dark purple
+				'accent'    => '#ab47bc',  // Bright purple accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#6a1b9a',
+				'color_sidebar_widgets_link'      => '#ab47bc',
+				'color_sidebar_widgets_background'=> '#221a28',
+				'color_menu_background'           => '#4a148c',
+				'color-menu-background-scroll'    => 'rgba(74,20,140,0.95)',
+				'color_footer_background'         => '#221a28',
+			),
+		),
 	);
 
 	/**

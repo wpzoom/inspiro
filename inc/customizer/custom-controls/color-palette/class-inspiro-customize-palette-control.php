@@ -66,9 +66,10 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 
 			foreach ( $palettes as $palette_id => $palette_info ) {
 				$data[ $palette_id ] = array(
-					'id'     => $palette_id,
-					'label'  => $palette_info['label'],
-					'colors' => $palette_info['colors'],
+					'id'          => $palette_id,
+					'label'       => $palette_info['label'],
+					'colors'      => $palette_info['colors'],
+					'theme_colors'=> isset( $palette_info['theme_colors'] ) ? $palette_info['theme_colors'] : array(),
 				);
 			}
 

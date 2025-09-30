@@ -176,37 +176,8 @@
 			const $input = $container.find('.inspiro-palette-input');
 			const $options = $container.find('.inspiro-palette-option');
 
-			// Palette color definitions (matching the PHP palettes)
-			const palettes = {
-				'default': {
-					primary:   '#0bb4aa',
-					secondary: '#5ec5bd',
-					tertiary:  '#37746F',
-					accent:    '#0bb4aa',
-					theme_colors: {
-						'colorscheme_hex':                  '#0bb4aa',
-						'color_sidebar_widgets_link':       '#0bb4aa',
-						'color_sidebar_widgets_background': '#37746F',
-						'color_menu_background':            '#101010',
-						'color-menu-background-scroll':     'rgba(16,16,16,0.9)',
-						'color_footer_background':          '#101010'
-					}
-				},
-				'blue': {
-					primary:   '#2d70b8',
-					secondary: '#4a8fd4',
-					tertiary:  '#1e4d7a',
-					accent:    '#42a5f5',
-					theme_colors: {
-						'colorscheme_hex':                  '#2d70b8',
-						'color_sidebar_widgets_link':       '#42a5f5',
-						'color_sidebar_widgets_background': '#1a2332',
-						'color_menu_background':            '#1e4d7a',
-						'color-menu-background-scroll':     'rgba(30,77,122,0.95)',
-						'color_footer_background':          '#1a2332'
-					}
-				}
-			};
+			// Get palette data from control params (passed from PHP)
+			const palettes = control.params.palettes || {};
 
 			// Handle palette selection
 			$options.on('click', function () {
