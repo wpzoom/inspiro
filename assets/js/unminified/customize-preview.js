@@ -397,13 +397,29 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 					primary:   '#0bb4aa',
 					secondary: '#5ec5bd',
 					tertiary:  '#37746F',
-					accent:    '#0bb4aa'
+					accent:    '#0bb4aa',
+					theme_colors: {
+						'colorscheme_hex':                  '#0bb4aa',
+						'color_sidebar_widgets_link':       '#0bb4aa',
+						'color_sidebar_widgets_background': '#37746F',
+						'color_menu_background':            '#101010',
+						'color-menu-background-scroll':     'rgba(16,16,16,0.9)',
+						'color_footer_background':          '#101010'
+					}
 				},
 				'blue': {
 					primary:   '#2d70b8',
 					secondary: '#4a8fd4',
 					tertiary:  '#1e4d7a',
-					accent:    '#42a5f5'
+					accent:    '#42a5f5',
+					theme_colors: {
+						'colorscheme_hex':                  '#2d70b8',
+						'color_sidebar_widgets_link':       '#42a5f5',
+						'color_sidebar_widgets_background': '#1a2332',
+						'color_menu_background':            '#1e4d7a',
+						'color-menu-background-scroll':     'rgba(30,77,122,0.95)',
+						'color_footer_background':          '#1a2332'
+					}
 				}
 			};
 
@@ -436,10 +452,37 @@ body {
 			// Update the style tag
 			style.html(css).data('palette', paletteId).data('hex', palette.primary);
 
-			// Also update the colorscheme_hex data attribute for consistency
-			// This ensures the custom color picker stays in sync
-			if (wp.customize('colorscheme_hex')) {
-				wp.customize('colorscheme_hex').set(palette.primary);
+			// Apply all theme colors from the palette
+			if (palette.theme_colors) {
+				// Update sidebar widget link color
+				if (palette.theme_colors.color_sidebar_widgets_link) {
+					$(':root :where(.side-nav__wrap a:where(:not(.wp-element-button)))').css('color', palette.theme_colors.color_sidebar_widgets_link);
+				}
+
+				// Update sidebar background
+				if (palette.theme_colors.color_sidebar_widgets_background) {
+					$('.side-nav__scrollable-container').css('background', palette.theme_colors.color_sidebar_widgets_background);
+				}
+
+				// Update menu background
+				if (palette.theme_colors.color_menu_background) {
+					$('.navbar').css('background-color', palette.theme_colors.color_menu_background);
+				}
+
+				// Update menu background on scroll
+				if (palette.theme_colors['color-menu-background-scroll']) {
+					$('.headroom--not-top .navbar').css('background', palette.theme_colors['color-menu-background-scroll']);
+				}
+
+				// Update footer background
+				if (palette.theme_colors.color_footer_background) {
+					$('.site-footer').css('background-color', palette.theme_colors.color_footer_background);
+				}
+
+				// Update colorscheme_hex setting for sync
+				if (wp.customize('colorscheme_hex')) {
+					wp.customize('colorscheme_hex').set(palette.theme_colors.colorscheme_hex);
+				}
 			}
 		});
 	});

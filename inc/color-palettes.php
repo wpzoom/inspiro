@@ -22,6 +22,14 @@ function inspiro_get_color_palettes() {
 				'tertiary'  => '#37746F',  // Dark teal
 				'accent'    => '#0bb4aa',  // Accent color (same as primary for default)
 			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#0bb4aa',
+				'color_sidebar_widgets_link'      => '#0bb4aa',
+				'color_sidebar_widgets_background'=> '#37746F',
+				'color_menu_background'           => '#101010',
+				'color-menu-background-scroll'    => 'rgba(16,16,16,0.9)',
+				'color_footer_background'         => '#101010',
+			),
 		),
 		'blue' => array(
 			'label'   => esc_html__( 'Blue', 'inspiro' ),
@@ -30,6 +38,14 @@ function inspiro_get_color_palettes() {
 				'secondary' => '#4a8fd4',  // Lighter blue
 				'tertiary'  => '#1e4d7a',  // Dark blue
 				'accent'    => '#42a5f5',  // Bright blue accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#2d70b8',
+				'color_sidebar_widgets_link'      => '#42a5f5',
+				'color_sidebar_widgets_background'=> '#1a2332',
+				'color_menu_background'           => '#1e4d7a',
+				'color-menu-background-scroll'    => 'rgba(30,77,122,0.95)',
+				'color_footer_background'         => '#1a2332',
 			),
 		),
 	);

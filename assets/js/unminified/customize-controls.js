@@ -182,13 +182,29 @@
 					primary:   '#0bb4aa',
 					secondary: '#5ec5bd',
 					tertiary:  '#37746F',
-					accent:    '#0bb4aa'
+					accent:    '#0bb4aa',
+					theme_colors: {
+						'colorscheme_hex':                  '#0bb4aa',
+						'color_sidebar_widgets_link':       '#0bb4aa',
+						'color_sidebar_widgets_background': '#37746F',
+						'color_menu_background':            '#101010',
+						'color-menu-background-scroll':     'rgba(16,16,16,0.9)',
+						'color_footer_background':          '#101010'
+					}
 				},
 				'blue': {
 					primary:   '#2d70b8',
 					secondary: '#4a8fd4',
 					tertiary:  '#1e4d7a',
-					accent:    '#42a5f5'
+					accent:    '#42a5f5',
+					theme_colors: {
+						'colorscheme_hex':                  '#2d70b8',
+						'color_sidebar_widgets_link':       '#42a5f5',
+						'color_sidebar_widgets_background': '#1a2332',
+						'color_menu_background':            '#1e4d7a',
+						'color-menu-background-scroll':     'rgba(30,77,122,0.95)',
+						'color_footer_background':          '#1a2332'
+					}
 				}
 			};
 
@@ -204,9 +220,16 @@
 				// Update setting
 				control.setting.set(paletteId);
 
-				// Update the custom accent color to match the palette's primary color
-				if (palettes[paletteId] && api.control('colorscheme_hex')) {
-					api('colorscheme_hex').set(palettes[paletteId].primary);
+				// Update all theme colors from the palette
+				if (palettes[paletteId] && palettes[paletteId].theme_colors) {
+					const themeColors = palettes[paletteId].theme_colors;
+
+					// Loop through each color setting and update it
+					$.each(themeColors, function(settingId, colorValue) {
+						if (api(settingId)) {
+							api(settingId).set(colorValue);
+						}
+					});
 				}
 			});
 
