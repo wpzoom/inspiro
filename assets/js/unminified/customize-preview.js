@@ -434,7 +434,13 @@ body {
 `;
 
 			// Update the style tag
-			style.html(css).data('palette', paletteId);
+			style.html(css).data('palette', paletteId).data('hex', palette.primary);
+
+			// Also update the colorscheme_hex data attribute for consistency
+			// This ensures the custom color picker stays in sync
+			if (wp.customize('colorscheme_hex')) {
+				wp.customize('colorscheme_hex').set(palette.primary);
+			}
 		});
 	});
 

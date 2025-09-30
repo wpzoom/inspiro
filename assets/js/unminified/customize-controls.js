@@ -176,6 +176,22 @@
 			const $input = $container.find('.inspiro-palette-input');
 			const $options = $container.find('.inspiro-palette-option');
 
+			// Palette color definitions (matching the PHP palettes)
+			const palettes = {
+				'default': {
+					primary:   '#0bb4aa',
+					secondary: '#5ec5bd',
+					tertiary:  '#37746F',
+					accent:    '#0bb4aa'
+				},
+				'blue': {
+					primary:   '#2d70b8',
+					secondary: '#4a8fd4',
+					tertiary:  '#1e4d7a',
+					accent:    '#42a5f5'
+				}
+			};
+
 			// Handle palette selection
 			$options.on('click', function () {
 				const $option = $(this);
@@ -187,6 +203,11 @@
 
 				// Update setting
 				control.setting.set(paletteId);
+
+				// Update the custom accent color to match the palette's primary color
+				if (palettes[paletteId] && api.control('colorscheme_hex')) {
+					api('colorscheme_hex').set(palettes[paletteId].primary);
+				}
 			});
 
 			// Update UI when setting changes externally
