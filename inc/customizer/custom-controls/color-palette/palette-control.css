@@ -70,6 +70,7 @@
 	display: flex;
 	gap: 4px;
 	flex-wrap: wrap;
+    padding-left: 15px;
 }
 
 .inspiro-palette-color {
@@ -80,6 +81,7 @@
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 	transition: transform 0.2s ease;
 	cursor: pointer;
+    margin-left: -15px;
 }
 
 .inspiro-palette-color:hover {
