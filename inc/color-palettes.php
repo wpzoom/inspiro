@@ -144,3 +144,52 @@ body {
 	 */
 	return apply_filters( 'inspiro_palette_colors_css', $css );
 }
+
+/**
+ * Filter theme.json to dynamically update the Secondary color based on customizer settings
+ *
+ * @since Inspiro 2.2.0
+ * @param WP_Theme_JSON_Data $theme_json Theme JSON data object
+ * @return WP_Theme_JSON_Data Modified theme JSON data
+ */
+function inspiro_filter_theme_json_secondary_color( $theme_json ) {
+	$data = $theme_json->get_data();
+
+	// Get the accent color from Customizer
+	$accent_color = get_theme_mod( 'colorscheme_hex', '#0bb4aa' );
+
+	// Validate it's a hex color
+	if ( empty( $accent_color ) || ! preg_match( '/^#([0-9a-f]{3}){1,2}$/i', $accent_color ) ) {
+		$accent_color = '#0bb4aa'; // Default teal color
+	}
+
+	// Replace the entire palette with accent color in Secondary position
+	$custom_palette = array(
+		array( 'color' => '#101010', 'name' => 'Primary', 'slug' => 'primary' ),
+		array( 'color' => $accent_color, 'name' => 'Secondary', 'slug' => 'secondary' ),
+		array( 'color' => '#101010', 'name' => 'Header & Footer', 'slug' => 'header-footer' ),
+		array( 'color' => '#6C6C77', 'name' => 'Tertiary', 'slug' => 'tertiary' ),
+		array( 'color' => '#D9D9D9', 'name' => 'LightGrey', 'slug' => 'lightgrey' ),
+		array( 'color' => '#000', 'name' => 'Foreground', 'slug' => 'foreground' ),
+		array( 'color' => '#f9fafd', 'name' => 'Background', 'slug' => 'background' ),
+		array( 'color' => '#ffffff', 'name' => 'White', 'slug' => 'white' ),
+		array( 'color' => '#ffffff', 'name' => 'Light Background', 'slug' => 'light-background' ),
+	);
+
+	$data['settings']['color']['palette'] = $custom_palette;
+
+	return new WP_Theme_JSON_Data( $data, 'theme' );
+}
+add_filter( 'wp_theme_json_data_theme', 'inspiro_filter_theme_json_secondary_color' );
+
+/**
+ * Clear theme.json cache when customizer settings change
+ *
+ * @since Inspiro 2.2.0
+ */
+function inspiro_clear_theme_json_cache() {
+	if ( function_exists( 'wp_clean_theme_json_cache' ) ) {
+		wp_clean_theme_json_cache();
+	}
+}
+add_action( 'customize_save_after', 'inspiro_clear_theme_json_cache' );
