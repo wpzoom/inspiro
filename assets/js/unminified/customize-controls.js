@@ -199,6 +199,15 @@
 					$.each(themeColors, function(settingId, colorValue) {
 						if (api(settingId)) {
 							api(settingId).set(colorValue);
+
+							// Trigger alpha color picker to update its visual preview
+							const $colorControl = api.control(settingId);
+							if ($colorControl && $colorControl.container) {
+								const $input = $colorControl.container.find('.zoom-alpha-color-picker');
+								if ($input.length) {
+									$input.val(colorValue).trigger('change');
+								}
+							}
 						}
 					});
 				}
