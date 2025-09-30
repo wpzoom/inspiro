@@ -25,7 +25,7 @@ function inspiro_get_color_palettes() {
 			'theme_colors' => array(
 				'colorscheme_hex'                 => '#0bb4aa',
 				'color_sidebar_widgets_link'      => '#0bb4aa',
-				'color_sidebar_widgets_background'=> '#37746F',
+				'color_sidebar_widgets_background'=> '#101010',
 				'color_menu_background'           => '#101010',
 				'color-menu-background-scroll'    => 'rgba(16,16,16,0.9)',
 				'color_footer_background'         => '#101010',
