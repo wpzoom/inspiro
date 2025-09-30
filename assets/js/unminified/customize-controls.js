@@ -168,6 +168,35 @@
 		}
 	});
 
+	// Palette Selector Control
+	api.controlConstructor['inspiro-palette'] = api.Control.extend({
+		ready() {
+			const control = this;
+			const $container = this.container;
+			const $input = $container.find('.inspiro-palette-input');
+			const $options = $container.find('.inspiro-palette-option');
+
+			// Handle palette selection
+			$options.on('click', function () {
+				const $option = $(this);
+				const paletteId = $option.data('palette');
+
+				// Update UI
+				$options.removeClass('selected');
+				$option.addClass('selected');
+
+				// Update setting
+				control.setting.set(paletteId);
+			});
+
+			// Update UI when setting changes externally
+			control.setting.bind(function (value) {
+				$options.removeClass('selected');
+				$container.find('.inspiro-palette-option[data-palette="' + value + '"]').addClass('selected');
+			});
+		}
+	});
+
 
 	// Accordion UI Control class
 	// todo: script changes, improvements

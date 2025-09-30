@@ -277,6 +277,14 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 					'callback' => 'Inspiro_Customize_Copyright_WP_Editor_Control',
 				)
 			);
+
+			Inspiro_Customizer_Control_Base::register_custom_control(
+				'inspiro-palette',
+				array(
+					'callback'          => 'Inspiro_Customize_Palette_Control',
+					'sanitize_callback' => 'inspiro_sanitize_color_palette',
+				)
+			);
 		}
 
 		/**

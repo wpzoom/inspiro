@@ -1,0 +1,107 @@
+/**
+ * Visual Palette Selector Control Styles
+ *
+ * @package Inspiro
+ * @since Inspiro 2.2.0
+ */
+
+.inspiro-palette-control-wrapper {
+	margin-top: 12px;
+}
+
+.inspiro-palette-options {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+	margin-top: 8px;
+}
+
+.inspiro-palette-option {
+	background: #fff;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	padding: 12px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	position: relative;
+}
+
+.inspiro-palette-option:hover {
+	border-color: #2271b1;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+}
+
+.inspiro-palette-option.selected {
+	border-color: #2271b1;
+	border-width: 3px;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+.inspiro-palette-option.selected::after {
+	content: "✓";
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	background: #2271b1;
+	color: #fff;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.inspiro-palette-header {
+	margin-bottom: 10px;
+}
+
+.inspiro-palette-label {
+	font-size: 13px;
+	font-weight: 600;
+	color: #1d2327;
+	display: block;
+}
+
+.inspiro-palette-colors {
+	display: flex;
+	gap: 4px;
+	flex-wrap: wrap;
+}
+
+.inspiro-palette-color {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease;
+	cursor: pointer;
+}
+
+.inspiro-palette-color:hover {
+	transform: scale(1.15);
+	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 782px) {
+	.inspiro-palette-options {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Single column layout for smaller customizer panels */
+@media (max-width: 640px) {
+	.inspiro-palette-colors {
+		justify-content: flex-start;
+	}
+
+	.inspiro-palette-color {
+		width: 28px;
+		height: 28px;
+	}
+}
