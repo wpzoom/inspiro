@@ -167,6 +167,23 @@ function inspiro_get_color_palettes() {
 				'color_footer_background'         => '#1f2a2e',
 			),
 		),
+		'beige-cream' => array(
+			'label'   => esc_html__( 'Beige Cream', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#d4a574',  // Primary beige
+				'secondary' => '#e8c9a1',  // Lighter cream
+				'tertiary'  => '#b08968',  // Dark beige
+				'accent'    => '#f0dcc4',  // Bright cream accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#d4a574',
+				'color_sidebar_widgets_link'      => '#b08968',
+				'color_sidebar_widgets_background'=> '#2a2520',
+				'color_menu_background'           => '#b08968',
+				'color-menu-background-scroll'    => 'rgba(176,137,104,0.95)',
+				'color_footer_background'         => '#2a2520',
+			),
+		),
 	);
 
 	/**
