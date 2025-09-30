@@ -133,6 +133,40 @@ function inspiro_get_color_palettes() {
 				'color_footer_background'         => '#221a28',
 			),
 		),
+		'coral' => array(
+			'label'   => esc_html__( 'Coral', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#ff6f61',  // Primary coral
+				'secondary' => '#ff8a80',  // Lighter coral
+				'tertiary'  => '#d84a3d',  // Dark coral
+				'accent'    => '#ffa599',  // Bright coral accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#ff6f61',
+				'color_sidebar_widgets_link'      => '#ffa599',
+				'color_sidebar_widgets_background'=> '#2d1d1b',
+				'color_menu_background'           => '#d84a3d',
+				'color-menu-background-scroll'    => 'rgba(216,74,61,0.95)',
+				'color_footer_background'         => '#2d1d1b',
+			),
+		),
+		'grey-blue' => array(
+			'label'   => esc_html__( 'Grey Blue', 'inspiro' ),
+			'colors'  => array(
+				'primary'   => '#546e7a',  // Primary grey-blue
+				'secondary' => '#78909c',  // Lighter grey-blue
+				'tertiary'  => '#37474f',  // Dark grey-blue
+				'accent'    => '#90a4ae',  // Bright grey-blue accent
+			),
+			'theme_colors' => array(
+				'colorscheme_hex'                 => '#546e7a',
+				'color_sidebar_widgets_link'      => '#90a4ae',
+				'color_sidebar_widgets_background'=> '#1f2a2e',
+				'color_menu_background'           => '#37474f',
+				'color-menu-background-scroll'    => 'rgba(55,71,79,0.95)',
+				'color_footer_background'         => '#1f2a2e',
+			),
+		),
 	);
 
 	/**
