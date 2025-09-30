@@ -32,6 +32,13 @@ class Inspiro_Color_Scheme_Config {
 	 * @return array
 	 */
 	public static function config() {
+		// Get available palettes for choices
+		$palettes = inspiro_get_color_palettes();
+		$palette_choices = array();
+		foreach ( $palettes as $palette_id => $palette_data ) {
+			$palette_choices[ $palette_id ] = $palette_data['label'];
+		}
+
 		return array(
 			'setting' => array(
 				array(
@@ -40,6 +47,14 @@ class Inspiro_Color_Scheme_Config {
 						'default'           => 'light',
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_colorscheme',
+					),
+				),
+				array(
+					'id'   => 'color_palette',
+					'args' => array(
+						'default'           => 'default',
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_color_palette',
 					),
 				),
 				array(
@@ -55,23 +70,37 @@ class Inspiro_Color_Scheme_Config {
 				array(
 					'id'   => 'colorscheme',
 					'args' => array(
-						'type'     => 'radio',
-						'label'    => esc_html__( 'Color Scheme', 'inspiro' ),
-						'choices'  => array(
+						'type'        => 'radio',
+						'label'       => esc_html__( 'Color Scheme', 'inspiro' ),
+						'description' => esc_html__( 'Choose between light or dark mode, or use a color palette.', 'inspiro' ),
+						'choices'     => array(
 							'light'  => esc_html__( 'Light', 'inspiro' ),
 							'dark'   => esc_html__( 'Dark', 'inspiro' ),
 							'custom' => esc_html__( 'Custom', 'inspiro' ),
 						),
-						'section'  => 'colors',
-						'priority' => 5,
+						'section'     => 'colors',
+						'priority'    => 5,
+					),
+				),
+				array(
+					'id'   => 'color_palette',
+					'args' => array(
+						'type'        => 'select',
+						'label'       => esc_html__( 'Global Color Palette', 'inspiro' ),
+						'description' => esc_html__( 'Select a predefined color palette that will update multiple color options throughout your site (primary, secondary, tertiary, accent colors).', 'inspiro' ),
+						'choices'     => $palette_choices,
+						'section'     => 'colors',
+						'priority'    => 6,
 					),
 				),
 				array(
 					'id'           => 'colorscheme_hex',
 					'control_type' => 'WP_Customize_Color_Control',
 					'args'         => array(
-						'section'  => 'colors',
-						'priority' => 6,
+						'label'       => esc_html__( 'Custom Accent Color', 'inspiro' ),
+						'description' => esc_html__( 'Only applies when "Custom" color scheme is selected above.', 'inspiro' ),
+						'section'     => 'colors',
+						'priority'    => 7,
 					),
 				),
 			),

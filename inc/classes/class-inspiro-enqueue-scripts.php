@@ -131,15 +131,13 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 		 * Display custom color CSS.
 		 */
 		public function colors_css_wrap() {
-			if ( 'custom' !== inspiro_get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
-				return;
-			}
+			$colorscheme = inspiro_get_theme_mod( 'colorscheme' );
+			$hex         = inspiro_get_theme_mod( 'colorscheme_hex' );
+			$palette_id  = get_theme_mod( 'color_palette', 'default' );
 
-			require_once get_parent_theme_file_path( '/inc/color-patterns.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-			$hex = inspiro_get_theme_mod( 'colorscheme_hex' );
 			?>
-			<style type="text/css" id="custom-theme-colors" data-hex="<?php echo esc_attr( $hex ); ?>">
-				<?php echo inspiro_custom_colors_css(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<style type="text/css" id="custom-theme-colors" data-hex="<?php echo esc_attr( $hex ); ?>" data-palette="<?php echo esc_attr( $palette_id ); ?>" data-scheme="<?php echo esc_attr( $colorscheme ); ?>">
+				<?php echo inspiro_palette_colors_css(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</style>
 			<?php
 		}

@@ -388,6 +388,56 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 		});
 	});
 
+	// Color Palette Selection
+	wp.customize('color_palette', function (value) {
+		value.bind(function (paletteId) {
+			// Get palette data from localized script or define palettes
+			const palettes = {
+				'default': {
+					primary:   '#0bb4aa',
+					secondary: '#5ec5bd',
+					tertiary:  '#37746F',
+					accent:    '#0bb4aa'
+				},
+				'blue': {
+					primary:   '#2d70b8',
+					secondary: '#4a8fd4',
+					tertiary:  '#1e4d7a',
+					accent:    '#42a5f5'
+				}
+			};
+
+			// Check if palette exists
+			if (!palettes[paletteId]) {
+				return;
+			}
+
+			const palette = palettes[paletteId];
+			const style = $('#custom-theme-colors');
+
+			// Build new CSS with palette colors
+			let css = `
+/**
+ * Inspiro Lite: Palette Color Scheme
+ */
+
+:root {
+    --inspiro-primary-color: ${palette.primary};
+    --inspiro-secondary-color: ${palette.secondary};
+    --inspiro-tertiary-color: ${palette.tertiary};
+    --inspiro-accent-color: ${palette.accent};
+}
+
+body {
+    --wp--preset--color--secondary: ${palette.primary};
+}
+`;
+
+			// Update the style tag
+			style.html(css).data('palette', paletteId);
+		});
+	});
+
 	// Whether a header image is available.
 	function hasHeaderImage() {
 		const image = wp.customize('header_image')();

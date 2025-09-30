@@ -44,6 +44,11 @@ require INSPIRO_THEME_DIR . 'inc/common-functions.php';
 require INSPIRO_THEME_DIR . 'inc/theme-media.php';
 
 /**
+ * Color Palettes System
+ */
+require INSPIRO_THEME_DIR . 'inc/color-palettes.php';
+
+/**
  * Enqueues scripts and styles
  */
 require INSPIRO_THEME_DIR . 'inc/classes/class-inspiro-enqueue-scripts.php';

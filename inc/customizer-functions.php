@@ -40,6 +40,22 @@ function inspiro_sanitize_colorscheme( $input ) {
 }
 
 /**
+ * Sanitize the color palette selection.
+ *
+ * @param string $input Color palette ID.
+ * @return string
+ */
+function inspiro_sanitize_color_palette( $input ) {
+	$palettes = inspiro_get_color_palettes();
+
+	if ( array_key_exists( $input, $palettes ) ) {
+		return $input;
+	}
+
+	return 'default';
+}
+
+/**
  * Sanitize the display content.
  *
  * @param string $input Content to display.
