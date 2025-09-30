@@ -457,9 +457,15 @@
 		// Also handle delete actions
 		$( document ).on( 'click', 'a[href*="action=delete"]', function( e ) {
 			var href = $( this ).attr( 'href' );
-			
-			// Check if this is for the Inspiro theme.
-			if ( href.indexOf( 'stylesheet=inspiro' ) !== -1 || href.indexOf( 'template=inspiro' ) !== -1 ) {
+
+			// Check if this is for the Inspiro parent theme specifically (not child themes)
+			// The parent theme will have stylesheet=inspiro exactly, not stylesheet=inspiro-child etc.
+			var urlParams = new URLSearchParams( href.split( '?' )[1] );
+			var stylesheet = urlParams.get( 'stylesheet' );
+			var template = urlParams.get( 'template' );
+
+			// Only show survey when deleting the parent Inspiro theme (exact match)
+			if ( stylesheet === 'inspiro' || template === 'inspiro' ) {
 				e.preventDefault();
 				window.inspiroDeactivationHref = href;
 				showModal();
