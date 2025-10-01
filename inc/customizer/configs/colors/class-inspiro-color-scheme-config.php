@@ -87,7 +87,7 @@ class Inspiro_Color_Scheme_Config {
 					'control_type' => 'Inspiro_Customize_Palette_Control',
 					'args'         => array(
 						'label'       => esc_html__( 'Global Color Palette', 'inspiro' ),
-						'description' => esc_html__( 'Select a predefined color palette. Each palette includes primary, secondary, tertiary, and accent colors that will be applied throughout your site.', 'inspiro' ),
+						'description' => esc_html__( 'Select a predefined color palette that will be applied throughout your site.', 'inspiro' ),
 						'section'     => 'colors',
 						'priority'    => 6,
 					),
