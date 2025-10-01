@@ -200,6 +200,11 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
 				require INSPIRO_THEME_DIR . 'inc/starter-content.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 				add_theme_support( 'starter-content', inspiro_get_starter_content() );
 			}
+
+			/*
+			 * Load starter content manager for detection and deletion
+			 */
+			require INSPIRO_THEME_DIR . 'inc/starter-content-manager.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		}
 
 		/**
