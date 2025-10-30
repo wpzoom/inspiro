@@ -76,10 +76,42 @@ function inspiro_has_starter_content() {
 				}
 			}
 
+			// Also check for the front page if it's set and has the starter content meta
+			// The starter content uses 'link_home' instead of 'page_home' in the menu
+			// so the Homepage page won't be detected through menu items
+			$front_page_id = get_option( 'page_on_front' );
+			if ( $front_page_id ) {
+				// Check if it has the WordPress starter content meta
+				$is_starter_content = get_post_meta( $front_page_id, '_customize_starter_content_theme', true );
+				if ( $is_starter_content ) {
+					update_post_meta( $front_page_id, '_inspiro_starter_content', 'yes' );
+					$page_ids[] = $front_page_id;
+				}
+			}
+
 			if ( ! empty( $page_ids ) ) {
 				return $page_ids;
 			}
 		}
+	}
+
+	// Third check: Look for pages with WordPress starter content meta
+	// This catches pages that WordPress created as starter content
+	$starter_query = new WP_Query(
+		array(
+			'post_type'      => 'page',
+			'posts_per_page' => -1,
+			'meta_key'       => '_customize_starter_content_theme',
+			'fields'         => 'ids',
+		)
+	);
+
+	if ( $starter_query->have_posts() ) {
+		// Mark these pages with our custom meta for faster detection next time
+		foreach ( $starter_query->posts as $page_id ) {
+			update_post_meta( $page_id, '_inspiro_starter_content', 'yes' );
+		}
+		return $starter_query->posts;
 	}
 
 	return false;
