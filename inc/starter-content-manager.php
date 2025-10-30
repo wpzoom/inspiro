@@ -76,42 +76,10 @@ function inspiro_has_starter_content() {
 				}
 			}
 
-			// Also check for the front page if it's set and has a matching title
-			// The starter content uses 'link_home' instead of 'page_home' in the menu
-			// so the Homepage page won't be detected through menu items
-			$front_page_id = get_option( 'page_on_front' );
-			if ( $front_page_id ) {
-				$front_page = get_post( $front_page_id );
-				if ( $front_page && in_array( $front_page->post_title, array( 'Homepage', 'Home' ), true ) ) {
-					update_post_meta( $front_page_id, '_inspiro_starter_content', 'yes' );
-					$page_ids[] = $front_page_id;
-				}
-			}
-
 			if ( ! empty( $page_ids ) ) {
 				return $page_ids;
 			}
 		}
-	}
-
-	// Third check: Direct lookup for pages with starter content titles
-	// This catches cases where pages exist but aren't in the menu
-	// (e.g., Homepage when using 'link_home' in starter content menu)
-	$title_query = new WP_Query(
-		array(
-			'post_type'      => 'page',
-			'posts_per_page' => -1,
-			'post_name__in'  => array( 'homepage', 'about', 'contact', 'blog' ),
-			'fields'         => 'ids',
-		)
-	);
-
-	if ( $title_query->have_posts() ) {
-		// Mark these pages with meta for faster detection next time
-		foreach ( $title_query->posts as $page_id ) {
-			update_post_meta( $page_id, '_inspiro_starter_content', 'yes' );
-		}
-		return $title_query->posts;
 	}
 
 	return false;
