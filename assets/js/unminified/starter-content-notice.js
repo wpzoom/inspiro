@@ -31,11 +31,31 @@
 	function handleStarterContentDecision( action ) {
 		var $buttons = $( '.inspiro-starter-content-buttons button' );
 		var $section = $( '#accordion-section-inspiro_starter_content_notice' );
-		
+
 		// Show loading state
 		$buttons.prop( 'disabled', true ).addClass( 'updating-message' );
 		$section.addClass( 'busy' );
 
+		// If keeping starter content, publish the customizer first
+		if ( 'keep' === action ) {
+			// Trigger the publish action to save starter content
+			api.previewer.save().done( function() {
+				// After successful publish, dismiss the notice
+				dismissStarterContentNotice( action, $buttons, $section );
+			} ).fail( function() {
+				// Re-enable buttons on publish failure
+				$buttons.prop( 'disabled', false ).removeClass( 'updating-message' );
+				$section.removeClass( 'busy' );
+				alert( 'Failed to publish starter content. Please try again.' );
+			} );
+		} else {
+			// For clean slate, just dismiss the notice and clean up
+			dismissStarterContentNotice( action, $buttons, $section );
+		}
+	}
+
+	// Dismiss the starter content notice via AJAX
+	function dismissStarterContentNotice( action, $buttons, $section ) {
 		// Send AJAX request
 		$.post( inspiroStarterContent.ajaxUrl, {
 			action: 'inspiro_dismiss_starter_content',
@@ -52,7 +72,7 @@
 				if ( 'clean' === action ) {
 					// Refresh the preview first
 					api.previewer.refresh();
-					
+
 					// Then reload the entire customizer after a brief delay
 					setTimeout( function() {
 						window.location.reload();
