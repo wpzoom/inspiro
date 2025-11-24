@@ -31,14 +31,18 @@ $cover_height = inspiro_get_theme_mod( 'cover-size' );
 	<header class="entry-header">
 
 		<?php
+		// Determine heading level based on whether hero is showing on front page
+		$hero_show = inspiro_get_theme_mod( 'hero_enable' );
+		$is_frontpage_with_hero = inspiro_is_frontpage() && $hero_show;
+		$heading_tag = $is_frontpage_with_hero ? 'h2' : 'h1';
 
 		if ( ( is_single() || ( is_page() && ! inspiro_is_frontpage() ) ) && has_post_thumbnail( get_the_ID() ) ) {
 			echo '<div class="inner-wrap">';
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<' . $heading_tag . ' class="entry-title">', '</' . $heading_tag . '>' );
 			echo '</div><!-- .inner-wrap -->';
 		} else {
 			echo '<div class="inner-wrap">';
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<' . $heading_tag . ' class="entry-title">', '</' . $heading_tag . '>' );
 			echo '</div><!-- .inner-wrap -->';
 		}
 

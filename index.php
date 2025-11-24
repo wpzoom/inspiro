@@ -18,13 +18,37 @@
 get_header(); ?>
 
 <div class="inner-wrap">
+	<?php
+	$hero_show = inspiro_get_theme_mod( 'hero_enable' );
+	$use_h1 = true; // Default to h1
+
+	if ( is_home() && ! is_front_page() ) {
+		// Separate blog page - hero never shows here, always use h1
+		$use_h1 = true;
+	} elseif ( is_front_page() && is_home() ) {
+		// Blog is front page - use h2 only if hero is enabled (hero has h1)
+		$use_h1 = ! $hero_show;
+	} else {
+		// Static front page showing latest posts - hero may show, use h2 if hero enabled
+		$use_h1 = ! $hero_show;
+	}
+	?>
+
 	<?php if ( is_home() && ! is_front_page() ) : ?>
 		<header class="page-header">
-			<h1 class="page-title"><?php single_post_title(); ?></h1>
+			<?php if ( $use_h1 ) : ?>
+				<h1 class="page-title"><?php single_post_title(); ?></h1>
+			<?php else : ?>
+				<h2 class="page-title"><?php single_post_title(); ?></h2>
+			<?php endif; ?>
 		</header>
 	<?php else : ?>
 	<header class="page-header">
-		<h2 class="page-title"><?php esc_html_e( 'Latest Posts', 'inspiro' ); ?></h2>
+		<?php if ( $use_h1 ) : ?>
+			<h1 class="page-title"><?php esc_html_e( 'Latest Posts', 'inspiro' ); ?></h1>
+		<?php else : ?>
+			<h2 class="page-title"><?php esc_html_e( 'Latest Posts', 'inspiro' ); ?></h2>
+		<?php endif; ?>
 	</header>
 	<?php endif; ?>
 
