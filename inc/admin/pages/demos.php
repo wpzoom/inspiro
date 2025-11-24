@@ -25,7 +25,7 @@
 
     <div class="theme-info-wrap">
         <h3 class="wpz-onboard_content-main-title">
-            <?php esc_html_e( 'Inspiro Premium • 40+ Starter Sites', 'inspiro' ); ?>
+            <?php esc_html_e( 'Inspiro Premium • 43+ Starter Sites', 'inspiro' ); ?>
         </h3>
         <div class="theme-buttons filters">
             <a class="button button-common active" data-filter="*">
@@ -115,7 +115,7 @@
                                         'name' => 'Eccentric',
                                         'available_for' => 'Elementor',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/eccentric/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
-                                        'preview_url' => 'https://demo.wpzoom.com/inspiro/',
+                                        'preview_url' => 'https://demo.wpzoom.com/inspiro-eccentric/',
                                     ],
                                     [
                                         'class' => 'design_default-elementor gutenberg',
@@ -157,7 +157,6 @@
                                         'available_for' => 'Elementor',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/video-portfolio-agency-2/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
-
                                     [
                                         'class' => 'design_business elementor',
                                         'id' => 'inspiro-business',
@@ -168,7 +167,17 @@
                                         'available_for' => ['Elementor', 'Gutenberg'],
                                         'preview_url' => 'https://demo.wpzoom.com/inspiro-business/',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/business/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
-
+                                    ],
+                                    [
+                                        'class' => 'design_eccentric elementor',
+                                        'id' => 'inspiro-podcast',
+                                        'title' => 'Podcast',
+                                        'thumbnail_url' => 'https://www.wpzoom.com/wp-content/uploads/2025/11/podcast.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-podcast/',
+                                        'name' => 'Podcast',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/podcast/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                        'preview_url' => 'https://demo.wpzoom.com/inspiro-podcast/',
                                     ],
                                     // [
                                     //     'class' => 'design_offbeat elementor',
