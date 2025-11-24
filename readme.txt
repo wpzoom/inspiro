@@ -111,7 +111,7 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 == Changelog ==
 
 = 2.1.6 =
-* Fixed SEO issue with duplicate H1 headings when Hero is enabled on front page
+* Fixed issue with duplicate H1 headings when Hero is enabled on front page
 
 = 2.1.5 =
 * Minor bug fixes

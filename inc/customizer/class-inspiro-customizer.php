@@ -302,7 +302,7 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 					'inspiro_upgrade_pro',
 					array(
 						'title'       => esc_html__( 'Upgrade to Inspiro Premium', 'inspiro' ),
-						 'description' => esc_html__( 'Unlock premium features: 30+ Elementor and Gutenberg Demos, 7 Style Kits, Header Builder, Video Backgrounds, Portfolio Integration, Premium Support and much more!', 'inspiro' ),
+						 'description' => esc_html__( 'Unlock premium features: 40+ Elementor and Gutenberg Demos, 7 Style Kits, Header Builder, Video Backgrounds, Portfolio Integration, Premium Support and much more!', 'inspiro' ),
 						'pro_text'    => esc_html__( 'View All Features', 'inspiro' ),
 						'pro_url'     => esc_url( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=bluebutton'),
 						'demo_link_text'    => esc_html__( 'View Demos', 'inspiro' ),
