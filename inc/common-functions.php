@@ -653,3 +653,119 @@ function inspiro_format_usage_duration($days, $hours, $minutes) {
         return __('Less than a minute', 'inspiro');
     }
 }
+
+/**
+ * Enqueue styles for Site Editor to improve pattern library UX
+ * Hides confusing elements and adds helpful context
+ */
+function inspiro_site_editor_pattern_styles() {
+    $screen = get_current_screen();
+
+    // Only load on Site Editor
+    if ( ! $screen || $screen->base !== 'site-editor' ) {
+        return;
+    }
+
+    // CSS to improve pattern library UX
+    $css = '
+        /* Hide confusing "Not synced" badge for theme patterns */
+        .dataviews-view-grid__card .components-badge:not(.is-success) {
+            display: none;
+        }
+
+        /* Style the lock icon to be less alarming */
+        .dataviews-view-grid__card .components-button[aria-label*="locked"],
+        .dataviews-view-grid__card .components-button.is-locked {
+            opacity: 0.5;
+        }
+
+        /* Add helpful tooltip styling */
+        .inspiro-pattern-info {
+            background: #f0f6fc;
+            border-left: 4px solid #0073aa;
+            padding: 12px 16px;
+            margin: 0 0 20px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .inspiro-pattern-info strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+    ';
+
+    wp_add_inline_style( 'wp-components', $css );
+
+    // JavaScript to add helpful info banner in pattern library
+    $js = '
+        (function() {
+            var checkForPatternView = function() {
+                // Check if we are in the patterns section
+                var url = window.location.href;
+                var isPatternView = url.indexOf("postType=wp_block") !== -1 ||
+                                    url.indexOf("/pattern") !== -1 ||
+                                    url.indexOf("p=%2Fpattern") !== -1;
+
+                if (!isPatternView) {
+                    // Remove info if we navigated away from patterns
+                    var existing = document.querySelector(".inspiro-pattern-info");
+                    if (existing) {
+                        existing.remove();
+                    }
+                    return;
+                }
+
+                // Check if info already added
+                if (document.querySelector(".inspiro-pattern-info")) {
+                    return;
+                }
+
+                // Find a suitable container - try multiple selectors
+                var container = document.querySelector(".edit-site-page-patterns") ||
+                                document.querySelector(".dataviews-view-grid") ||
+                                document.querySelector("[class*=\"page-patterns\"]") ||
+                                document.querySelector(".edit-site-patterns");
+
+                // If no specific container, try the main content area
+                if (!container) {
+                    container = document.querySelector(".edit-site-layout__content") ||
+                                document.querySelector(".interface-interface-skeleton__content");
+                }
+
+                if (container) {
+                    var info = document.createElement("div");
+                    info.className = "inspiro-pattern-info";
+                    info.innerHTML = "<strong>' . esc_js( __( 'Using Theme Patterns', 'inspiro' ) ) . '</strong>" +
+                        "' . esc_js( __( 'Theme patterns (marked with a lock icon) are included with the Inspiro theme. To use them, open any page in the editor, click the + inserter, and search for the pattern name. Once inserted, you can fully customize it. Theme patterns cannot be edited here directly to ensure they are preserved during theme updates.', 'inspiro' ) ) . '";
+
+                    // Insert at the beginning of container or before first child
+                    if (container.firstChild) {
+                        container.insertBefore(info, container.firstChild);
+                    } else {
+                        container.appendChild(info);
+                    }
+                }
+            };
+
+            // Run after a delay to ensure DOM is ready
+            setTimeout(checkForPatternView, 1000);
+
+            // Watch for navigation within Site Editor (SPA behavior)
+            var lastUrl = location.href;
+            new MutationObserver(function() {
+                if (location.href !== lastUrl) {
+                    lastUrl = location.href;
+                    // Remove old info when navigating
+                    var existing = document.querySelector(".inspiro-pattern-info");
+                    if (existing) {
+                        existing.remove();
+                    }
+                    setTimeout(checkForPatternView, 1000);
+                }
+            }).observe(document.body, { subtree: true, childList: true });
+        })();
+    ';
+
+    wp_add_inline_script( 'wp-edit-site', $js );
+}
+add_action( 'admin_enqueue_scripts', 'inspiro_site_editor_pattern_styles' );
