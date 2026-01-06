@@ -6,44 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Get plugin information from WordPress.org API with caching.
- *
- * @param string $slug Plugin slug.
- * @return array|false Plugin info array or false on failure.
- */
-function inspiro_get_plugin_info( $slug ) {
-	$cache_key = 'inspiro_plugin_info_' . $slug;
-	$plugin_info = get_transient( $cache_key );
-
-	if ( false === $plugin_info ) {
-		if ( ! function_exists( 'plugins_api' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-		}
-
-		$plugin_info = plugins_api(
-			'plugin_information',
-			array(
-				'slug'   => $slug,
-				'fields' => array(
-					'active_installs' => true,
-					'rating'          => true,
-					'num_ratings'     => true,
-				),
-			)
-		);
-
-		if ( is_wp_error( $plugin_info ) ) {
-			return false;
-		}
-
-		// Cache for 12 hours
-		set_transient( $cache_key, $plugin_info, 12 * HOUR_IN_SECONDS );
-	}
-
-	return $plugin_info;
-}
-
-/**
  * Format active installs number.
  *
  * @param int $installs Number of active installs.
@@ -93,21 +55,17 @@ $number_of_plugins = count( $plugins );
 
                             <div class="wpz-grid-wrap three">
                             <?php 
-									foreach(  $plugins as $plugin ) {
+									foreach ( $plugins as $plugin ) {
 
-										$plugin_name = isset( $plugin['name'] ) ? $plugin['name'] : '';
+										$plugin_name        = isset( $plugin['name'] ) ? $plugin['name'] : '';
 										$plugin_description = isset( $plugin['description'] ) ? $plugin['description'] : '';
-										$plugin_path = isset( $plugin['file_path'] ) ? $plugin['file_path'] : '';
-										$plugin_slug = isset( $plugin['slug'] ) ? $plugin['slug'] : '';
-                                        $plugin_image = isset( $plugin['thumbnail'] ) ? $plugin['thumbnail'] : '';
-										$plugin_url = isset( $plugin['external_url'] ) ? $plugin['external_url'] : '';
-										$plugin_category = isset( $plugin['category'] ) ? $plugin['category'] : '';
-
-										// Get plugin info from WordPress.org API
-										$plugin_api_info = inspiro_get_plugin_info( $plugin_slug );
-										$active_installs = $plugin_api_info && isset( $plugin_api_info->active_installs ) ? $plugin_api_info->active_installs : 0;
-										$rating = $plugin_api_info && isset( $plugin_api_info->rating ) ? $plugin_api_info->rating : 0;
-										$num_ratings = $plugin_api_info && isset( $plugin_api_info->num_ratings ) ? $plugin_api_info->num_ratings : 0;
+										$plugin_path        = isset( $plugin['file_path'] ) ? $plugin['file_path'] : '';
+										$plugin_slug        = isset( $plugin['slug'] ) ? $plugin['slug'] : '';
+										$plugin_image       = isset( $plugin['thumbnail'] ) ? $plugin['thumbnail'] : '';
+										$plugin_url         = isset( $plugin['external_url'] ) ? $plugin['external_url'] : '';
+										$plugin_category    = isset( $plugin['category'] ) ? $plugin['category'] : '';
+										$active_installs    = isset( $plugin['active_installs'] ) ? $plugin['active_installs'] : 0;
+										$rating             = isset( $plugin['rating'] ) ? $plugin['rating'] : 0;
 
 										$is_plugin_active = is_plugin_active( $plugin_path );
 
@@ -140,18 +98,18 @@ $number_of_plugins = count( $plugins );
 											<?php if ( ! empty( $plugin_url ) ) : ?>
 											<a href="<?php echo esc_url( $plugin_url ); ?>" target="_blank" class="plugin-view-details"><?php esc_html_e( 'View on wordpress.org', 'inspiro' ); ?></a>
 											<?php endif; ?>
-											<?php if ( $plugin_api_info ) : ?>
+											<?php if ( $rating > 0 || $active_installs > 0 ) : ?>
 											<div class="plugin-stats">
-                                                <?php if ( $rating > 0 ) : ?>
-                                                <span class="plugin-rating" title="<?php printf( esc_attr__( '%s out of 5 stars', 'inspiro' ), number_format_i18n( $rating / 20, 1 ) ); ?>">
-                                                    <span class="dashicons dashicons-star-filled"></span>
-                                                    <?php echo esc_html( number_format_i18n( $rating / 20, 1 ) ); ?>
-                                                </span>
-                                                <?php endif; ?>
+												<?php if ( $rating > 0 ) : ?>
+												<span class="plugin-rating" title="<?php printf( esc_attr__( '%s out of 5 stars', 'inspiro' ), number_format_i18n( $rating / 20, 1 ) ); ?>">
+													<span class="dashicons dashicons-star-filled"></span>
+													<?php echo esc_html( number_format_i18n( $rating / 20, 1 ) ); ?>
+												</span>
+												<?php endif; ?>
 												<?php if ( $active_installs > 0 ) : ?>
 												<span class="plugin-installs" title="<?php esc_attr_e( 'Active Installations', 'inspiro' ); ?>">
 													<span class="dashicons dashicons-download"></span>
-													<?php echo esc_html( inspiro_format_active_installs( $active_installs ) ); ?> active installs
+													<?php echo esc_html( inspiro_format_active_installs( $active_installs ) ); ?>
 												</span>
 												<?php endif; ?>
 											</div>
