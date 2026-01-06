@@ -238,6 +238,62 @@
 .wpz-grid-wrap .inspiro-plugin-item .plugin-item-icon img {
     border-radius: 5px;
 }
+.wpz-grid-wrap .inspiro-plugin-item .plugin-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 4px 0 8px;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-badge.category {
+    background-color: #f0f0f1;
+    color: #50575e;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-badge.recommended {
+    background-color: #e7f5e8;
+    color: #1e7e34;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-view-details {
+    display: inline-block;
+    font-size: 12px;
+    color: #2271b1;
+    text-decoration: none;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-view-details:hover {
+    color: #135e96;
+    text-decoration: underline;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-stats {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #646970;
+    margin: 6px 0 8px;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-stats .plugin-installs,
+.wpz-grid-wrap .inspiro-plugin-item .plugin-stats .plugin-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-stats .plugin-installs .dashicons,
+.wpz-grid-wrap .inspiro-plugin-item .plugin-stats .plugin-rating .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-stats .plugin-rating .dashicons-star-filled {
+    color: #ffb900;
+}
+.wpz-grid-wrap .inspiro-plugin-item .plugin-stats .plugin-rating .num-ratings {
+    color: #a0a5aa;
+}
 .wpz-grid-wrap .inspiro-plugin-item .hidden {
     display: none;
 }
@@ -289,9 +345,7 @@
 }
 
 .section .about {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.5;
+    font-size: 13px;
     color: #5e6164;
 }
 .section .button {
