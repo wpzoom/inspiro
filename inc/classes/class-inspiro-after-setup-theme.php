@@ -407,28 +407,36 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                 ),
 
                 array(
-                    'name'        => 'Elementor Addons by WPZOOM',
+                    'name'        => 'Elementor Addons',
                     'slug'        => 'wpzoom-elementor-addons',
                     'description' => 'A collection of pre-designed templates and advanced widgets for the Elementor page builder.',
                     'required'    => false,
-                    'thumbnail' => 'https://ps.w.org/wpzoom-elementor-addons/assets/icon-256x256.png',
+                    'thumbnail' => 'https://ps.w.org/wpzoom-elementor-addons/assets/icon-256x256.gif?rev=3370924',
                 ),
 
                 array(
-                    'name'        => 'Video Popup Block by WPZOOM',
+                    'name'        => 'Video Popup Block',
                     'slug'        => 'wpzoom-video-popup-block',
 					'description' => 'Easily add a Gutenberg block to create customizable Play icon that open popups with YouTube, Vimeo, or MP4 videos.',
                     'required'    => false,
                     'thumbnail' => 'https://ps.w.org/wpzoom-video-popup-block/assets/icon-256x256.png',
                 ),
 
-				// array(
-				// 	'name'        => 'Instagram Widget by WPZOOM',
-				// 	'slug'        => 'instagram-widget-by-wpzoom',
-				// 	'description' => 'Formerly known as "Instagram Widget by WPZOOM". Simple and lightweight widget for WordPress to display your Instagram feed.',
-				// 	'required'    => false,
-                //     'thumbnail' => 'https://ps.w.org/instagram-widget-by-wpzoom/assets/icon-256x256.png',
-				// ),
+				array(
+					'name'        => 'Instagram Feed',
+					'slug'        => 'instagram-widget-by-wpzoom',
+					'description' => 'Formerly known as "Instagram Widget by WPZOOM". Simple and lightweight widget for WordPress to display your Instagram feed.',
+					'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/instagram-widget-by-wpzoom/assets/icon-256x256.png',
+				),
+
+                array(
+                    'name'        => 'Social Icons Widget & Block',
+                    'slug'        => 'social-icons-widget-by-wpzoom',
+                    'description' => 'Add social media icons and sharing buttons to your website! Social Icons & Sharing Buttons includes 400+ icons and customizable sharing buttons.',
+                    'required'    => false,
+                    'thumbnail' => 'https://ps.w.org/social-icons-widget-by-wpzoom/assets/icon-256x256.png?rev=3272153',
+                ),
 
 			);
 
