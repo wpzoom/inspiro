@@ -89,7 +89,7 @@ class Inspiro_Color_Scheme_Config {
 						'label'       => esc_html__( 'Global Color Palette', 'inspiro' ),
 						'description' => esc_html__( 'Select a predefined color palette that will be applied throughout your site.', 'inspiro' ),
 						'section'     => 'colors',
-						'priority'    => 6,
+						'priority'    => 4,
 					),
 				),
 				array(
