@@ -68,7 +68,7 @@
 
 .inspiro-palette-colors {
 	display: flex;
-	gap: 4px;
+	gap: 0;
 	flex-wrap: wrap;
     padding-left: 15px;
 }
