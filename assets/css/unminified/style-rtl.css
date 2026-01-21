@@ -1485,7 +1485,7 @@ a:hover .nav-title,
     background: none;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 1%, rgba(0, 0, 0, 0) 100%);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#33000000", endColorstr="#00000000", GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#00000000', GradientType=0);
 }
 
 .navbar-toggle {
@@ -2596,6 +2596,24 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
 .single .byline,
 .group-blog .byline {
     display: inline;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+.post-grid .entry-title {
+    font-size: 32px;
+    font-size: 2rem;
+}
+.post-grid .entry-meta {
+    display: none;
+}
+@media (max-width: 1441px) {
+    .post-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .pagination,

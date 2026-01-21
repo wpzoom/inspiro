@@ -112,6 +112,7 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 		public static function configuration_files() {
 			return array(
 				'blog-post'      => array(
+					'blog-layout',
 					'blog-post-panel',
 					'post-options',
 				),

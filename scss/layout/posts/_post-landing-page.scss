@@ -209,3 +209,23 @@
 .group-blog .byline {
     display: inline;
 }
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+
+    .entry-title {
+        @include font-size(32);
+    }
+
+    .entry-meta {
+        display: none;
+    }
+
+
+    @media (max-width: 1441px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}

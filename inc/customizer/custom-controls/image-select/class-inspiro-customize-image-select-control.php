@@ -24,6 +24,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 * @var string
 		 */
 		public $type = 'image-select';
+		public $grid = false;
 
 		/**
 		 * Enqueue JS and Css for the image select control.
@@ -57,6 +58,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			$this->json['link']    = $this->get_link();
 			$this->json['value']   = $this->value();
 			$this->json['id']      = $this->id;
+			$this->json['grid']    = $this->grid;
 		}
 
 		/**
@@ -74,6 +76,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
+			
+			<# if ( data.grid ) { #>
+					<div class="customize-control-grid">
+			<# } #>
+
 
 			<# for ( key in data.choices ) { #>
 
@@ -84,6 +91,10 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 						<img src="{{ data.choices[ key ]['url'] }}" alt="{{ data.choices[ key ]['label'] }}" title="{{ data.choices[ key ]['label'] }}" />
 					</div>
 				</label>
+			<# } #>
+
+			<# if ( data.grid ) { #>
+					</div>
 			<# } #>
 			<?php
 		}

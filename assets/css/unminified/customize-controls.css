@@ -104,6 +104,12 @@
     font-style: normal;
 }
 
+.customize-control-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
 .customize-control.customize-control-inspiro-range .inspiro-control-range {
     float: left;
     width: calc(100% - 85px);

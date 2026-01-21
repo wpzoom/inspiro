@@ -70,6 +70,23 @@ function inspiro_sanitize_display_content( $input ) {
 	return 'excerpt';
 }
 
+
+/**
+ * Sanitize the blog layout.
+ *
+ * @param string $input Content to blog layout.
+ */
+function inspiro_sanitize_blog_layout( $input ) {
+	$valid = array( 'list', 'grid' );
+
+	if ( in_array( $input, $valid, true ) ) {
+		return $input;
+	}
+
+	return 'list';
+}
+
+
 /**
  * Callback for sanitizing the header_button_url value.
  *

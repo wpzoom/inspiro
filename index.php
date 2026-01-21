@@ -58,6 +58,11 @@ get_header(); ?>
 			<?php
 			if ( have_posts() ) :
 
+				$blog_layout = inspiro_get_theme_mod( 'blog_layout' );
+
+				if ( $blog_layout === 'grid' ) {
+                	echo '<div class="post-grid">';
+            	}
 				// Start the Loop.
 				while ( have_posts() ) :
 					the_post();
@@ -70,6 +75,10 @@ get_header(); ?>
 					 */
 					get_template_part( 'template-parts/post/content', get_post_format() );
 					endwhile;
+
+				if ( $blog_layout === 'grid' ) {
+                	echo '</div>'; 
+            	}
 
 				the_posts_pagination(
 					array(
