@@ -214,6 +214,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+    padding-bottom: em(60);
 
     .entry-title {
         @include font-size(32);

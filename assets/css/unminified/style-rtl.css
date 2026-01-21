@@ -2602,6 +2602,7 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+    padding-bottom: 3.75em;
 }
 .post-grid .entry-title {
     font-size: 32px;
