@@ -1485,7 +1485,7 @@ a:hover .nav-title,
     background: none;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 1%, rgba(0, 0, 0, 0) 100%);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#33000000", endColorstr="#00000000", GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#00000000', GradientType=0);
 }
 
 .navbar-toggle {
@@ -4858,13 +4858,11 @@ figure.aligncenter:not(.wp-block-gallery) {
         margin-left: -125px;
         margin-right: -125px;
         max-width: calc(var(--container-width-narrow) + 250px);
-        width: calc(var(--container-width-narrow) + 250px);
     }
     .page .entry-content .alignwide {
         margin-left: -125px;
         margin-right: -125px;
         max-width: calc(var(--container-width) + 250px);
-        width: calc(var(--container-width) + 250px);
     }
 }
 @media (min-width: 64.0625em) {

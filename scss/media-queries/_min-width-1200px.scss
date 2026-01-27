@@ -5,14 +5,14 @@
         margin-left: -125px;
         margin-right: -125px;
         max-width: calc(var(--container-width-narrow) + 250px);
-        width: calc(var(--container-width-narrow) + 250px);
+        // width: calc(var(--container-width-narrow) + 250px);
     }
 
     .page .entry-content .alignwide {
         margin-left: -125px;
         margin-right: -125px;
         max-width: calc(var(--container-width) + 250px);
-        width: calc(var(--container-width) + 250px);
+        // width: calc(var(--container-width) + 250px);
     }
 
 }
