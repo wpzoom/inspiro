@@ -142,7 +142,7 @@ $number_of_plugins = count( $plugins );
 
 							<?php if ( ! empty( $optional_plugins ) ) : ?>
 							<div class="wpz-onboard_content-side-section install-plugin optional-plugins-section">
-								<h3 class="wpz-onboard_content-side-section-title icon-assist">
+								<h3 class="wpz-onboard_content-side-section-title icon-assist" style="margin-top:30px;">
 									<?php esc_html_e( 'Nice to Have Plugins', 'inspiro' ); ?>
 								</h3>
 								<p class="wpz-onboard_content-main-intro"><?php esc_html_e( 'These plugins are not required but can enhance your website with additional features.', 'inspiro' ); ?></p>

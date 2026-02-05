@@ -126,3 +126,99 @@ if ( ! function_exists( 'inspiro_welcome_notice' ) ) {
 		<?php
 	}
 }
+
+/**
+ * Display simplified plugin recommendation notice.
+ *
+ * @since 2.1.10
+ * @return void
+ */
+function inspiro_display_plugin_notice() {
+	// Only show to users who can manage plugins.
+	if ( ! current_user_can( 'install_plugins' ) ) {
+		return;
+	}
+
+	// Skip if user dismissed this notice.
+	$user_id = get_current_user_id();
+	if ( get_user_meta( $user_id, 'inspiro_plugin_notice_dismissed', true ) ) {
+		return;
+	}
+
+	// Skip on theme admin pages.
+	$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	if ( in_array( $current_page, array( 'inspiro', 'inspiro-plugins', 'inspiro-demo' ), true ) ) {
+		return;
+	}
+
+	// Check if TGMPA is available.
+	if ( ! class_exists( 'TGM_Plugin_Activation' ) || ! isset( TGM_Plugin_Activation::$instance ) ) {
+		return;
+	}
+
+	$tgmpa = TGM_Plugin_Activation::$instance;
+	if ( empty( $tgmpa->plugins ) ) {
+		return;
+	}
+
+	// Check if there are inactive recommended plugins (excluding optional ones).
+	$has_inactive = false;
+	foreach ( $tgmpa->plugins as $plugin ) {
+		$slug = isset( $plugin['slug'] ) ? $plugin['slug'] : '';
+		if ( ! empty( $plugin['optional'] ) ) {
+			continue; // Skip optional plugins.
+		}
+		if ( ! is_plugin_active( isset( $plugin['file_path'] ) ? $plugin['file_path'] : '' ) ) {
+			$has_inactive = true;
+			break;
+		}
+	}
+
+	if ( ! $has_inactive ) {
+		return;
+	}
+
+	$plugins_url = admin_url( 'admin.php?page=inspiro-plugins' );
+	?>
+	<div class="notice notice-info is-dismissible" id="inspiro-plugin-notice">
+		<p>
+			<strong><?php esc_html_e( 'Inspiro Theme:', 'inspiro' ); ?></strong>
+			<?php
+			printf(
+				/* translators: %s: Link to plugins page */
+				esc_html__( 'This theme recommends some plugins for additional features. %s to view and manage them.', 'inspiro' ),
+				'<a href="' . esc_url( $plugins_url ) . '">' . esc_html__( 'Click here', 'inspiro' ) . '</a>'
+			);
+			?>
+		</p>
+	</div>
+	<script>
+	jQuery(document).ready(function($) {
+		$(document).on('click', '#inspiro-plugin-notice .notice-dismiss', function() {
+			$.ajax({
+				url: ajaxurl,
+				data: {
+					action: 'inspiro_dismiss_plugin_notice'
+				}
+			});
+		});
+	});
+	</script>
+	<?php
+}
+add_action( 'admin_notices', 'inspiro_display_plugin_notice' );
+
+/**
+ * AJAX handler to dismiss plugin notice.
+ *
+ * @since 2.1.10
+ * @return void
+ */
+function inspiro_dismiss_plugin_notice() {
+	$user_id = get_current_user_id();
+	if ( $user_id ) {
+		update_user_meta( $user_id, 'inspiro_plugin_notice_dismissed', true );
+	}
+	wp_die();
+}
+add_action( 'wp_ajax_inspiro_dismiss_plugin_notice', 'inspiro_dismiss_plugin_notice' );
