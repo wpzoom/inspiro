@@ -201,7 +201,7 @@
         @include font-size(32);
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 710px) {
         grid-template-columns: repeat(1, 1fr);
     }
 

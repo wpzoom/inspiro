@@ -2612,7 +2612,7 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
     font-size: 32px;
     font-size: 2rem;
 }
-@media (max-width: 720px) {
+@media (max-width: 710px) {
     .post-grid {
         grid-template-columns: repeat(1, 1fr);
     }
