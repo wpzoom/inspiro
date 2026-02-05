@@ -113,6 +113,7 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 			return array(
 				'blog-post'      => array(
 					'blog-layout',
+					'blog-text-align',
 					'blog-post-panel',
 					'post-options',
 				),

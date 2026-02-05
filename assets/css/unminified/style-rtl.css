@@ -1485,7 +1485,7 @@ a:hover .nav-title,
     background: none;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 1%, rgba(0, 0, 0, 0) 100%);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#00000000', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#33000000", endColorstr="#00000000", GradientType=0);
 }
 
 .navbar-toggle {
@@ -2492,6 +2492,10 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
     text-decoration: none;
 }
 
+.entry-summary > p:not(.link-more) {
+    text-align: right;
+}
+
 .entry-meta {
     color: #999;
     font-size: 16px;
@@ -2608,10 +2612,7 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
     font-size: 32px;
     font-size: 2rem;
 }
-.post-grid .entry-meta {
-    display: none;
-}
-@media (max-width: 1441px) {
+@media (max-width: 720px) {
     .post-grid {
         grid-template-columns: repeat(1, 1fr);
     }

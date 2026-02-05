@@ -86,6 +86,23 @@ function inspiro_sanitize_blog_layout( $input ) {
 	return 'list';
 }
 
+/**
+ * Sanitize text alignment.
+ *
+ * @since 2.1.9
+ *
+ * @param string $input Text alignment value.
+ * @return string Sanitized text alignment.
+ */
+function inspiro_sanitize_text_align( $input ) {
+	$valid = array( 'left', 'center', 'right' );
+
+	if ( in_array( $input, $valid, true ) ) {
+		return $input;
+	}
+
+	return 'center';
+}
 
 /**
  * Callback for sanitizing the header_button_url value.
