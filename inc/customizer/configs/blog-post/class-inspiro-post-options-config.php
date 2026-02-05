@@ -74,6 +74,7 @@ class Inspiro_Post_Options_Config {
     						'full-content' => esc_html__( 'Full Content', 'inspiro' ),
     						'none'         => esc_html__( 'None', 'inspiro' ),
     					),
+    					'active_callback' => 'inspiro_is_blog_layout_list',
     				),
                 ),
                 array(

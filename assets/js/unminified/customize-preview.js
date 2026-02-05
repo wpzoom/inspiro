@@ -939,6 +939,29 @@ body {
 		});
 	});
 
+	/**
+	 * Handle blog show/hide excerpt (for grid layout) with custom preview handler
+	 *
+	 * @since 2.1.9
+	 */
+	wp.customize('blog_show_excerpt', function (value) {
+		value.bind(function (newValue) {
+			const selector = '.post-grid article .entry-summary';
+			const controlId = 'blog-show-excerpt';
+
+			// Remove existing styles
+			$('style#' + controlId).remove();
+
+			// Add styles to hide excerpt if unchecked
+			if (newValue === false) {
+				const style = '<style id="' + controlId + '">' +
+					selector + ' { display: none; }' +
+					'</style>';
+				$('head').append(style);
+			}
+		});
+	});
+
 	$.each(
 		[
 			'body-text-transform',

@@ -72,6 +72,38 @@
 			});
 		});
 
+		/**
+		 * Show/hide display_content and blog_show_excerpt controls based on blog_layout.
+		 * display_content: Only show when blog layout is 'list'.
+		 * blog_show_excerpt: Only show when blog layout is 'grid'.
+		 *
+		 * @since 2.1.9
+		 */
+		api('blog_layout', function (setting) {
+			api.control('display_content', function (control) {
+				const visibility = function () {
+					if ('list' === setting.get()) {
+						control.container.slideDown(180);
+					} else {
+						control.container.slideUp(180);
+					}
+				};
+				visibility();
+				setting.bind(visibility);
+			});
+
+			api.control('blog_show_excerpt', function (control) {
+				const visibility = function () {
+					if ('grid' === setting.get()) {
+						control.container.slideDown(180);
+					} else {
+						control.container.slideUp(180);
+					}
+				};
+				visibility();
+				setting.bind(visibility);
+			});
+		});
 
 		/**
 		 * Work with copyright TinyMCE editor settings

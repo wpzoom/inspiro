@@ -158,6 +158,28 @@ function inspiro_is_view_with_layout_option() {
 }
 
 /**
+ * Return whether the blog layout is set to list.
+ *
+ * @since 2.1.9
+ *
+ * @return bool True if blog layout is list.
+ */
+function inspiro_is_blog_layout_list() {
+	return 'list' === get_theme_mod( 'blog_layout', 'list' );
+}
+
+/**
+ * Return whether the blog layout is set to grid.
+ *
+ * @since 2.1.9
+ *
+ * @return bool True if blog layout is grid.
+ */
+function inspiro_is_blog_layout_grid() {
+	return 'grid' === get_theme_mod( 'blog_layout', 'list' );
+}
+
+/**
  * Checks whether the external header video is eligible to show on the current page.
  */
 function inspiro_is_external_video_active() {

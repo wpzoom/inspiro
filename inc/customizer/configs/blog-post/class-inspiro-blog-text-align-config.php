@@ -73,6 +73,27 @@ class Inspiro_Blog_Text_Align_Config {
 				'type'     => 'checkbox',
 			)
 		);
+
+		// Show/Hide Excerpt (for grid layout).
+		$wp_customize->add_setting(
+			'blog_show_excerpt',
+			array(
+				'default'           => true,
+				'sanitize_callback' => 'inspiro_sanitize_checkbox',
+				'transport'         => 'postMessage',
+			)
+		);
+
+		$wp_customize->add_control(
+			'blog_show_excerpt',
+			array(
+				'priority'        => 4,
+				'section'         => 'blog_post_options',
+				'label'           => __( 'Show Excerpt', 'inspiro' ),
+				'type'            => 'checkbox',
+				'active_callback' => 'inspiro_is_blog_layout_grid',
+			)
+		);
 	}
 }
 new Inspiro_Blog_Text_Align_Config();

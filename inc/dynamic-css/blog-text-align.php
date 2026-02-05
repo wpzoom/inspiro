@@ -70,3 +70,26 @@ function inspiro_dynamic_theme_css_blog_post_meta( $dynamic_css ) {
 
 	return $dynamic_css;
 }
+
+add_filter( 'inspiro/dynamic_theme_css', 'inspiro_dynamic_theme_css_blog_excerpt' );
+
+/**
+ * Blog Show/Hide Excerpt (for grid layout)
+ *
+ * @param string $dynamic_css Dynamic CSS from Customizer.
+ * @return string Generated dynamic CSS for blog excerpt visibility.
+ */
+function inspiro_dynamic_theme_css_blog_excerpt( $dynamic_css ) {
+
+	$blog_show_excerpt = get_theme_mod( 'blog_show_excerpt', true );
+
+	if ( ! $blog_show_excerpt ) {
+		$selector = '.post-grid article .entry-summary';
+
+		$dynamic_css .= "{$selector} {\n";
+		$dynamic_css .= "display: none;\n";
+		$dynamic_css .= "}\n";
+	}
+
+	return $dynamic_css;
+}
