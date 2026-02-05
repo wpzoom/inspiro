@@ -53,6 +53,7 @@ class InspiroPluginInstallerSkin extends \WP_Upgrader_Skin {
 		if ( is_string( $errors ) ) {
 			wp_send_json_error( $errors );
 		} elseif ( is_wp_error( $errors ) && $errors->has_errors() ) {
+			$message = $errors->get_error_message();
 			if ( $errors->get_error_data() && is_string( $errors->get_error_data() ) ) {
 				wp_send_json_error( $message . ' ' . esc_html( strip_tags( $errors->get_error_data() ) ) );
 			} else {

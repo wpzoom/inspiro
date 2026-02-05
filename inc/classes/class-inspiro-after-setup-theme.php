@@ -430,17 +430,18 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'active_installs' => 20000,
                 ),
 
-                // array(
-                //     'name'            => 'Video Popup Block',
-                //     'slug'            => 'wpzoom-video-popup-block',
-                //     'description'     => 'Easily add a Gutenberg block to create customizable Play icon that open popups with YouTube, Vimeo, or MP4 videos.',
-                //     'required'        => false,
-                //     'thumbnail'       => 'https://ps.w.org/wpzoom-video-popup-block/assets/icon-256x256.png',
-                //     'external_url'    => 'https://wordpress.org/plugins/wpzoom-video-popup-block/',
-                //     'category'        => 'Video',
-                //     'rating'          => 94,
-                //     'active_installs' => 10000,
-                // ),
+                array(
+                    'name'            => 'Video Popup Block',
+                    'slug'            => 'wpzoom-video-popup-block',
+                    'description'     => 'Easily add a Gutenberg block to create customizable Play icon that open popups with YouTube, Vimeo, or MP4 videos.',
+                    'required'        => false,
+                    'optional'        => true,
+                    'thumbnail'       => 'https://ps.w.org/wpzoom-video-popup-block/assets/icon-256x256.png',
+                    'external_url'    => 'https://wordpress.org/plugins/wpzoom-video-popup-block/',
+                    'category'        => 'Video',
+                    'rating'          => 94,
+                    'active_installs' => 10000,
+                ),
 
                 array(
                     'name'            => 'Instagram Feeds',
@@ -471,6 +472,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'            => 'translatepress-multilingual',
                     'description'     => 'Experience a better way to translate your WordPress site and go multilingual, directly from the front-end using a visual translation interface.',
                     'required'        => false,
+                    'optional'        => true,
                     'thumbnail'       => 'https://ps.w.org/translatepress-multilingual/assets/icon-256x256.png',
                     'external_url'    => 'https://wordpress.org/plugins/translatepress-multilingual/',
                     'category'        => 'Translation',

@@ -104,17 +104,17 @@ jQuery(document).ready(($) => {
 		
 	} );
 
-	var pluginsToInstall = $( '.wpz-grid-wrap .inspiro-plugin-item .section_footer input[type=checkbox]' ).serializeArray();
+	var pluginsToInstall = $( '.wpz-grid-wrap:not(.optional-plugins) .inspiro-plugin-item .section_footer input[type=checkbox]' ).serializeArray();
 	if ( pluginsToInstall.length === 0 ) {
 		$('.js-inspiro-install-all-plugins').addClass( 'button-disabled' );
 	}
 
-	// Install all plugins
+	// Install all plugins (excludes optional plugins)
 	$('.js-inspiro-install-all-plugins').on('click', function( event ) {
 		event.preventDefault();
 
 		var $button = $( this );
-		var pluginsToInstall = $( '.wpz-grid-wrap .inspiro-plugin-item .section_footer input[type=checkbox]' ).serializeArray();
+		var pluginsToInstall = $( '.wpz-grid-wrap:not(.optional-plugins) .inspiro-plugin-item .section_footer input[type=checkbox]' ).serializeArray();
 		
 		if ( pluginsToInstall.length === 0 ) {
 			return false;

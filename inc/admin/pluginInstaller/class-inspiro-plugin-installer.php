@@ -82,15 +82,16 @@ if ( ! class_exists( 'Inspiro_Plugin_Installer' ) ) {
 				wp_send_json_error( esc_html__( 'Could not install the plugin. Plugin slug is missing.', 'inspiro' ) );
 			}
 		
-			// Check if plugin is already installed
-			$plugin_file = WP_PLUGIN_DIR . '/' . $slug . '/' . $slug . '.php';
+			// Find the correct plugin file path.
+			$plugin_file = $this->get_plugin_file( $slug );
 		
 			// Check if the plugin is already installed and activated.
-			if ( is_plugin_active( $plugin_file ) ) {
+			if ( $plugin_file && is_plugin_active( $plugin_file ) ) {
 				wp_send_json_success( esc_html__( 'Plugin is already installed and activated!', 'inspiro' ) );
 			}
-		
-			if ( file_exists( $plugin_file ) ) {
+
+			// If plugin is installed but not active, activate it.
+			if ( $plugin_file ) {
 				$result = activate_plugin( $plugin_file );
 		
 				if ( is_wp_error( $result ) ) {
@@ -139,9 +140,17 @@ if ( ! class_exists( 'Inspiro_Plugin_Installer' ) ) {
 		
 			// Flush the cache and return the newly installed plugin basename.
 			wp_cache_flush();
-		
+			wp_clean_plugins_cache();
+
 			if ( $upgrader->plugin_info() ) {
-				// Activate the plugin
+				// Find the plugin file after installation.
+				$plugin_file = $this->get_plugin_file( $slug );
+
+				if ( ! $plugin_file ) {
+					wp_send_json_error( esc_html__( 'Plugin installed but could not be activated. Please activate it manually.', 'inspiro' ) );
+				}
+
+				// Activate the plugin.
 				$result = activate_plugin( $plugin_file );
 		
 				if ( ! is_wp_error( $result ) ) {
@@ -176,6 +185,30 @@ if ( ! class_exists( 'Inspiro_Plugin_Installer' ) ) {
 			}
 
 			return $data;
+		}
+
+		/**
+		 * Get the plugin file path (relative to plugins directory) for a given slug.
+		 *
+		 * @param string $slug The plugin slug.
+		 *
+		 * @return string|false Plugin file path or false if not found.
+		 */
+		public function get_plugin_file( $slug ) {
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+
+			$all_plugins = get_plugins();
+
+			foreach ( $all_plugins as $plugin_file => $plugin_data ) {
+				// Check if the plugin file starts with the slug directory.
+				if ( strpos( $plugin_file, $slug . '/' ) === 0 ) {
+					return $plugin_file;
+				}
+			}
+
+			return false;
 		}
 
 		/**
