@@ -198,7 +198,7 @@
     padding-bottom: em(60);
 
     .entry-title {
-        @include font-size(32);
+        @include font-size(26);
     }
 
     @media (max-width: 710px) {

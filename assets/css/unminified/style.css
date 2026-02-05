@@ -2609,8 +2609,8 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
     padding-bottom: 3.75em;
 }
 .post-grid .entry-title {
-    font-size: 32px;
-    font-size: 2rem;
+    font-size: 26px;
+    font-size: 1.625rem;
 }
 @media (max-width: 710px) {
     .post-grid {

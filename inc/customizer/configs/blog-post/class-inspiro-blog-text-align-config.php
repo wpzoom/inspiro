@@ -53,6 +53,26 @@ class Inspiro_Blog_Text_Align_Config {
 				)
 			)
 		);
+
+		// Show/Hide Post Meta.
+		$wp_customize->add_setting(
+			'blog_show_post_meta',
+			array(
+				'default'           => true,
+				'sanitize_callback' => 'inspiro_sanitize_checkbox',
+				'transport'         => 'postMessage',
+			)
+		);
+
+		$wp_customize->add_control(
+			'blog_show_post_meta',
+			array(
+				'priority' => 3,
+				'section'  => 'blog_post_options',
+				'label'    => __( 'Show Post Meta', 'inspiro' ),
+				'type'     => 'checkbox',
+			)
+		);
 	}
 }
 new Inspiro_Blog_Text_Align_Config();

@@ -916,6 +916,29 @@ body {
 		});
 	});
 
+	/**
+	 * Handle blog show/hide post meta with custom preview handler
+	 *
+	 * @since 2.1.9
+	 */
+	wp.customize('blog_show_post_meta', function (value) {
+		value.bind(function (newValue) {
+			const selector = '.blog .site-main article .entry-meta, .archive .site-main article .entry-meta, .search .site-main article .entry-meta, .post-grid article .entry-meta';
+			const controlId = 'blog-show-post-meta';
+
+			// Remove existing styles
+			$('style#' + controlId).remove();
+
+			// Add styles to hide meta if unchecked
+			if (newValue === false) {
+				const style = '<style id="' + controlId + '">' +
+					selector + ' { display: none; }' +
+					'</style>';
+				$('head').append(style);
+			}
+		});
+	});
+
 	$.each(
 		[
 			'body-text-transform',

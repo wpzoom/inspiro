@@ -44,3 +44,29 @@ body:not(.page-layout-sidebar-right).search .site-main article .link-more,
 
 	return $dynamic_css;
 }
+
+add_filter( 'inspiro/dynamic_theme_css', 'inspiro_dynamic_theme_css_blog_post_meta' );
+
+/**
+ * Blog Show/Hide Post Meta
+ *
+ * @param string $dynamic_css Dynamic CSS from Customizer.
+ * @return string Generated dynamic CSS for blog post meta visibility.
+ */
+function inspiro_dynamic_theme_css_blog_post_meta( $dynamic_css ) {
+
+	$blog_show_post_meta = get_theme_mod( 'blog_show_post_meta', true );
+
+	if ( ! $blog_show_post_meta ) {
+		$selector = '.blog .site-main article .entry-meta,
+.archive .site-main article .entry-meta,
+.search .site-main article .entry-meta,
+.post-grid article .entry-meta';
+
+		$dynamic_css .= "{$selector} {\n";
+		$dynamic_css .= "display: none;\n";
+		$dynamic_css .= "}\n";
+	}
+
+	return $dynamic_css;
+}
