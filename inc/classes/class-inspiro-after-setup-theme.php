@@ -443,7 +443,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                 // ),
 
                 array(
-                    'name'            => 'Instagram Feed',
+                    'name'            => 'Instagram Feeds',
                     'slug'            => 'instagram-widget-by-wpzoom',
                     'description'     => 'Formerly known as "Instagram Widget by WPZOOM". Simple and lightweight widget for WordPress to display your Instagram feed.',
                     'required'        => false,
@@ -455,7 +455,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                 ),
 
                 array(
-                    'name'            => 'Social Icons Widget & Block',
+                    'name'            => 'Share Buttons & Social Icons',
                     'slug'            => 'social-icons-widget-by-wpzoom',
                     'description'     => 'Add social media icons and sharing buttons to your website! Social Icons & Sharing Buttons includes 400+ icons and customizable sharing buttons.',
                     'required'        => false,
@@ -464,6 +464,18 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'category'        => 'Social Media',
                     'rating'          => 98,
                     'active_installs' => 100000,
+                ),
+
+                array(
+                    'name'            => 'TranslatePress',
+                    'slug'            => 'translatepress-multilingual',
+                    'description'     => 'Experience a better way to translate your WordPress site and go multilingual, directly from the front-end using a visual translation interface.',
+                    'required'        => false,
+                    'thumbnail'       => 'https://ps.w.org/translatepress-multilingual/assets/icon-256x256.png',
+                    'external_url'    => 'https://wordpress.org/plugins/translatepress-multilingual/',
+                    'category'        => 'Translation',
+                    'rating'          => 96,
+                    'active_installs' => 400000,
                 ),
 
 			);
