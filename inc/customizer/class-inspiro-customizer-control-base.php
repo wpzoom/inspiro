@@ -207,7 +207,17 @@ if ( ! class_exists( 'Inspiro_Customizer_Control_Base' ) ) {
 					$this->add_panel( $wp_customize, $config->panel['id'], $config->panel['args'] );
 				}
 				if ( isset( $config->section ) && is_array( $config->section ) ) {
-					$this->add_section( $wp_customize, $config->section['id'], $config->section['args'] );
+					// Check if it's a single section or an array of sections.
+					if ( isset( $config->section['id'] ) && isset( $config->section['args'] ) ) {
+						$this->add_section( $wp_customize, $config->section['id'], $config->section['args'] );
+					} else {
+						// Array of sections.
+						foreach ( $config->section as $section ) {
+							if ( isset( $section['id'] ) && isset( $section['args'] ) ) {
+								$this->add_section( $wp_customize, $section['id'], $section['args'] );
+							}
+						}
+					}
 				}
 				if ( isset( $config->setting ) && is_array( $config->setting ) ) {
 					$this->add_settings( $wp_customize, $config->setting );

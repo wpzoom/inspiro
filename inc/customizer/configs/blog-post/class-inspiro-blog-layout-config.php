@@ -49,7 +49,7 @@ class Inspiro_Blog_Layout_Config {
 				'blog_layout',
 				array(
 					'priority'      => 1,
-					'section' => 'blog_post_options',
+					'section' => 'blog_page_section',
 					'label' => __('Choose blog list layout', 'inspiro'),
 					'grid' => true,
 					'description' => __('This setting will also apply to all post archive pages, such as categories, tags, dates, and authors.', 'inspiro'),

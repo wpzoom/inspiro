@@ -25,16 +25,30 @@ class Inspiro_Post_Options_Config {
 	 */
 	public static function config() {
 		return array(
-			'section' => array(
-				'id'   => 'blog_post_options',
-
+			'panel' => array(
+				'id'   => 'blog_post_options_panel',
 				'args' => array(
-					'title'           => esc_html__( 'Blog Post Options', 'inspiro' ),
+					'title'      => esc_html__( 'Blog Post Options', 'inspiro' ),
 					'capability' => 'edit_theme_options',
-					'priority'        => 51,
-					// 'active_callback' => 'inspiro_is_view_is_blog', // option from Inspiro_Blog_Post_Panel_Config class
-//					'title'      => esc_html__( 'Post Options', 'inspiro' ),
-//					'panel'      => 'blog_post_options_panel', // deactivated from existing panel because was necessary dblclick action
+					'priority'   => 51,
+				),
+			),
+			'section' => array(
+				array(
+					'id'   => 'blog_page_section',
+					'args' => array(
+						'title'    => esc_html__( 'Blog Page', 'inspiro' ),
+						'panel'    => 'blog_post_options_panel',
+						'priority' => 1,
+					),
+				),
+				array(
+					'id'   => 'single_post_section',
+					'args' => array(
+						'title'    => esc_html__( 'Single Post', 'inspiro' ),
+						'panel'    => 'blog_post_options_panel',
+						'priority' => 2,
+					),
 				),
 			),
 			'setting' => array(
@@ -66,8 +80,9 @@ class Inspiro_Post_Options_Config {
                 array(
     				'id'   => 'display_content',
     				'args' => array(
+    					'priority' => 6,
     					'label'   => esc_html__( 'Content to Display in Archive Pages', 'inspiro' ),
-    					'section' => 'blog_post_options',
+    					'section' => 'blog_page_section',
     					'type'    => 'radio',
     					'choices' => array(
     						'excerpt'      => esc_html__( 'Excerpt', 'inspiro' ),
@@ -80,8 +95,9 @@ class Inspiro_Post_Options_Config {
                 array(
                     'id'   => 'display_featured_image',
                     'args' => array(
+                        'priority' => 1,
                         'label'   => esc_html__( 'Display the Featured Image in the Header', 'inspiro' ),
-                        'section' => 'blog_post_options',
+                        'section' => 'single_post_section',
                         'type'    => 'checkbox',
                         'description' => esc_html__( 'Choose if you want to show the Featured Image in the header', 'inspiro' ),
                     ),
@@ -90,11 +106,12 @@ class Inspiro_Post_Options_Config {
                     'id'           => 'blog_options_upgrade',
                     'control_type' => 'Inspiro_Customize_Title_Control',
                     'args'         => array(
+                        'priority' => 99,
                         'label' => esc_html__( '⚙️ You can control every detail in your theme with Inspiro Premium!', 'inspiro' ),
                         'description' => esc_html__( 'Unlock all customization and post options by upgrading to the Premium version of the theme. Disable specific elements and features, customize colors, fonts, header, footer & much more!', 'inspiro' ),
                         'pro_text'    => esc_html__( '👉 Unlock all options and features', 'inspiro' ),
                         'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=blogpostbutton',
-                        'section' => 'blog_post_options',
+                        'section' => 'single_post_section',
                     ),
                 ),
 			),

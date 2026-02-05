@@ -48,7 +48,7 @@ class Inspiro_Blog_Text_Align_Config {
 				'blog_text_align',
 				array(
 					'priority' => 2,
-					'section'  => 'blog_post_options',
+					'section'  => 'blog_page_section',
 					'label'    => __( 'Text Alignment', 'inspiro' ),
 				)
 			)
@@ -68,7 +68,7 @@ class Inspiro_Blog_Text_Align_Config {
 			'blog_show_post_meta',
 			array(
 				'priority' => 3,
-				'section'  => 'blog_post_options',
+				'section'  => 'blog_page_section',
 				'label'    => __( 'Show Post Meta', 'inspiro' ),
 				'type'     => 'checkbox',
 			)
@@ -88,7 +88,7 @@ class Inspiro_Blog_Text_Align_Config {
 			'blog_show_excerpt',
 			array(
 				'priority'        => 4,
-				'section'         => 'blog_post_options',
+				'section'         => 'blog_page_section',
 				'label'           => __( 'Show Excerpt', 'inspiro' ),
 				'type'            => 'checkbox',
 				'active_callback' => 'inspiro_is_blog_layout_grid',
@@ -109,7 +109,7 @@ class Inspiro_Blog_Text_Align_Config {
 			'blog_thumbnail_size',
 			array(
 				'priority'    => 5,
-				'section'     => 'blog_post_options',
+				'section'     => 'blog_page_section',
 				'label'       => __( 'Featured Image Size', 'inspiro' ),
 				'type'        => 'select',
 				'choices'     => inspiro_get_image_sizes_choices(),
