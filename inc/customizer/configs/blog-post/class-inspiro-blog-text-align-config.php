@@ -108,11 +108,16 @@ class Inspiro_Blog_Text_Align_Config {
 		$wp_customize->add_control(
 			'blog_thumbnail_size',
 			array(
-				'priority' => 5,
-				'section'  => 'blog_post_options',
-				'label'    => __( 'Featured Image Size', 'inspiro' ),
-				'type'     => 'select',
-				'choices'  => inspiro_get_image_sizes_choices(),
+				'priority'    => 5,
+				'section'     => 'blog_post_options',
+				'label'       => __( 'Featured Image Size', 'inspiro' ),
+				'type'        => 'select',
+				'choices'     => inspiro_get_image_sizes_choices(),
+				'description' => sprintf(
+					/* translators: %s: link to regenerate thumbnails documentation */
+					__( 'If images don\'t appear correctly cropped, you may need to <a href="%s" target="_blank">regenerate thumbnails</a>.', 'inspiro' ),
+					'https://wp.md/regenerate'
+				),
 			)
 		);
 	}
