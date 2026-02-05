@@ -25,7 +25,7 @@
 
     <div class="theme-info-wrap">
         <h3 class="wpz-onboard_content-main-title">
-            <?php esc_html_e( 'Inspiro Premium • 43+ Starter Sites', 'inspiro' ); ?>
+            <?php esc_html_e( 'Inspiro Premium • 44+ Starter Sites', 'inspiro' ); ?>
         </h3>
         <div class="theme-buttons filters">
             <a class="button button-common active" data-filter="*">
@@ -178,6 +178,17 @@
                                         'available_for' => 'Elementor',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/podcast/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                         'preview_url' => 'https://demo.wpzoom.com/inspiro-podcast/',
+                                    ],
+                                    [
+                                        'class' => 'design_movie elementor',
+                                        'id' => 'inspiro-movie',
+                                        'title' => 'Movies & TV Shows',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-movie/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-movie/',
+                                        'name' => 'Movies & TV Shows',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/movies-shows/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                        'preview_url' => 'https://demo.wpzoom.com/inspiro-movie/',
                                     ],
                                     // [
                                     //     'class' => 'design_offbeat elementor',
