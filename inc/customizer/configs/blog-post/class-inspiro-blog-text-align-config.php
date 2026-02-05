@@ -94,6 +94,27 @@ class Inspiro_Blog_Text_Align_Config {
 				'active_callback' => 'inspiro_is_blog_layout_grid',
 			)
 		);
+
+		// Featured Image Size.
+		$wp_customize->add_setting(
+			'blog_thumbnail_size',
+			array(
+				'default'           => 'inspiro-loop',
+				'sanitize_callback' => 'inspiro_sanitize_image_size',
+				'transport'         => 'refresh',
+			)
+		);
+
+		$wp_customize->add_control(
+			'blog_thumbnail_size',
+			array(
+				'priority' => 5,
+				'section'  => 'blog_post_options',
+				'label'    => __( 'Featured Image Size', 'inspiro' ),
+				'type'     => 'select',
+				'choices'  => inspiro_get_image_sizes_choices(),
+			)
+		);
 	}
 }
 new Inspiro_Blog_Text_Align_Config();

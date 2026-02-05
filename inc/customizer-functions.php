@@ -180,6 +180,59 @@ function inspiro_is_blog_layout_grid() {
 }
 
 /**
+ * Get all registered image sizes with dimensions for select options.
+ *
+ * @since 2.1.9
+ *
+ * @return array Array of image sizes with labels.
+ */
+function inspiro_get_image_sizes_choices() {
+	$sizes      = array();
+	$size_names = get_intermediate_image_sizes();
+	$size_data  = wp_get_registered_image_subsizes();
+
+	foreach ( $size_names as $size ) {
+		$label = ucwords( str_replace( array( '-', '_', '@' ), array( ' ', ' ', ' ' ), $size ) );
+
+		if ( isset( $size_data[ $size ] ) ) {
+			$w    = $size_data[ $size ]['width'];
+			$h    = $size_data[ $size ]['height'];
+			$crop = ! empty( $size_data[ $size ]['crop'] ) ? __( ' (cropped)', 'inspiro' ) : '';
+
+			if ( 0 === $h ) {
+				$label .= " ({$w}×auto{$crop})";
+			} else {
+				$label .= " ({$w}×{$h}{$crop})";
+			}
+		}
+
+		$sizes[ $size ] = $label;
+	}
+
+	$sizes['full'] = __( 'Full Size (Original)', 'inspiro' );
+
+	return $sizes;
+}
+
+/**
+ * Sanitize image size selection.
+ *
+ * @since 2.1.9
+ *
+ * @param string $input Image size name.
+ * @return string Sanitized image size.
+ */
+function inspiro_sanitize_image_size( $input ) {
+	$valid = array_keys( inspiro_get_image_sizes_choices() );
+
+	if ( in_array( $input, $valid, true ) ) {
+		return $input;
+	}
+
+	return 'inspiro-loop';
+}
+
+/**
  * Checks whether the external header video is eligible to show on the current page.
  */
 function inspiro_is_external_video_active() {
