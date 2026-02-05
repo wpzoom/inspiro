@@ -112,6 +112,7 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
 = 2.1.9 =
 * Reorganized Blog Post Options in Customizer into two sub-sections: Blog Page and Single Post
+* New: Added Grid layout showing posts in 2 columns on the Blog page
 * New: Added "Show Post Meta" option for blog archive pages
 * New: Added "Show Excerpt" option for grid blog layout
 * New: Added "Featured Image Size" selector with all registered image sizes
