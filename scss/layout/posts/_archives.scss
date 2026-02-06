@@ -38,6 +38,10 @@ body:not(.inspiro-front-page) .entry-header {
     padding-top: 0;
 }
 
+body.inspiro-hide-page-title .entry-header {
+    display: none;
+}
+
 body:not(.page-layout-sidebar-right) {
     #primary {
         max-width: calc( var(--container-width) + 20px );
