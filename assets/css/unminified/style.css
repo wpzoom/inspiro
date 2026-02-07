@@ -3112,6 +3112,7 @@ body > .is-root-container,
     margin: 0 0 1.875em 0;
 }
 .entry-footer .section-title {
+    display: block;
     margin-top: 3.125em;
     margin-bottom: 1.25em;
     color: #666;

@@ -189,13 +189,13 @@ if ( ! function_exists( 'inspiro_entry_footer' ) ) :
 
 		if ( 'post' === get_post_type() ) {
 			the_tags(
-				'<div class="tags-links"><h4 class="section-title">' . __( 'Tags', 'inspiro' ) . '</h4>',
+				'<div class="tags-links"><span class="section-title">' . __( 'Tags', 'inspiro' ) . '</span>',
 				'<span class="separator">,</span>',
 				'</div>'
 			);
 
 			echo sprintf(
-				'<div class="post-author"><h4 class="section-title">%s</h4>%s<span>%s</span>%s</div>',
+				'<div class="post-author"><span class="section-title">%s</span>%s<span>%s</span>%s</div>',
 				esc_html__( 'Post author', 'inspiro' ),
 				get_avatar( get_the_author_meta( 'ID' ), 65 ),
 				esc_html__( 'Written by', 'inspiro' ),
