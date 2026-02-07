@@ -20,9 +20,9 @@
 
 		// Apply class to the editor body so CSS can dim the title
 		if (isTitleHidden) {
-			document.body.classList.add("is-inspiro-title-hidden");
+			document.body.classList.add("inspiro-hide-page-title");
 		} else {
-			document.body.classList.remove("is-inspiro-title-hidden");
+			document.body.classList.remove("inspiro-hide-page-title");
 		}
 
 		return el(

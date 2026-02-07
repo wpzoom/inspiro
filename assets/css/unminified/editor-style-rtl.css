@@ -158,7 +158,7 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
 }
 
 /* This targets the title wrapper only when our custom body class is present */
-.is-inspiro-title-hidden .editor-visual-editor__post-title-wrapper {
+.inspiro-hide-page-title .editor-visual-editor__post-title-wrapper {
     opacity: 0.2;
     transition: opacity 0.3s ease;
 }
