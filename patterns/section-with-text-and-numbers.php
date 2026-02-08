@@ -23,8 +23,8 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:heading {"textColor":"white","fontSize":"max-48"} -->
-<h2 class="wp-block-heading has-white-color has-text-color has-max-48-font-size">Key facts about us</h2>
-<!-- /wp:heading --></div>
+<h2 class="wp-block-heading has-white-color has-text-color has-max-48-font-size">Key facts about us</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"20%","style":{"spacing":{"padding":{"left":"0"}}}} -->
@@ -49,9 +49,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">1889</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">1889</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -69,9 +69,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">12,356</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">12,356</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -89,9 +89,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">45%</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">45%</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -109,9 +109,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">0.73 km²</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">0.73 km²</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -135,9 +135,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">25+</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">25+</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -155,9 +155,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">6,678</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">6,678</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -175,9 +175,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">&gt;200k</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">&gt;200k</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -195,9 +195,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"textColor":"secondary"} -->
-<h2 class="wp-block-heading has-secondary-color has-text-color">43</h2>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700">43</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 

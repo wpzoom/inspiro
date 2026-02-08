@@ -37,9 +37,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <h3 class="wp-block-heading has-text-align-center has-white-color has-text-color" style="font-size:30px">Starter </h3>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"textAlign":"center","level":5,"style":{"color":{"text":"#ffffff99"}}} -->
-<h5 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff99">$99/year</h5>
-<!-- /wp:heading -->
+<!-- wp:paragraph {"align":"center","style":{"color":{"text":"#ffffff99"}}} -->
+<p class="has-text-align-center has-text-color" style="color:#ffffff99">$99/year</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -101,9 +101,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <h3 class="wp-block-heading has-text-align-center has-white-color has-text-color" style="font-size:30px">Professional </h3>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"textAlign":"center","level":5,"style":{"color":{"text":"#ffffff99"}}} -->
-<h5 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff99">$199/year</h5>
-<!-- /wp:heading -->
+<!-- wp:paragraph {"align":"center","style":{"color":{"text":"#ffffff99"}}} -->
+<p class="has-text-align-center has-text-color" style="color:#ffffff99">$199/year</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -165,9 +165,9 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <h3 class="wp-block-heading has-text-align-center has-white-color has-text-color" style="font-size:30px">Agency </h3>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"textAlign":"center","level":5,"style":{"color":{"text":"#ffffff99"}}} -->
-<h5 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff99">$399/year</h5>
-<!-- /wp:heading -->
+<!-- wp:paragraph {"align":"center","style":{"color":{"text":"#ffffff99"}}} -->
+<p class="has-text-align-center has-text-color" style="color:#ffffff99">$399/year</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
