@@ -59,25 +59,25 @@
 <p></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading"><strong>Address</strong></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}}} -->
+<p style="font-style:normal;font-weight:700">Address</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>1500 Broadway, New York, NY 10036, United States</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading"><strong>Email</strong></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}}} -->
+<p style="font-style:normal;font-weight:700">Email</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>office@example.com</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading"><strong>Phone</strong></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}}} -->
+<p style="font-style:normal;font-weight:700">Phone</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>509-394-2555</p>

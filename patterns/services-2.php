@@ -163,9 +163,9 @@ https://vimeo.com/425406125
 
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"style":{"spacing":{"padding":{"top":"35px","right":"2%","bottom":"35px","left":"5%"}},"border":{"top":{"width":"0px","style":"none"},"right":{"width":"0px","style":"none"},"bottom":{"width":"0px","style":"none"},"left":{"color":"var:preset|color|lightgrey","width":"1px"}}},"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default" style="border-top-style:none;border-top-width:0px;border-right-style:none;border-right-width:0px;border-bottom-style:none;border-bottom-width:0px;border-left-color:var(--wp--preset--color--lightgrey);border-left-width:1px;padding-top:35px;padding-right:2%;padding-bottom:35px;padding-left:5%"><!-- wp:heading {"textColor":"primary"} -->
-<h2 class="wp-block-heading has-primary-color has-text-color"><strong>1.</strong></h2>
-<!-- /wp:heading -->
+<div class="wp-block-column is-style-default" style="border-top-style:none;border-top-width:0px;border-right-style:none;border-right-width:0px;border-bottom-style:none;border-bottom-width:0px;border-left-color:var(--wp--preset--color--lightgrey);border-left-width:1px;padding-top:35px;padding-right:2%;padding-bottom:35px;padding-left:5%"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"primary"} -->
+<p class="has-primary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700"><strong>1.</strong></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"41px"} -->
 <div style="height:41px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -177,8 +177,8 @@ https://vimeo.com/425406125
 <!-- /wp:wpzoom-video-popup-block/block --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading">Planning</h2>
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Planning</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -191,9 +191,9 @@ https://vimeo.com/425406125
 <!-- /wp:column -->
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"35px","right":"2%","bottom":"35px","left":"5%"}},"border":{"top":{"width":"0px","style":"none"},"right":{"width":"0px","style":"none"},"bottom":{"width":"0px","style":"none"},"left":{"color":"var:preset|color|lightgrey","width":"1px"}}},"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default" style="border-top-style:none;border-top-width:0px;border-right-style:none;border-right-width:0px;border-bottom-style:none;border-bottom-width:0px;border-left-color:var(--wp--preset--color--lightgrey);border-left-width:1px;padding-top:35px;padding-right:2%;padding-bottom:35px;padding-left:5%"><!-- wp:heading {"textColor":"primary"} -->
-<h2 class="wp-block-heading has-primary-color has-text-color"><strong>2.</strong></h2>
-<!-- /wp:heading -->
+<div class="wp-block-column is-style-default" style="border-top-style:none;border-top-width:0px;border-right-style:none;border-right-width:0px;border-bottom-style:none;border-bottom-width:0px;border-left-color:var(--wp--preset--color--lightgrey);border-left-width:1px;padding-top:35px;padding-right:2%;padding-bottom:35px;padding-left:5%"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"primary"} -->
+<p class="has-primary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700"><strong>2.</strong></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"41px"} -->
 <div style="height:41px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -205,8 +205,8 @@ https://vimeo.com/425406125
 <!-- /wp:wpzoom-video-popup-block/block --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading">Shooting</h2>
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Shooting</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -219,9 +219,9 @@ https://vimeo.com/425406125
 <!-- /wp:column -->
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"35px","right":"2%","bottom":"35px","left":"5%"}},"border":{"top":{"width":"0px","style":"none"},"right":{"width":"0px","style":"none"},"bottom":{"width":"0px","style":"none"},"left":{"color":"var:preset|color|lightgrey","width":"1px"}}},"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default" style="border-top-style:none;border-top-width:0px;border-right-style:none;border-right-width:0px;border-bottom-style:none;border-bottom-width:0px;border-left-color:var(--wp--preset--color--lightgrey);border-left-width:1px;padding-top:35px;padding-right:2%;padding-bottom:35px;padding-left:5%"><!-- wp:heading {"textColor":"primary"} -->
-<h2 class="wp-block-heading has-primary-color has-text-color"><strong>3.</strong></h2>
-<!-- /wp:heading -->
+<div class="wp-block-column is-style-default" style="border-top-style:none;border-top-width:0px;border-right-style:none;border-right-width:0px;border-bottom-style:none;border-bottom-width:0px;border-left-color:var(--wp--preset--color--lightgrey);border-left-width:1px;padding-top:35px;padding-right:2%;padding-bottom:35px;padding-left:5%"><!-- wp:paragraph {"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}},"textColor":"primary"} -->
+<p class="has-primary-color has-text-color" style="font-size:42px;font-style:normal;font-weight:700"><strong>3.</strong></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"41px"} -->
 <div style="height:41px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -233,8 +233,8 @@ https://vimeo.com/425406125
 <!-- /wp:wpzoom-video-popup-block/block --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading">Editing</h2>
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Editing</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->

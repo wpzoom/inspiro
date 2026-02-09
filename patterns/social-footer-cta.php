@@ -34,8 +34,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":""} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
-<h2 class="wp-block-heading"><a href="#">Contact Us</a></h2>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading"><a href="#">Contact Us</a></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
@@ -60,8 +60,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":""} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
-<h2 class="wp-block-heading"><a href="#">Knowledge Base</a></h2>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading"><a href="#">Knowledge Base</a></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
@@ -86,8 +86,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":""} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
-<h2 class="wp-block-heading"><a href="#">WhatsApp</a></h2>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading"><a href="#">WhatsApp</a></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
@@ -114,8 +114,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":""} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
-<h2 class="wp-block-heading"><a href="#">Slack</a></h2>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading"><a href="#">Slack</a></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
@@ -136,8 +136,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":""} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
-<h2 class="wp-block-heading"><a href="#">Twitter</a></h2>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading"><a href="#">Twitter</a></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
@@ -158,8 +158,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":""} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
-<h2 class="wp-block-heading"><a href="#">Instagram</a></h2>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading"><a href="#">Instagram</a></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
