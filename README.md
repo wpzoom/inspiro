@@ -8,7 +8,7 @@
 **Contributors:** [wpzoom](https://profiles.wordpress.org/wpzoom/)  
 **Requires at least:** 6.0  
 **Tested up to:** 6.9  
-**Version:** 2.1.9  
+**Version:** 2.1.10  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags:** one-column, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready  
@@ -116,8 +116,13 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
 ## Changelog ##
 
+### 2.1.10 ###
+* New: Added a new option to hide title in pages.
+* Minor accessibility fixes
+
 ### 2.1.9 ###
 * Reorganized Blog Post Options in Customizer into two sub-sections: Blog Page and Single Post
+* New: Added Grid layout showing posts in 2 columns on the Blog page
 * New: Added "Show Post Meta" option for blog archive pages
 * New: Added "Show Excerpt" option for grid blog layout
 * New: Added "Featured Image Size" selector with all registered image sizes
