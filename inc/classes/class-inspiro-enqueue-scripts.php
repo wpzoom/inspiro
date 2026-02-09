@@ -25,6 +25,9 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
+			add_action( 'init', array( $this, 'register_pages_settings_meta' ) );
+			add_filter( 'body_class', array( $this, 'add_hide_title_class' ) );
+
 			add_action( 'wp_head', array( $this, 'javascript_detection' ), 0 );
 			add_action( 'wp_head', array( $this, 'pingback_header' ) );
 			add_action( 'wp_head', array( $this, 'colors_css_wrap' ) );
@@ -33,6 +36,35 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 			add_action( 'enqueue_block_editor_assets', array( $this, 'block_editor_styles' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		}
+
+
+		/**
+		 *  Registers custom meta field for the 'page' post type.
+		 */
+		public function register_pages_settings_meta() {
+			register_post_meta( 'page', '_inspiro_hide_title', array(
+					'type'         => 'boolean',
+					'single'       => true,
+					'show_in_rest' => true,
+					'auth_callback' => function() {
+						return current_user_can( 'edit_posts' );
+					}
+			) );
+		}
+
+		/**
+		 *  Add class to body if hidden title meta is checked
+		 */
+		public function add_hide_title_class( $classes ) {
+
+			if ( is_page() && get_post_meta( get_the_ID(), '_inspiro_hide_title', true ) ) {
+				$classes[] = 'inspiro-hide-page-title';
+			}
+
+			return $classes;
+		}
+
+
 
 		/**
 		 * Enqueue scripts and styles for all admin pages.
@@ -100,11 +132,25 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 		 * @since 1.0.0
 		 */
 		public function block_editor_styles() {
+    		global $post;
+
 			// Block styles.
 			wp_enqueue_style( 'inspiro-block-editor-style', inspiro_get_assets_uri( 'editor-style', 'css' ), array(), INSPIRO_THEME_VERSION );
 
 			// Add custom fonts.
 			Inspiro_Fonts_Manager::render_fonts();
+
+			if ( is_admin() && isset( $post ) && get_post_type( $post->ID ) === 'page' ) {
+
+				wp_enqueue_script(
+						'inspiro-sidebar-controls',
+						inspiro_get_assets_uri( 'sidebar-controls', 'js' ),
+						array('wp-plugins', 'wp-editor', 'wp-edit-post', 'wp-blocks', 'wp-dom-ready', 'wp-element', 'wp-components', 'wp-data', 'wp-i18n'),
+						INSPIRO_THEME_VERSION,
+						true
+				);
+
+			}
 		}
 
 		/**
