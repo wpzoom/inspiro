@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Inspiro Lite: Adds settings, sections, controls to Customizer
  *
@@ -7,7 +8,7 @@
  * @since Inspiro 1.3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -16,13 +17,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.3.0
  */
-class Inspiro_Blog_Layout_Config {
+class Inspiro_Blog_Layout_Config
+{
 
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
-		add_action( 'customize_register', array( $this, 'register_configuration' ), 10 );
+	public function __construct()
+	{
+		add_action('customize_register', array($this, 'register_configuration'), 10);
+
+		add_action('customize_save_after', array($this, 'update_wpzoom_post_view'));
 	}
 
 	/**
@@ -31,7 +36,8 @@ class Inspiro_Blog_Layout_Config {
 	 * @param WP_Customize_Manager $wp_customize instance of WP_Customize_Manager.
 	 * @return void
 	 */
-	public function register_configuration( $wp_customize ) {
+	public function register_configuration($wp_customize)
+	{
 
 		$wp_customize->add_setting(
 			'blog_layout',
@@ -66,6 +72,18 @@ class Inspiro_Blog_Layout_Config {
 				)
 			)
 		);
+	}
+
+
+	public function update_wpzoom_post_view($manager)
+	{
+		$layout = get_theme_mod('blog_layout', 'list');
+
+		if ('grid' === $layout) {
+			update_option('wpzoom_post_view_blog', '3-columns');
+		} else {
+			update_option('wpzoom_post_view_blog', 'big-image');
+		}
 	}
 }
 new Inspiro_Blog_Layout_Config();

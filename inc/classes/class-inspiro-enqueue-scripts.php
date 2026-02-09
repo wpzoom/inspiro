@@ -42,7 +42,7 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 		 *  Registers custom meta field for the 'page' post type.
 		 */
 		public function register_pages_settings_meta() {
-			register_post_meta( 'page', '_inspiro_hide_title', array(
+			register_post_meta( 'page', 'inspiro_hide_title', array(
 					'type'         => 'boolean',
 					'single'       => true,
 					'show_in_rest' => true,
@@ -57,7 +57,7 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 		 */
 		public function add_hide_title_class( $classes ) {
 
-			if ( is_page() && get_post_meta( get_the_ID(), '_inspiro_hide_title', true ) ) {
+			if ( is_page() && get_post_meta( get_the_ID(), 'inspiro_hide_title', true ) ) {
 				$classes[] = 'inspiro-hide-page-title';
 			}
 
