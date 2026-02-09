@@ -29,7 +29,7 @@
 			PluginDocumentSettingPanel,
 			{
 				name: "inspiro-settings-panel",
-				title: "Inspiro Settings",
+				title: "Page Settings",
 			},
 			[
 				el(
