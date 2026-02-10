@@ -87,9 +87,7 @@
 					} else {
 						control.container.slideUp(180);
 						const contentSetting = api('display_content');
-						if ('Full Content' === contentSetting.get()) {
-							contentSetting.set('Excerpt');
-						}
+						contentSetting.set('Excerpt');
 					}
 				};
 				visibility();
