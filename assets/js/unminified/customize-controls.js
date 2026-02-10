@@ -86,8 +86,6 @@
 						control.container.slideDown(180);
 					} else {
 						control.container.slideUp(180);
-						const contentSetting = api('display_content');
-						contentSetting.set('Excerpt');
 					}
 				};
 				visibility();
@@ -97,16 +95,10 @@
 			api.control('blog_show_excerpt', function (control) {
 				const visibility = function () {
 					const displayContentSetting = api('display_content');
-					const blogShowExcerptSetting = api('blog_show_excerpt');
 					if ('grid' === setting.get()) {
 						control.container.slideDown(180);
-						blogShowExcerptSetting.set(displayContentSetting.get() !== 'None');
+						displayContentSetting.set('excerpt');
 					} else {
-						if(blogShowExcerptSetting.get()) {
-							displayContentSetting.set('Excerpt');
-						} else {
-							displayContentSetting.set('None');
-						}
 						control.container.slideUp(180);
 					}
 				};
