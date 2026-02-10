@@ -61,13 +61,13 @@ function inspiro_sanitize_color_palette( $input ) {
  * @param string $input Content to display.
  */
 function inspiro_sanitize_display_content( $input ) {
-	$valid = array( 'excerpt', 'full-content', 'none' );
+	$valid = array( 'Excerpt', 'Full Content', 'None' );
 
 	if ( in_array( $input, $valid, true ) ) {
 		return $input;
 	}
 
-	return 'excerpt';
+	return 'Excerpt';
 }
 
 

@@ -55,7 +55,7 @@ class Inspiro_Post_Options_Config {
                 array(
     				'id'   => 'display_content',
     				'args' => array(
-    					'default'           => 'excerpt',
+    					'default'           => 'Excerpt',
     					'sanitize_callback' => 'inspiro_sanitize_display_content',
     					'transport'         => 'refresh',
     				),
@@ -83,11 +83,11 @@ class Inspiro_Post_Options_Config {
     					'priority' => 6,
     					'label'   => esc_html__( 'Content to Display in Archive Pages', 'inspiro' ),
     					'section' => 'blog_page_section',
-    					'type'    => 'radio',
+    					'type'    => 'select',
     					'choices' => array(
-    						'excerpt'      => esc_html__( 'Excerpt', 'inspiro' ),
-    						'full-content' => esc_html__( 'Full Content', 'inspiro' ),
-    						'none'         => esc_html__( 'None', 'inspiro' ),
+    						'Excerpt'      => esc_html__( 'Excerpt', 'inspiro' ),
+    						'Full Content' => esc_html__( 'Full Content', 'inspiro' ),
+    						'None'         => esc_html__( 'None', 'inspiro' ),
     					),
     					'active_callback' => 'inspiro_is_blog_layout_list',
     				),

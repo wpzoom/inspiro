@@ -16,7 +16,7 @@
 
 	<?php get_template_part( 'template-parts/post/article/header' ); ?>
 
-	<?php if ( ! is_single() && 'excerpt' === inspiro_get_theme_mod( 'display_content' ) ) : ?>
+	<?php if ( ! is_single() && 'Excerpt' === inspiro_get_theme_mod( 'display_content' ) ) : ?>
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
@@ -28,7 +28,7 @@
 	}
 	?>
 
-	<?php if ( is_single() || ( ! is_single() && 'full-content' === inspiro_get_theme_mod( 'display_content' ) ) ) : ?>
+	<?php if ( is_single() || ( ! is_single() && 'Full Content' === inspiro_get_theme_mod( 'display_content' ) ) ) : ?>
 		<div class="entry-content">
 			<?php
 			the_content(

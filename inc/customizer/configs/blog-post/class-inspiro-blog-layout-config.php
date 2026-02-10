@@ -27,7 +27,7 @@ class Inspiro_Blog_Layout_Config
 	{
 		add_action('customize_register', array($this, 'register_configuration'), 10);
 
-		add_action('customize_save_after', array($this, 'update_wpzoom_post_view'));
+		add_action('customize_save_after', array($this, 'sync_configs_for_premium_theme'));
 	}
 
 	/**
@@ -75,15 +75,16 @@ class Inspiro_Blog_Layout_Config
 	}
 
 
-	public function update_wpzoom_post_view($manager)
+	public function sync_configs_for_premium_theme()
 	{
+		$display_content = get_theme_mod('display_content', 'Excerpt');
 		$layout = get_theme_mod('blog_layout', 'list');
 
-		if ('grid' === $layout) {
-			update_option('wpzoom_post_view_blog', '3-columns');
-		} else {
-			update_option('wpzoom_post_view_blog', 'big-image');
-		}
+		update_option('wpzoom_post_view_blog', ('grid' === $layout) ? '3-columns' : 'big-image');
+
+		$content = ('grid' === $layout && 'Full Content' === $display_content) ? 'Excerpt' : $display_content;
+
+		update_option('wpzoom_display_content', $content);
 	}
 }
 new Inspiro_Blog_Layout_Config();
