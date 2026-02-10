@@ -77,18 +77,20 @@ class Inspiro_Blog_Layout_Config
 
 	public function sync_configs_for_premium_theme()
 	{
-		$display_content = get_theme_mod('display_content', 'Excerpt');
-		$layout = get_theme_mod('blog_layout', 'list');
+		$layout            = get_theme_mod('blog_layout', 'list');
+		$display_content   = get_theme_mod('display_content', 'Excerpt');
+		$blog_show_excerpt = get_theme_mod('blog_show_excerpt', true);
 
 		update_option('wpzoom_post_view_blog', ('grid' === $layout) ? '3-columns' : 'big-image');
 
-		$content = ('grid' === $layout && 'Full Content' === $display_content) ? 'Excerpt' : $display_content;
-
-		update_option('wpzoom_display_content', $content);
-
-		if ('grid' === $layout && 'Full Content' === $display_content) {
-			set_theme_mod('display_content', 'Excerpt');
+		if (! $blog_show_excerpt) {
+			$display_content = 'None';
+		} elseif ('grid' === $layout && 'Full Content' === $display_content) {
+			$display_content = 'Excerpt';
 		}
+
+		set_theme_mod('display_content', $display_content);
+		update_option('wpzoom_display_content', $display_content);
 	}
 }
 new Inspiro_Blog_Layout_Config();
