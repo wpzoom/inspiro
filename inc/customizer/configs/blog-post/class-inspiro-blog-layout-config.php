@@ -85,6 +85,10 @@ class Inspiro_Blog_Layout_Config
 		$content = ('grid' === $layout && 'Full Content' === $display_content) ? 'Excerpt' : $display_content;
 
 		update_option('wpzoom_display_content', $content);
+
+		if ('grid' === $layout && 'Full Content' === $display_content) {
+			set_theme_mod('display_content', 'Excerpt');
+		}
 	}
 }
 new Inspiro_Blog_Layout_Config();
