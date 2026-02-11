@@ -94,8 +94,10 @@
 
 			api.control('blog_show_excerpt', function (control) {
 				const visibility = function () {
+					const displayContentSetting = api('display_content');
 					if ('grid' === setting.get()) {
 						control.container.slideDown(180);
+						displayContentSetting.set('excerpt');
 					} else {
 						control.container.slideUp(180);
 					}

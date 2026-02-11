@@ -83,7 +83,7 @@ class Inspiro_Post_Options_Config {
     					'priority' => 6,
     					'label'   => esc_html__( 'Content to Display in Archive Pages', 'inspiro' ),
     					'section' => 'blog_page_section',
-    					'type'    => 'radio',
+    					'type'    => 'select',
     					'choices' => array(
     						'excerpt'      => esc_html__( 'Excerpt', 'inspiro' ),
     						'full-content' => esc_html__( 'Full Content', 'inspiro' ),

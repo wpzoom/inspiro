@@ -15,7 +15,7 @@
 
 		var editPost = useDispatch("core/editor").editPost;
 		var isTitleHidden = postMeta
-			? !!postMeta["_inspiro_hide_title"]
+			? !!postMeta["inspiro_hide_title"]
 			: false;
 
 		// Apply class to the editor body so CSS can dim the title
@@ -42,7 +42,7 @@
 							editPost({
 								meta: {
 									...postMeta,
-									_inspiro_hide_title: value,
+									inspiro_hide_title: value,
 								},
 							});
 						},
