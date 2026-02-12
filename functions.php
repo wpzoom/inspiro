@@ -132,6 +132,15 @@ require INSPIRO_THEME_DIR . 'inc/icon-functions.php';
  * Theme admin notices and info page
  */
 if ( is_admin() ) {
+	// WPZOOM Notice Center (drop-in library for aggregating admin notices).
+	if ( ! class_exists( 'WPZOOM_Notice_Center' ) ) {
+		require INSPIRO_THEME_DIR . 'inc/classes/class-wpzoom-notice-center.php';
+		WPZOOM_Notice_Center::get_instance()->set_assets( array(
+			'css_url' => INSPIRO_THEME_URI . 'assets/css/unminified/notice-center.css',
+			'js_url'  => INSPIRO_THEME_URI . 'assets/js/unminified/notice-center.js',
+		) );
+	}
+
 	require INSPIRO_THEME_DIR . 'inc/admin-notice.php';
 	require INSPIRO_THEME_DIR . 'inc/admin/admin-api.php';
 
