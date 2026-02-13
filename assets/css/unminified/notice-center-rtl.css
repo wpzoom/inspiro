@@ -28,7 +28,7 @@
 	margin: 15px 0;
 	padding: 0;
 	border: none;
-	border-left: none;
+	border-right: none;
 	background: none;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 	overflow: hidden;
@@ -103,8 +103,8 @@
 .wpzoom-nc-slide {
 	position: absolute;
 	top: 0;
-	left: 0;
 	right: 0;
+	left: 0;
 	display: flex;
 	padding: 24px 20px;
 	opacity: 0;
@@ -170,13 +170,13 @@
 
 .wpzoom-nc-slide__text ul,
 .wpzoom-notice-single__content ul {
-	margin: 0.5em 0 1em 1.5em;
+	margin: 0.5em 1.5em 1em 0;
 	list-style: disc;
 }
 
 .wpzoom-nc-slide__text ol,
 .wpzoom-notice-single__content ol {
-	margin: 0.5em 0 1em 1.5em;
+	margin: 0.5em 1.5em 1em 0;
 	list-style: decimal;
 }
 
@@ -260,9 +260,9 @@
 /* ── Single notice (1 notice mode) ──────────── */
 .wpzoom-notice-single {
 	position: relative;
-	border-left: 4px solid var(--wpzoom-nc-primary);
+	border-right: 4px solid var(--wpzoom-nc-primary);
 	border-radius: 4px;
-	padding: 16px 40px 16px 16px;
+	padding: 16px 16px 16px 40px;
 	background: var(--wpzoom-nc-white);
 }
 
