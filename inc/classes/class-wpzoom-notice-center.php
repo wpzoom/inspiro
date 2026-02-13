@@ -306,6 +306,11 @@ if ( ! class_exists( 'WPZOOM_Notice_Center' ) ) {
 						<span class="wpzoom-nc-header__title"><?php esc_html_e( 'WPZOOM Notice Center', 'inspiro' ); ?></span>
 						<span class="wpzoom-nc-header__subtitle"><?php esc_html_e( 'Stay updated with the latest from WPZOOM products and services!', 'inspiro' ); ?></span>
 					</div>
+					<div class="wpzoom-nc-header__right">
+						<button type="button" class="wpzoom-nc-dismiss-slide" title="<?php esc_attr_e( 'Dismiss this notice', 'inspiro' ); ?>">
+							<span class="dashicons dashicons-no-alt"></span>
+						</button>
+					</div>
 				</div>
 
 				<!-- Body -->
@@ -330,11 +335,6 @@ if ( ! class_exists( 'WPZOOM_Notice_Center' ) ) {
 											<?php $this->render_buttons( $notice ); ?>
 										</div>
 									</div>
-									<button type="button" class="wpzoom-nc-dismiss-slide"
-											data-notice-id="<?php echo esc_attr( $notice['id'] ); ?>"
-											title="<?php esc_attr_e( 'Dismiss this notice', 'inspiro' ); ?>">
-										<span class="dashicons dashicons-no-alt"></span>
-									</button>
 								</div>
 							<?php endforeach; ?>
 						</div>
