@@ -1,10 +1,4 @@
 @media screen and (max-width: em(640)) {
-    body:not(.wp-custom-logo) a.custom-logo-text {
-        @include font-size(20);
-        letter-spacing: 0;
-        line-height: 2em;
-    }
-
     .clean_skin_wrap_post h3 { font-size: 16px; }
 
     .wpz-hero-home {

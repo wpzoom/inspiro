@@ -113,6 +113,11 @@ function inspiro_body_classes( $classes ) {
 		$classes[] = 'full-height-iframe-video';
 	}
 
+	// Add class if the header search icon is hidden.
+	if ( ! inspiro_get_theme_mod( 'header_search_show' ) ) {
+		$classes[] = 'header-search-hidden';
+	}
+
 	// Get the colorscheme or the default if there isn't one.
 	$colors    = inspiro_sanitize_colorscheme( inspiro_get_theme_mod( 'colorscheme' ) );
 	$classes[] = 'colors-' . $colors;

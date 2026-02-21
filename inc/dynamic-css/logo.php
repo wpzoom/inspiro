@@ -21,8 +21,9 @@ if ( ! function_exists( 'inspiro_selector_logo' ) ) {
 	 * @return array The array with HTML selectors.
 	 */
 	function inspiro_selector_logo( $selectors ) {
-		$selectors['typo-logo']            = 'body:not(.wp-custom-logo) a.custom-logo-text';
-		$selectors['logo-font-size-media'] = '@media screen and (min-width: 782px)';
+		$selectors['typo-logo']              = 'body:not(.wp-custom-logo) a.custom-logo-text';
+		$selectors['logo-tablet-media']      = '@media screen and (min-width: 641px) and (max-width: 1024px)';
+		$selectors['logo-desktop-media']     = '@media screen and (min-width: 1025px)';
 		return $selectors;
 	}
 }
@@ -36,16 +37,20 @@ add_filter( 'inspiro/dynamic_theme_css', 'inspiro_dynamic_theme_css_logo' );
  * @return string Generated dynamic CSS for Logo.
  */
 function inspiro_dynamic_theme_css_logo( $dynamic_css ) {
-	$logo_font_family    = inspiro_get_font_stacks( inspiro_get_theme_mod( 'logo-font-family' ) );
-	$logo_font_size      = inspiro_get_theme_mod( 'logo-font-size' );
-	$logo_font_weight    = inspiro_get_theme_mod( 'logo-font-weight' );
-	$logo_text_transform = inspiro_get_theme_mod( 'logo-text-transform' );
-	$logo_line_height    = inspiro_get_theme_mod( 'logo-line-height' );
+	$logo_font_family       = inspiro_get_font_stacks( inspiro_get_theme_mod( 'logo-font-family' ) );
+	$logo_font_size         = inspiro_get_theme_mod( 'logo-font-size' );
+	$logo_font_size_tablet  = inspiro_get_theme_mod( 'logo-font-size-tablet' );
+	$logo_font_size_mobile  = inspiro_get_theme_mod( 'logo-font-size-mobile' );
+	$logo_font_weight       = inspiro_get_theme_mod( 'logo-font-weight' );
+	$logo_text_transform    = inspiro_get_theme_mod( 'logo-text-transform' );
+	$logo_line_height       = inspiro_get_theme_mod( 'logo-line-height' );
 
-	$selectors   = apply_filters( 'inspiro/dynamic_theme_css/selectors', array() );
-	$selector    = inspiro_get_prop( $selectors, 'typo-logo' );
-	$media_query = inspiro_get_prop( $selectors, 'logo-font-size-media' );
+	$selectors           = apply_filters( 'inspiro/dynamic_theme_css/selectors', array() );
+	$selector            = inspiro_get_prop( $selectors, 'typo-logo' );
+	$tablet_media_query  = inspiro_get_prop( $selectors, 'logo-tablet-media' );
+	$desktop_media_query = inspiro_get_prop( $selectors, 'logo-desktop-media' );
 
+	// Base styles (mobile-first approach)
 	$dynamic_css .= "{$selector} {\n";
 	if ( ! empty( $logo_font_family ) && 'inherit' !== $logo_font_family ) {
 		$dynamic_css .= "font-family: {$logo_font_family};\n";
@@ -56,17 +61,29 @@ function inspiro_dynamic_theme_css_logo( $dynamic_css ) {
 	if ( ! empty( $logo_text_transform ) && 'inherit' !== $logo_text_transform ) {
 		$dynamic_css .= "text-transform: {$logo_text_transform};\n";
 	}
-	$dynamic_css .= "}\n";
-
-	$dynamic_css .= "{$media_query} {\n";
-	$dynamic_css .= "{$selector} {\n";
-	if ( absint( $logo_font_size ) >= 12 && absint( $logo_font_size ) <= 42 ) {
-		$dynamic_css .= "font-size: {$logo_font_size}px;\n";
-	}
 	if ( ! empty( $logo_line_height ) && 'inherit' !== $logo_line_height ) {
 		$dynamic_css .= "line-height: {$logo_line_height};\n";
 	}
-	$dynamic_css .= "} }\n";
+	if ( absint( $logo_font_size_mobile ) >= 12 && absint( $logo_font_size_mobile ) <= 42 ) {
+		$dynamic_css .= "font-size: {$logo_font_size_mobile}px;\n";
+	}
+	$dynamic_css .= "}\n";
+
+	// Tablet styles
+	if ( $tablet_media_query && absint( $logo_font_size_tablet ) >= 12 && absint( $logo_font_size_tablet ) <= 42 ) {
+		$dynamic_css .= "{$tablet_media_query} {\n";
+		$dynamic_css .= "{$selector} {\n";
+		$dynamic_css .= "font-size: {$logo_font_size_tablet}px;\n";
+		$dynamic_css .= "} }\n";
+	}
+
+	// Desktop styles
+	if ( $desktop_media_query && absint( $logo_font_size ) >= 12 && absint( $logo_font_size ) <= 42 ) {
+		$dynamic_css .= "{$desktop_media_query} {\n";
+		$dynamic_css .= "{$selector} {\n";
+		$dynamic_css .= "font-size: {$logo_font_size}px;\n";
+		$dynamic_css .= "} }\n";
+	}
 
 	return $dynamic_css;
 }

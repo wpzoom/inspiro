@@ -189,8 +189,10 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 		value.bind(function (to) {
 			if (to === true) {
 				$('.sb-search').css('display', 'block');
+				$('body').removeClass('header-search-hidden');
 			} else if (to === false) {
 				$('.sb-search').css('display', 'none');
+				$('body').addClass('header-search-hidden');
 			}
 		});
 	});
@@ -677,7 +679,6 @@ body {
 	$.each(
 		[
 			'body-font-size',
-			'logo-font-size',
 			'headings-font-size',
 			'heading2-font-size',
 			'heading3-font-size',
@@ -714,8 +715,63 @@ body {
 	);
 
 	/**
+	 * Handle responsive font size changes for Logo
+	 *
+	 * @since 2.0.9
+	 */
+	function updateResponsiveLogoFontSize() {
+		const desktopSize = wp.customize('logo-font-size')();
+		const tabletSize = wp.customize('logo-font-size-tablet')();
+		const mobileSize = wp.customize('logo-font-size-mobile')();
+		const selector = 'body:not(.wp-custom-logo) a.custom-logo-text';
+
+		// Remove existing responsive styles
+		$('style#logo-responsive-font-size').remove();
+
+		// Build responsive CSS
+		let css = '';
+
+		// Mobile base styles (mobile-first)
+		if (mobileSize && mobileSize >= 12 && mobileSize <= 42) {
+			css += selector + ' { font-size: ' + mobileSize + 'px; }\n';
+		}
+
+		// Tablet styles
+		if (tabletSize && tabletSize >= 12 && tabletSize <= 42) {
+			css += '@media screen and (min-width: 641px) and (max-width: 1024px) {\n';
+			css += '  ' + selector + ' { font-size: ' + tabletSize + 'px; }\n';
+			css += '}\n';
+		}
+
+		// Desktop styles
+		if (desktopSize && desktopSize >= 12 && desktopSize <= 42) {
+			css += '@media screen and (min-width: 1025px) {\n';
+			css += '  ' + selector + ' { font-size: ' + desktopSize + 'px; }\n';
+			css += '}\n';
+		}
+
+		// Add new styles
+		if (css) {
+			$('head').append('<style id="logo-responsive-font-size">' + css + '</style>');
+		}
+	}
+
+	// Bind responsive logo font size handlers
+	wp.customize('logo-font-size', function (value) {
+		value.bind(updateResponsiveLogoFontSize);
+	});
+
+	wp.customize('logo-font-size-tablet', function (value) {
+		value.bind(updateResponsiveLogoFontSize);
+	});
+
+	wp.customize('logo-font-size-mobile', function (value) {
+		value.bind(updateResponsiveLogoFontSize);
+	});
+
+	/**
 	 * Handle responsive font size changes for Page & Post Titles (H1)
-	 * 
+	 *
 	 * @since 2.0.8
 	 */
 	function updateResponsiveHeading1FontSize() {

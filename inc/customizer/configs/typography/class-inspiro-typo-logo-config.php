@@ -60,6 +60,22 @@ class Inspiro_Typo_Logo_Config {
 					),
 				),
 				array(
+					'id'   => 'logo-font-size-tablet',
+					'args' => array(
+						'default'           => 22,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				array(
+					'id'   => 'logo-font-size-mobile',
+					'args' => array(
+						'default'           => 20,
+						'transport'         => 'postMessage',
+						'sanitize_callback' => 'inspiro_sanitize_integer',
+					),
+				),
+				array(
 					'id'   => 'logo-font-weight',
 					'args' => array(
 						'default'           => '700',
@@ -107,11 +123,15 @@ class Inspiro_Typo_Logo_Config {
 				),
 				array(
 					'id'           => 'logo-font-size',
-					'control_type' => 'Inspiro_Customize_Range_Control',
+					'control_type' => 'Inspiro_Customize_Responsive_Range_Control',
 					'args'         => array(
-						'label'       => __( 'Font Size (px)', 'inspiro' ),
-						'section'     => 'inspiro_typography_section_logo',
-						'input_attrs' => array(
+						'label'           => __( 'Font Size (px)', 'inspiro' ),
+						'section'         => 'inspiro_typography_section_logo',
+						'device_settings' => array(
+							'tablet' => 'logo-font-size-tablet',
+							'mobile' => 'logo-font-size-mobile',
+						),
+						'input_attrs'     => array(
 							'min'  => 12,
 							'max'  => 42,
 							'step' => 1,

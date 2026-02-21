@@ -5183,6 +5183,9 @@ figure.aligncenter:not(.wp-block-gallery) {
     .current-menu-parent a {
         border-bottom: none;
     }
+    body.header-search-hidden .navbar .header-logo-wrapper {
+        max-width: 70%;
+    }
     .site-title {
         font-size: 56px;
         font-size: 3.5rem;
@@ -5263,12 +5266,6 @@ figure.aligncenter:not(.wp-block-gallery) {
     }
 }
 @media screen and (max-width: 40em) {
-    body:not(.wp-custom-logo) a.custom-logo-text {
-        font-size: 20px;
-        font-size: 1.25rem;
-        letter-spacing: 0;
-        line-height: 2em;
-    }
     .clean_skin_wrap_post h3 {
         font-size: 16px;
     }
