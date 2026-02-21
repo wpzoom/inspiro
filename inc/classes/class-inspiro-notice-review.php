@@ -20,10 +20,61 @@ class Inspiro_Notice_Review extends Inspiro_Notices {
      * The constructor.
      */
     public function __construct() {
+        // Register with Notice Center if available.
+        add_filter( 'wpzoom_notice_center_notices', array( $this, 'register_notice_center' ) );
+
         add_action( 'wp_loaded', array( $this, 'review_notice' ), 20 );
         add_action( 'wp_loaded', array( $this, 'hide_notices' ), 15 );
 
         $this->current_user_id = get_current_user_id();
+    }
+
+    /**
+     * Register the review notice with the WPZOOM Notice Center.
+     *
+     * @param array $notices Existing notices.
+     * @return array
+     */
+    public function register_notice_center( $notices ) {
+        if ( ! get_option( 'inspiro_theme_installed_time' ) ) {
+            update_option( 'inspiro_theme_installed_time', time() );
+        }
+
+        // Only show after 4 days.
+        if ( get_option( 'inspiro_theme_installed_time' ) > strtotime( '-4 day' ) ) {
+            return $notices;
+        }
+
+        // Skip if dismissed via legacy system.
+        $this_notice_was_dismissed = $this->get_notice_status( 'review-user-' . $this->current_user_id );
+        if ( $this_notice_was_dismissed ) {
+            return $notices;
+        }
+
+        $notices[] = array(
+            'id'               => 'inspiro_review',
+            'heading'          => __( 'Love Inspiro Theme? Share a 5-Star Review!', 'inspiro' ),
+            'content'          => '<p>' . esc_html__( "We'd be grateful if you could take a moment to share your positive experience by leaving a review on WordPress.org.", 'inspiro' ) . '</p>',
+            'icon'             => array(
+                'type'             => 'dashicon',
+                'dashicon'         => 'dashicons-star-filled',
+            ),
+            'primary_button'   => array(
+                'label'   => __( 'Leave a Review', 'inspiro' ),
+                'url'     => 'https://wordpress.org/support/theme/inspiro/reviews/?rate=5#new-post',
+                'new_tab' => true,
+            ),
+            'secondary_button' => array(
+                'label' => __( 'Maybe Later', 'inspiro' ),
+                'url'   => '',
+            ),
+            'capability'       => 'edit_theme_options',
+            'screens'          => array( 'dashboard', 'themes' ),
+            'source'           => 'Inspiro Theme',
+            'priority'         => 20,
+        );
+
+        return $notices;
     }
 
     /**
@@ -33,6 +84,11 @@ class Inspiro_Notice_Review extends Inspiro_Notices {
      * @return void
      */
     public function review_notice() {
+        // Skip when Notice Center is handling notices.
+        if ( class_exists( 'WPZOOM_Notice_Center' ) ) {
+            return;
+        }
+
         global $pagenow, $inspiro_version;
 
         if ( ! get_option( 'inspiro_theme_installed_time' ) ) {
