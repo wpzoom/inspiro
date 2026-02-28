@@ -366,39 +366,6 @@
 				</p>
 				<h4>
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M3 0.25C1.48054 0.25 0.25 1.48203 0.25 3V13C0.25 14.5192 1.48079 15.75 3 15.75H4.89845C5.12126 16.7058 5.84908 17.5108 6.86495 17.7829L13.8549 19.6559C15.3222 20.0492 16.8293 19.1784 17.2225 17.7116L19.6555 8.63157C20.0486 7.16565 19.1784 5.65629 17.7112 5.26302L12.987 3.99698V3C12.987 1.48079 11.7562 0.25 10.237 0.25H3ZM11.487 4.55707C11.4868 4.56766 11.4868 4.57823 11.487 4.58877V13C11.487 13.6908 10.9278 14.25 10.237 14.25H3C2.30921 14.25 1.75 13.6908 1.75 13V3C1.75 2.30997 2.30946 1.75 3 1.75H10.237C10.9278 1.75 11.487 2.30921 11.487 3V4.55707ZM12.987 5.54991L17.3229 6.71189C17.9896 6.89061 18.3853 7.57734 18.2066 8.24334L15.7736 17.3233C15.5947 17.9904 14.9098 18.3857 14.2431 18.207L7.25308 16.334C6.91913 16.2445 6.65304 16.0279 6.49328 15.75H10.237C11.7562 15.75 12.987 14.5192 12.987 13V5.54991Z" fill="#242628"/>
-					</svg>
-					<?php esc_html_e( 'Advanced Portfolio', 'inspiro' ); ?>
-				</h4>
-				<p class="about">
-					<?php esc_html_e( 'Showcase your portfolio with multiple templates, a custom Elementor widget, and advanced video features for a polished presentation.', 'inspiro' ); ?>
-				</p>
-			</div>
-
-			<div class="section">
-				<p class="pro-label">
-					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
-				</p>
-				<h4>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M10.7304 10.25C10.4259 10.25 10.2277 10.3491 10.0507 10.6819L9.24346 12.2042V10.8519C9.24346 10.4483 9.05229 10.25 8.69826 10.25C8.34423 10.25 8.19553 10.3704 8.01852 10.7102L7.25381 12.2042V10.866C7.25381 10.4341 7.0768 10.25 6.64488 10.25H5.76688C5.4341 10.25 5.25 10.4058 5.25 10.689C5.25 10.9722 5.42702 11.1422 5.75272 11.1422H6.11383V12.8486C6.11383 13.3301 6.43954 13.6133 6.90686 13.6133C7.37418 13.6133 7.5866 13.4292 7.82026 12.9973L8.33007 12.0414V12.8486C8.33007 13.323 8.64161 13.6133 9.11601 13.6133C9.59041 13.6133 9.76743 13.4504 10.0365 12.9973L11.2119 11.0147C11.4668 10.5828 11.2898 10.25 10.7233 10.25C10.7233 10.25 10.7233 10.25 10.7304 10.25Z" fill="#242628"/>
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M12.9396 10.25C11.9766 10.25 11.2473 10.9651 11.2473 11.9352C11.2473 12.9052 11.9837 13.6133 12.9396 13.6133C13.8955 13.6133 14.6248 12.8981 14.6318 11.9352C14.6318 10.9651 13.8955 10.25 12.9396 10.25ZM12.9396 12.5795C12.5785 12.5795 12.3306 12.3105 12.3306 11.9352C12.3306 11.5599 12.5785 11.2838 12.9396 11.2838C13.3007 11.2838 13.5485 11.5599 13.5485 11.9352C13.5485 12.3105 13.3078 12.5795 12.9396 12.5795Z" fill="#242628"/>
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M16.5577 10.25C15.6019 10.25 14.8655 10.9651 14.8655 11.9352C14.8655 12.9052 15.6019 13.6133 16.5577 13.6133C17.5136 13.6133 18.25 12.8981 18.25 11.9352C18.25 10.9722 17.5136 10.25 16.5577 10.25ZM16.5577 12.5795C16.1896 12.5795 15.9559 12.3105 15.9559 11.9352C15.9559 11.5599 16.1966 11.2838 16.5577 11.2838C16.9189 11.2838 17.1667 11.5599 17.1667 11.9352C17.1667 12.3105 16.9259 12.5795 16.5577 12.5795Z" fill="#242628"/>
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 3.5H6C4.61929 3.5 3.5 4.61929 3.5 6V17.5C3.5 18.8807 4.61929 20 6 20H17.5C18.8807 20 20 18.8807 20 17.5V6C20 4.61929 18.8807 3.5 17.5 3.5ZM6 2C3.79086 2 2 3.79086 2 6V17.5C2 19.7091 3.79086 21.5 6 21.5H17.5C19.7091 21.5 21.5 19.7091 21.5 17.5V6C21.5 3.79086 19.7091 2 17.5 2H6Z" fill="#242628"/>
-					</svg>
-					<?php esc_html_e( 'WooCommerce Features', 'inspiro' ); ?>
-				</h4>
-				<p class="about">
-					<?php esc_html_e( 'WooCommerce integration offers extensive customization options for shop pages and product displays, tailored to your needs.', 'inspiro' ); ?>
-				</p>
-			</div>
-
-			<div class="section">
-				<p class="pro-label">
-					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
-				</p>
-				<h4>
-					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M9.75003 0C4.3647 0 0 4.36468 0 9.74996C0 15.1335 4.3647 19.5 9.75003 19.5C15.1353 19.5 19.5 15.1352 19.5 9.74996C19.4983 4.36468 15.1336 0 9.75003 0ZM7.31297 13.811H5.68884V5.68703H7.31297V13.811ZM13.8112 13.811H8.93709V12.187H13.8112V13.811ZM13.8112 10.5611H8.93709V8.93703H13.8112V10.5611ZM13.8112 7.31115H8.93709V5.68703H13.8112V7.31115Z" fill="#242628"/>
 					</svg>
 					<?php esc_html_e( 'Custom Elementor Modules', 'inspiro' ); ?>
@@ -533,6 +500,188 @@
 				</h4>
 				<p class="about">
 					<?php esc_html_e( 'Create a rich movies and TV shows catalog with dedicated Shows, Seasons, and Episodes content types for entertainment websites.', 'inspiro' ); ?>
+				</p>
+			</div>
+		</div>
+
+		<h3 class="wpz-onboard_content-main-title">
+			<?php esc_html_e( 'Portfolio Premium Features', 'inspiro' ); ?>
+		</h3>
+		<div class="wpz-grid-wrap three">
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 2C1.67157 2 1 2.67157 1 3.5V8.5C1 9.32843 1.67157 10 2.5 10H8.5C9.32843 10 10 9.32843 10 8.5V3.5C10 2.67157 9.32843 2 8.5 2H2.5ZM2.5 0.5C0.843146 0.5 -0.5 1.84315 -0.5 3.5V8.5C-0.5 10.1569 0.843146 11.5 2.5 11.5H8.5C10.1569 11.5 11.5 10.1569 11.5 8.5V3.5C11.5 1.84315 10.1569 0.5 8.5 0.5H2.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 3.5C11.5 1.84315 12.8431 0.5 14.5 0.5H17.5C19.1569 0.5 20.5 1.84315 20.5 3.5V6.5C20.5 8.15685 19.1569 9.5 17.5 9.5H14.5C12.8431 9.5 11.5 8.15685 11.5 6.5V3.5ZM14.5 2C13.6716 2 13 2.67157 13 3.5V6.5C13 7.32843 13.6716 8 14.5 8H17.5C18.3284 8 19 7.32843 19 6.5V3.5C19 2.67157 18.3284 2 17.5 2H14.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1 14.5C1 12.8431 2.34315 11.5 4 11.5H17.5C19.1569 11.5 20.5 12.8431 20.5 14.5V16.5C20.5 18.1569 19.1569 19.5 17.5 19.5H4C2.34315 19.5 1 18.1569 1 16.5V14.5ZM4 13C3.17157 13 2.5 13.6716 2.5 14.5V16.5C2.5 17.3284 3.17157 18 4 18H17.5C18.3284 18 19 17.3284 19 16.5V14.5C19 13.6716 18.3284 13 17.5 13H4Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Multiple Portfolio Templates', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Display your work using multiple portfolio layouts including grid, masonry, and other presentation styles tailored to creative sites.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2 4.5C2 3.11929 3.11929 2 4.5 2H15.5C16.8807 2 18 3.11929 18 4.5V6C18 7.38071 16.8807 8.5 15.5 8.5H4.5C3.11929 8.5 2 7.38071 2 6V4.5ZM4.5 3.5C3.94772 3.5 3.5 3.94772 3.5 4.5V6C3.5 6.55228 3.94772 7 4.5 7H15.5C16.0523 7 16.5 6.55228 16.5 6V4.5C16.5 3.94772 16.0523 3.5 15.5 3.5H4.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2 14C2 12.6193 3.11929 11.5 4.5 11.5H9.5C10.8807 11.5 12 12.6193 12 14V15.5C12 16.8807 10.8807 18 9.5 18H4.5C3.11929 18 2 16.8807 2 15.5V14ZM4.5 13C3.94772 13 3.5 13.4477 3.5 14V15.5C3.5 16.0523 3.94772 16.5 4.5 16.5H9.5C10.0523 16.5 10.5 16.0523 10.5 15.5V14C10.5 13.4477 10.0523 13 9.5 13H4.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M13 14C13 12.6193 14.1193 11.5 15.5 11.5H15.505C16.8857 11.5 18.005 12.6193 18.005 14V15.5C18.005 16.8807 16.8857 18 15.505 18H15.5C14.1193 18 13 16.8807 13 15.5V14ZM15.5 13C14.9477 13 14.5 13.4477 14.5 14V15.5C14.5 16.0523 14.9477 16.5 15.5 16.5H15.505C16.0573 16.5 16.505 16.0523 16.505 15.5V14C16.505 13.4477 16.0573 13 15.505 13H15.5Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Category Filtering Effects', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Help visitors browse faster with category-based portfolio filtering and smooth transitions between portfolio groups.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 3C1.67157 3 1 3.67157 1 4.5V15.5C1 16.3284 1.67157 17 2.5 17H17.5C18.3284 17 19 16.3284 19 15.5V4.5C19 3.67157 18.3284 3 17.5 3H2.5ZM2.5 1.5C0.843146 1.5 -0.5 2.84315 -0.5 4.5V15.5C-0.5 17.1569 0.843145 18.5 2.5 18.5H17.5C19.1569 18.5 20.5 17.1569 20.5 15.5V4.5C20.5 2.84315 19.1569 1.5 17.5 1.5H2.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.75 7.59767C7.75 6.81782 8.59143 6.3368 9.25808 6.73033L13.3221 9.13266C13.9808 9.52202 13.9808 10.478 13.3221 10.8673L9.25808 13.2697C8.59143 13.6632 7.75 13.1822 7.75 12.4023V7.59767ZM9.25 8.14597V11.854L12.3856 10L9.25 8.14597Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Video Support with Popup', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Open portfolio videos in an elegant popup and showcase video-based work without sending visitors away from the gallery.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2 3.5C2 2.11929 3.11929 1 4.5 1H15.5C16.8807 1 18 2.11929 18 3.5V16.5C18 17.8807 16.8807 19 15.5 19H4.5C3.11929 19 2 17.8807 2 16.5V3.5ZM4.5 2.5C3.94772 2.5 3.5 2.94772 3.5 3.5V16.5C3.5 17.0523 3.94772 17.5 4.5 17.5H15.5C16.0523 17.5 16.5 17.0523 16.5 16.5V3.5C16.5 2.94772 16.0523 2.5 15.5 2.5H4.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 5.5C5.5 5.22386 5.72386 5 6 5H14C14.2761 5 14.5 5.22386 14.5 5.5V11.5C14.5 11.7761 14.2761 12 14 12H6C5.72386 12 5.5 11.7761 5.5 11.5V5.5ZM7 6.5V10.5H13V6.5H7Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 14.5C5.5 14.2239 5.72386 14 6 14H10C10.2761 14 10.5 14.2239 10.5 14.5C10.5 14.7761 10.2761 15 10 15H6C5.72386 15 5.5 14.7761 5.5 14.5Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Video Thumbnail Previews', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Use dedicated video thumbnails to make motion projects stand out visually before visitors even open the portfolio item.', 'inspiro' ); ?>
+				</p>
+			</div>
+		</div>
+
+		<h3 class="wpz-onboard_content-main-title">
+			<?php esc_html_e( 'Video Premium Features', 'inspiro' ); ?>
+		</h3>
+		<div class="wpz-grid-wrap three">
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 3C1.67157 3 1 3.67157 1 4.5V15.5C1 16.3284 1.67157 17 2.5 17H17.5C18.3284 17 19 16.3284 19 15.5V4.5C19 3.67157 18.3284 3 17.5 3H2.5ZM2.5 1.5C0.843146 1.5 -0.5 2.84315 -0.5 4.5V15.5C-0.5 17.1569 0.843145 18.5 2.5 18.5H17.5C19.1569 18.5 20.5 17.1569 20.5 15.5V4.5C20.5 2.84315 19.1569 1.5 17.5 1.5H2.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.75 7.59767C7.75 6.81782 8.59143 6.3368 9.25808 6.73033L13.3221 9.13266C13.9808 9.52202 13.9808 10.478 13.3221 10.8673L9.25808 13.2697C8.59143 13.6632 7.75 13.1822 7.75 12.4023V7.59767ZM9.25 8.14597V11.854L12.3856 10L9.25 8.14597Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Advanced Video Embeds', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Embed videos from YouTube, Vimeo, or self-hosted files with a polished player that fits seamlessly into your site design.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 2C1.67157 2 1 2.67157 1 3.5V16.5C1 17.3284 1.67157 18 2.5 18H17.5C18.3284 18 19 17.3284 19 16.5V3.5C19 2.67157 18.3284 2 17.5 2H2.5ZM2.5 0.5C0.843146 0.5 -0.5 1.84315 -0.5 3.5V16.5C-0.5 18.1569 0.843145 19.5 2.5 19.5H17.5C19.1569 19.5 20.5 18.1569 20.5 16.5V3.5C20.5 1.84315 19.1569 0.5 17.5 0.5H2.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 5.5C4.5 5.22386 4.72386 5 5 5H15C15.2761 5 15.5 5.22386 15.5 5.5V14.5C15.5 14.7761 15.2761 15 15 15H5C4.72386 15 4.5 14.7761 4.5 14.5V5.5ZM6 6.5V13.5H14V6.5H6Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 8.09767C8.25 7.31782 9.09143 6.8368 9.75808 7.23033L12.3221 8.74566C12.9808 9.13502 12.9808 10.091 12.3221 10.4803L9.75808 11.9957C9.09143 12.3892 8.25 11.9082 8.25 11.1283V8.09767Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Video Background on Hover', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Assign a video preview to portfolio items so motion starts playing on hover and instantly brings your projects to life.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 2C4.91015 2 2 4.91015 2 8.5C2 12.0899 4.91015 15 8.5 15C9.94364 15 11.2773 14.5296 12.3562 13.7332L16.3115 17.6885C16.6044 17.9814 17.0793 17.9814 17.3722 17.6885C17.6651 17.3956 17.6651 16.9207 17.3722 16.6278L13.4169 12.6724C14.2135 11.5934 14.6842 10.2595 14.6842 8.81579C14.6842 5.22594 11.7741 2.31579 8.18421 2.31579H8.5ZM3.5 8.5C3.5 5.73858 5.73858 3.5 8.5 3.5C11.2614 3.5 13.5 5.73858 13.5 8.5C13.5 11.2614 11.2614 13.5 8.5 13.5C5.73858 13.5 3.5 11.2614 3.5 8.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 6.84767C7.5 6.06782 8.34143 5.5868 9.00808 5.98033L11.5721 7.49566C12.2308 7.88502 12.2308 8.84102 11.5721 9.23034L9.00808 10.7457C8.34143 11.1392 7.5 10.6582 7.5 9.87833V6.84767Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Video Lightbox with Direct Link', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Open videos in a lightbox and share direct links that launch the popup immediately, ideal for campaigns and portfolio presentations.', 'inspiro' ); ?>
+				</p>
+			</div>
+		</div>
+
+		<h3 class="wpz-onboard_content-main-title">
+			<?php esc_html_e( 'WooCommerce Premium Features', 'inspiro' ); ?>
+		</h3>
+		<div class="wpz-grid-wrap three">
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 2.5C6.5 1.11929 7.61929 0 9 0H11C12.3807 0 13.5 1.11929 13.5 2.5V3H16C16.4142 3 16.75 3.33579 16.75 3.75C16.75 4.16421 16.4142 4.5 16 4.5H15.8185L15.1071 9.48054C14.967 10.4612 14.1275 11.1905 13.137 11.1905H6.86298C5.87253 11.1905 5.03299 10.4612 4.89289 9.48054L4.1815 4.5H4C3.58579 4.5 3.25 4.16421 3.25 3.75C3.25 3.33579 3.58579 3 4 3H6.5V2.5ZM8 3H12V2.5C12 1.94772 11.5523 1.5 11 1.5H9C8.44772 1.5 8 1.94772 8 2.5V3ZM5.69617 4.5L6.37813 9.27382C6.41262 9.51529 6.61915 9.69048 6.86298 9.69048H13.137C13.3809 9.69048 13.5874 9.51529 13.6219 9.27382L14.3038 4.5H5.69617Z" fill="#242628"/>
+						<path d="M7 14.5C7.82843 14.5 8.5 15.1716 8.5 16C8.5 16.8284 7.82843 17.5 7 17.5C6.17157 17.5 5.5 16.8284 5.5 16C5.5 15.1716 6.17157 14.5 7 14.5Z" fill="#242628"/>
+						<path d="M13 14.5C13.8284 14.5 14.5 15.1716 14.5 16C14.5 16.8284 13.8284 17.5 13 17.5C12.1716 17.5 11.5 16.8284 11.5 16C11.5 15.1716 12.1716 14.5 13 14.5Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Shopping Cart Icon', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Add a shopping cart icon to the header so customers can quickly review their cart and move to checkout from any page.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5 1.5C3.067 1.5 1.5 3.067 1.5 5V15C1.5 16.933 3.067 18.5 5 18.5H15C16.933 18.5 18.5 16.933 18.5 15V5C18.5 3.067 16.933 1.5 15 1.5H5ZM3 5C3 3.89543 3.89543 3 5 3H15C16.1046 3 17 3.89543 17 5V15C17 16.1046 16.1046 17 15 17H5C3.89543 17 3 16.1046 3 15V5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 6.25C5.5 5.83579 5.83579 5.5 6.25 5.5H13.75C14.1642 5.5 14.5 5.83579 14.5 6.25C14.5 6.66421 14.1642 7 13.75 7H6.25C5.83579 7 5.5 6.66421 5.5 6.25Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 10C5.5 9.58579 5.83579 9.25 6.25 9.25H13.75C14.1642 9.25 14.5 9.58579 14.5 10C14.5 10.4142 14.1642 10.75 13.75 10.75H6.25C5.83579 10.75 5.5 10.4142 5.5 10Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 13.75C5.5 13.3358 5.83579 13 6.25 13H10C10.4142 13 10.75 13.3358 10.75 13.75C10.75 14.1642 10.4142 14.5 10 14.5H6.25C5.83579 14.5 5.5 14.1642 5.5 13.75Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Woo Customizer Options', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Fine-tune your shop and product pages from the Customizer with premium WooCommerce layout and styling options.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C5.58172 3 2 6.13401 2 10C2 13.866 5.58172 17 10 17C14.4183 17 18 13.866 18 10C18 6.13401 14.4183 3 10 3ZM3.5 10C3.5 7.06157 6.31371 4.5 10 4.5C13.6863 4.5 16.5 7.06157 16.5 10C16.5 12.9384 13.6863 15.5 10 15.5C6.31371 15.5 3.5 12.9384 3.5 10Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M10 7.25C8.48122 7.25 7.25 8.48122 7.25 10C7.25 11.5188 8.48122 12.75 10 12.75C11.5188 12.75 12.75 11.5188 12.75 10C12.75 8.48122 11.5188 7.25 10 7.25ZM8.75 10C8.75 9.30964 9.30964 8.75 10 8.75C10.6904 8.75 11.25 9.30964 11.25 10C11.25 10.6904 10.6904 11.25 10 11.25C9.30964 11.25 8.75 10.6904 8.75 10Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Quick View', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Let shoppers preview product details and images in a popup without leaving the catalog, making browsing faster and smoother.', 'inspiro' ); ?>
 				</p>
 			</div>
 		</div>
