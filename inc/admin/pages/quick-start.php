@@ -31,7 +31,7 @@
 
 	<div class="theme-info-wrap">
 		<h3 class="wpz-onboard_content-main-title"><?php esc_html_e( 'Customize & Configure', 'inspiro' ); ?></h3>
-		<div class="wpz-grid-wrap three">
+		<div class="wpz-grid-wrap three premium-features-grid">
 			<div class="section">
 				<h4>
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -341,7 +341,7 @@
 		<h3 class="wpz-onboard_content-main-title">
 			<?php esc_html_e( 'Premium Features', 'inspiro' ); ?>
 		</h3>
-		<div class="wpz-grid-wrap three">
+		<div class="wpz-grid-wrap three premium-features-grid">
 			<div class="section">
 				<p class="pro-label">
 					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
@@ -504,10 +504,10 @@
 			</div>
 		</div>
 
-		<h3 class="wpz-onboard_content-main-title">
-			<?php esc_html_e( 'Portfolio Premium Features', 'inspiro' ); ?>
-		</h3>
-		<div class="wpz-grid-wrap three">
+			<h3 class="wpz-onboard_content-main-title premium-subsection-title">
+				<?php esc_html_e( 'Portfolio Premium Features', 'inspiro' ); ?>
+			</h3>
+		<div class="wpz-grid-wrap three portfolio-premium-grid">
 			<div class="section">
 				<p class="pro-label">
 					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
@@ -576,10 +576,10 @@
 			</div>
 		</div>
 
-		<h3 class="wpz-onboard_content-main-title">
-			<?php esc_html_e( 'Video Premium Features', 'inspiro' ); ?>
-		</h3>
-		<div class="wpz-grid-wrap three">
+			<h3 class="wpz-onboard_content-main-title premium-subsection-title">
+				<?php esc_html_e( 'Video Premium Features', 'inspiro' ); ?>
+			</h3>
+		<div class="wpz-grid-wrap three video-premium-grid">
 			<div class="section">
 				<p class="pro-label">
 					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
@@ -647,10 +647,10 @@
 			</div>
 		</div>
 
-		<h3 class="wpz-onboard_content-main-title">
-			<?php esc_html_e( 'WooCommerce Premium Features', 'inspiro' ); ?>
-		</h3>
-		<div class="wpz-grid-wrap three">
+			<h3 class="wpz-onboard_content-main-title premium-subsection-title">
+				<?php esc_html_e( 'WooCommerce Premium Features', 'inspiro' ); ?>
+			</h3>
+		<div class="wpz-grid-wrap three woocommerce-premium-grid">
 			<div class="section">
 				<p class="pro-label">
 					<?php esc_html_e( 'PRO', 'inspiro' ); ?>

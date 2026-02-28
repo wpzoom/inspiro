@@ -365,6 +365,23 @@
     }
 }
 
+.portfolio-premium-grid .pro-label {
+    background-color: #2271b1;
+}
+
+.video-premium-grid .pro-label {
+    background-color: #242628;
+}
+
+.woocommerce-premium-grid .pro-label {
+    background-color: #7f56d9;
+}
+
+.wpz-onboard_wrapper .wpz-onboard_content-wrapper .wpz-onboard_content .wpz-onboard_content-main .theme-info-wrap .premium-subsection-title {
+    margin: 48px 0 25px;
+    padding-top: 6px;
+}
+
 .theme-comparison {
 	margin-bottom: 25px;
 	overflow: hidden;
@@ -466,6 +483,7 @@
     p {
         font-size: $font-size-16;
         font-weight: 400;
+        margin-left: 0;
     }
 }
 
