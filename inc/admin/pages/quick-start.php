@@ -628,6 +628,23 @@
 					<?php esc_html_e( 'Open videos in a lightbox and share direct links that launch the popup immediately, ideal for campaigns and portfolio presentations.', 'inspiro' ); ?>
 				</p>
 			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2 3.5C2 2.11929 3.11929 1 4.5 1H15.5C16.8807 1 18 2.11929 18 3.5V16.5C18 17.8807 16.8807 19 15.5 19H4.5C3.11929 19 2 17.8807 2 16.5V3.5ZM4.5 2.5C3.94772 2.5 3.5 2.94772 3.5 3.5V16.5C3.5 17.0523 3.94772 17.5 4.5 17.5H15.5C16.0523 17.5 16.5 17.0523 16.5 16.5V3.5C16.5 2.94772 16.0523 2.5 15.5 2.5H4.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 5.5C5.5 5.22386 5.72386 5 6 5H14C14.2761 5 14.5 5.22386 14.5 5.5V8.5C14.5 8.77614 14.2761 9 14 9H6C5.72386 9 5.5 8.77614 5.5 8.5V5.5ZM7 6.5V7.5H13V6.5H7Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 11.0977C8.25 10.3178 9.09143 9.8368 9.75808 10.2303L12.3221 11.7457C12.9808 12.135 12.9808 13.091 12.3221 13.4803L9.75808 14.9957C9.09143 15.3892 8.25 14.9082 8.25 14.1283V11.0977Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Video Headers in Posts, Pages & Portfolio', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Add striking video headers to posts, pages, and portfolio entries using YouTube, Vimeo, or self-hosted sources for more immersive storytelling.', 'inspiro' ); ?>
+				</p>
+			</div>
 		</div>
 
 		<h3 class="wpz-onboard_content-main-title">
