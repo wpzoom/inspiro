@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Inspiro_Theme_Deactivation {
 
 	const CONTAINER_ID = 'inspiro-theme-deactivate-modal';
+	const USER_META_SURVEY_SEEN = 'inspiro_deactivation_survey_seen';
 
 	/**
 	 * Constructor
@@ -27,6 +28,7 @@ class Inspiro_Theme_Deactivation {
 		add_action( 'admin_footer-theme-install.php', array( $this, 'admin_deactivation_modal' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'wp_ajax_inspiro_theme_deactivation_survey', array( $this, 'handle_survey_submission' ) );
+		add_action( 'wp_ajax_inspiro_mark_deactivation_survey_seen', array( $this, 'mark_survey_seen' ) );
 	}
 
 	/**
@@ -110,6 +112,7 @@ class Inspiro_Theme_Deactivation {
 
 		// Get theme usage duration
 		$usage_data = inspiro_get_theme_usage_duration();
+		$current_user_id = get_current_user_id();
 
 		// Pass data to JavaScript.
 		wp_localize_script(
@@ -127,10 +130,12 @@ class Inspiro_Theme_Deactivation {
 				'isMultisite'         => is_multisite(),
 				'activePluginsCount'  => count( get_option( 'active_plugins', array() ) ),
 				'adminEmail'          => get_option( 'admin_email' ),
+				'currentUserId'       => $current_user_id,
 				'ajaxUrl'             => admin_url( 'admin-ajax.php' ),
 				'nonce'               => wp_create_nonce( 'inspiro_deactivation_survey' ),
 				'remoteApiUrl'        => 'https://ai.wpzoom.com/simple-survey-endpoint.php', // Simple standalone endpoint
 				'usageData'           => $usage_data,
+				'hasSeenSurvey'       => $current_user_id ? (bool) get_user_meta( $current_user_id, self::USER_META_SURVEY_SEEN, true ) : false,
 			)
 		);
 
@@ -153,12 +158,38 @@ class Inspiro_Theme_Deactivation {
 	}
 
 	/**
+	 * Persist that the current user has already seen the deactivation survey.
+	 */
+	public function mark_survey_seen() {
+		// Verify nonce.
+		if ( ! wp_verify_nonce( $_POST['nonce'], 'inspiro_deactivation_survey' ) ) {
+			wp_send_json_error( array( 'message' => 'Security check failed.' ), 403 );
+		}
+
+		$current_user_id = get_current_user_id();
+
+		if ( ! $current_user_id ) {
+			wp_send_json_error( array( 'message' => 'User not found.' ), 403 );
+		}
+
+		update_user_meta( $current_user_id, self::USER_META_SURVEY_SEEN, current_time( 'mysql' ) );
+
+		wp_send_json_success( array( 'message' => 'Survey marked as seen.' ) );
+	}
+
+	/**
 	 * Handle the survey submission via AJAX.
 	 */
 	public function handle_survey_submission() {
 		// Verify nonce.
 		if ( ! wp_verify_nonce( $_POST['nonce'], 'inspiro_deactivation_survey' ) ) {
 			wp_die( 'Security check failed.' );
+		}
+
+		$current_user_id = get_current_user_id();
+
+		if ( $current_user_id ) {
+			update_user_meta( $current_user_id, self::USER_META_SURVEY_SEEN, current_time( 'mysql' ) );
 		}
 
 		// Check consent status

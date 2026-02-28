@@ -14,6 +14,8 @@
 		}
 
 		var modal = null;
+		var surveyStorageKey = 'inspiro_deactivation_survey_seen_' + ( inspiroThemeDeactivateData.currentUserId || 'guest' );
+		var hasSeenSurvey = !! inspiroThemeDeactivateData.hasSeenSurvey || getStoredSurveySeen();
 		var formData = {
 			choices: [],
 			domain: inspiroThemeDeactivateData.domain,
@@ -46,6 +48,58 @@
 				formData.choice_missing_features_other_text = '';
 			}
 		});
+
+		/**
+		 * Read the survey seen flag from local storage.
+		 */
+		function getStoredSurveySeen() {
+			try {
+				return window.localStorage.getItem( surveyStorageKey ) === '1';
+			} catch ( error ) {
+				return false;
+			}
+		}
+
+		/**
+		 * Persist the survey seen flag to local storage.
+		 */
+		function storeSurveySeen() {
+			try {
+				window.localStorage.setItem( surveyStorageKey, '1' );
+			} catch ( error ) {
+				// Ignore storage failures and rely on server-side persistence.
+			}
+		}
+
+		/**
+		 * Persist that the current user has already seen the survey.
+		 */
+		function markSurveySeen() {
+			if ( hasSeenSurvey ) {
+				return;
+			}
+
+			hasSeenSurvey = true;
+			storeSurveySeen();
+
+			var requestData = new window.URLSearchParams({
+				action: 'inspiro_mark_deactivation_survey_seen',
+				nonce: inspiroThemeDeactivateData.nonce
+			});
+
+			if ( navigator.sendBeacon ) {
+				navigator.sendBeacon( inspiroThemeDeactivateData.ajaxUrl, requestData );
+				return;
+			}
+
+			$.ajax({
+				url: inspiroThemeDeactivateData.ajaxUrl,
+				type: 'POST',
+				data: requestData.toString(),
+				processData: false,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+			});
+		}
 
 		/**
 		 * Create the modal HTML.
@@ -146,6 +200,8 @@
 		 * Show the modal.
 		 */
 		function showModal() {
+			markSurveySeen();
+
 			if ( modal ) {
 				modal.show();
 				return;
@@ -415,6 +471,10 @@
 		 * Intercept theme activation clicks (when switching away from Inspiro).
 		 */
 		$( document ).on( 'click', '.theme-actions .activate, a[href*="action=activate"]', function( e ) {
+			if ( hasSeenSurvey ) {
+				return;
+			}
+
 			// Only show survey if Inspiro is currently active
 			if ( isInspiroActive() ) {
 				var href = $( this ).attr( 'href' );
@@ -456,6 +516,10 @@
 
 		// Also handle delete actions
 		$( document ).on( 'click', 'a[href*="action=delete"]', function( e ) {
+			if ( hasSeenSurvey ) {
+				return;
+			}
+
 			var href = $( this ).attr( 'href' );
 
 			// Check if this is for the Inspiro parent theme specifically (not child themes)
