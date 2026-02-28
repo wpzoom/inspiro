@@ -119,7 +119,7 @@
 							<path d="M2.75 4.25V1.25" stroke="#3496FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 							<path d="M1.25 2.75H4.25" stroke="#3496FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>
-						<?php esc_html_e( 'Update to Inspiro Premium', 'inspiro' ); ?>
+						<?php esc_html_e( 'Upgrade to Inspiro Premium', 'inspiro' ); ?>
 					</a>
 					<a href="https://wordpress.org/support/theme/inspiro/reviews/#new-post" target="_blank" class="description-link">
 						<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -495,10 +495,44 @@
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 9.00391C0.246582 8.58969 0.582368 8.25391 0.996582 8.25391H7.9995C8.41371 8.25391 8.7495 8.58969 8.7495 9.00391C8.7495 9.41812 8.41371 9.75391 7.9995 9.75391H0.996582C0.582368 9.75391 0.246582 9.41812 0.246582 9.00391Z" fill="#242628"/>
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 13.9971C0.246582 13.0306 1.03008 12.2471 1.99658 12.2471H16.0032C16.9697 12.2471 17.7532 13.0306 17.7532 13.9971V15.9987C17.7532 16.9652 16.9697 17.7487 16.0032 17.7487H1.99658C1.03008 17.7487 0.246582 16.9652 0.246582 15.9987V13.9971ZM1.99658 13.7471C1.85851 13.7471 1.74658 13.859 1.74658 13.9971V15.9987C1.74658 16.1368 1.85851 16.2487 1.99658 16.2487H16.0032C16.1413 16.2487 16.2532 16.1368 16.2532 15.9987V13.9971C16.2532 13.859 16.1413 13.7471 16.0032 13.7471H1.99658Z" fill="#242628"/>
 					</svg>
+					<?php esc_html_e( 'Footer Builder', 'inspiro' ); ?> <sup><small><?php esc_html_e( 'NEW', 'inspiro' ); ?></small></sup>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Build custom footers with drag-and-drop modules, flexible column layouts, and per-device control directly in the Customizer.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 1C0.246582 0.585786 0.582368 0.25 0.996582 0.25H13.0016C13.4158 0.25 13.7516 0.585786 13.7516 1C13.7516 1.41421 13.4158 1.75 13.0016 1.75H0.996582C0.582368 1.75 0.246582 1.41421 0.246582 1Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 5.00195C0.246582 4.58774 0.582368 4.25195 0.996582 4.25195H16.0028C16.417 4.25195 16.7528 4.58774 16.7528 5.00195C16.7528 5.41617 16.417 5.75195 16.0028 5.75195H0.996582C0.582368 5.75195 0.246582 5.41617 0.246582 5.00195Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 9.00391C0.246582 8.58969 0.582368 8.25391 0.996582 8.25391H7.9995C8.41371 8.25391 8.7495 8.58969 8.7495 9.00391C8.7495 9.41812 8.41371 9.75391 7.9995 9.75391H0.996582C0.582368 9.75391 0.246582 9.41812 0.246582 9.00391Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.246582 13.9971C0.246582 13.0306 1.03008 12.2471 1.99658 12.2471H16.0032C16.9697 12.2471 17.7532 13.0306 17.7532 13.9971V15.9987C17.7532 16.9652 16.9697 17.7487 16.0032 17.7487H1.99658C1.03008 17.7487 0.246582 16.9652 0.246582 15.9987V13.9971ZM1.99658 13.7471C1.85851 13.7471 1.74658 13.859 1.74658 13.9971V15.9987C1.74658 16.1368 1.85851 16.2487 1.99658 16.2487H16.0032C16.1413 16.2487 16.2532 16.1368 16.2532 15.9987V13.9971C16.2532 13.859 16.1413 13.7471 16.0032 13.7471H1.99658Z" fill="#242628"/>
+					</svg>
 					<?php esc_html_e( 'Multiple Footer Layouts', 'inspiro' ); ?>
 				</h4>
 				<p class="about">
 					<?php esc_html_e( 'Pick from 9 Footer Layouts to create a flexible and tailored footer that matches your site’s overall style.', 'inspiro' ); ?>
+				</p>
+			</div>
+
+			<div class="section">
+				<p class="pro-label">
+					<?php esc_html_e( 'PRO', 'inspiro' ); ?>
+				</p>
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 3C1.67157 3 1 3.67157 1 4.5V15.5C1 16.3284 1.67157 17 2.5 17H17.5C18.3284 17 19 16.3284 19 15.5V4.5C19 3.67157 18.3284 3 17.5 3H2.5ZM2.5 1.5C0.843146 1.5 -0.5 2.84315 -0.5 4.5V15.5C-0.5 17.1569 0.843145 18.5 2.5 18.5H17.5C19.1569 18.5 20.5 17.1569 20.5 15.5V4.5C20.5 2.84315 19.1569 1.5 17.5 1.5H2.5Z" fill="#242628"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.75 7.59767C7.75 6.81782 8.59143 6.3368 9.25808 6.73033L13.3221 9.13266C13.9808 9.52202 13.9808 10.478 13.3221 10.8673L9.25808 13.2697C8.59143 13.6632 7.75 13.1822 7.75 12.4023V7.59767ZM9.25 8.14597V11.854L12.3856 10L9.25 8.14597Z" fill="#242628"/>
+					</svg>
+					<?php esc_html_e( 'Movies & TV Shows Module', 'inspiro' ); ?> <sup><small><?php esc_html_e( 'NEW', 'inspiro' ); ?></small></sup>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Create a rich movies and TV shows catalog with dedicated Shows, Seasons, and Episodes content types for entertainment websites.', 'inspiro' ); ?>
 				</p>
 			</div>
 		</div>
