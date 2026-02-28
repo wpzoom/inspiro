@@ -36,19 +36,19 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 */
 		public function enqueue() {
 
-			wp_enqueue_script( 
-				'alpha-color-picker', 
-				get_template_directory_uri() . '/inc/customizer/custom-controls/assets/vendors/alpha-color-picker/alpha-color-picker.js', 
+			wp_enqueue_script(
+				'alpha-color-picker',
+				get_template_directory_uri() . '/inc/customizer/custom-controls/assets/vendors/alpha-color-picker/alpha-color-picker.js',
 				array( 'jquery', 'wp-color-picker' ),
-				false, 
-				true 
+				INSPIRO_THEME_VERSION,
+				true
 			);
 
-			wp_enqueue_style( 
-				'alpha-color-picker', 
+			wp_enqueue_style(
+				'alpha-color-picker',
 				get_template_directory_uri() . '/inc/customizer/custom-controls/assets/vendors/alpha-color-picker/alpha-color-picker.css',
-				array( 'wp-color-picker' )
-
+				array( 'wp-color-picker' ),
+				INSPIRO_THEME_VERSION
 			);
 
 		}

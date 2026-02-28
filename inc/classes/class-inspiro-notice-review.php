@@ -49,7 +49,7 @@ class Inspiro_Notice_Review extends Inspiro_Notices {
 
             if ( ! $this_notice_was_dismissed ) {
 
-                wp_enqueue_style( 'welcome-notice', get_template_directory_uri() . '/assets/css/minified/welcome-notice.min.css' );
+                wp_enqueue_style( 'welcome-notice', get_template_directory_uri() . '/assets/css/minified/welcome-notice.min.css', array(), INSPIRO_THEME_VERSION );
 
                 add_action( 'admin_notices', array( $this, 'review_notice_markup' ) ); // Display this notice.
             }

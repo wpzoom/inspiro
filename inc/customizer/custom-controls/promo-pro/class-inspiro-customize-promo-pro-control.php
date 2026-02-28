@@ -33,7 +33,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 * @return void
 		 */
 		public function enqueue() {
-			wp_enqueue_style( 'wpzoom-image-select', get_template_directory_uri() . '/inc/customizer/custom-controls/assets/vendors/image-picker/image-picker.css' );
+			wp_enqueue_style( 'wpzoom-image-select', get_template_directory_uri() . '/inc/customizer/custom-controls/assets/vendors/image-picker/image-picker.css', array(), INSPIRO_THEME_VERSION );
 		}
 
 		/**
