@@ -25,7 +25,7 @@
 
     <div class="theme-info-wrap">
         <h3 class="wpz-onboard_content-main-title">
-            <?php esc_html_e( 'Inspiro Premium • 44+ Starter Sites', 'inspiro' ); ?>
+            <?php esc_html_e( 'Inspiro Premium • 46 Starter Sites', 'inspiro' ); ?>
         </h3>
         <div class="theme-buttons filters">
             <a class="button button-common active" data-filter="*">
@@ -178,6 +178,28 @@
                                         'available_for' => 'Elementor',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/podcast/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                         'preview_url' => 'https://demo.wpzoom.com/inspiro-podcast/',
+                                    ],
+                                    [
+                                        'class' => 'design_eccentric elementor',
+                                        'id' => 'inspiro-moving',
+                                        'title' => 'Moving Company',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-moving/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-moving/',
+                                        'name' => 'Moving Company',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/moving-company/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                        'preview_url' => 'https://demo.wpzoom.com/inspiro-moving/',
+                                    ],
+                                    [
+                                        'class' => 'design_medical elementor',
+                                        'id' => 'inspiro-dental',
+                                        'title' => 'Dental Clinic',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-dental/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-dental/',
+                                        'name' => 'Dental Clinic',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/dental-clinic/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                        'preview_url' => 'https://demo.wpzoom.com/inspiro-dental/',
                                     ],
                                     [
                                         'class' => 'design_movie elementor',
@@ -385,7 +407,7 @@
                                         'demo_url' => 'https://demo.wpzoom.com/inspiro-insurance/',
                                         'name' => 'Insurance Company',
                                         'available_for' => 'Elementor',
-                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/insurance/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/insurance-company/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
                                     [
                                         'class' => 'design_hotel elementor',
