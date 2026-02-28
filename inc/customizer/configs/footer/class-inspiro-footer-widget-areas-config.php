@@ -107,6 +107,14 @@ class Inspiro_Footer_Widget_Areas_Config {
 			)
 		);
 
+		$wp_customize->add_setting(
+			'footer_builder_upgrade',
+			array(
+				'default' => null,
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+
 		$wp_customize->add_control(
 			new Inspiro_Customize_Promo_Pro_Control(
 				$wp_customize,
@@ -132,6 +140,20 @@ class Inspiro_Footer_Widget_Areas_Config {
 							'url'   => '%sfooter-pro-4.png',
 						),
 					)
+				)
+			)
+		);
+
+		$wp_customize->add_control(
+			new Inspiro_Customize_Title_Control(
+				$wp_customize,
+				'footer_builder_upgrade',
+				array(
+					'label'       => esc_html__( 'Footer Builder (Premium)', 'inspiro' ),
+					'description' => esc_html__( 'Upgrade to Inspiro Premium to unlock the visual Footer Builder and build custom footers with drag-and-drop modules, flexible columns, and per-device layouts.', 'inspiro' ),
+					'pro_text'    => esc_html__( 'Unlock Footer Builder', 'inspiro' ),
+					'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=footerbuilder',
+					'section'     => 'footer-area',
 				)
 			)
 		);

@@ -125,7 +125,15 @@ class Inspiro_Header_Area_Config
 			array(
 				'default' => false,
 				'sanitize_callback' => 'inspiro_sanitize_checkbox',
-			));
+				));
+
+		$wp_customize->add_setting(
+			'header_builder_upgrade',
+			array(
+				'default' => null,
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
 
 
 		// Add Controls
@@ -257,6 +265,20 @@ class Inspiro_Header_Area_Config
 				'label' => esc_html__('Hide the top main menu', 'inspiro'),
 				'description' => esc_html__('Hide the top main menu in desktop mode, displaying only the Hamburger icon', 'inspiro'),
 				'settings' => 'header_hide_main_menu',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Inspiro_Customize_Title_Control(
+				$wp_customize,
+				'header_builder_upgrade',
+				array(
+					'label'       => esc_html__( 'Header Builder (Premium)', 'inspiro' ),
+					'description' => esc_html__( 'Upgrade to Inspiro Premium to unlock the visual Header Builder and create responsive headers with drag-and-drop elements and device-specific layouts.', 'inspiro' ),
+					'pro_text'    => esc_html__( 'Unlock Header Builder', 'inspiro' ),
+					'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=headerbuilder',
+					'section'     => 'header-area',
+				)
 			)
 		);
 
