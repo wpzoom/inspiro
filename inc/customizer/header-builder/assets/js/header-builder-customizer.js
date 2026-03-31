@@ -141,6 +141,10 @@
 				'      <span class="dashicons dashicons-admin-appearance" aria-hidden="true"></span>' +
 				'      <span class="ihb-toolbar-label">' + (inspiroLiteHeaderBuilder.strings.colorsLinkLabel || 'Colors') + '</span>' +
 				'    </button>' +
+				'    <button type="button" class="ihb-open-header-columns" title="' + inspiroLiteHeaderBuilder.strings.columnsLinkTitle + '" aria-label="' + inspiroLiteHeaderBuilder.strings.columnsLinkAria + '">' +
+				'      <span class="dashicons dashicons-schedule" aria-hidden="true"></span>' +
+				'      <span class="ihb-toolbar-label">' + (inspiroLiteHeaderBuilder.strings.columnsLinkLabel || 'Columns') + '</span>' +
+				'    </button>' +
 				'    <div class="ihb-lite-device-switcher">' +
 				'      <button type="button" class="ihb-lite-device-btn active" data-device="desktop" title="' + inspiroLiteHeaderBuilder.strings.desktop + '"><span class="dashicons dashicons-desktop"></span></button>' +
 				'      <button type="button" class="ihb-lite-device-btn" data-device="tablet" title="' + inspiroLiteHeaderBuilder.strings.tablet + '"><span class="dashicons dashicons-tablet"></span></button>' +
@@ -206,6 +210,27 @@
 							});
 						}
 					}
+				} catch (err) {
+					// ignore
+				}
+			});
+
+			$('#inspiro-lite-header-builder-ui').on('click', '.ihb-open-header-columns', function (e) {
+				e.preventDefault();
+				try {
+					var headerSection = wp.customize.section('header-area');
+					if (headerSection && typeof headerSection.focus === 'function') {
+						headerSection.focus({
+							completeCallback: HeaderBuilderLite.afterFocusLayout
+						});
+					}
+
+					window.setTimeout(function () {
+						var $accordion = $('#customize-control-header_rows_layout_accordion');
+						if ($accordion.length && !$accordion.hasClass('expanded')) {
+							$accordion.find('.inspiro-accordion-header-ui').trigger('click');
+						}
+					}, 120);
 				} catch (err) {
 					// ignore
 				}
@@ -321,17 +346,29 @@
 					return;
 				}
 
-				var visible = value.get();
-				if (visible) {
-					HeaderBuilderLite.hideBuilder();
-					$('#ihb-lite-external-toggle').show();
-				} else {
-					HeaderBuilderLite.hideBuilder();
-					$('#ihb-lite-external-toggle').hide();
-				}
+				var applyEnableState = function (rawValue) {
+					var visible = HeaderBuilderLite.isEnabledValue(rawValue);
+					HeaderBuilderLite.toggleHeaderLayoutDropdown(visible);
+					if (visible) {
+						HeaderBuilderLite.hideBuilder();
+						$('#ihb-lite-external-toggle').show();
+					} else {
+						HeaderBuilderLite.hideBuilder();
+						$('#ihb-lite-external-toggle').hide();
+					}
+				};
+
+				// Initial state.
+				applyEnableState(value.get());
+
+				// Live updates while checkbox is toggled.
+				value.bind(function (newValue) {
+					applyEnableState(newValue);
+				});
 			});
 
-			var enabled = wp.customize('inspiro_header_builder_enable')();
+			var enabled = this.isEnabledValue(wp.customize('inspiro_header_builder_enable')());
+			this.toggleHeaderLayoutDropdown(enabled);
 			if (enabled) {
 				this.hideBuilder();
 				$('#ihb-lite-external-toggle').show();
@@ -339,6 +376,28 @@
 				this.hideBuilder();
 				$('#ihb-lite-external-toggle').hide();
 			}
+		},
+
+		/**
+		 * Normalize customize checkbox value to strict boolean.
+		 *
+		 * @param {*} value Checkbox setting value.
+		 * @return {boolean}
+		 */
+		isEnabledValue: function (value) {
+			return value === true || value === 1 || value === '1';
+		},
+
+		/**
+		 * Hide "Header Layout" dropdown group while Lite header builder is enabled.
+		 *
+		 * @param {boolean} enabled True when header builder is enabled.
+		 */
+		toggleHeaderLayoutDropdown: function (enabled) {
+			var method = enabled ? 'hide' : 'show';
+			$('#customize-control-for-predefined-layout')[method]();
+			$('#customize-control-header-menu-style')[method]();
+			$('#customize-control-header-menu-pro-style')[method]();
 		},
 
 		initSortable: function () {

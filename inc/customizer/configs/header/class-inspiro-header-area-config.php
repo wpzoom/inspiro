@@ -268,6 +268,99 @@ class Inspiro_Header_Area_Config
 			)
 		);
 
+		$wp_customize->add_setting(
+			'header_rows_layout_accordion',
+			array(
+				'default'           => null,
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Inspiro_Customize_Accordion_UI_Control(
+				$wp_customize,
+				'header_rows_layout_accordion',
+				array(
+					'type'             => 'accordion-section-ui-wrapper',
+					'label'            => esc_html__( 'Header Row Layouts', 'inspiro' ),
+					'settings'         => array(),
+					'section'          => 'header-area',
+					'accordion'        => true,
+					'controls_to_wrap' => 2,
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'header_rows_layout_primary_columns_pro',
+			array(
+				'default'           => '',
+				'sanitize_callback' => '__return_empty_string',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				'header_rows_layout_primary_columns_pro',
+				array(
+					'section'     => 'header-area',
+					'type'        => 'hidden',
+					'description' => '<div class="ihb-row-layouts-pro-lock" aria-disabled="true">'
+						. '<div class="ihb-row-layouts-pro-heading">' . esc_html__( 'PRIMARY ROW', 'inspiro' ) . '</div>'
+						. '<div class="ihb-row-layouts-pro-field">'
+						. '<div class="ihb-row-layouts-pro-label">' . esc_html__( 'Main Row Columns', 'inspiro' ) . '</div>'
+						. '<div class="ihb-row-layouts-pro-columns">'
+						. '<span class="ihb-row-layouts-pro-column">1</span>'
+						. '<span class="ihb-row-layouts-pro-column">2</span>'
+						. '<span class="ihb-row-layouts-pro-column">3</span>'
+						. '</div>'
+						. '</div>'
+						. '<div class="ihb-row-layouts-pro-lock-footer">'
+						. '<span class="ihb-row-layouts-pro-lock-icon" aria-hidden="true">'
+						. '<svg class="ihb-row-layouts-pro-lock-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"></rect></svg>'
+						. '</span>'
+						. '<span class="ihb-row-layouts-pro-lock-text">' . esc_html__( 'Available in Inspiro Premium', 'inspiro' ) . '</span>'
+						. '</div>'
+						. '</div>',
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'header_rows_layout_primary_proportions_pro',
+			array(
+				'default'           => '',
+				'sanitize_callback' => '__return_empty_string',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				'header_rows_layout_primary_proportions_pro',
+				array(
+					'section'     => 'header-area',
+					'type'        => 'hidden',
+					'description' => '<div class="ihb-row-layouts-pro-field ihb-row-layouts-pro-field-last">'
+						. '<div class="ihb-row-layouts-pro-label">' . esc_html__( 'Main Row Column Proportions', 'inspiro' ) . '</div>'
+						. '<div class="ihb-row-layouts-pro-picker">'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:1"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:1"></span><span style="flex:1"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:3"></span><span style="flex:7"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:7"></span><span style="flex:3"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:2"></span><span style="flex:1"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:1"></span><span style="flex:2"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:2"></span><span style="flex:1"></span><span style="flex:1"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:1"></span><span style="flex:2"></span><span style="flex:1"></span></span></span>'
+						. '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview"><span style="flex:1"></span><span style="flex:1"></span><span style="flex:2"></span></span></span>'
+						. '</div>'
+						. '</div>',
+				)
+			)
+		);
+
 		$wp_customize->add_control(
 			new Inspiro_Customize_Title_Control(
 				$wp_customize,

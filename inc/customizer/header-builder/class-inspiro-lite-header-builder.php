@@ -126,7 +126,7 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 			$wp_customize->add_control(
 				'inspiro_header_builder_enable',
 				array(
-					'label'       => esc_html__( 'Enable Header Builder', 'inspiro' ),
+					'label'       => esc_html__( 'Enable Header Builder Lite', 'inspiro' ),
 					'description' => esc_html__( 'Switch from predefined header layout to drag-and-drop header builder.', 'inspiro' ),
 					'section'     => 'header-area',
 					'type'        => 'checkbox',
@@ -216,6 +216,9 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 						'colorsLinkTitle'     => esc_html__( 'Main Menu Colors', 'inspiro' ),
 						'colorsLinkAria'      => esc_html__( 'Open Main Menu Colors', 'inspiro' ),
 						'colorsLinkLabel'     => esc_html__( 'Colors', 'inspiro' ),
+						'columnsLinkTitle'    => esc_html__( 'Main Row Columns', 'inspiro' ),
+						'columnsLinkAria'     => esc_html__( 'Open Header Section', 'inspiro' ),
+						'columnsLinkLabel'    => esc_html__( 'Columns', 'inspiro' ),
 						'topBar'              => esc_html__( 'Top Bar', 'inspiro' ),
 						'mainRow'             => esc_html__( 'Main Row', 'inspiro' ),
 						'topBarProHint'       => esc_html__( 'Top Bar is available in Inspiro Premium', 'inspiro' ),

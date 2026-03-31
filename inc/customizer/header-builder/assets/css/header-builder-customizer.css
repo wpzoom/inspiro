@@ -94,7 +94,8 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	display: block;
 }
 
-#inspiro-lite-header-builder-ui .ihb-colors-link {
+#inspiro-lite-header-builder-ui .ihb-colors-link,
+#inspiro-lite-header-builder-ui .ihb-open-header-columns {
 	display: flex;
 	align-items: center;
 	gap: 4px;
@@ -110,19 +111,22 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	color: #50575e;
 }
 
-#inspiro-lite-header-builder-ui .ihb-colors-link:hover {
+#inspiro-lite-header-builder-ui .ihb-colors-link:hover,
+#inspiro-lite-header-builder-ui .ihb-open-header-columns:hover {
 	background: #f0f0f0;
 	border-color: #8c8f94;
 	color: #2271b1;
 }
 
-#inspiro-lite-header-builder-ui .ihb-colors-link .dashicons {
+#inspiro-lite-header-builder-ui .ihb-colors-link .dashicons,
+#inspiro-lite-header-builder-ui .ihb-open-header-columns .dashicons {
 	font-size: 18px;
 	width: 18px;
 	height: 18px;
 }
 
-#inspiro-lite-header-builder-ui .ihb-colors-link .ihb-toolbar-label {
+#inspiro-lite-header-builder-ui .ihb-colors-link .ihb-toolbar-label,
+#inspiro-lite-header-builder-ui .ihb-open-header-columns .ihb-toolbar-label {
 	font-size: 12px;
 	line-height: 1;
 }
