@@ -163,6 +163,7 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 						'rightZone'           => esc_html__( 'Right', 'inspiro' ),
 						'builderTitle'        => esc_html__( 'Header Builder (Lite)', 'inspiro' ),
 						'openBuilder'         => esc_html__( 'Open Header Builder', 'inspiro' ),
+						'remove'              => esc_html__( 'Remove', 'inspiro' ),
 					),
 				)
 			);

@@ -57,9 +57,11 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 }
 
 .ihb-lite-panel-body {
-	height: calc(100% - 50px);
+	height: calc(100% - 55px);
+	display: flex;
+	flex-direction: column;
 	overflow: hidden;
-	padding: 10px;
+	min-height: 0;
 }
 
 .ihb-lite-device-switcher {
@@ -99,8 +101,8 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 
 .ihb-lite-builder-content {
 	display: flex;
-	height: calc(100% - 40px);
-	gap: 12px;
+	flex: 1;
+	min-height: 0;
 }
 
 .ihb-lite-zones {
@@ -110,6 +112,7 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	min-width: 0;
 	min-height: 0;
 	align-items: stretch;
+	padding: 10px;
 }
 
 .ihb-lite-zone-wrap {
@@ -168,10 +171,80 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	gap: 6px;
 	align-items: center;
 	margin: 0 0 6px;
-	padding: 6px 8px;
+	padding: 8px 10px;
 	background: #fff;
-	border: 1px solid #dcdcde;
+	border: 1px solid #ddd;
+	border-radius: 4px;
 	cursor: move;
+	transition: all 0.2s ease;
+	user-select: none;
+}
+
+.ihb-zone-items li:hover {
+	background: #e7f3ff;
+    border-color: #0073aa;
+	box-shadow: 0 2px 4px rgba(0, 115, 170, 0.1);
+
+}
+
+.ihb-components-list li {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+}
+
+.ihb-components-list li:hover {
+	background: #e7f3ff;
+    border-color: #0073aa;
+	box-shadow: 0 2px 4px rgba(0, 115, 170, 0.1);
+}
+
+/* Zone items: label + remove — matches Premium layout */
+.ihb-zone-items li.ihb-zone-component {
+	justify-content: space-between;
+}
+
+.ihb-zone-items li .ihb-component-label {
+	flex: 1;
+	min-width: 0;
+	font-size: 12px;
+	font-weight: 500;
+	color: #333;
+}
+
+.ihb-zone-items li .ihb-component-icon {
+	flex-shrink: 0;
+}
+
+.ihb-component-actions {
+	display: flex;
+	gap: 4px;
+	flex-shrink: 0;
+}
+
+.ihb-remove-component {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	transition: all 0.15s ease;
+	color: #666;
+	padding: 0;
+}
+
+.ihb-remove-component:hover {
+	background: #f0f0f0;
+	color: #333;
+}
+
+.ihb-remove-component .dashicons {
+	font-size: 12px;
+	width: 12px;
+	height: 12px;
 }
 
 .ihb-zone-items li.ui-sortable-helper,
@@ -193,7 +266,7 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 .ihb-lite-available {
 	flex: 1;
 	background: #fff;
-	border: 1px solid #dcdcde;
+	border-left: 1px solid #dcdcde;
 	padding: 8px;
 	overflow: hidden;
 }
@@ -203,6 +276,10 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	font-size: 11px;
 	text-transform: uppercase;
 	color: #50575e;
+	font-size: 12px;
+	margin: 8px;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #dcdcde;
 }
 
 .ihb-lite-external-toggle {

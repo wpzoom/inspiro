@@ -72,7 +72,26 @@
 			});
 
 			HeaderBuilderLite.initSortable();
+			HeaderBuilderLite.bindRemoveComponent();
 			HeaderBuilderLite.renderFromSetting();
+		},
+
+		bindRemoveComponent: function () {
+			$(document).on('click', '#inspiro-lite-header-builder-ui .ihb-remove-component', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				$(this).closest('li').remove();
+				HeaderBuilderLite.saveLayout();
+				HeaderBuilderLite.renderFromSetting();
+			});
+		},
+
+		refreshSortable: function () {
+			try {
+				$('.ihb-zone-items, .ihb-components-list').sortable('refresh');
+			} catch (err) {
+				// ignore
+			}
 		},
 
 		bindPreviewDeviceSync: function () {
@@ -172,9 +191,39 @@
 				connectWith: '.ihb-zone-items, .ihb-components-list',
 				placeholder: 'ihb-placeholder',
 				stop: function () {
+					HeaderBuilderLite.normalizeItemsAfterDrag();
 					HeaderBuilderLite.saveLayout();
+					HeaderBuilderLite.refreshSortable();
 				}
 			}).disableSelection();
+		},
+
+		/**
+		 * After jQuery UI moves nodes between lists, markup can be wrong (e.g. X still on available items).
+		 * Rebuild each row from component id so zone vs. available HTML matches.
+		 */
+		normalizeItemsAfterDrag: function () {
+			$('.ihb-components-list li').each(function () {
+				var id = $(this).data('componentId');
+				if (!id) {
+					return;
+				}
+				var html = HeaderBuilderLite.componentHTML(id, false);
+				if (html) {
+					$(this).replaceWith(html);
+				}
+			});
+
+			$('.ihb-zone-items li').each(function () {
+				var id = $(this).data('componentId');
+				if (!id) {
+					return;
+				}
+				var html = HeaderBuilderLite.componentHTML(id, true);
+				if (html) {
+					$(this).replaceWith(html);
+				}
+			});
 		},
 
 		getLayout: function () {
@@ -221,7 +270,7 @@
 				var $zone = $('.ihb-zone-items[data-zone="' + zone + '"]');
 				$zone.empty();
 				zoneItems.forEach(function (componentId) {
-					$zone.append(HeaderBuilderLite.componentHTML(componentId));
+					$zone.append(HeaderBuilderLite.componentHTML(componentId, true));
 					used.push(componentId);
 				});
 			});
@@ -230,12 +279,14 @@
 			$list.empty();
 			inspiroLiteHeaderBuilder.components.forEach(function (component) {
 				if (used.indexOf(component.id) === -1) {
-					$list.append(HeaderBuilderLite.componentHTML(component.id));
+					$list.append(HeaderBuilderLite.componentHTML(component.id, false));
 				}
 			});
+
+			HeaderBuilderLite.refreshSortable();
 		},
 
-		componentHTML: function (componentId) {
+		componentHTML: function (componentId, inZone) {
 			var component = inspiroLiteHeaderBuilder.components.find(function (item) {
 				return item.id === componentId;
 			});
@@ -243,9 +294,22 @@
 				return '';
 			}
 
-			return '<li data-component-id="' + component.id + '">' +
-				'<span class="dashicons ' + component.icon + '"></span>' +
-				'<span>' + component.label + '</span>' +
+			var actionsHTML = '';
+			if (inZone) {
+				actionsHTML =
+					'<div class="ihb-component-actions">' +
+					'<button type="button" class="ihb-remove-component" title="' + inspiroLiteHeaderBuilder.strings.remove + '">' +
+					'<span class="dashicons dashicons-no-alt"></span>' +
+					'</button>' +
+					'</div>';
+			}
+
+			var itemClasses = 'ihb-component-item' + (inZone ? ' ihb-zone-component' : ' ihb-available');
+
+			return '<li class="' + itemClasses + '" data-component-id="' + component.id + '">' +
+				'<span class="dashicons ' + component.icon + ' ihb-component-icon"></span>' +
+				'<span class="ihb-component-label">' + component.label + '</span>' +
+				actionsHTML +
 				'</li>';
 		}
 	};
