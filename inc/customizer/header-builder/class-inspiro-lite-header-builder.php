@@ -76,6 +76,24 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 					'label' => esc_html__( 'Menu Toggle', 'inspiro' ),
 					'icon'  => 'dashicons-menu-alt3',
 				),
+				array(
+					'id'     => 'custom_html',
+					'label'  => esc_html__( 'HTML/Shortcode', 'inspiro' ),
+					'icon'   => 'dashicons-editor-code',
+					'locked' => true,
+				),
+				array(
+					'id'     => 'custom_html_2',
+					'label'  => esc_html__( 'HTML/Shortcode 2', 'inspiro' ),
+					'icon'   => 'dashicons-editor-code',
+					'locked' => true,
+				),
+				array(
+					'id'     => 'login_logout',
+					'label'  => esc_html__( 'Login/Logout', 'inspiro' ),
+					'icon'   => 'dashicons-admin-users',
+					'locked' => true,
+				),
 			);
 
 			add_action( 'customize_register', array( $this, 'register_customizer' ), 50 );
@@ -153,6 +171,7 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 				array(
 					'components' => $this->components,
 					'defaults'   => $this->get_default_layout(),
+					'proUrl'     => esc_url( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=headerbuilder-lite-lock' ),
 					'strings'    => array(
 						'desktop'             => esc_html__( 'Desktop', 'inspiro' ),
 						'tablet'              => esc_html__( 'Tablet', 'inspiro' ),
@@ -164,6 +183,10 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 						'builderTitle'        => esc_html__( 'Header Builder (Lite)', 'inspiro' ),
 						'openBuilder'         => esc_html__( 'Open Header Builder', 'inspiro' ),
 						'remove'              => esc_html__( 'Remove', 'inspiro' ),
+						'lockProFeature'      => esc_html__( 'Available in Inspiro Premium', 'inspiro' ),
+						'upgrade'             => esc_html__( 'Upgrade', 'inspiro' ),
+						'colorsLinkTitle'     => esc_html__( 'Main Menu Colors', 'inspiro' ),
+						'colorsLinkAria'      => esc_html__( 'Open Main Menu Colors', 'inspiro' ),
 					),
 				)
 			);
@@ -218,7 +241,7 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 					$data[ $device ][ $zone ] = array_values(
 						array_filter(
 							array_map( 'sanitize_key', $data[ $device ][ $zone ] ),
-							array( $this, 'is_supported_component' )
+							array( $this, 'is_allowed_layout_component' )
 						)
 					);
 				}
@@ -228,14 +251,19 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 		}
 
 		/**
-		 * Check whether component id is allowed in Lite.
+		 * Check whether component id may be stored in layout JSON (excludes locked Pro-only UI items).
 		 *
 		 * @param string $component_id Component id.
 		 * @return bool
 		 */
-		private function is_supported_component( $component_id ) {
-			$supported = wp_list_pluck( $this->components, 'id' );
-			return in_array( $component_id, $supported, true );
+		private function is_allowed_layout_component( $component_id ) {
+			foreach ( $this->components as $component ) {
+				if ( ! isset( $component['id'] ) || $component['id'] !== $component_id ) {
+					continue;
+				}
+				return empty( $component['locked'] );
+			}
+			return false;
 		}
 
 		/**
@@ -248,11 +276,40 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 			if ( is_string( $raw ) ) {
 				$decoded = json_decode( $raw, true );
 				if ( JSON_ERROR_NONE === json_last_error() && is_array( $decoded ) ) {
-					return $decoded;
+					return $this->filter_layout_locked_components( $decoded );
 				}
 			}
 
 			return $this->get_default_layout();
+		}
+
+		/**
+		 * Remove locked Pro-only component ids from layout (e.g. tampered theme_mod).
+		 *
+		 * @param array $data Layout data.
+		 * @return array
+		 */
+		private function filter_layout_locked_components( $data ) {
+			if ( ! is_array( $data ) ) {
+				return $this->get_default_layout();
+			}
+			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+				if ( ! isset( $data[ $device ] ) || ! is_array( $data[ $device ] ) ) {
+					continue;
+				}
+				foreach ( array( 'left', 'center', 'right' ) as $zone ) {
+					if ( ! isset( $data[ $device ][ $zone ] ) || ! is_array( $data[ $device ][ $zone ] ) ) {
+						continue;
+					}
+					$data[ $device ][ $zone ] = array_values(
+						array_filter(
+							$data[ $device ][ $zone ],
+							array( $this, 'is_allowed_layout_component' )
+						)
+					);
+				}
+			}
+			return $data;
 		}
 
 		/**

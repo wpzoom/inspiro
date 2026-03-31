@@ -41,6 +41,33 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	margin-right: auto;
 }
 
+#inspiro-lite-header-builder-ui .ihb-colors-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+	color: #50575e;
+}
+
+#inspiro-lite-header-builder-ui .ihb-colors-link:hover {
+	background: #f0f0f0;
+	border-color: #8c8f94;
+	color: #2271b1;
+}
+
+#inspiro-lite-header-builder-ui .ihb-colors-link svg {
+	width: 16px;
+	height: 16px;
+	fill: currentColor;
+}
+
 .ihb-lite-toggle-btn {
 	display: inline-flex;
 	align-items: center;
@@ -198,6 +225,66 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	box-shadow: 0 2px 4px rgba(0, 115, 170, 0.1);
 }
 
+/* Locked Pro-only row (HTML/Shortcode) — not draggable */
+.ihb-components-list li.ihb-component-locked {
+	justify-content: space-between;
+	align-items: center;
+	cursor: not-allowed;
+	opacity: 0.9;
+	border-style: dashed;
+	border-color: #a7aaad;
+	background: #f6f7f7;
+}
+
+.ihb-components-list li.ihb-component-locked:hover {
+	background: #f0f0f1;
+	border-color: #a7aaad;
+	box-shadow: none;
+}
+
+.ihb-component-locked .ihb-component-label {
+	flex: 1;
+	min-width: 0;
+	font-size: 12px;
+	font-weight: 500;
+	color: #50575e;
+}
+
+.ihb-component-locked .ihb-component-icon {
+	flex-shrink: 0;
+	opacity: 0.75;
+}
+
+.ihb-lock-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	margin: 0 6px;
+	color: #646970;
+}
+
+.ihb-lock-svg {
+	display: block;
+}
+
+.ihb-pro-upgrade-link {
+	font-size: 11px;
+	font-weight: 600;
+	flex-shrink: 0;
+	color: #2271b1;
+	text-decoration: none;
+	white-space: nowrap;
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.ihb-pro-upgrade-link:hover,
+.ihb-pro-upgrade-link:focus {
+	color: #135e96;
+	text-decoration: underline;
+}
+
 /* Zone items: label + remove — matches Premium layout */
 .ihb-zone-items li.ihb-zone-component {
 	justify-content: space-between;
@@ -268,6 +355,7 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	background: #fff;
 	border-left: 1px solid #dcdcde;
 	padding: 8px;
+	padding-bottom: 50px;
 	overflow: hidden;
 }
 
