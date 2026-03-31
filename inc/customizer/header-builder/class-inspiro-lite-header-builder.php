@@ -70,11 +70,18 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 					'id'    => 'button',
 					'label' => esc_html__( 'Button', 'inspiro' ),
 					'icon'  => 'dashicons-admin-links',
+					'locked' => true,
 				),
 				array(
 					'id'    => 'hamburger',
 					'label' => esc_html__( 'Menu Toggle', 'inspiro' ),
 					'icon'  => 'dashicons-menu-alt3',
+				),
+				array(
+					'id'     => 'secondary_menu',
+					'label'  => esc_html__( 'Secondary Menu', 'inspiro' ),
+					'icon'   => 'dashicons-menu',
+					'locked' => true,
 				),
 				array(
 					'id'     => 'custom_html',
@@ -208,7 +215,19 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 						'upgrade'             => esc_html__( 'Upgrade', 'inspiro' ),
 						'colorsLinkTitle'     => esc_html__( 'Main Menu Colors', 'inspiro' ),
 						'colorsLinkAria'      => esc_html__( 'Open Main Menu Colors', 'inspiro' ),
+						'colorsLinkLabel'     => esc_html__( 'Colors', 'inspiro' ),
+						'topBar'              => esc_html__( 'Top Bar', 'inspiro' ),
+						'mainRow'             => esc_html__( 'Main Row', 'inspiro' ),
+						'topBarProHint'       => esc_html__( 'Top Bar is available in Inspiro Premium', 'inspiro' ),
 						'editComponentSettings' => esc_html__( 'Edit component settings', 'inspiro' ),
+						'zoneHideZone'          => esc_html__( 'Hide zone', 'inspiro' ),
+						'zoneHorizontal'        => esc_html__( 'Horizontal', 'inspiro' ),
+						'zoneVertical'          => esc_html__( 'Vertical', 'inspiro' ),
+						'zoneAlignLeft'         => esc_html__( 'Left', 'inspiro' ),
+						'zoneAlignCenter'       => esc_html__( 'Center', 'inspiro' ),
+						'zoneAlignRight'        => esc_html__( 'Right', 'inspiro' ),
+						'zoneControlsProHint'   => esc_html__( 'Available in Inspiro Premium', 'inspiro' ),
+						'zoneProBadge'          => esc_html__( 'Pro', 'inspiro' ),
 					),
 				)
 			);

@@ -63,6 +63,60 @@
 			});
 		},
 
+		/**
+		 * Zone label + Pro-locked .ihb-zone-controls (markup only, no behavior).
+		 *
+		 * @param {string} zoneLabel Localized Left / Center / Right.
+		 * @return {string}
+		 */
+		buildZoneHeaderHtml: function (zoneLabel) {
+			var s = inspiroLiteHeaderBuilder.strings || {};
+			var hint = HeaderBuilderLite.escapeAttr(s.zoneControlsProHint || s.lockProFeature || '');
+			var hideLabel = HeaderBuilderLite.escapeAttr(s.zoneHideZone || '');
+			var hTitle = HeaderBuilderLite.escapeAttr(s.zoneHorizontal || '');
+			var vTitle = HeaderBuilderLite.escapeAttr(s.zoneVertical || '');
+			var lTitle = HeaderBuilderLite.escapeAttr(s.zoneAlignLeft || '');
+			var cTitle = HeaderBuilderLite.escapeAttr(s.zoneAlignCenter || '');
+			var rTitle = HeaderBuilderLite.escapeAttr(s.zoneAlignRight || '');
+			var proBadge = HeaderBuilderLite.escapeAttr(s.zoneProBadge || 'Pro');
+			return '' +
+				'<div class="ihb-zone-header">' +
+				'  <div class="ihb-zone-label">' + zoneLabel + '</div>' +
+				'  <div class="ihb-zone-controls ihb-zone-controls--pro-locked" aria-disabled="true" title="' + hint + '" aria-label="' + hint + '">' +
+				'    <div class="ihb-zone-controls-toolbar">' +
+				'      <div class="ihb-zone-segment ihb-zone-segment--hide">' +
+				'        <button type="button" class="ihb-zone-hide-btn" disabled tabindex="-1" title="' + hideLabel + '" aria-label="' + hideLabel + '">' +
+				'          <span class="dashicons dashicons-hidden" aria-hidden="true"></span>' +
+				'        </button>' +
+				'      </div>' +
+				'      <div class="ihb-zone-segment ihb-zone-segment--axis">' +
+				'        <button type="button" class="ihb-zone-axis-btn ihb-zone-axis-horizontal" disabled tabindex="-1" aria-label="' + hTitle + '">' +
+				'          <svg aria-hidden="true" focusable="false" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12.0519 14.8285L13.4661 16.2427L17.7087 12L13.4661 7.7574L12.0519 9.17161L13.8803 11H6.34318V13H13.8803L12.0519 14.8285Z" fill="currentColor"></path><path clip-rule="evenodd" d="M1 19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5C23 2.79086 21.2091 1 19 1H5C2.79086 1 1 2.79086 1 5V19ZM5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21Z" fill="currentColor" fill-rule="evenodd"></path></svg>' +
+				'        </button>' +
+				'        <button type="button" class="ihb-zone-axis-btn ihb-zone-axis-vertical" disabled tabindex="-1" aria-label="' + vTitle + '">' +
+				'          <svg aria-hidden="true" focusable="false" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14.8284 12.0259L16.2426 13.4402L12 17.6828L7.75733 13.4402L9.17155 12.0259L11 13.8544V6.31724H13V13.8544L14.8284 12.0259Z" fill="currentColor"></path><path clip-rule="evenodd" d="M1 5C1 2.79086 2.79086 1 5 1H19C21.2091 1 23 2.79086 23 5V19C23 21.2091 21.2091 23 19 23H5C2.79086 23 1 21.2091 1 19V5ZM5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3Z" fill="currentColor" fill-rule="evenodd"></path></svg>' +
+				'        </button>' +
+				'      </div>' +
+				'      <div class="ihb-zone-segment ihb-zone-segment--align">' +
+				'        <button type="button" class="ihb-zone-align-btn" disabled tabindex="-1" aria-label="' + lTitle + '">' +
+				'          <span class="dashicons dashicons-editor-alignleft" aria-hidden="true"></span>' +
+				'        </button>' +
+				'        <button type="button" class="ihb-zone-align-btn ihb-zone-align-btn--active" disabled tabindex="-1" aria-pressed="true" aria-label="' + cTitle + '">' +
+				'          <span class="dashicons dashicons-editor-aligncenter" aria-hidden="true"></span>' +
+				'        </button>' +
+				'        <button type="button" class="ihb-zone-align-btn" disabled tabindex="-1" aria-label="' + rTitle + '">' +
+				'          <span class="dashicons dashicons-editor-alignright" aria-hidden="true"></span>' +
+				'        </button>' +
+				'      </div>' +
+				'      <div class="ihb-zone-pro-lock">' +
+				'        <span class="dashicons dashicons-lock ihb-zone-pro-lock-icon" aria-hidden="true"></span>' +
+				'        <span class="ihb-zone-pro-badge">' + proBadge + '</span>' +
+				'      </div>' +
+				'    </div>' +
+				'  </div>' +
+				'</div>';
+		},
+
 		mountUI: function () {
 			if ($('#inspiro-lite-header-builder-ui').length) {
 				return;
@@ -72,11 +126,20 @@
 				'<div id="inspiro-lite-header-builder-ui" class="inspiro-lite-header-builder-ui ihb-lite-panel">' +
 				'  <div class="ihb-lite-panel-header">' +
 				'    <h4>' + inspiroLiteHeaderBuilder.strings.builderTitle + '</h4>' +
+				'    <div class="ihb-row-switcher ihb-row-switcher-lite" role="group" aria-label="' + HeaderBuilderLite.escapeAttr(inspiroLiteHeaderBuilder.strings.builderTitle) + '">' +
+				'      <button type="button" class="ihb-row-switcher-btn ihb-row-switcher-btn-topbar" disabled aria-disabled="true" title="' + HeaderBuilderLite.escapeAttr(inspiroLiteHeaderBuilder.strings.topBarProHint || inspiroLiteHeaderBuilder.strings.lockProFeature || '') + '">' +
+				'        <span class="ihb-row-switcher-label">' + HeaderBuilderLite.escapeAttr(inspiroLiteHeaderBuilder.strings.topBar || 'Top Bar') + '</span>' +
+				'        <span class="ihb-row-switcher-lock" aria-hidden="true">' +
+				'          <svg class="ihb-row-switcher-lock-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"></rect></svg>' +
+				'        </span>' +
+				'      </button>' +
+				'      <button type="button" class="ihb-row-switcher-btn ihb-row-switcher-btn-main active" aria-pressed="true" tabindex="-1">' +
+				'        <span class="ihb-row-switcher-label">' + HeaderBuilderLite.escapeAttr(inspiroLiteHeaderBuilder.strings.mainRow || 'Main Row') + '</span>' +
+				'      </button>' +
+				'    </div>' +
 				'    <button type="button" class="ihb-colors-link" title="' + inspiroLiteHeaderBuilder.strings.colorsLinkTitle + '" aria-label="' + inspiroLiteHeaderBuilder.strings.colorsLinkAria + '">' +
-				'      <svg height="18" width="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
-				'        <path d="M24 6c-9.94 0-18 8.06-18 18s8.06 18 18 18c1.66 0 3-1.34 3-3 0-.78-.29-1.48-.78-2.01-.47-.53-.75-1.22-.75-1.99 0-1.66 1.34-3 3-3h3.53c5.52 0 10-4.48 10-10 0-8.84-8.06-16-18-16zm-11 18c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6-8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm10 0c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>' +
-				'        <path d="M0 0h48v48h-48z" fill="none"/>' +
-				'      </svg>' +
+				'      <span class="dashicons dashicons-admin-appearance" aria-hidden="true"></span>' +
+				'      <span class="ihb-toolbar-label">' + (inspiroLiteHeaderBuilder.strings.colorsLinkLabel || 'Colors') + '</span>' +
 				'    </button>' +
 				'    <div class="ihb-lite-device-switcher">' +
 				'      <button type="button" class="ihb-lite-device-btn active" data-device="desktop" title="' + inspiroLiteHeaderBuilder.strings.desktop + '"><span class="dashicons dashicons-desktop"></span></button>' +
@@ -89,15 +152,15 @@
 				'    <div class="ihb-lite-builder-content">' +
 				'      <div class="ihb-lite-zones">' +
 				'        <div class="ihb-lite-zone-wrap">' +
-				'          <div class="ihb-zone-header"><div class="ihb-zone-label">' + inspiroLiteHeaderBuilder.strings.leftZone + '</div></div>' +
+				HeaderBuilderLite.buildZoneHeaderHtml(inspiroLiteHeaderBuilder.strings.leftZone) +
 				'          <ul class="ihb-zone-items" data-zone="left"></ul>' +
 				'        </div>' +
 				'        <div class="ihb-lite-zone-wrap">' +
-				'          <div class="ihb-zone-header"><div class="ihb-zone-label">' + inspiroLiteHeaderBuilder.strings.centerZone + '</div></div>' +
+				HeaderBuilderLite.buildZoneHeaderHtml(inspiroLiteHeaderBuilder.strings.centerZone) +
 				'          <ul class="ihb-zone-items" data-zone="center"></ul>' +
 				'        </div>' +
 				'        <div class="ihb-lite-zone-wrap">' +
-				'          <div class="ihb-zone-header"><div class="ihb-zone-label">' + inspiroLiteHeaderBuilder.strings.rightZone + '</div></div>' +
+				HeaderBuilderLite.buildZoneHeaderHtml(inspiroLiteHeaderBuilder.strings.rightZone) +
 				'          <ul class="ihb-zone-items" data-zone="right"></ul>' +
 				'        </div>' +
 				'      </div>' +
