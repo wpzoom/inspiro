@@ -3,6 +3,10 @@
 	width: 100%;
 }
 
+.ihb-lite .custom-header-button {
+	margin-top: 0;
+}
+
 .ihb-lite-row {
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;

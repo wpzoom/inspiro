@@ -172,6 +172,27 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 					'components' => $this->components,
 					'defaults'   => $this->get_default_layout(),
 					'proUrl'     => esc_url( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=headerbuilder-lite-lock' ),
+					// Pencil edit in builder zones: wp.customize control/section ids (see customize_register).
+					'editTargets' => array(
+						'logo'      => array(
+							'type' => 'control',
+							'id'   => 'custom_logo',
+						),
+						'menu'      => array(
+							'type' => 'control',
+							'id'   => 'nav_menu_locations[primary]',
+						),
+						'social'    => array(
+							'type' => 'section',
+							'id'   => 'sidebar-widgets-header_social',
+						),
+						'button'    => array(
+							'type'               => 'control',
+							'id'                 => 'header_button_title',
+							'fallback_section'   => 'header_content',
+							'fallback_panel'     => 'homepage_media_panel',
+						),
+					),
 					'strings'    => array(
 						'desktop'             => esc_html__( 'Desktop', 'inspiro' ),
 						'tablet'              => esc_html__( 'Tablet', 'inspiro' ),
@@ -187,6 +208,7 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 						'upgrade'             => esc_html__( 'Upgrade', 'inspiro' ),
 						'colorsLinkTitle'     => esc_html__( 'Main Menu Colors', 'inspiro' ),
 						'colorsLinkAria'      => esc_html__( 'Open Main Menu Colors', 'inspiro' ),
+						'editComponentSettings' => esc_html__( 'Edit component settings', 'inspiro' ),
 					),
 				)
 			);

@@ -4,6 +4,54 @@
 	var HeaderBuilderLite = {
 		currentDevice: 'desktop',
 		isVisible: false,
+
+		afterFocusLayout: function () {
+			window.setTimeout(function () {
+				$(window).trigger('resize');
+			}, 100);
+		},
+
+		/**
+		 * @param {Object} target From inspiroLiteHeaderBuilder.editTargets[ componentId ]: type, id, optional fallback_section, fallback_panel.
+		 */
+		focusCustomizerTarget: function (target) {
+			if (!target || !target.type || !target.id) {
+				return;
+			}
+			var after = HeaderBuilderLite.afterFocusLayout;
+			try {
+				if (target.type === 'control') {
+					var ctl = wp.customize.control(target.id);
+					if (ctl && typeof ctl.focus === 'function') {
+						ctl.focus({ completeCallback: after });
+						return;
+					}
+					if (target.fallback_section) {
+						var sec = wp.customize.section(target.fallback_section);
+						if (sec && typeof sec.focus === 'function') {
+							sec.focus({ completeCallback: after });
+							return;
+						}
+					}
+					if (target.fallback_panel) {
+						var pan = wp.customize.panel(target.fallback_panel);
+						if (pan && typeof pan.focus === 'function') {
+							pan.focus({ completeCallback: after });
+						}
+					}
+					return;
+				}
+				if (target.type === 'section') {
+					var section = wp.customize.section(target.id);
+					if (section && typeof section.focus === 'function') {
+						section.focus({ completeCallback: after });
+					}
+				}
+			} catch (err) {
+				// ignore
+			}
+		},
+
 		init: function () {
 			if (typeof wp === 'undefined' || !wp.customize || typeof inspiroLiteHeaderBuilder === 'undefined') {
 				return;
@@ -81,28 +129,38 @@
 				e.preventDefault();
 				try {
 					var menuColorsControl = wp.customize.control('for_color_header_navbar_menu_options');
-					var afterFocusLayout = function () {
-						window.setTimeout(function () {
-							$(window).trigger('resize');
-						}, 100);
-					};
 					// Use Control.prototype.focus only — it expands the parent section in the right order.
 					// Calling section.expand + section.focus + control.focus caused the sidebar to stay half off-screen (translateX) on first click.
 					if (menuColorsControl && typeof menuColorsControl.focus === 'function') {
 						menuColorsControl.focus({
-							completeCallback: afterFocusLayout
+							completeCallback: HeaderBuilderLite.afterFocusLayout
 						});
 					} else {
 						var colorsSection = wp.customize.section('colors');
 						if (colorsSection && typeof colorsSection.focus === 'function') {
 							colorsSection.focus({
-								completeCallback: afterFocusLayout
+								completeCallback: HeaderBuilderLite.afterFocusLayout
 							});
 						}
 					}
 				} catch (err) {
 					// ignore
 				}
+			});
+
+			$('#inspiro-lite-header-builder-ui').on('click', '.ihb-component-edit', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				var $li = $(this).closest('li');
+				var componentId = $li.data('componentId');
+				if (!componentId || !inspiroLiteHeaderBuilder.editTargets) {
+					return;
+				}
+				var target = inspiroLiteHeaderBuilder.editTargets[componentId];
+				if (!target) {
+					return;
+				}
+				HeaderBuilderLite.focusCustomizerTarget(target);
 			});
 
 			HeaderBuilderLite.initSortable();
@@ -399,8 +457,16 @@
 
 			var actionsHTML = '';
 			if (inZone) {
-				actionsHTML =
-					'<div class="ihb-component-actions">' +
+				var editTitle = HeaderBuilderLite.escapeAttr(inspiroLiteHeaderBuilder.strings.editComponentSettings || '');
+				var showEdit = componentId !== 'search' && componentId !== 'hamburger';
+				actionsHTML = '<div class="ihb-component-actions">';
+				if (showEdit) {
+					actionsHTML +=
+						'<button type="button" class="ihb-component-edit" title="' + editTitle + '" aria-label="' + editTitle + '">' +
+						'<span class="dashicons dashicons-edit"></span>' +
+						'</button>';
+				}
+				actionsHTML +=
 					'<button type="button" class="ihb-remove-component" title="' + inspiroLiteHeaderBuilder.strings.remove + '">' +
 					'<span class="dashicons dashicons-no-alt"></span>' +
 					'</button>' +
