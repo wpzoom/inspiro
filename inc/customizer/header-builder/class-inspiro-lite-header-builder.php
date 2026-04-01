@@ -455,16 +455,16 @@ if ( ! class_exists( 'Inspiro_Lite_Header_Builder' ) ) {
 				'desktop' => array(
 					'left'   => array( 'logo' ),
 					'center' => array( 'menu' ),
-					'right'  => array( 'social', 'search', 'button', 'hamburger' ),
+					'right'  => array( 'search', 'button', 'hamburger' ),
 				),
 				'mobile'  => array(
 					'left'   => array( 'logo' ),
 					'center' => array(),
-					'right'  => array( 'search', 'button', 'hamburger' ),
+					'right'  => array( 'button', 'hamburger' ),
 				),
 				'tablet'  => array(
 					'left'   => array( 'logo' ),
-					'center' => array( 'menu' ),
+					'center' => array(  ),
 					'right'  => array( 'search', 'button', 'hamburger' ),
 				),
 			);
