@@ -564,6 +564,7 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	padding: 8px;
 	padding-bottom: 50px;
 	overflow: hidden;
+	max-width: 290px;
 }
 
 .ihb-lite-available strong {

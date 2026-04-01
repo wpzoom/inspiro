@@ -17,6 +17,54 @@
 			});
 		},
 
+		buildZoneHeaderHtml: function (zoneLabel) {
+			var s = inspiroLiteFooterBuilder.strings || {};
+			var hint = FooterBuilderLite.escapeAttr(s.zoneControlsProHint || s.lockProFeature || '');
+			var hideLabel = FooterBuilderLite.escapeAttr(s.zoneHideZone || '');
+			var hTitle = FooterBuilderLite.escapeAttr(s.zoneHorizontal || '');
+			var vTitle = FooterBuilderLite.escapeAttr(s.zoneVertical || '');
+			var lTitle = FooterBuilderLite.escapeAttr(s.zoneAlignLeft || '');
+			var cTitle = FooterBuilderLite.escapeAttr(s.zoneAlignCenter || '');
+			var rTitle = FooterBuilderLite.escapeAttr(s.zoneAlignRight || '');
+			var proBadge = FooterBuilderLite.escapeAttr(s.zoneProBadge || 'Pro');
+			return '' +
+				'<div class="ifb-zone-header">' +
+				'  <div class="ifb-zone-label">' + zoneLabel + '</div>' +
+				'  <div class="ifb-zone-controls ifb-zone-controls--pro-locked" aria-disabled="true" title="' + hint + '" aria-label="' + hint + '">' +
+				'    <div class="ifb-zone-controls-toolbar">' +
+				'      <div class="ifb-zone-segment ifb-zone-segment--hide">' +
+				'        <button type="button" class="ifb-zone-hide-btn" disabled tabindex="-1" title="' + hideLabel + '" aria-label="' + hideLabel + '">' +
+				'          <span class="dashicons dashicons-hidden" aria-hidden="true"></span>' +
+				'        </button>' +
+				'      </div>' +
+				'      <div class="ifb-zone-segment ifb-zone-segment--axis">' +
+				'        <button type="button" class="ifb-zone-axis-btn ifb-zone-axis-horizontal" disabled tabindex="-1" aria-label="' + hTitle + '">' +
+				'          <svg aria-hidden="true" focusable="false" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12.0519 14.8285L13.4661 16.2427L17.7087 12L13.4661 7.7574L12.0519 9.17161L13.8803 11H6.34318V13H13.8803L12.0519 14.8285Z" fill="currentColor"></path><path clip-rule="evenodd" d="M1 19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5C23 2.79086 21.2091 1 19 1H5C2.79086 1 1 2.79086 1 5V19ZM5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21Z" fill="currentColor" fill-rule="evenodd"></path></svg>' +
+				'        </button>' +
+				'        <button type="button" class="ifb-zone-axis-btn ifb-zone-axis-vertical" disabled tabindex="-1" aria-label="' + vTitle + '">' +
+				'          <svg aria-hidden="true" focusable="false" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14.8284 12.0259L16.2426 13.4402L12 17.6828L7.75733 13.4402L9.17155 12.0259L11 13.8544V6.31724H13V13.8544L14.8284 12.0259Z" fill="currentColor"></path><path clip-rule="evenodd" d="M1 5C1 2.79086 2.79086 1 5 1H19C21.2091 1 23 2.79086 23 5V19C23 21.2091 21.2091 23 19 23H5C2.79086 23 1 21.2091 1 19V5ZM5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3Z" fill="currentColor" fill-rule="evenodd"></path></svg>' +
+				'        </button>' +
+				'      </div>' +
+				'      <div class="ifb-zone-segment ifb-zone-segment--align">' +
+				'        <button type="button" class="ifb-zone-align-btn" disabled tabindex="-1" aria-label="' + lTitle + '">' +
+				'          <span class="dashicons dashicons-editor-alignleft" aria-hidden="true"></span>' +
+				'        </button>' +
+				'        <button type="button" class="ifb-zone-align-btn ifb-zone-align-btn--active" disabled tabindex="-1" aria-pressed="true" aria-label="' + cTitle + '">' +
+				'          <span class="dashicons dashicons-editor-aligncenter" aria-hidden="true"></span>' +
+				'        </button>' +
+				'        <button type="button" class="ifb-zone-align-btn" disabled tabindex="-1" aria-label="' + rTitle + '">' +
+				'          <span class="dashicons dashicons-editor-alignright" aria-hidden="true"></span>' +
+				'        </button>' +
+				'      </div>' +
+				'      <div class="ifb-zone-pro-lock">' +
+				'        <span class="dashicons dashicons-lock ifb-zone-pro-lock-icon" aria-hidden="true"></span>' +
+				'        <span class="ifb-zone-pro-badge">' + proBadge + '</span>' +
+				'      </div>' +
+				'    </div>' +
+				'  </div>' +
+				'</div>';
+		},
+
 		mountUI: function () {
 			if ($('#inspiro-lite-footer-builder-ui').length) {
 				return;
@@ -50,9 +98,9 @@
 				'  </div>' +
 				'  <div class="ifb-lite-panel-body">' +
 				'    <div class="ifb-zones">' +
-				'      <div class="ifb-zone-wrap"><div class="ifb-zone-label">' + FooterBuilderLite.escapeAttr(s.leftZone || 'Left') + '</div><ul class="ifb-zone-items" data-zone="left"></ul></div>' +
-				'      <div class="ifb-zone-wrap"><div class="ifb-zone-label">' + FooterBuilderLite.escapeAttr(s.centerZone || 'Center') + '</div><ul class="ifb-zone-items" data-zone="center"></ul></div>' +
-				'      <div class="ifb-zone-wrap"><div class="ifb-zone-label">' + FooterBuilderLite.escapeAttr(s.rightZone || 'Right') + '</div><ul class="ifb-zone-items" data-zone="right"></ul></div>' +
+				'      <div class="ifb-zone-wrap">' + FooterBuilderLite.buildZoneHeaderHtml(FooterBuilderLite.escapeAttr(s.leftZone || 'Left')) + '<ul class="ifb-zone-items" data-zone="left"></ul></div>' +
+				'      <div class="ifb-zone-wrap">' + FooterBuilderLite.buildZoneHeaderHtml(FooterBuilderLite.escapeAttr(s.centerZone || 'Center')) + '<ul class="ifb-zone-items" data-zone="center"></ul></div>' +
+				'      <div class="ifb-zone-wrap">' + FooterBuilderLite.buildZoneHeaderHtml(FooterBuilderLite.escapeAttr(s.rightZone || 'Right')) + '<ul class="ifb-zone-items" data-zone="right"></ul></div>' +
 				'    </div>' +
 				'    <div class="ifb-available"><strong>' + FooterBuilderLite.escapeAttr(s.availableComponents || 'Available Components') + '</strong><ul class="ifb-components-list"></ul></div>' +
 				'  </div>' +
@@ -263,17 +311,19 @@
 			var cls = inZone ? 'ifb-component-item ifb-zone-component' : 'ifb-component-item';
 
 			return '<li class="' + cls + '" data-component-id="' + component.id + '">' +
-				'<span class="dashicons ' + component.icon + '"></span>' +
+				'<span class="dashicons ' + component.icon + ' ifb-component-icon"></span>' +
 				'<span class="ifb-component-label">' + component.label + '</span>' +
 				actions +
 				'</li>';
 		},
 
 		lockedComponentHTML: function (component) {
+			var lockSvg = '<svg class="ifb-lock-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/></svg>';
 			return '<li class="ifb-component-item ifb-component-locked" data-component-id="' + component.id + '">' +
-				'<span class="dashicons ' + component.icon + '"></span>' +
+				'<span class="dashicons ' + component.icon + ' ifb-component-icon"></span>' +
 				'<span class="ifb-component-label">' + component.label + '</span>' +
-				'<a href="' + (inspiroLiteFooterBuilder.proUrl || '#') + '" target="_blank" rel="noopener noreferrer">' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.upgrade || 'Upgrade') + '</a>' +
+				'<span class="ifb-lock-wrap">' + lockSvg + '</span>' +
+				'<a class="ifb-pro-upgrade-link" href="' + (inspiroLiteFooterBuilder.proUrl || '#') + '" target="_blank" rel="noopener noreferrer">' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.upgrade || 'Upgrade') + '</a>' +
 				'</li>';
 		},
 
