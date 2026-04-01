@@ -577,7 +577,7 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	border-bottom: 1px solid #dcdcde;
 }
 
-.ihb-lite-external-toggle {
+.inspiro-builder-toggle {
 	position: fixed;
 	right: 24px;
 	bottom: 24px;
@@ -585,7 +585,7 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	display: none;
 }
 
-.ihb-lite-external-toggle-btn {
+.inspiro-builder-toggle-btn {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
@@ -598,11 +598,11 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.ihb-lite-external-toggle-btn:hover {
+.inspiro-builder-toggle-btn:hover {
 	background: #135e96;
 }
 
-.ihb-lite-external-toggle-btn .dashicons {
+.inspiro-builder-toggle-btn .dashicons {
 	font-size: 16px;
 	width: 16px;
 	height: 16px;
@@ -627,12 +627,12 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 		flex-direction: column;
 	}
 
-	.ihb-lite-external-toggle {
+	.inspiro-builder-toggle {
 		right: 12px;
 		bottom: 12px;
 	}
 
-	.ihb-lite-external-toggle-text {
+	.inspiro-builder-toggle-text {
 		display: none;
 	}
 }

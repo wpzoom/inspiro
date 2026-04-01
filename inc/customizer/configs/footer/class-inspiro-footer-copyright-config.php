@@ -56,7 +56,7 @@ class Inspiro_Footer_Copyright_Config {
 					'settings'         => array(),
 					'section'          => 'footer-area',
 					'expanded'         => true,
-					'controls_to_wrap' => 2,
+					'controls_to_wrap' => 1,
 				)
 			)
 		);

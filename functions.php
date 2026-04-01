@@ -123,6 +123,7 @@ require INSPIRO_THEME_DIR . 'inc/customizer-functions.php';
 require INSPIRO_THEME_DIR . 'inc/customizer/class-inspiro-customizer-control-base.php';
 require INSPIRO_THEME_DIR . 'inc/customizer/class-inspiro-customizer.php';
 require INSPIRO_THEME_DIR . 'inc/customizer/header-builder/loader.php';
+require INSPIRO_THEME_DIR . 'inc/customizer/footer-builder/loader.php';
 
 /**
  * SVG icons functions and filters.
