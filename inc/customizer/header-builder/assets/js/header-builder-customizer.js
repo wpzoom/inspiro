@@ -335,7 +335,7 @@
 			$('body').removeClass('ihb-lite-builder-active');
 			$('.ihb-lite-toggle-btn').attr('title', 'Show Header Builder');
 			$('.ihb-lite-toggle-btn .dashicons').removeClass('dashicons-arrow-down-alt2').addClass('dashicons-arrow-up-alt2');
-			if (wp.customize('inspiro_header_builder_enable')()) {
+			if (wp.customize('inspiro_header_builder_enable')() && !HeaderBuilderLite.isFooterBuilderVisible()) {
 				$('#inspiro-header-builder-toggle').show();
 			}
 			if (wp.customize('inspiro_footer_builder_enable') && wp.customize('inspiro_footer_builder_enable')() && !$('#inspiro-lite-footer-builder-ui').hasClass('ifb-visible')) {
@@ -355,7 +355,9 @@
 					HeaderBuilderLite.toggleHeaderLayoutDropdown(visible);
 					if (visible) {
 						HeaderBuilderLite.hideBuilder();
-						$('#inspiro-header-builder-toggle').show();
+						if (!HeaderBuilderLite.isFooterBuilderVisible()) {
+							$('#inspiro-header-builder-toggle').show();
+						}
 					} else {
 						HeaderBuilderLite.hideBuilder();
 						$('#inspiro-header-builder-toggle').hide();
@@ -375,11 +377,17 @@
 			this.toggleHeaderLayoutDropdown(enabled);
 			if (enabled) {
 				this.hideBuilder();
-				$('#inspiro-header-builder-toggle').show();
+				if (!HeaderBuilderLite.isFooterBuilderVisible()) {
+					$('#inspiro-header-builder-toggle').show();
+				}
 			} else {
 				this.hideBuilder();
 				$('#inspiro-header-builder-toggle').hide();
 			}
+		},
+
+		isFooterBuilderVisible: function () {
+			return $('#inspiro-lite-footer-builder-ui').hasClass('ifb-visible');
 		},
 
 		/**
