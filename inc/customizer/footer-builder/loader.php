@@ -11,4 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once INSPIRO_THEME_DIR . 'inc/customizer/footer-builder/class-inspiro-lite-footer-builder.php';
 
-Inspiro_Lite_Footer_Builder::get_instance();
+add_action(
+	'init',
+	static function() {
+		Inspiro_Lite_Footer_Builder::get_instance();
+	}
+);
