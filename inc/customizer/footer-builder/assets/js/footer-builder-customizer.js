@@ -306,7 +306,7 @@
 				return '';
 			}
 			var actions = inZone
-				? '<button type="button" class="ifb-remove-component" title="' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.remove || 'Remove') + '"><span class="dashicons dashicons-no-alt"></span></button>'
+				? '<div class="ifb-component-actions"><button type="button" class="ifb-remove-component" title="' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.remove || 'Remove') + '"><span class="dashicons dashicons-no-alt"></span></button></div>'
 				: '';
 			var cls = inZone ? 'ifb-component-item ifb-zone-component' : 'ifb-component-item';
 
