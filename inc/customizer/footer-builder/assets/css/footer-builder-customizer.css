@@ -193,6 +193,11 @@ body.ifb-lite-builder-active .wp-full-overlay-main {
 	min-height: 0;
 }
 
+/* Bottom row: only left + right columns in the builder UI */
+.ifb-zones.ifb-zones--bottom-two .ifb-zone-wrap--center {
+	display: none;
+}
+
 .ifb-zone-wrap {
 	flex: 1;
 	display: flex;

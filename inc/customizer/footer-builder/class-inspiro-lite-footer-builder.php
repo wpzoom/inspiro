@@ -265,7 +265,52 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 				}
 			}
 
+			$this->normalize_lite_bottom_row_layout( $data );
+
 			return wp_json_encode( $data );
+		}
+
+		/**
+		 * Bottom row uses only left + right columns; merge legacy center into left (deduped).
+		 *
+		 * @param array $data Layout data (modified by reference).
+		 * @return void
+		 */
+		private function normalize_lite_bottom_row_layout( array &$data ) {
+			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+				if ( empty( $data[ $device ]['bottom'] ) || ! is_array( $data[ $device ]['bottom'] ) ) {
+					continue;
+				}
+				$bottom =& $data[ $device ]['bottom'];
+				$left   = isset( $bottom['left'] ) && is_array( $bottom['left'] ) ? $bottom['left'] : array();
+				$center = isset( $bottom['center'] ) && is_array( $bottom['center'] ) ? $bottom['center'] : array();
+				if ( empty( $center ) ) {
+					$bottom['center'] = array();
+					continue;
+				}
+				$bottom['left']   = $this->merge_unique_component_ids( $left, $center );
+				$bottom['center'] = array();
+			}
+		}
+
+		/**
+		 * Append second list to first, skipping duplicate ids (order preserved).
+		 *
+		 * @param array $primary Primary id list.
+		 * @param array $extra   Ids to append.
+		 * @return array
+		 */
+		private function merge_unique_component_ids( array $primary, array $extra ) {
+			$seen = array();
+			$out  = array();
+			foreach ( array_merge( $primary, $extra ) as $id ) {
+				if ( ! is_string( $id ) || '' === $id || isset( $seen[ $id ] ) ) {
+					continue;
+				}
+				$seen[ $id ] = true;
+				$out[]       = $id;
+			}
+			return $out;
 		}
 
 		/**
@@ -294,7 +339,9 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 			if ( is_string( $raw ) ) {
 				$decoded = json_decode( $raw, true );
 				if ( JSON_ERROR_NONE === json_last_error() && is_array( $decoded ) ) {
-					return $this->filter_layout_locked_components( $decoded );
+					$filtered = $this->filter_layout_locked_components( $decoded );
+					$this->normalize_lite_bottom_row_layout( $filtered );
+					return $filtered;
 				}
 			}
 
@@ -363,7 +410,8 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					}
 
 					echo '<div class="ifb-lite-row ifb-lite-row-' . esc_attr( $row ) . '">';
-					foreach ( array( 'left', 'center', 'right' ) as $zone ) {
+					$zones = ( 'bottom' === $row ) ? array( 'left', 'right' ) : array( 'left', 'center', 'right' );
+					foreach ( $zones as $zone ) {
 						echo '<div class="ifb-lite-zone ifb-lite-zone-' . esc_attr( $zone ) . '">';
 						if ( isset( $layout[ $device ][ $row ][ $zone ] ) && is_array( $layout[ $device ][ $row ][ $zone ] ) ) {
 							foreach ( $layout[ $device ][ $row ][ $zone ] as $component_id ) {
@@ -405,7 +453,9 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 				return false;
 			}
 
-			foreach ( array( 'left', 'center', 'right' ) as $zone ) {
+			$zones = ( 'bottom' === $row ) ? array( 'left', 'right' ) : array( 'left', 'center', 'right' );
+
+			foreach ( $zones as $zone ) {
 				$items = isset( $layout[ $device ][ $row ][ $zone ] ) ? $layout[ $device ][ $row ][ $zone ] : array();
 				if ( empty( $items ) || ! is_array( $items ) ) {
 					continue;
@@ -522,8 +572,8 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					),
 					'bottom' => array(
 						'left'   => array( 'copyright' ),
-						'center' => array( 'widget-1', 'widget-2', 'widget-3' ),
-						'right'  => array(),
+						'center' => array(),
+						'right'  => array( 'widget-1', 'widget-2', 'widget-3' ),
 					),
 				),
 			);

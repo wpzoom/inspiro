@@ -9,6 +9,10 @@
 	align-items: start;
 }
 
+.ifb-lite-row.ifb-lite-row-bottom {
+	grid-template-columns: 1fr 1fr;
+}
+
 .ifb-lite-row.ifb-lite-row-main {
 	padding-top: 30px;
 }
@@ -42,6 +46,10 @@
 
 .widget a:hover {
 	color: #fff;
+}
+
+.ifb-component-copyright.site-info {
+	width: 100%;
 }
 
 .footer-row-separator {

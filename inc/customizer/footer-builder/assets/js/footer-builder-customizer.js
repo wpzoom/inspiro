@@ -99,7 +99,7 @@
 				'  <div class="ifb-lite-panel-body">' +
 				'    <div class="ifb-zones">' +
 				'      <div class="ifb-zone-wrap">' + FooterBuilderLite.buildZoneHeaderHtml(FooterBuilderLite.escapeAttr(s.leftZone || 'Left')) + '<ul class="ifb-zone-items" data-zone="left"></ul></div>' +
-				'      <div class="ifb-zone-wrap">' + FooterBuilderLite.buildZoneHeaderHtml(FooterBuilderLite.escapeAttr(s.centerZone || 'Center')) + '<ul class="ifb-zone-items" data-zone="center"></ul></div>' +
+				'      <div class="ifb-zone-wrap ifb-zone-wrap--center">' + FooterBuilderLite.buildZoneHeaderHtml(FooterBuilderLite.escapeAttr(s.centerZone || 'Center')) + '<ul class="ifb-zone-items" data-zone="center"></ul></div>' +
 				'      <div class="ifb-zone-wrap">' + FooterBuilderLite.buildZoneHeaderHtml(FooterBuilderLite.escapeAttr(s.rightZone || 'Right')) + '<ul class="ifb-zone-items" data-zone="right"></ul></div>' +
 				'    </div>' +
 				'    <div class="ifb-available"><strong>' + FooterBuilderLite.escapeAttr(s.availableComponents || 'Available Components') + '</strong><ul class="ifb-components-list"></ul></div>' +
@@ -109,7 +109,6 @@
 
 			$('.wp-full-overlay').append(html);
 			FooterBuilderLite.bindEvents();
-			FooterBuilderLite.initSortable();
 			FooterBuilderLite.renderFromSetting();
 		},
 
@@ -178,9 +177,51 @@
 			}
 		},
 
+		/**
+		 * Zones editable for the current row (bottom row: left + right only).
+		 */
+		zonesForCurrentRow: function () {
+			return FooterBuilderLite.currentRow === 'bottom' ? ['left', 'right'] : ['left', 'center', 'right'];
+		},
+
+		mergeDedupeIds: function (primary, extra) {
+			var seen = {};
+			var out = [];
+			(primary || []).concat(extra || []).forEach(function (id) {
+				if (!id || seen[id]) {
+					return;
+				}
+				seen[id] = true;
+				out.push(id);
+			});
+			return out;
+		},
+
+		updateZoneColumnsForRow: function () {
+			var two = FooterBuilderLite.currentRow === 'bottom';
+			$('#inspiro-lite-footer-builder-ui .ifb-zones').toggleClass('ifb-zones--bottom-two', two);
+		},
+
+		destroySortable: function () {
+			$('#inspiro-lite-footer-builder-ui').find('.ifb-zone-items, .ifb-components-list').each(function () {
+				var $el = $(this);
+				if ($el.data('ui-sortable')) {
+					$el.sortable('destroy');
+				}
+			});
+		},
+
 		initSortable: function () {
-			$('.ifb-zone-items, .ifb-components-list').sortable({
-				connectWith: '.ifb-zone-items, .ifb-components-list',
+			var $root = $('#inspiro-lite-footer-builder-ui');
+			$root.find('.ifb-sortable-target').removeClass('ifb-sortable-target');
+			var $zones = $root.find('.ifb-zone-items').filter(':visible').addClass('ifb-sortable-target');
+			var $connect = $zones.add($root.find('.ifb-components-list').addClass('ifb-sortable-target'));
+			if (!$connect.length) {
+				return;
+			}
+			var connectSel = '#inspiro-lite-footer-builder-ui .ifb-sortable-target';
+			$connect.sortable({
+				connectWith: connectSel,
 				items: '> li:not(.ifb-component-locked)',
 				placeholder: 'ifb-placeholder',
 				stop: function () {
@@ -228,6 +269,41 @@
 			return raw;
 		},
 
+		/**
+		 * Collect component ids placed in any of the given rows for a device (shared pool for Available list).
+		 *
+		 * @param {Object} layout Full layout object.
+		 * @param {string} device desktop|tablet|mobile
+		 * @param {string[]} rows Row keys to scan (e.g. main, bottom).
+		 * @return {string[]} Deduped component ids.
+		 */
+		collectUsedComponentIds: function (layout, device, rows) {
+			var seen = {};
+			var out = [];
+			if (!layout || !layout[device] || !rows || !rows.length) {
+				return out;
+			}
+			rows.forEach(function (rowKey) {
+				var row = layout[device][rowKey];
+				if (!row || typeof row !== 'object') {
+					return;
+				}
+				['left', 'center', 'right'].forEach(function (zone) {
+					var ids = row[zone];
+					if (!ids || !Array.isArray(ids)) {
+						return;
+					}
+					ids.forEach(function (id) {
+						if (id && !seen[id]) {
+							seen[id] = true;
+							out.push(id);
+						}
+					});
+				});
+			});
+			return out;
+		},
+
 		saveLayout: function () {
 			var layout = FooterBuilderLite.getLayout();
 			var row = FooterBuilderLite.currentRow;
@@ -240,7 +316,7 @@
 				layout[device][row] = { left: [], center: [], right: [] };
 			}
 
-			['left', 'center', 'right'].forEach(function (zone) {
+			FooterBuilderLite.zonesForCurrentRow().forEach(function (zone) {
 				var ids = [];
 				$('.ifb-zone-items[data-zone="' + zone + '"] li').each(function () {
 					if ($(this).hasClass('ifb-component-locked')) {
@@ -254,6 +330,10 @@
 				layout[device][row][zone] = ids;
 			});
 
+			if (row === 'bottom') {
+				layout[device][row].center = [];
+			}
+
 			wp.customize('inspiro_footer_builder_settings').set(JSON.stringify(layout));
 		},
 
@@ -262,7 +342,15 @@
 			var row = FooterBuilderLite.currentRow;
 			var device = FooterBuilderLite.currentDevice;
 			var rowData = (((layout || {})[device] || {})[row]) || { left: [], center: [], right: [] };
-			var used = [];
+			if (row === 'bottom') {
+				var orphanCenter = rowData.center || [];
+				if (orphanCenter.length) {
+					rowData = $.extend(true, {}, rowData);
+					rowData.left = FooterBuilderLite.mergeDedupeIds(rowData.left || [], orphanCenter);
+					rowData.center = [];
+				}
+			}
+			var usedAcrossRows = FooterBuilderLite.collectUsedComponentIds(layout, device, ['top', 'main', 'bottom']);
 
 			['left', 'center', 'right'].forEach(function (zone) {
 				var $zone = $('.ifb-zone-items[data-zone="' + zone + '"]');
@@ -271,15 +359,18 @@
 					var html = FooterBuilderLite.componentHTML(id, true);
 					if (html) {
 						$zone.append(html);
-						used.push(id);
 					}
 				});
 			});
 
+			FooterBuilderLite.updateZoneColumnsForRow();
+			FooterBuilderLite.destroySortable();
+			FooterBuilderLite.initSortable();
+
 			var $list = $('.ifb-components-list');
 			$list.empty();
 			(inspiroLiteFooterBuilder.components || []).forEach(function (component) {
-				if (!component.locked && used.indexOf(component.id) === -1) {
+				if (!component.locked && usedAcrossRows.indexOf(component.id) === -1) {
 					$list.append(FooterBuilderLite.componentHTML(component.id, false));
 				}
 			});
