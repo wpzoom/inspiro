@@ -371,6 +371,7 @@ class Inspiro_Header_Area_Config
 					'pro_text'    => esc_html__( 'Unlock Header Builder', 'inspiro' ),
 					'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=headerbuilder',
 					'section'     => 'header-area',
+					'priority'    => 1,
 				)
 			)
 		);

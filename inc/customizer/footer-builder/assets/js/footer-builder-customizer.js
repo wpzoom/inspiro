@@ -565,7 +565,6 @@
 			$('#customize-control-for_footer_widget_areas')[method]();
 			$('#customize-control-footer-widget-areas')[method]();
 			$('#customize-control-footer-pro-styles')[method]();
-			$('#customize-control-footer_builder_upgrade')[method]();
 		},
 
 		isEnabledValue: function (value) {

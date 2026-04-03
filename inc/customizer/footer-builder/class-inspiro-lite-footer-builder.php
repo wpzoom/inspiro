@@ -564,9 +564,9 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 		 */
 		private function get_default_layout() {
 			$main = array(
-				'left'   => array( 'logo' ),
-				'center' => array( 'menu', 'custom_html' ),
-				'right'  => array( 'widget-1', 'widget-2', 'widget-3' ),
+				'left'   => array( 'widget-1' ),
+				'center' => array( 'widget-2' ),
+				'right'  => array( 'widget-3' ),
 			);
 
 			$bottom = array(
@@ -594,16 +594,8 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 				),
 				'mobile'  => array(
 					'top'    => $empty,
-					'main'   => array(
-						'left'   => array( 'logo', 'menu' ),
-						'center' => array( 'custom_html' ),
-						'right'  => array(),
-					),
-					'bottom' => array(
-						'left'   => array( 'copyright' ),
-						'center' => array(),
-						'right'  => array( 'widget-1', 'widget-2', 'widget-3' ),
-					),
+					'main'   => $main,
+					'bottom' => $bottom,
 				),
 			);
 		}
