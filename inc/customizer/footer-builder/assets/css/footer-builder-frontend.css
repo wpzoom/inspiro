@@ -23,14 +23,6 @@
 	gap: 12px;
 	min-width: 0;
 }
-/* 
-.ifb-lite-zone-center {
-	justify-content: center;
-} */
-
-/* .ifb-lite-zone-right {
-	justify-content: flex-end;
-} */
 
 .ifb-component-menu ul {
 	margin: 0;
@@ -38,6 +30,10 @@
 	list-style: none;
 	display: flex;
 	gap: 14px;
+}
+
+.ifb-component.ifb-component-widget .widget {
+	margin-bottom: 0;
 }
 
 .ifb-component-widget .widget .title {
@@ -92,6 +88,6 @@
 	}
 
 	.ifb-lite-row {
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr !important;
 	}
 }

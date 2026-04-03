@@ -463,6 +463,36 @@ body.ifb-lite-builder-active .wp-full-overlay-main {
 	flex-shrink: 0;
 }
 
+.ifb-component-edit {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	transition: all 0.15s ease;
+	color: #666;
+	padding: 0;
+}
+
+.ifb-component-edit:hover {
+	background: #f0f0f0;
+	color: #2271b1;
+}
+
+.ifb-component-edit .dashicons {
+	font-size: 12px;
+	width: 12px;
+	height: 12px;
+}
+
+.ifb-component-edit .dashicons:before {
+	content: "\f111";
+}
+
 .ifb-remove-component {
 	display: flex;
 	align-items: center;

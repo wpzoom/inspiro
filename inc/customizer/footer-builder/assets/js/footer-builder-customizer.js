@@ -6,6 +6,53 @@
 		currentRow: 'main',
 		isVisible: false,
 
+		afterFocusLayout: function () {
+			window.setTimeout(function () {
+				$(window).trigger('resize');
+			}, 100);
+		},
+
+		/**
+		 * @param {Object} target From inspiroLiteFooterBuilder.editTargets[ componentId ]: type, id, optional fallback_section, fallback_panel.
+		 */
+		focusCustomizerTarget: function (target) {
+			if (!target || !target.type || !target.id) {
+				return;
+			}
+			var after = FooterBuilderLite.afterFocusLayout;
+			try {
+				if (target.type === 'control') {
+					var ctl = wp.customize.control(target.id);
+					if (ctl && typeof ctl.focus === 'function') {
+						ctl.focus({ completeCallback: after });
+						return;
+					}
+					if (target.fallback_section) {
+						var sec = wp.customize.section(target.fallback_section);
+						if (sec && typeof sec.focus === 'function') {
+							sec.focus({ completeCallback: after });
+							return;
+						}
+					}
+					if (target.fallback_panel) {
+						var pan = wp.customize.panel(target.fallback_panel);
+						if (pan && typeof pan.focus === 'function') {
+							pan.focus({ completeCallback: after });
+						}
+					}
+					return;
+				}
+				if (target.type === 'section') {
+					var section = wp.customize.section(target.id);
+					if (section && typeof section.focus === 'function') {
+						section.focus({ completeCallback: after });
+					}
+				}
+			} catch (err) {
+				// ignore
+			}
+		},
+
 		init: function () {
 			if (typeof wp === 'undefined' || !wp.customize || typeof inspiroLiteFooterBuilder === 'undefined') {
 				return;
@@ -160,8 +207,24 @@
 				}
 			});
 
+			$(document).on('click', '#inspiro-lite-footer-builder-ui .ifb-component-edit', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				var $li = $(this).closest('li');
+				var componentId = $li.data('componentId');
+				if (!componentId || !inspiroLiteFooterBuilder.editTargets) {
+					return;
+				}
+				var target = inspiroLiteFooterBuilder.editTargets[componentId];
+				if (!target) {
+					return;
+				}
+				FooterBuilderLite.focusCustomizerTarget(target);
+			});
+
 			$(document).on('click', '#inspiro-lite-footer-builder-ui .ifb-remove-component', function (e) {
 				e.preventDefault();
+				e.stopPropagation();
 				$(this).closest('li').remove();
 				FooterBuilderLite.saveLayout();
 				FooterBuilderLite.renderFromSetting();
@@ -396,15 +459,31 @@
 			if (!component || component.locked) {
 				return '';
 			}
-			var actions = inZone
-				? '<div class="ifb-component-actions"><button type="button" class="ifb-remove-component" title="' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.remove || 'Remove') + '"><span class="dashicons dashicons-no-alt"></span></button></div>'
-				: '';
+
+			var actionsHTML = '';
+			if (inZone) {
+				var editTitle = FooterBuilderLite.escapeAttr((inspiroLiteFooterBuilder.strings || {}).editComponentSettings || '');
+				var showEdit = inspiroLiteFooterBuilder.editTargets && inspiroLiteFooterBuilder.editTargets[componentId];
+				actionsHTML = '<div class="ifb-component-actions">';
+				if (showEdit) {
+					actionsHTML +=
+						'<button type="button" class="ifb-component-edit" title="' + editTitle + '" aria-label="' + editTitle + '">' +
+						'<span class="dashicons dashicons-edit"></span>' +
+						'</button>';
+				}
+				actionsHTML +=
+					'<button type="button" class="ifb-remove-component" title="' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.remove || 'Remove') + '">' +
+					'<span class="dashicons dashicons-no-alt"></span>' +
+					'</button>' +
+					'</div>';
+			}
+
 			var cls = inZone ? 'ifb-component-item ifb-zone-component' : 'ifb-component-item';
 
 			return '<li class="' + cls + '" data-component-id="' + component.id + '">' +
 				'<span class="dashicons ' + component.icon + ' ifb-component-icon"></span>' +
 				'<span class="ifb-component-label">' + component.label + '</span>' +
-				actions +
+				actionsHTML +
 				'</li>';
 		},
 

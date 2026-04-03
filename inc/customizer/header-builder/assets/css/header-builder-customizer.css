@@ -515,6 +515,10 @@ body.ihb-lite-builder-active .wp-full-overlay-main #customize-preview {
 	height: 12px;
 }
 
+.ihb-component-edit .dashicons:before {
+	content: "\f111";
+}
+
 .ihb-remove-component {
 	display: flex;
 	align-items: center;

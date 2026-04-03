@@ -52,6 +52,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					'id'    => 'menu',
 					'label' => esc_html__( 'Footer Menu', 'inspiro' ),
 					'icon'  => 'dashicons-menu',
+					'locked' => true,
 				),
 				array(
 					'id'    => 'copyright',
@@ -175,6 +176,33 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					'components' => $this->components,
 					'defaults'   => $this->get_default_layout(),
 					'proUrl'     => esc_url( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=footerbuilder-lite-lock' ),
+					// Pencil edit in builder zones: wp.customize control/section ids (see customize_register).
+					'editTargets' => array(
+						'logo'        => array(
+							'type' => 'control',
+							'id'   => 'custom_logo',
+						),
+						'copyright'   => array(
+							'type' => 'control',
+							'id'   => 'footer_copyright_editor',
+						),
+						'custom_html' => array(
+							'type' => 'section',
+							'id'   => 'footer-area',
+						),
+						'widget-1'    => array(
+							'type' => 'section',
+							'id'   => 'sidebar-widgets-footer_1',
+						),
+						'widget-2'    => array(
+							'type' => 'section',
+							'id'   => 'sidebar-widgets-footer_2',
+						),
+						'widget-3'    => array(
+							'type' => 'section',
+							'id'   => 'sidebar-widgets-footer_3',
+						),
+					),
 					'strings'    => array(
 						'desktop'             => esc_html__( 'Desktop', 'inspiro' ),
 						'tablet'              => esc_html__( 'Tablet', 'inspiro' ),
@@ -194,6 +222,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 						'mainRow'             => esc_html__( 'Main Row', 'inspiro' ),
 						'bottomRow'           => esc_html__( 'Bottom Row', 'inspiro' ),
 						'lockedRowHint'       => esc_html__( 'Multiple editable rows are available in Inspiro Premium', 'inspiro' ),
+						'editComponentSettings' => esc_html__( 'Edit component settings', 'inspiro' ),
 					),
 				)
 			);
