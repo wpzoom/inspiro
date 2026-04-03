@@ -342,12 +342,26 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 		 */
 		public function render_footer() {
 			$layout = $this->get_layout_data();
+			$layout_type  = get_theme_mod( 'footer-layout-type', 'wpz_layout_narrow' );
+			$layout_class = ( $layout_type === 'wpz_layout_full' ) ? 'is-full-width' : 'is-narrow-width';
 
 			echo '<footer id="colophon" class="site-footer footer-builder-output" role="contentinfo">';
 			echo '<div class="inner-wrap">';
 			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
 				echo '<div class="ifb-lite ifb-lite-' . esc_attr( $device ) . '">';
 				foreach ( array( 'main', 'bottom' ) as $row ) {
+					if ( ! $this->row_has_supported_components( $device, $row, $layout ) ) {
+						continue;
+					}
+
+					if (
+						'bottom' === $row &&
+						$this->row_has_supported_components( $device, 'main', $layout )
+					) {
+						// Mirror Inspiro Pro's separator-bottom logic.
+						echo '<div class="footer-row-separator separator-bottom ' . esc_attr( $layout_class ) . '"></div>';
+					}
+
 					echo '<div class="ifb-lite-row ifb-lite-row-' . esc_attr( $row ) . '">';
 					foreach ( array( 'left', 'center', 'right' ) as $zone ) {
 						echo '<div class="ifb-lite-zone ifb-lite-zone-' . esc_attr( $zone ) . '">';
@@ -364,6 +378,47 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 			}
 			echo '</div>';
 			echo '</footer>';
+		}
+
+		/**
+		 * Checks if a given device+row has any supported components.
+		 *
+		 * Inspiro Pro uses the same idea to decide whether a row is "empty"
+		 * and whether the separator should be printed.
+		 *
+		 * @param string $device Device key.
+		 * @param string $row    Row key.
+		 * @param array  $layout Full footer builder layout data.
+		 * @return bool Whether there is at least one supported component.
+		 */
+		private function row_has_supported_components( $device, $row, array $layout ) {
+			$supported_components = array(
+				'logo',
+				'menu',
+				'copyright',
+				'widget-1',
+				'widget-2',
+				'widget-3',
+			);
+
+			if ( empty( $layout[ $device ][ $row ] ) || ! is_array( $layout[ $device ][ $row ] ) ) {
+				return false;
+			}
+
+			foreach ( array( 'left', 'center', 'right' ) as $zone ) {
+				$items = isset( $layout[ $device ][ $row ][ $zone ] ) ? $layout[ $device ][ $row ][ $zone ] : array();
+				if ( empty( $items ) || ! is_array( $items ) ) {
+					continue;
+				}
+
+				foreach ( $items as $component_id ) {
+					if ( in_array( $component_id, $supported_components, true ) ) {
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
 
 		/**
@@ -403,6 +458,21 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					$customizer_copyright_text = get_theme_mod( 'footer_copyright_text_setting', 'Copyright {copyright} {current-year} {site-title}' );
 					echo '<div class="ifb-component ifb-component-copyright site-info">';
 					echo '<span class="copyright"><span>' . wp_kses_post( get_footer_copyright_text( $customizer_copyright_text ) ) . '</span></span>';
+					echo '</div>';
+					break;
+				case 'widget-1':
+					echo '<div class="ifb-component ifb-component-widget ifb-component-widget-1">';
+					dynamic_sidebar( 'footer_1' );
+					echo '</div>';
+					break;
+				case 'widget-2':
+					echo '<div class="ifb-component ifb-component-widget ifb-component-widget-2">';
+					dynamic_sidebar( 'footer_2' );
+					echo '</div>';
+					break;
+				case 'widget-3':
+					echo '<div class="ifb-component ifb-component-widget ifb-component-widget-3">';
+					dynamic_sidebar( 'footer_3' );
 					echo '</div>';
 					break;
 			}

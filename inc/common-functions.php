@@ -165,6 +165,34 @@ function inspiro_widgets_init() {
 add_action( 'widgets_init', 'inspiro_widgets_init' );
 
 /**
+ * Keep Footer widget areas listed under Customizer → Widgets.
+ *
+ * Core hides each widget section unless the previewed template “renders” that
+ * sidebar (see WP_Customize_Sidebar_Section::active_callback()). Inspiro’s
+ * footer columns are often skipped when the layout shows no footer widgets,
+ * Footer Builder is enabled, or the preview URL never hits footer markup—so
+ * Footer 1–4 disappear from the panel even though they are registered.
+ *
+ * @param bool                 $active  Whether the section is active.
+ * @param WP_Customize_Section $section Section instance.
+ * @return bool
+ */
+function inspiro_customize_footer_widget_sections_always_active( $active, $section ) {
+	if ( ! $section instanceof WP_Customize_Sidebar_Section ) {
+		return $active;
+	}
+
+	$footer_sidebars = array( 'footer_1', 'footer_2', 'footer_3' );
+
+	if ( in_array( $section->sidebar_id, $footer_sidebars, true ) ) {
+		return true;
+	}
+
+	return $active;
+}
+add_filter( 'customize_section_active', 'inspiro_customize_footer_widget_sections_always_active', 10, 2 );
+
+/**
  * Replaces "[...]" (appended to automatically generated excerpts) with ... and
  * a 'Read more' link.
  *
