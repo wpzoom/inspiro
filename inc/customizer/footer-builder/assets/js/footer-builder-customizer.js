@@ -287,6 +287,11 @@
 				connectWith: connectSel,
 				items: '> li:not(.ifb-component-locked)',
 				placeholder: 'ifb-placeholder',
+				receive: function (event, ui) {
+					if ($(this).is('.ifb-components-list') && ui.item.hasClass('ifb-component-pinned')) {
+						$(ui.sender).sortable('cancel');
+					}
+				},
 				stop: function () {
 					FooterBuilderLite.normalizeItemsAfterDrag();
 					FooterBuilderLite.saveLayout();
@@ -330,6 +335,56 @@
 				}
 			}
 			return raw;
+		},
+
+		/**
+		 * Ensure pinned module (custom_html) appears once per device; inject bottom/right if missing.
+		 *
+		 * @param {Object} layout Layout object (mutated).
+		 * @return {Object} layout
+		 */
+		normalizePinnedLayout: function (layout) {
+			var defaults = inspiroLiteFooterBuilder.defaults || {};
+			var pinnedId = 'custom_html';
+			['desktop', 'tablet', 'mobile'].forEach(function (device) {
+				if (!layout[device] || typeof layout[device] !== 'object') {
+					layout[device] = defaults[device] ? $.extend(true, {}, defaults[device]) : {};
+				}
+				var found = false;
+				['top', 'main', 'bottom'].forEach(function (row) {
+					if (!layout[device][row] || typeof layout[device][row] !== 'object') {
+						return;
+					}
+					['left', 'center', 'right'].forEach(function (zone) {
+						var ids = layout[device][row][zone];
+						if (!ids || !Array.isArray(ids)) {
+							return;
+						}
+						var next = [];
+						ids.forEach(function (id) {
+							if (id !== pinnedId) {
+								next.push(id);
+								return;
+							}
+							if (!found) {
+								next.push(id);
+								found = true;
+							}
+						});
+						layout[device][row][zone] = next;
+					});
+				});
+				if (!found) {
+					if (!layout[device].bottom || typeof layout[device].bottom !== 'object') {
+						layout[device].bottom = { left: [], center: [], right: [] };
+					}
+					if (!Array.isArray(layout[device].bottom.right)) {
+						layout[device].bottom.right = [];
+					}
+					layout[device].bottom.right.push(pinnedId);
+				}
+			});
+			return layout;
 		},
 
 		/**
@@ -397,11 +452,17 @@
 				layout[device][row].center = [];
 			}
 
+			FooterBuilderLite.normalizePinnedLayout(layout);
 			wp.customize('inspiro_footer_builder_settings').set(JSON.stringify(layout));
 		},
 
 		renderFromSetting: function () {
-			var layout = FooterBuilderLite.getLayout();
+			var layout = $.extend(true, {}, FooterBuilderLite.getLayout());
+			layout = FooterBuilderLite.normalizePinnedLayout(layout);
+			var persisted = FooterBuilderLite.getLayout();
+			if (JSON.stringify(layout) !== JSON.stringify(persisted)) {
+				wp.customize('inspiro_footer_builder_settings').set(JSON.stringify(layout));
+			}
 			var row = FooterBuilderLite.currentRow;
 			var device = FooterBuilderLite.currentDevice;
 			var rowData = (((layout || {})[device] || {})[row]) || { left: [], center: [], right: [] };
@@ -433,7 +494,7 @@
 			var $list = $('.ifb-components-list');
 			$list.empty();
 			(inspiroLiteFooterBuilder.components || []).forEach(function (component) {
-				if (!component.locked && usedAcrossRows.indexOf(component.id) === -1) {
+				if (!component.locked && !component.pinned && usedAcrossRows.indexOf(component.id) === -1) {
 					$list.append(FooterBuilderLite.componentHTML(component.id, false));
 				}
 			});
@@ -464,21 +525,30 @@
 			if (inZone) {
 				var editTitle = FooterBuilderLite.escapeAttr((inspiroLiteFooterBuilder.strings || {}).editComponentSettings || '');
 				var showEdit = inspiroLiteFooterBuilder.editTargets && inspiroLiteFooterBuilder.editTargets[componentId];
-				actionsHTML = '<div class="ifb-component-actions">';
+				var actionParts = [];
 				if (showEdit) {
-					actionsHTML +=
+					actionParts.push(
 						'<button type="button" class="ifb-component-edit" title="' + editTitle + '" aria-label="' + editTitle + '">' +
 						'<span class="dashicons dashicons-edit"></span>' +
-						'</button>';
+						'</button>'
+					);
 				}
-				actionsHTML +=
-					'<button type="button" class="ifb-remove-component" title="' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.remove || 'Remove') + '">' +
-					'<span class="dashicons dashicons-no-alt"></span>' +
-					'</button>' +
-					'</div>';
+				if (!component.pinned) {
+					actionParts.push(
+						'<button type="button" class="ifb-remove-component" title="' + FooterBuilderLite.escapeAttr(inspiroLiteFooterBuilder.strings.remove || 'Remove') + '">' +
+						'<span class="dashicons dashicons-no-alt"></span>' +
+						'</button>'
+					);
+				}
+				if (actionParts.length) {
+					actionsHTML = '<div class="ifb-component-actions">' + actionParts.join('') + '</div>';
+				}
 			}
 
 			var cls = inZone ? 'ifb-component-item ifb-zone-component' : 'ifb-component-item';
+			if (inZone && component.pinned) {
+				cls += ' ifb-component-pinned';
+			}
 
 			return '<li class="' + cls + '" data-component-id="' + component.id + '">' +
 				'<span class="dashicons ' + component.icon + ' ifb-component-icon"></span>' +

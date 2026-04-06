@@ -66,9 +66,10 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					'locked' => true,
 				),
 				array(
-					'id'    => 'custom_html',
-					'label' => esc_html__( 'HTML/Shortcode', 'inspiro' ),
-					'icon'  => 'dashicons-editor-code',
+					'id'     => 'custom_html',
+					'label'  => esc_html__( 'Theme attribution', 'inspiro' ),
+					'icon'   => 'dashicons-editor-code',
+					'pinned' => true,
 				),
 				array(
 					'id'     => 'custom_html_2',
@@ -295,6 +296,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 			}
 
 			$this->normalize_lite_bottom_row_layout( $data );
+			$this->ensure_pinned_footer_components( $data );
 
 			return wp_json_encode( $data );
 		}
@@ -319,6 +321,58 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 				}
 				$bottom['left']   = $this->merge_unique_component_ids( $left, $center );
 				$bottom['center'] = array();
+			}
+		}
+
+		/**
+		 * Ensure pinned component(s) appear exactly once per device (custom_html: default bottom/right).
+		 *
+		 * @param array $data Layout data (modified by reference).
+		 * @return void
+		 */
+		private function ensure_pinned_footer_components( array &$data ) {
+			$pinned_id = 'custom_html';
+			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+				if ( ! isset( $data[ $device ] ) || ! is_array( $data[ $device ] ) ) {
+					$data[ $device ] = $this->get_default_layout()[ $device ];
+					continue;
+				}
+				$found_first = false;
+				foreach ( array( 'top', 'main', 'bottom' ) as $row ) {
+					if ( ! isset( $data[ $device ][ $row ] ) || ! is_array( $data[ $device ][ $row ] ) ) {
+						continue;
+					}
+					foreach ( array( 'left', 'center', 'right' ) as $zone ) {
+						if ( ! isset( $data[ $device ][ $row ][ $zone ] ) || ! is_array( $data[ $device ][ $row ][ $zone ] ) ) {
+							continue;
+						}
+						$new_zone = array();
+						foreach ( $data[ $device ][ $row ][ $zone ] as $cid ) {
+							if ( $cid !== $pinned_id ) {
+								$new_zone[] = $cid;
+								continue;
+							}
+							if ( ! $found_first ) {
+								$new_zone[] = $cid;
+								$found_first = true;
+							}
+						}
+						$data[ $device ][ $row ][ $zone ] = $new_zone;
+					}
+				}
+				if ( ! $found_first ) {
+					if ( ! isset( $data[ $device ]['bottom'] ) || ! is_array( $data[ $device ]['bottom'] ) ) {
+						$data[ $device ]['bottom'] = array(
+							'left'   => array(),
+							'center' => array(),
+							'right'  => array(),
+						);
+					}
+					if ( ! isset( $data[ $device ]['bottom']['right'] ) || ! is_array( $data[ $device ]['bottom']['right'] ) ) {
+						$data[ $device ]['bottom']['right'] = array();
+					}
+					$data[ $device ]['bottom']['right'][] = $pinned_id;
+				}
 			}
 		}
 
@@ -370,6 +424,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 				if ( JSON_ERROR_NONE === json_last_error() && is_array( $decoded ) ) {
 					$filtered = $this->filter_layout_locked_components( $decoded );
 					$this->normalize_lite_bottom_row_layout( $filtered );
+					$this->ensure_pinned_footer_components( $filtered );
 					return $filtered;
 				}
 			}
@@ -473,6 +528,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 				'logo',
 				'menu',
 				'copyright',
+				'custom_html',
 				'widget-1',
 				'widget-2',
 				'widget-3',
@@ -539,6 +595,13 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					echo '<span class="copyright"><span>' . wp_kses_post( get_footer_copyright_text( $customizer_copyright_text ) ) . '</span></span>';
 					echo '</div>';
 					break;
+				case 'custom_html':
+					echo '<div class="ifb-component ifb-component-custom-html site-info">';
+					echo '<span class="copyright">';
+					get_template_part( 'template-parts/footer/site-info', 'theme-credit' );
+					echo '</span>';
+					echo '</div>';
+					break;
 				case 'widget-1':
 					echo '<div class="ifb-component ifb-component-widget ifb-component-widget-1">';
 					dynamic_sidebar( 'footer_1' );
@@ -572,7 +635,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 			$bottom = array(
 				'left'   => array( 'copyright' ),
 				'center' => array(),
-				'right'  => array(),
+				'right'  => array( 'custom_html' ),
 			);
 
 			$empty = array(

@@ -457,6 +457,10 @@ body.ifb-lite-builder-active .wp-full-overlay-main {
 	text-decoration: underline;
 }
 
+.ifb-component-item.ifb-component-pinned .ifb-component-label {
+	color: #50575e;
+}
+
 .ifb-component-actions {
 	display: flex;
 	gap: 4px;
