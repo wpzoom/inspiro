@@ -113,6 +113,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
 			register_nav_menus(
 				array(
 					'primary' => __( 'Main Menu', 'inspiro' ),
+					'footer'  => __( 'Footer Menu', 'inspiro' ),
 				)
 			);
 

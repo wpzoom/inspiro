@@ -52,7 +52,6 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					'id'    => 'menu',
 					'label' => esc_html__( 'Footer Menu', 'inspiro' ),
 					'icon'  => 'dashicons-menu',
-					'locked' => true,
 				),
 				array(
 					'id'    => 'copyright',
@@ -182,6 +181,12 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 						'logo'        => array(
 							'type' => 'control',
 							'id'   => 'custom_logo',
+						),
+						'menu'        => array(
+							'type'           => 'control',
+							'id'             => 'nav_menu_locations[footer]',
+							'fallback_section' => 'menu_locations',
+							'fallback_panel' => 'nav_menus',
 						),
 						'copyright'   => array(
 							'type' => 'control',
@@ -578,14 +583,21 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					break;
 				case 'menu':
 					echo '<nav class="ifb-component ifb-component-menu footer-builder-navigation">';
+					$menu_args = array(
+						'theme_location' => 'footer',
+						'container'      => false,
+						'menu_class'     => 'footer-menu-container',
+						'fallback_cb'    => false,
+						'depth'          => 1,
+					);
+					if ( ! has_nav_menu( 'footer' ) ) {
+						$locations = get_nav_menu_locations();
+						if ( ! empty( $locations['primary'] ) ) {
+							$menu_args['menu'] = (int) $locations['primary'];
+						}
+					}
 					wp_nav_menu(
-						array(
-							'theme_location' => 'footer',
-							'container'      => false,
-							'menu_class'     => 'footer-menu-container',
-							'fallback_cb'    => false,
-							'depth'          => 1,
-						)
+						$menu_args
 					);
 					echo '</nav>';
 					break;
