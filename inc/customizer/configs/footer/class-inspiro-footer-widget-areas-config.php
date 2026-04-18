@@ -157,6 +157,88 @@ class Inspiro_Footer_Widget_Areas_Config {
 				)
 			)
 		);
+
+		$wp_customize->add_setting(
+			'footer_rows_layout_accordion',
+			array(
+				'default'           => null,
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Inspiro_Customize_Accordion_UI_Control(
+				$wp_customize,
+				'footer_rows_layout_accordion',
+				array(
+					'type'             => 'accordion-section-ui-wrapper',
+					'label'            => esc_html__( 'Footer Row Layouts', 'inspiro' ),
+					'settings'         => array(),
+					'section'          => 'footer-area',
+					'accordion'        => true,
+					'controls_to_wrap' => 1,
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'footer_rows_layout_primary_pro',
+			array(
+				'default'           => '',
+				'sanitize_callback' => '__return_empty_string',
+			)
+		);
+
+		$proportion_layouts = array(
+			array( 1, 1, 1 ),
+			array( 2, 1, 1 ),
+			array( 1, 2, 1 ),
+			array( 1, 1, 2 ),
+		);
+
+		$columns_html = '';
+		foreach ( array( 1, 2, 3, 4 ) as $col ) {
+			$columns_html .= '<span class="ihb-row-layouts-pro-column">' . (int) $col . '</span>';
+		}
+
+		$proportions_html = '';
+		foreach ( $proportion_layouts as $layout ) {
+			$proportions_html .= '<span class="ihb-row-layouts-pro-option" aria-hidden="true"><span class="ihb-row-layouts-pro-preview">';
+			foreach ( $layout as $flex ) {
+				$proportions_html .= '<span style="flex:' . (int) $flex . '"></span>';
+			}
+			$proportions_html .= '</span></span>';
+		}
+
+		$description = '<div class="ihb-row-layouts-pro-lock" aria-disabled="true">'
+			. '<div class="ihb-row-layouts-pro-heading">' . esc_html__( 'PRIMARY ROW', 'inspiro' ) . '</div>'
+			. '<div class="ihb-row-layouts-pro-field">'
+			. '<div class="ihb-row-layouts-pro-label">' . esc_html__( 'Number of Columns', 'inspiro' ) . '</div>'
+			. '<div class="ihb-row-layouts-pro-columns">' . $columns_html . '</div>'
+			. '</div>'
+			. '<div class="ihb-row-layouts-pro-field ihb-row-layouts-pro-field-last">'
+			. '<div class="ihb-row-layouts-pro-label">' . esc_html__( 'Column Proportions', 'inspiro' ) . '</div>'
+			. '<div class="ihb-row-layouts-pro-picker">' . $proportions_html . '</div>'
+			. '</div>'
+			. '<div class="ihb-row-layouts-pro-lock-footer">'
+			. '<span class="ihb-row-layouts-pro-lock-icon" aria-hidden="true">'
+			. '<svg class="ihb-row-layouts-pro-lock-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"></rect></svg>'
+			. '</span>'
+			. '<span class="ihb-row-layouts-pro-lock-text">' . esc_html__( 'Available in Inspiro Premium', 'inspiro' ) . '</span>'
+			. '</div>'
+			. '</div>';
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				'footer_rows_layout_primary_pro',
+				array(
+					'section'     => 'footer-area',
+					'type'        => 'hidden',
+					'description' => $description,
+				)
+			)
+		);
 	}
 }
 new Inspiro_Footer_Widget_Areas_Config();

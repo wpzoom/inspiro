@@ -205,6 +205,12 @@
 				if (section && typeof section.focus === 'function') {
 					section.focus();
 				}
+				window.setTimeout(function () {
+					var $accordion = $('#customize-control-footer_rows_layout_accordion');
+					if ($accordion.length && !$accordion.hasClass('expanded')) {
+						$accordion.find('.inspiro-accordion-header-ui').trigger('click');
+					}
+				}, 120);
 			});
 
 			$(document).on('click', '#inspiro-lite-footer-builder-ui .ifb-component-edit', function (e) {
