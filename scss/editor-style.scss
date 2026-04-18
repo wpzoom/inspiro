@@ -22,6 +22,23 @@ Description: Used to style the TinyMCE editor.
   max-width: none;
 }
 
+// Match the frontend: links should use the theme's accent color (green)
+// and not be underlined. Overrides core's :where()-wrapped defaults
+// which have 0 specificity. Keep our selector at the same (0,1,1)
+// specificity by wrapping the :not() in :where() — otherwise we'd
+// beat the per-block link-color styles WP generates for
+// `elements.link.color.text` (also :where()-wrapped).
+.editor-styles-wrapper a:where(:not(.wp-element-button)) {
+    color: var(--wp--preset--color--secondary);
+    text-decoration: none;
+}
+
+// Preserve Gutenberg's text-color-on-parent pattern: links inside
+// a block with `has-text-color` inherit the parent's color.
+.editor-styles-wrapper .has-text-color a:where(:not(.wp-element-button)) {
+    color: inherit;
+}
+
 .editor-inner-blocks .wp-block {
   margin-top: 0 !important;
   margin-bottom: 0 !important;

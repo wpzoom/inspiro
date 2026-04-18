@@ -10,19 +10,19 @@ a {
 
 }
 
+// When a parent element has an explicit text color (via Gutenberg's
+// `has-text-color` class), links inside should inherit that color instead
+// of being overridden by the theme's primary color.
+.has-text-color a {
+    color: inherit;
+}
+
 .entry-content a {
-    text-decoration: underline;
-    text-underline-offset: em(2);
+    text-decoration: none;
 
     &:hover {
         text-decoration: none;
     }
-}
-
-body.elementor-page .entry-content a,
-body.fl-builder .entry-content a,
-body.woocommerce-page .entry-content a {
-    text-decoration: none;
 }
 
 

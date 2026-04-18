@@ -35,6 +35,15 @@ Description: Used to style the TinyMCE editor.
     max-width: none;
 }
 
+.editor-styles-wrapper a:where(:not(.wp-element-button)) {
+    color: var(--wp--preset--color--secondary);
+    text-decoration: none;
+}
+
+.editor-styles-wrapper .has-text-color a:where(:not(.wp-element-button)) {
+    color: inherit;
+}
+
 .editor-inner-blocks .wp-block {
     margin-top: 0 !important;
     margin-bottom: 0 !important;

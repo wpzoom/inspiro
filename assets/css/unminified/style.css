@@ -1228,17 +1228,14 @@ a:hover {
     color: var(--inspiro-color-link-hover);
 }
 
-.entry-content a {
-    text-decoration: underline;
-    text-underline-offset: 0.125em;
-}
-.entry-content a:hover {
-    text-decoration: none;
+.has-text-color a {
+    color: inherit;
 }
 
-body.elementor-page .entry-content a,
-body.fl-builder .entry-content a,
-body.woocommerce-page .entry-content a {
+.entry-content a {
+    text-decoration: none;
+}
+.entry-content a:hover {
     text-decoration: none;
 }
 
