@@ -151,7 +151,7 @@ class Inspiro_Footer_Widget_Areas_Config {
 				array(
 					'label'       => esc_html__( 'Footer Builder Pro Features', 'inspiro' ),
 					'description' => esc_html__( 'Inspiro Lite includes a limited Footer Builder. Upgrade to Inspiro Premium to unlock additional rows, modules, and advanced layout controls.', 'inspiro' ),
-					'pro_text'    => esc_html__( 'Unlock All Footer Builder Features', 'inspiro' ),
+					'pro_text'    => esc_html__( 'Unlock Full Footer Builder', 'inspiro' ),
 					'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=footerbuilder',
 					'section'     => 'footer-area',
 				)

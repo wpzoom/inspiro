@@ -95,8 +95,63 @@ class Inspiro_Customize_Copyright_WP_Editor_Control extends WP_Customize_Control
 
 		<?php $this->prepare_wp_editor_content(); ?>
 		<p class="description customize-control-description">
-			{{ data.description }}
+			<?php esc_html_e( 'Available tags (click to copy):', 'inspiro' ); ?>
 		</p>
+		<div class="wpzoom-copyright-tags">
+			<?php
+			$tags = array(
+				'{copyright}'    => '©',
+				'{current-year}' => date( 'Y' ),
+				'{site-title}'   => get_bloginfo( 'name' ),
+			);
+			foreach ( $tags as $tag => $preview ) :
+			?>
+				<div class="wpzoom-copyright-tag-row">
+					<input type="text" readonly value="<?php echo esc_attr( $tag ); ?>" class="wpzoom-copyright-tag" onclick="this.select(); document.execCommand('copy');" />
+					<span class="wpzoom-copyright-tag-preview">&rarr; <?php echo esc_html( $preview ); ?></span>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<style>
+			.wpzoom-copyright-tags {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+				margin-top: 6px;
+			}
+			.wpzoom-copyright-tag-row {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.wpzoom-copyright-tag {
+				width: auto !important;
+				min-width: 0 !important;
+				padding: 2px 8px !important;
+				font-family: monospace;
+				font-size: 12px;
+				cursor: pointer;
+				background: #f0f0f1;
+				border: 1px solid #c3c4c7;
+				border-radius: 3px;
+				color: #2c3338;
+				text-align: center;
+				flex: 0 0 auto;
+			}
+			.wpzoom-copyright-tag:hover {
+				background: #e0e0e0;
+			}
+			.wpzoom-copyright-tag:focus {
+				border-color: #2271b1;
+				box-shadow: 0 0 0 1px #2271b1;
+				outline: none;
+			}
+			.wpzoom-copyright-tag-preview {
+				font-size: 12px;
+				color: #757575;
+				font-style: italic;
+			}
+		</style>
 		<?php
 	}
 }
