@@ -25,7 +25,7 @@
 
     <div class="theme-info-wrap">
         <h3 class="wpz-onboard_content-main-title">
-            <?php esc_html_e( 'Inspiro Premium • 46 Starter Sites', 'inspiro' ); ?>
+            <?php esc_html_e( 'Inspiro Premium • 48 Starter Sites', 'inspiro' ); ?>
         </h3>
         <div class="theme-buttons filters">
             <a class="button button-common active" data-filter="*">
@@ -170,6 +170,28 @@
                                     ],
                                     [
                                         'class' => 'design_eccentric elementor',
+                                        'id' => 'inspiro-logistics',
+                                        'title' => 'Cargo & Logistics',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-logistics/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-logistics/',
+                                        'name' => 'Cargo & Logistics',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/cargo-logistics/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                        'preview_url' => 'https://demo.wpzoom.com/inspiro-logistics/',
+                                    ],
+                                    [
+                                        'class' => 'design_eccentric elementor',
+                                        'id' => 'inspiro-investment',
+                                        'title' => 'Investment Startup',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-investment/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-investment/',
+                                        'name' => 'Investment Startup',
+                                        'available_for' => 'Elementor',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/investment-startup/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                        'preview_url' => 'https://demo.wpzoom.com/inspiro-investment/',
+                                    ],
+                                    [
+                                        'class' => 'design_eccentric elementor',
                                         'id' => 'inspiro-podcast',
                                         'title' => 'Podcast',
                                         'thumbnail_url' => 'https://www.wpzoom.com/wp-content/uploads/2025/11/podcast.png',
@@ -212,51 +234,6 @@
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/movies-shows/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                         'preview_url' => 'https://demo.wpzoom.com/inspiro-movie/',
                                     ],
-                                    // [
-                                    //     'class' => 'design_offbeat elementor',
-                                    //     'id' => 'inspiro-pro-offbeat',
-                                    //     'title' => 'Offbeat',
-                                    //     'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro-pro/flow-2/home-thumb.png',
-                                    //     'demo_url' => 'https://demo.wpzoom.com/inspiro-pro-2/',
-                                    //     'name' => 'Offbeat',
-                                    //     'available_for' => 'Elementor',
-                                    //     'premium_url' => 'https://www.wpzoom.com/themes/inspiro-pro/',
-                                    //     'preview_url' => 'https://demo.wpzoom.com/inspiro-pro-2/',
-                                    // ],
-
-                                    // [
-                                    //     'class' => 'design_shop elementor',
-                                    //     'id' => 'inspiro-pro-shop',
-                                    //     'title' => 'Shop',
-                                    //     'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro-pro/shop/home-thumb.png',
-                                    //     'demo_url' => 'https://demo.wpzoom.com/inspiro-pro-shop/',
-                                    //     'name' => 'Shop',
-                                    //     'available_for' => 'Elementor',
-                                    //     'premium_url' => 'https://www.wpzoom.com/themes/inspiro-pro/',
-                                    //     'preview_url' => 'https://demo.wpzoom.com/inspiro-pro-shop/',
-                                    // ]
-                                    // [
-                                    //     'class' => 'design_real-estate elementor',
-                                    //     'id' => 'inspiro-pro-real-estate',
-                                    //     'title' => 'Real Estate / Business',
-                                    //     'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro-pro/real-estate/home-thumb.png',
-                                    //     'demo_url' => 'https://demo.wpzoom.com/inspiro-pro-real-estate/',
-                                    //     'name' => 'Real Estate / Business',
-                                    //     'available_for' => 'Elementor',
-                                    //     'premium_url' => 'https://www.wpzoom.com/themes/inspiro-pro/',
-                                    //     'preview_url' => 'https://demo.wpzoom.com/inspiro-pro-real-estate/',
-                                    // ],
-                                    // [
-                                    //     'class' => 'design_tech elementor',
-                                    //     'id' => 'inspiro-tech',
-                                    //     'title' => 'Tech',
-                                    //     'thumbnail_url' => 'https://demo.wpzoom.com/inspiro-pro-demo/wp-content/themes/inspiro-pro-select/images/site-layout_tech.png',
-                                    //     'demo_url' => 'https://demo.wpzoom.com/inspiro-tech/',
-                                    //     'name' => 'Tech / Finance',
-                                    //     'available_for' => 'Elementor',
-                                    //     'premium_url' => 'https://www.wpzoom.com/themes/inspiro-pro/',
-                                    //     'preview_url' => 'https://demo.wpzoom.com/inspiro-tech/',
-                                    // ],
                                     [
                                         'class' => 'design_agency-elementor elementor',
                                         'id' => 'inspiro-agency',
@@ -406,7 +383,7 @@
                                         'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-insurance/thumbs/home.png',
                                         'demo_url' => 'https://demo.wpzoom.com/inspiro-insurance/',
                                         'name' => 'Insurance Company',
-                                        'available_for' => 'Elementor',
+                                        'available_for' => ['Elementor', 'Gutenberg'],
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/insurance-company/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
                                     [

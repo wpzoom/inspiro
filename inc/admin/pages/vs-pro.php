@@ -20,7 +20,7 @@
                       <li class="t-row">
                          <div class="content">
                             <div class="h-wrap">
-                               <h4>40+ Premium Starter Sites</h4>
+                               <h4>45+ Premium Starter Sites</h4>
                                <span class="plan">NEW DEMOS</span>
                             </div>
                             <p>Don’t start from scratch. Our ready-to-import starter sites provide a comprehensive foundation for any website. They are easy to deploy and give you a massive head start on your project, no matter what industry you’re in.</p>
@@ -154,7 +154,7 @@
                    <li class="t-row">
                       <div class="content">
                          <div class="h-wrap">
-                            <h4>Footer Layouts</h4>
+                            <h4>Footer Builder</h4> <span class="plan">NEW</span>
                          </div>
                          <p>From the Customizer, you can quickly change the layout of the footer. Pick a layout that matches your website or customize it using available tools.</p>
                       </div>
@@ -373,7 +373,7 @@
 						<path d="M14.6706 6.08301L9.00365 11.75L6.1709 8.91651" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						<path d="M15.75 9.5C15.75 13.2283 12.7283 16.25 9 16.25C5.27175 16.25 2.25 13.2283 2.25 9.5C2.25 5.77175 5.27175 2.75 9 2.75C10.0897 2.75 11.1158 3.01475 12.027 3.473" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
-					40+ Starter Sites
+					45+ Starter Sites
 				</li>
                 <li>
 					<svg width="18" height="18" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
