@@ -4888,6 +4888,11 @@ figure.aligncenter:not(.wp-block-gallery) {
         margin-right: -125px;
         max-width: calc(var(--container-width) + 250px);
     }
+    .page .full-width .entry-content .alignwide {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: var(--wp--style--global--wide-size);
+    }
 }
 @media (min-width: 64.0625em) {
     .navbar-nav ul {

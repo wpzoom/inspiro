@@ -15,4 +15,12 @@
         // width: calc(var(--container-width) + 250px);
     }
 
+    // Reset the negative-margin breakout on full-width (page builder) templates
+    // where .entry-content already spans 100% width.
+    .page .full-width .entry-content .alignwide {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: var(--wp--style--global--wide-size);
+    }
+
 }

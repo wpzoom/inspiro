@@ -4882,13 +4882,16 @@ figure.aligncenter:not(.wp-block-gallery) {
         margin-right: -125px;
         margin-left: -125px;
         max-width: calc(var(--container-width-narrow) + 250px);
-        width: calc(var(--container-width-narrow) + 250px);
     }
     .page .entry-content .alignwide {
         margin-right: -125px;
         margin-left: -125px;
         max-width: calc(var(--container-width) + 250px);
-        width: calc(var(--container-width) + 250px);
+    }
+    .page .full-width .entry-content .alignwide {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: var(--wp--style--global--wide-size);
     }
 }
 @media (min-width: 64.0625em) {
