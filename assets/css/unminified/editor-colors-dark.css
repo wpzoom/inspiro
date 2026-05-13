@@ -1,0 +1,124 @@
+/**
+ * Inspiro: Block editor canvas when Color Scheme is Dark.
+ * Scoped to .editor-styles-wrapper (loaded in the editor iframe only).
+ */
+:root {
+    --inspiro-primary-color: #0bb4aa;
+    --inspiro-dark-color: #101010;
+    --inspiro-light-grey-color: #f2f4f6;
+    --inspiro-color-background-body: #fff;
+    --inspiro-color-link-hover: #000;
+}
+
+.editor-styles-wrapper {
+    background-color: var(--inspiro-dark-color, #101010);
+    color: #eee;
+    --inspiro-color-link-hover: #fff;
+}
+.editor-styles-wrapper .has-light-background-background-color {
+    background-color: var(--wp--preset--color--primary) !important;
+}
+.editor-styles-wrapper .has-black-color {
+    color: var(--wp--preset--color--white) !important;
+}
+.editor-styles-wrapper .has-background-background-color {
+    background-color: var(--wp--preset--color--foreground) !important;
+}
+.editor-styles-wrapper p,
+.editor-styles-wrapper li,
+.editor-styles-wrapper td,
+.editor-styles-wrapper th,
+.editor-styles-wrapper .wp-block {
+    color: inherit;
+}
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6,
+.editor-styles-wrapper .wp-block-heading,
+.editor-styles-wrapper .wp-block-post-title,
+.editor-styles-wrapper .wp-block-post-title .rich-text,
+.editor-styles-wrapper .wp-block-query-title {
+    color: #ddd;
+}
+.editor-styles-wrapper .editor-post-title__block .editor-post-title__input,
+.editor-styles-wrapper .editor-visual-editor__post-title-wrapper .editor-post-title__input,
+.editor-styles-wrapper .wp-block-post-title :where(.rich-text, [contenteditable=true]) {
+    color: #ddd !important;
+}
+.editor-styles-wrapper .block-editor-rich-text__editable[data-is-placeholder-visible=true]::before,
+.editor-styles-wrapper .block-editor-rich-text__placeholder {
+    color: #888 !important;
+    opacity: 1 !important;
+}
+.editor-styles-wrapper ::placeholder {
+    color: #888;
+    opacity: 1;
+}
+.editor-styles-wrapper a:where(:not(.wp-element-button)) {
+    color: var(--wp--preset--color--secondary);
+}
+.editor-styles-wrapper a:where(:not(.wp-element-button)):hover, .editor-styles-wrapper a:where(:not(.wp-element-button)):focus {
+    color: var(--inspiro-color-link-hover);
+}
+.editor-styles-wrapper .has-text-color a:where(:not(.wp-element-button)) {
+    color: inherit;
+}
+.editor-styles-wrapper figcaption,
+.editor-styles-wrapper .wp-element-caption,
+.editor-styles-wrapper .wp-block-image figcaption {
+    color: #ccc;
+}
+.editor-styles-wrapper blockquote,
+.editor-styles-wrapper .wp-block-quote {
+    color: #ccc;
+    border-color: #555;
+}
+.editor-styles-wrapper .wp-block-pullquote {
+    border-color: #555;
+    color: #ddd;
+}
+.editor-styles-wrapper hr,
+.editor-styles-wrapper .wp-block-separator {
+    border-color: #555;
+    color: #555;
+}
+.editor-styles-wrapper pre,
+.editor-styles-wrapper code,
+.editor-styles-wrapper kbd,
+.editor-styles-wrapper .wp-block-code,
+.editor-styles-wrapper .wp-block-preformatted {
+    color: #eee;
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+.editor-styles-wrapper .wp-block-table,
+.editor-styles-wrapper .wp-block-table table {
+    color: #eee;
+}
+.editor-styles-wrapper .wp-block-table th,
+.editor-styles-wrapper .wp-block-table td {
+    border-color: #555;
+}
+.editor-styles-wrapper input:not([type=checkbox]):not([type=radio]),
+.editor-styles-wrapper textarea,
+.editor-styles-wrapper select {
+    color: #ccc;
+    background-color: #333;
+    border-color: #444;
+}
+.editor-styles-wrapper .wp-block-search__input {
+    color: #eee;
+    background-color: #333;
+    border-color: #444;
+}
+.editor-styles-wrapper .wp-block-read-more {
+    color: var(--wp--preset--color--secondary);
+}
+.editor-styles-wrapper .wp-block-latest-comments__comment-meta,
+.editor-styles-wrapper .wp-block-latest-posts__post-author,
+.editor-styles-wrapper .wp-block-latest-posts__post-date {
+    color: #777;
+}

@@ -52,14 +52,21 @@ function inspiro_block_editor_fonts_styles() {
         }
     ";
 
-    // Create editor-specific stylesheet
+    $css_dir    = ( SCRIPT_DEBUG ) ? 'unminified' : 'minified';
+    $css_suffix = ( SCRIPT_DEBUG ) ? '' : '.min';
+
+    // Create editor-specific stylesheet (order: base theme editor, then dark canvas when applicable).
     $editor_style = array(
-        'assets/css/' . ((SCRIPT_DEBUG) ? 'unminified' : 'minified') . '/editor-style' . ((SCRIPT_DEBUG) ? '' : '.min') . '.css'
+        'assets/css/' . $css_dir . '/editor-style' . $css_suffix . '.css',
     );
+
+    if ( 'dark' === inspiro_get_theme_mod( 'colorscheme' ) ) {
+        $editor_style[] = 'assets/css/' . $css_dir . '/editor-colors-dark' . $css_suffix . '.css';
+    }
 
     // Get Google Fonts URL
     $google_fonts_url = Inspiro_Fonts_Manager::get_google_font_url();
-    if (!empty($google_fonts_url)) {
+    if ( ! empty( $google_fonts_url ) ) {
         $editor_style[] = $google_fonts_url;
     }
 

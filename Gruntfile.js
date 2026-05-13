@@ -75,6 +75,7 @@ module.exports = function (grunt) {
 							'*.css',
 							'!*-rtl.css',
 							'!colors-dark.css',
+							'!editor-colors-dark.css',
 							'!customize-controls.css',
 							'!customize-guided-tour.css',
 							'!welcome-notice.css',
@@ -109,6 +110,8 @@ module.exports = function (grunt) {
 						'assets/css/unminified/style.css': 'scss/style.scss',
 						'assets/css/unminified/editor-style.css':
 							'scss/editor-style.scss',
+						'assets/css/unminified/editor-colors-dark.css':
+							'scss/editor-colors-dark.scss',
 						'assets/css/unminified/colors-dark.css':
 							'scss/colors-dark.scss',
 						'assets/css/unminified/customize-controls.css':

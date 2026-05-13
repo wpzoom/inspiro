@@ -1,0 +1,148 @@
+/**
+ * Inspiro: Block editor canvas when Color Scheme is Dark.
+ * Scoped to .editor-styles-wrapper (loaded in the editor iframe only).
+ */
+
+@import "variables-site/colors";
+
+.editor-styles-wrapper {
+    background-color: var(--inspiro-dark-color, #101010);
+    color: #eee;
+
+    --inspiro-color-link-hover: #fff;
+
+    // Match frontend dark palette utility overrides
+    .has-light-background-background-color {
+        background-color: var(--wp--preset--color--primary) !important;
+    }
+
+    .has-black-color {
+        color: var(--wp--preset--color--white) !important;
+    }
+
+    .has-background-background-color {
+        background-color: var(--wp--preset--color--foreground) !important;
+    }
+
+    // Default text + blocks
+    p,
+    li,
+    td,
+    th,
+    .wp-block {
+        color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .wp-block-heading,
+    .wp-block-post-title,
+    .wp-block-post-title .rich-text,
+    .wp-block-query-title {
+        color: #ddd;
+    }
+
+    // Legacy + modern post title field
+    .editor-post-title__block .editor-post-title__input,
+    .editor-visual-editor__post-title-wrapper .editor-post-title__input,
+    .wp-block-post-title :where(.rich-text, [contenteditable="true"]) {
+        color: #ddd !important;
+    }
+
+    // Rich text placeholders (Gutenberg)
+    .block-editor-rich-text__editable[data-is-placeholder-visible="true"]::before,
+    .block-editor-rich-text__placeholder {
+        color: #888 !important;
+        opacity: 1 !important;
+    }
+
+    ::placeholder {
+        color: #888;
+        opacity: 1;
+    }
+
+    a:where(:not(.wp-element-button)) {
+        color: var(--wp--preset--color--secondary);
+
+        &:hover,
+        &:focus {
+            color: var(--inspiro-color-link-hover);
+        }
+    }
+
+    .has-text-color a:where(:not(.wp-element-button)) {
+        color: inherit;
+    }
+
+    figcaption,
+    .wp-element-caption,
+    .wp-block-image figcaption {
+        color: #ccc;
+    }
+
+    blockquote,
+    .wp-block-quote {
+        color: #ccc;
+        border-color: #555;
+    }
+
+    .wp-block-pullquote {
+        border-color: #555;
+        color: #ddd;
+    }
+
+    hr,
+    .wp-block-separator {
+        border-color: #555;
+        color: #555;
+    }
+
+    pre,
+    code,
+    kbd,
+    .wp-block-code,
+    .wp-block-preformatted {
+        color: #eee;
+        background-color: #1a1a1a;
+        border-color: #333;
+    }
+
+    .wp-block-table,
+    .wp-block-table table {
+        color: #eee;
+    }
+
+    .wp-block-table th,
+    .wp-block-table td {
+        border-color: #555;
+    }
+
+    // Form-ish blocks
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select {
+        color: #ccc;
+        background-color: #333;
+        border-color: #444;
+    }
+
+    .wp-block-search__input {
+        color: #eee;
+        background-color: #333;
+        border-color: #444;
+    }
+
+    .wp-block-read-more {
+        color: var(--wp--preset--color--secondary);
+    }
+
+    .wp-block-latest-comments__comment-meta,
+    .wp-block-latest-posts__post-author,
+    .wp-block-latest-posts__post-date {
+        color: #777;
+    }
+}
