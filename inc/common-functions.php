@@ -303,6 +303,13 @@ function inspiro_unique_id( $prefix = '' ) {
  */
 function inspiro_custom_logo() {
 	has_custom_logo() ? the_custom_logo() : printf( '<a href="%1$s" title="%2$s" class="custom-logo-text">%3$s</a>', esc_url( home_url() ), esc_html( get_bloginfo( 'description' ) ), esc_html( inspiro_get_theme_mod( 'custom_logo_text' ) ) );
+
+	if ( inspiro_get_theme_mod( 'show_tagline' ) ) {
+		$tagline = get_bloginfo( 'description', 'display' );
+		if ( $tagline ) {
+			printf( '<p class="header-tagline">%s</p>', esc_html( $tagline ) );
+		}
+	}
 }
 
 /**

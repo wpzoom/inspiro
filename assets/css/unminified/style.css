@@ -2130,6 +2130,29 @@ body.has-header-image .custom-header-button:hover, body.has-header-video .custom
     max-width: 350px;
 }
 
+.header-logo-wrapper {
+    flex-wrap: wrap;
+}
+
+.header-logo-wrapper:has(.header-tagline) {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.header-logo-wrapper .header-tagline {
+    flex-basis: 100%;
+    width: 100%;
+    display: block;
+    margin: 4px 0 0;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+    text-transform: none;
+    opacity: 0.75;
+}
+
 body.wp-custom-logo .custom-logo-link a {
     font-size: 0;
 }
