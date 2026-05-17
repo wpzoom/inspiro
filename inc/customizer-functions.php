@@ -243,6 +243,13 @@ function inspiro_is_external_video_active() {
 }
 
 /**
+ * Checks whether the Hero Area on the Homepage is enabled.
+ */
+function inspiro_is_hero_enabled() {
+	return (bool) inspiro_get_theme_mod( 'hero_enable' );
+}
+
+/**
  * Sanitize select.
  *
  * @param string $choice  The value from the setting.
