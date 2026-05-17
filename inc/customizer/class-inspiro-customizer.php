@@ -330,6 +330,8 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 						'priority'    => 999,
 					)
 				)
+			);
+
 
 			/**
 			 * Custom changes of Core Settings
