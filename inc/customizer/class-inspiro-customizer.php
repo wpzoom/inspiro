@@ -314,6 +314,22 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 				)
 			);
 
+			/**
+			 * Upsell inside the Typography panel
+			 */
+			$wp_customize->add_section(
+				new Inspiro_Customize_Section_Pro(
+					$wp_customize,
+					'inspiro_typography_premium',
+					array(
+						'title'       => esc_html__( '🔓 More Font Options in Premium', 'inspiro' ),
+						'description' => esc_html__( 'Unlock custom font uploads, responsive font sizes, letter spacing and dedicated typography controls for every element.', 'inspiro' ),
+						'pro_text'    => esc_html__( 'Upgrade Now', 'inspiro' ),
+						'pro_url'     => esc_url( 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=typographybutton' ),
+						'panel'       => 'inspiro_typography_panel',
+						'priority'    => 999,
+					)
+				)
 
 			/**
 			 * Custom changes of Core Settings
