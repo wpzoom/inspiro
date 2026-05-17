@@ -127,7 +127,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					'description' => esc_html__( 'Switch from predefined footer layout to drag-and-drop footer builder.', 'inspiro' ),
 					'section'     => 'footer-area',
 					'type'        => 'checkbox',
-					'priority'    => 95,
+					'priority'    => 2,
 				)
 			);
 
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 				array(
 					'section'  => 'footer-area',
 					'type'     => 'hidden',
-					'priority' => 96,
+					'priority' => 3,
 				)
 			);
 		}

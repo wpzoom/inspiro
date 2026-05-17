@@ -154,6 +154,7 @@ class Inspiro_Footer_Widget_Areas_Config {
 					'pro_text'    => esc_html__( 'Unlock Full Footer Builder', 'inspiro' ),
 					'pro_url'     => 'https://www.wpzoom.com/themes/inspiro-lite/upgrade/?utm_source=wpadmin&utm_medium=customizer&utm_campaign=footerbuilder',
 					'section'     => 'footer-area',
+					'priority'    => 1,
 				)
 			)
 		);
