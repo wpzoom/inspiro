@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define Constants
  */
-define( 'INSPIRO_THEME_VERSION', '2.1.13' );
+define( 'INSPIRO_THEME_VERSION', '2.1.14' );
 define( 'INSPIRO_THEME_DIR', trailingslashit( get_template_directory() ) );
 define( 'INSPIRO_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
 define( 'INSPIRO_THEME_ASSETS_URI', INSPIRO_THEME_URI . 'dist' );
@@ -122,6 +122,7 @@ if ( is_admin() ) { // && is_customize_preview(), AJAX don't work with is_custom
 require INSPIRO_THEME_DIR . 'inc/customizer-functions.php';
 require INSPIRO_THEME_DIR . 'inc/customizer/class-inspiro-customizer-control-base.php';
 require INSPIRO_THEME_DIR . 'inc/customizer/class-inspiro-customizer.php';
+require INSPIRO_THEME_DIR . 'inc/customizer/class-inspiro-selective-refresh.php';
 require INSPIRO_THEME_DIR . 'inc/customizer/header-builder/loader.php';
 require INSPIRO_THEME_DIR . 'inc/customizer/footer-builder/loader.php';
 
