@@ -81,7 +81,7 @@ function inspiro_display_black_friday_banner() {
 				<span class="banner-text">Take your website to the next level with Inspiro Premium and unlock powerful features like:</span>
 
 				<div class="banner-promo-btns">
-                    <div class="banner-btn">40+ Premium Demos</div>
+                    <div class="banner-btn">50+ Premium Demos</div>
  					<div class="banner-btn">Slideshow with Video Background</div>
                     <div class="banner-btn">Elementor Templates</div>
                     <div class="banner-btn">Header Builder</div>

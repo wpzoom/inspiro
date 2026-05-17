@@ -25,7 +25,7 @@
 
     <div class="theme-info-wrap">
         <h3 class="wpz-onboard_content-main-title">
-            <?php esc_html_e( 'Inspiro Premium • 48 Starter Sites', 'inspiro' ); ?>
+            <?php esc_html_e( 'Inspiro Premium • 50 Starter Sites', 'inspiro' ); ?>
         </h3>
         <div class="theme-buttons filters">
             <a class="button button-common active" data-filter="*">
@@ -363,7 +363,7 @@
                                         'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-education/thumbs/home.png',
                                         'demo_url' => 'https://demo.wpzoom.com/inspiro-school/',
                                         'name' => 'Education / University',
-                                        'available_for' => 'Elementor',
+                                        'available_for' => ['Elementor', 'Gutenberg'],
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/education/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
                                     [
@@ -468,6 +468,16 @@
                                     ],
                                     [
                                         'class' => 'design_magazine elementor',
+                                        'id' => 'inspiro-nowmag',
+                                        'title' => 'NowMag Magazine',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-nowmag/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-nowmag/',
+                                        'name' => 'NowMag Magazine',
+                                        'available_for' => 'Gutenberg',
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/nowmag-magazine/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                    ],
+                                    [
+                                        'class' => 'design_magazine elementor',
                                         'id' => 'inspiro-magazine',
                                         'title' => 'Magazine',
                                         'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-magazine/home-thumb.png',
@@ -545,6 +555,16 @@
                                         'name' => 'Tech / Finance',
                                         'available_for' => ['Gutenberg'],
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/finance-tech/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
+                                    ],
+                                    [
+                                        'class' => 'design_tech gutenberg',
+                                        'id' => 'inspiro-band',
+                                        'title' => 'Music Band (One-pager)',
+                                        'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/inspiro-band/home-thumb.png',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-band/',
+                                        'name' => 'Music Band (One-pager)',
+                                        'available_for' => ['Elementor', 'Gutenberg'],
+                                        'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/music-band/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',
                                     ],
                                     [
                                         'class' => 'design_tech gutenberg',
