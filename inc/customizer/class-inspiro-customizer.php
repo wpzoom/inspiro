@@ -168,7 +168,19 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 				),
 				'wc-customs' => array(
 					'wc-customs',
-				)
+				),
+				'pre-footer'     => array(
+					'pre-footer-cta',
+				),
+				'topbar'         => array(
+					'topbar',
+				),
+				'misc'           => array(
+					'misc',
+				),
+				'breadcrumbs'    => array(
+					'breadcrumbs',
+				),
 			);
 		}
 
