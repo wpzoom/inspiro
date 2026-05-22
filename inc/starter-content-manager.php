@@ -31,8 +31,10 @@ add_filter( 'customize_save_response', 'inspiro_mark_starter_content_posts', 10,
  * @return bool|array Array with page IDs if found, false otherwise
  */
 function inspiro_has_starter_content() {
-	// First check: Look for pages with the starter content meta
-	$query = new WP_Query(
+	$page_ids = array();
+
+	// Source 1: pages we've already marked as starter content.
+	$marked = get_posts(
 		array(
 			'post_type'      => 'page',
 			'posts_per_page' => -1,
@@ -41,63 +43,19 @@ function inspiro_has_starter_content() {
 			'fields'         => 'ids',
 		)
 	);
+	$page_ids = array_merge( $page_ids, $marked );
 
-	if ( $query->have_posts() ) {
-		return $query->posts; // Return array of page IDs
+	// Source 2: posts WordPress created for starter content. This theme mod is the
+	// authoritative list and crucially includes the Homepage (the "front" page),
+	// which is added to the menu as a home link (link_home) and is therefore never
+	// found by the menu-item scan below.
+	$created_posts = get_theme_mod( 'nav_menus_created_posts', array() );
+	if ( is_array( $created_posts ) ) {
+		$page_ids = array_merge( $page_ids, $created_posts );
 	}
 
-	// Second check: Look for the primary menu created by starter content
-	// Starter content creates a menu in the 'primary' location
-	$locations = get_nav_menu_locations();
-
-	if ( isset( $locations['primary'] ) ) {
-		$menu_id = $locations['primary'];
-		$menu    = wp_get_nav_menu_object( $menu_id );
-
-		// Check if the menu is named "Main Menu" (default starter content menu name)
-		if ( $menu && $menu->name === 'Main Menu' ) {
-			// Get menu items to find the linked pages
-			$menu_items = wp_get_nav_menu_items( $menu_id );
-			$page_ids   = array();
-
-			if ( $menu_items ) {
-				foreach ( $menu_items as $item ) {
-					// Only get page objects
-					if ( $item->object === 'page' && $item->object_id ) {
-						$page = get_post( $item->object_id );
-
-						// Verify the page title matches typical starter content
-						if ( $page && in_array( $page->post_title, array( 'Homepage', 'About', 'Contact', 'Blog' ), true ) ) {
-							// Mark it with meta for next time
-							update_post_meta( $item->object_id, '_inspiro_starter_content', 'yes' );
-							$page_ids[] = $item->object_id;
-						}
-					}
-				}
-			}
-
-			// Also check for the front page if it's set and has the starter content meta
-			// The starter content uses 'link_home' instead of 'page_home' in the menu
-			// so the Homepage page won't be detected through menu items
-			$front_page_id = get_option( 'page_on_front' );
-			if ( $front_page_id ) {
-				// Check if it has the WordPress starter content meta
-				$is_starter_content = get_post_meta( $front_page_id, '_customize_starter_content_theme', true );
-				if ( $is_starter_content ) {
-					update_post_meta( $front_page_id, '_inspiro_starter_content', 'yes' );
-					$page_ids[] = $front_page_id;
-				}
-			}
-
-			if ( ! empty( $page_ids ) ) {
-				return $page_ids;
-			}
-		}
-	}
-
-	// Third check: Look for pages with WordPress starter content meta
-	// This catches pages that WordPress created as starter content
-	$starter_query = new WP_Query(
+	// Source 3: pages carrying WordPress' own starter-content meta.
+	$wp_meta = get_posts(
 		array(
 			'post_type'      => 'page',
 			'posts_per_page' => -1,
@@ -105,16 +63,56 @@ function inspiro_has_starter_content() {
 			'fields'         => 'ids',
 		)
 	);
+	$page_ids = array_merge( $page_ids, $wp_meta );
 
-	if ( $starter_query->have_posts() ) {
-		// Mark these pages with our custom meta for faster detection next time
-		foreach ( $starter_query->posts as $page_id ) {
-			update_post_meta( $page_id, '_inspiro_starter_content', 'yes' );
+	// Source 4: page menu items under the default "Main Menu", plus the static front
+	// page (the starter Homepage) which the menu references only as a home link.
+	$locations = get_nav_menu_locations();
+	if ( isset( $locations['primary'] ) ) {
+		$menu = wp_get_nav_menu_object( $locations['primary'] );
+
+		if ( $menu && 'Main Menu' === $menu->name ) {
+			$menu_items = wp_get_nav_menu_items( $menu->term_id );
+
+			if ( $menu_items ) {
+				foreach ( $menu_items as $item ) {
+					if ( 'page' === $item->object && $item->object_id
+						&& in_array( get_the_title( $item->object_id ), array( 'Homepage', 'About', 'Contact', 'Blog' ), true ) ) {
+						$page_ids[] = (int) $item->object_id;
+					}
+				}
+			}
+
+			// The Homepage is the static front page; capture it by title since it
+			// isn't a page menu item (it's a link_home in the menu).
+			$front_page_id = (int) get_option( 'page_on_front' );
+			if ( $front_page_id && 'Homepage' === get_the_title( $front_page_id ) ) {
+				$page_ids[] = $front_page_id;
+			}
 		}
-		return $starter_query->posts;
 	}
 
-	return false;
+	// Keep only IDs that are still existing pages, de-duplicated.
+	$page_ids = array_unique( array_filter( array_map( 'intval', $page_ids ) ) );
+	$page_ids = array_values(
+		array_filter(
+			$page_ids,
+			function ( $id ) {
+				return 'page' === get_post_type( $id );
+			}
+		)
+	);
+
+	if ( empty( $page_ids ) ) {
+		return false;
+	}
+
+	// Mark for faster detection next time.
+	foreach ( $page_ids as $id ) {
+		update_post_meta( $id, '_inspiro_starter_content', 'yes' );
+	}
+
+	return $page_ids;
 }
 
 /**
@@ -156,9 +154,12 @@ function inspiro_delete_starter_content() {
 	// Get the starter content pages
 	$starter_pages = inspiro_get_starter_content_pages();
 
-	// Reset front page settings BEFORE deleting pages
-	$front_page_id = get_option( 'page_on_front' );
-	$blog_page_id  = get_option( 'page_for_posts' );
+	// Reset front page settings BEFORE deleting pages.
+	// Cast to int: get_option() returns a numeric string, but $starter_pages holds
+	// integers — a strict in_array() would otherwise never match and the front page
+	// would stay set to a page we're about to delete.
+	$front_page_id = (int) get_option( 'page_on_front' );
+	$blog_page_id  = (int) get_option( 'page_for_posts' );
 
 	if ( ( $front_page_id && in_array( $front_page_id, $starter_pages, true ) ) ||
 	     ( $blog_page_id && in_array( $blog_page_id, $starter_pages, true ) ) ) {
