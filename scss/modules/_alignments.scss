@@ -30,3 +30,7 @@ figure {
 .wp-block-image.alignfull img, .wp-block-image.alignwide img {
     width: 100%;
 }
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+    max-width: 200px;
+}
