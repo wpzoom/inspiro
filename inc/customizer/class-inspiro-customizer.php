@@ -178,9 +178,6 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 				'misc'           => array(
 					'misc',
 				),
-				'breadcrumbs'    => array(
-					'breadcrumbs',
-				),
 			);
 		}
 

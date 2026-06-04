@@ -138,19 +138,6 @@ require INSPIRO_THEME_DIR . 'inc/icon-functions.php';
  */
 require INSPIRO_THEME_DIR . 'inc/prisma-ports-functions.php';
 
-/**
- * Breadcrumb trail (Justin Tadlock library, ported from Prisma Core).
- *
- * @since Inspiro 2.2.0
- */
-require INSPIRO_THEME_DIR . 'inc/breadcrumbs.php';
-
-/**
- * Inspiro List widget — repeatable icon + text list for sidebar/footer.
- *
- * @since Inspiro 2.2.0
- */
-require INSPIRO_THEME_DIR . 'inc/widgets/class-inspiro-list-widget.php';
 
 /**
  * Theme admin notices and info page

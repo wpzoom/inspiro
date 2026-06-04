@@ -226,71 +226,6 @@ if ( ! function_exists( 'inspiro_preloader' ) ) {
 add_action( 'inspiro_after_body_open', 'inspiro_preloader' );
 
 /* ---------------------------------------------------------------------------
- * Breadcrumbs
- * ------------------------------------------------------------------------- */
-
-if ( ! function_exists( 'inspiro_is_breadcrumbs_enabled' ) ) {
-	/**
-	 * Whether the breadcrumb trail is enabled.
-	 *
-	 * @return bool
-	 */
-	function inspiro_is_breadcrumbs_enabled() {
-		return (bool) inspiro_get_theme_mod( 'breadcrumbs_enable' );
-	}
-}
-
-if ( ! function_exists( 'inspiro_show_breadcrumbs' ) ) {
-	/**
-	 * Render the breadcrumb trail wrapper, deferring to inspiro_breadcrumb_trail().
-	 *
-	 * @return void
-	 */
-	function inspiro_show_breadcrumbs() {
-		if ( ! inspiro_is_breadcrumbs_enabled() || ! function_exists( 'inspiro_breadcrumb_trail' ) ) {
-			return;
-		}
-
-		if ( is_front_page() && ! inspiro_get_theme_mod( 'breadcrumbs_show_on_home' ) ) {
-			return;
-		}
-
-		$separator = inspiro_get_theme_mod( 'breadcrumbs_separator' );
-		$separator = $separator ? $separator : '/';
-
-		echo '<div class="inspiro-breadcrumbs-wrapper" style="--inspiro-breadcrumb-separator:\'' . esc_attr( $separator ) . '\';">';
-		inspiro_breadcrumb_trail(
-			array(
-				'show_browse' => false,
-				'echo'        => true,
-			)
-		);
-		echo '</div>';
-	}
-}
-
-if ( ! function_exists( 'inspiro_auto_insert_breadcrumbs' ) ) {
-	/**
-	 * Auto-insert breadcrumbs at the top of singular content.
-	 *
-	 * @param string $content Post content.
-	 * @return string
-	 */
-	function inspiro_auto_insert_breadcrumbs( $content ) {
-		if ( ! inspiro_is_breadcrumbs_enabled() || ! is_singular() || ! in_the_loop() || ! is_main_query() ) {
-			return $content;
-		}
-
-		ob_start();
-		inspiro_show_breadcrumbs();
-		$crumbs = ob_get_clean();
-
-		return $crumbs . $content;
-	}
-}
-add_filter( 'the_content', 'inspiro_auto_insert_breadcrumbs', 5 );
-
-/* ---------------------------------------------------------------------------
  * Enqueue the small companion stylesheet + script
  * ------------------------------------------------------------------------- */
 
@@ -306,8 +241,7 @@ if ( ! function_exists( 'inspiro_prisma_ports_enqueue' ) ) {
 			inspiro_is_pre_footer_cta_enabled()
 			|| inspiro_is_topbar_enabled()
 			|| inspiro_is_back_to_top_enabled()
-			|| inspiro_is_preloader_enabled()
-			|| inspiro_is_breadcrumbs_enabled();
+			|| inspiro_is_preloader_enabled();
 
 		if ( ! $any_enabled && ! is_customize_preview() ) {
 			return;
