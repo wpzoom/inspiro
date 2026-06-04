@@ -124,8 +124,11 @@ Topbar, Pre-Footer CTA, Back-to-Top, Preloader
 	}
 }
 
-/* Back-to-Top */
-.inspiro-back-to-top {
+/* Back-to-Top
+   Uses `a.inspiro-back-to-top` (specificity 0,1,1) so the color rule wins
+   against the theme.json-generated `:root :where(a:where(:not(.wp-element-button)))`
+   link rule (0,1,0) which WordPress prints AFTER style.css. */
+a.inspiro-back-to-top {
 	position: fixed;
 	right: 24px;
 	bottom: 24px;

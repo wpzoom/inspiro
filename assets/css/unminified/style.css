@@ -1486,8 +1486,11 @@ Topbar, Pre-Footer CTA, Back-to-Top, Preloader
     }
 }
 
-/* Back-to-Top */
-.inspiro-back-to-top {
+/* Back-to-Top
+   Uses `a.inspiro-back-to-top` (specificity 0,1,1) so the color rule wins
+   against the theme.json-generated `:root :where(a:where(:not(.wp-element-button)))`
+   link rule (0,1,0) which WordPress prints AFTER style.css. */
+a.inspiro-back-to-top {
     position: fixed;
     right: 24px;
     bottom: 24px;
@@ -1507,16 +1510,16 @@ Topbar, Pre-Footer CTA, Back-to-Top, Preloader
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.15s ease;
 }
-.inspiro-back-to-top.is-visible {
+a.inspiro-back-to-top.is-visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
-.inspiro-back-to-top:hover, .inspiro-back-to-top:focus {
+a.inspiro-back-to-top:hover, a.inspiro-back-to-top:focus {
     color: var(--inspiro-btt-icon, #ffffff);
     transform: translateY(-2px);
 }
-.inspiro-back-to-top svg {
+a.inspiro-back-to-top svg {
     width: 16px;
     height: 16px;
 }
@@ -1555,7 +1558,7 @@ Topbar, Pre-Footer CTA, Back-to-Top, Preloader
     .inspiro-preloader__spinner {
         animation-duration: 2s;
     }
-    .inspiro-back-to-top {
+    a.inspiro-back-to-top {
         transition: opacity 0.1s ease;
         transform: none !important;
     }
