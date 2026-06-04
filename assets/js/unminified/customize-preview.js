@@ -1213,4 +1213,76 @@ body {
 		});
 	});
 
+	/* ------------------------------------------------------------
+	 * Misc — live previews
+	 * Topbar colors, Pre-Footer CTA colors, Back-to-Top colors,
+	 * Preloader colors.
+	 *
+	 * Uses native style.setProperty() because jQuery's .css() doesn't
+	 * reliably write CSS custom properties (`--foo`) in all versions.
+	 * ---------------------------------------------------------- */
+
+	function inspiroSetCssVar(selector, varName, value) {
+		document.querySelectorAll(selector).forEach(function (el) {
+			if (value) {
+				el.style.setProperty(varName, value);
+			} else {
+				el.style.removeProperty(varName);
+			}
+		});
+	}
+
+	// --- Topbar ---
+	wp.customize('topbar_bg_color', function (value) {
+		value.bind(function (to) {
+			inspiroSetCssVar('#inspiro-topbar', '--inspiro-topbar-bg', to);
+		});
+	});
+	wp.customize('topbar_text_color', function (value) {
+		value.bind(function (to) {
+			inspiroSetCssVar('#inspiro-topbar', '--inspiro-topbar-color', to);
+		});
+	});
+	wp.customize('topbar_link_color', function (value) {
+		value.bind(function (to) {
+			inspiroSetCssVar('#inspiro-topbar', '--inspiro-topbar-link', to);
+		});
+	});
+
+	// --- Pre-Footer CTA (template uses direct inline style, not CSS vars) ---
+	wp.customize('pre_footer_cta_bg_color', function (value) {
+		value.bind(function (to) {
+			$('.inspiro-pre-footer-cta').css('background-color', to || '');
+		});
+	});
+	wp.customize('pre_footer_cta_text_color', function (value) {
+		value.bind(function (to) {
+			$('.inspiro-pre-footer-cta').css('color', to || '');
+		});
+	});
+
+	// --- Back-to-Top button ---
+	wp.customize('back_to_top_bg_color', function (value) {
+		value.bind(function (to) {
+			inspiroSetCssVar('#inspiro-back-to-top', '--inspiro-btt-bg', to);
+		});
+	});
+	wp.customize('back_to_top_icon_color', function (value) {
+		value.bind(function (to) {
+			inspiroSetCssVar('#inspiro-back-to-top', '--inspiro-btt-icon', to);
+		});
+	});
+
+	// --- Preloader ---
+	wp.customize('preloader_bg_color', function (value) {
+		value.bind(function (to) {
+			inspiroSetCssVar('#inspiro-preloader', '--inspiro-preloader-bg', to);
+		});
+	});
+	wp.customize('preloader_spinner_color', function (value) {
+		value.bind(function (to) {
+			inspiroSetCssVar('#inspiro-preloader', '--inspiro-preloader-color', to);
+		});
+	});
+
 })(jQuery);

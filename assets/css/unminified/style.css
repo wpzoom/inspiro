@@ -1382,6 +1382,192 @@ a:hover .nav-title,
 }
 
 /*--------------------------------------------------------------
+11.1 Misc (topbar, pre-footer CTA, back-to-top, preloader)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+Topbar, Pre-Footer CTA, Back-to-Top, Preloader
+--------------------------------------------------------------*/
+/* Topbar (rendered inside <header id="masthead">) */
+.inspiro-topbar {
+    background-color: var(--inspiro-topbar-bg, transparent);
+    color: var(--inspiro-topbar-color, inherit);
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 8px 0;
+}
+.inspiro-topbar__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 16px;
+}
+.inspiro-topbar__inner.inner-wrap::before, .inspiro-topbar__inner.inner-wrap::after {
+    display: none;
+}
+.inspiro-topbar .topbar-col {
+    min-height: 1em;
+}
+.inspiro-topbar .topbar-col--right {
+    text-align: right;
+}
+.inspiro-topbar a {
+    color: var(--inspiro-topbar-link, #ffffff);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+}
+.inspiro-topbar a:hover, .inspiro-topbar a:focus {
+    border-bottom-color: currentColor;
+}
+@media (max-width: 600px) {
+    .inspiro-topbar__inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .inspiro-topbar .topbar-col--right {
+        text-align: center;
+    }
+}
+
+/* Pre-Footer CTA */
+#inspiro-pre-footer {
+    width: 100%;
+}
+
+.inspiro-pre-footer-cta {
+    padding: 60px 20px;
+}
+.inspiro-pre-footer-cta__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+.inspiro-pre-footer-cta .pre-footer-cta-text {
+    flex: 1 1 60%;
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 600;
+    margin: 0;
+}
+.inspiro-pre-footer-cta .pre-footer-cta-text > * {
+    color: inherit;
+    margin: 0;
+}
+.inspiro-pre-footer-cta .pre-footer-cta-button-wrap {
+    flex: 0 0 auto;
+}
+.inspiro-pre-footer-cta .pre-footer-cta-button {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: #ffffff;
+    color: #111111;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    border: none;
+}
+.inspiro-pre-footer-cta .pre-footer-cta-button:hover, .inspiro-pre-footer-cta .pre-footer-cta-button:focus {
+    opacity: 0.85;
+}
+@media (max-width: 768px) {
+    .inspiro-pre-footer-cta {
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .inspiro-pre-footer-cta__inner {
+        flex-direction: column;
+    }
+    .inspiro-pre-footer-cta .pre-footer-cta-text {
+        flex-basis: auto;
+        font-size: 22px;
+    }
+}
+
+/* Back-to-Top
+   Uses `a.inspiro-back-to-top` (specificity 0,1,1) so the color rule wins
+   against the theme.json-generated `:root :where(a:where(:not(.wp-element-button)))`
+   link rule (0,1,0) which WordPress prints AFTER style.css. */
+a.inspiro-back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9990;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--inspiro-btt-bg, #111111);
+    color: var(--inspiro-btt-icon, #ffffff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.15s ease;
+}
+a.inspiro-back-to-top.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+a.inspiro-back-to-top:hover, a.inspiro-back-to-top:focus {
+    color: var(--inspiro-btt-icon, #ffffff);
+    transform: translateY(-2px);
+}
+a.inspiro-back-to-top svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Preloader */
+.inspiro-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--inspiro-preloader-bg, #ffffff);
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.inspiro-preloader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.inspiro-preloader__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-top-color: var(--inspiro-preloader-color, #111111);
+    border-right-color: var(--inspiro-preloader-color, #111111);
+    border-radius: 50%;
+    animation: inspiro-preloader-spin 0.8s linear infinite;
+}
+
+@keyframes inspiro-preloader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .inspiro-preloader__spinner {
+        animation-duration: 2s;
+    }
+    .inspiro-back-to-top {
+        transition: opacity 0.1s ease;
+        transform: none !important;
+    }
+}
+/*--------------------------------------------------------------
 12.0 Navigation
 --------------------------------------------------------------*/
 .sf-menu,

@@ -16,6 +16,8 @@
 
 		</div><!-- #content -->
 
+		<?php do_action( 'inspiro_before_footer' ); ?>
+
 		<?php get_template_part( 'template-parts/footer/footer', 'instagram-widget' ); ?>
 
 		<?php $footer_builder_enabled = (bool) get_theme_mod( 'inspiro_footer_builder_enable', false ); ?>

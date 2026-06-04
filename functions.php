@@ -132,6 +132,14 @@ require INSPIRO_THEME_DIR . 'inc/customizer/footer-builder/loader.php';
 require INSPIRO_THEME_DIR . 'inc/icon-functions.php';
 
 /**
+ * Misc features — pre-footer CTA, topbar, back-to-top, preloader.
+ *
+ * @since Inspiro 2.2.0
+ */
+require INSPIRO_THEME_DIR . 'inc/inspiro-misc-functions.php';
+
+
+/**
  * Theme admin notices and info page
  */
 if ( is_admin() ) {
