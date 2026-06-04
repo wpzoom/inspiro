@@ -1214,7 +1214,7 @@ body {
 	});
 
 	/* ------------------------------------------------------------
-	 * Prisma Ports — live previews
+	 * Misc — live previews
 	 * Topbar colors, Pre-Footer CTA colors, Back-to-Top colors,
 	 * Preloader colors.
 	 *

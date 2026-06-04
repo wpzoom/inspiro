@@ -1378,7 +1378,7 @@ a:hover .nav-title,
 }
 
 /*--------------------------------------------------------------
-11.1 Prisma Ports (topbar, pre-footer CTA, back-to-top, preloader)
+11.1 Misc (topbar, pre-footer CTA, back-to-top, preloader)
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 Topbar, Pre-Footer CTA, Back-to-Top, Preloader
@@ -1558,7 +1558,7 @@ a.inspiro-back-to-top svg {
     .inspiro-preloader__spinner {
         animation-duration: 2s;
     }
-    a.inspiro-back-to-top {
+    .inspiro-back-to-top {
         transition: opacity 0.1s ease;
         transform: none !important;
     }

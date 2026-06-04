@@ -132,11 +132,11 @@ require INSPIRO_THEME_DIR . 'inc/customizer/footer-builder/loader.php';
 require INSPIRO_THEME_DIR . 'inc/icon-functions.php';
 
 /**
- * Features ported from Prisma Core — pre-footer CTA, topbar, back-to-top, preloader.
+ * Misc features — pre-footer CTA, topbar, back-to-top, preloader.
  *
  * @since Inspiro 2.2.0
  */
-require INSPIRO_THEME_DIR . 'inc/prisma-ports-functions.php';
+require INSPIRO_THEME_DIR . 'inc/inspiro-misc-functions.php';
 
 
 /**

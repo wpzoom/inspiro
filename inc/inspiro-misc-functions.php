@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper functions for features ported from Prisma Core.
+ * Helper functions for misc features.
  *
  * Pre-Footer CTA, Topbar, Back-to-Top, Preloader.
  *
@@ -227,23 +227,18 @@ add_action( 'inspiro_after_body_open', 'inspiro_preloader' );
 
 /* ---------------------------------------------------------------------------
  * Enqueue the small companion script.
- *
- * CSS for these features lives in the main theme stylesheet (style.css, built
- * from scss/misc/_prisma-ports.scss) — no separate stylesheet needed.
- * The JS is its own file because it's only required when the back-to-top
- * button or preloader is active, and it's tiny enough to skip otherwise.
  * ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'inspiro_prisma_ports_enqueue' ) ) {
-	function inspiro_prisma_ports_enqueue() {
+if ( ! function_exists( 'inspiro_misc_enqueue' ) ) {
+	function inspiro_misc_enqueue() {
 		if (
 			inspiro_is_back_to_top_enabled()
 			|| inspiro_is_preloader_enabled()
 			|| is_customize_preview()
 		) {
 			wp_enqueue_script(
-				'inspiro-prisma-ports',
-				INSPIRO_THEME_URI . 'assets/js/prisma-ports.js',
+				'inspiro-misc',
+				INSPIRO_THEME_URI . 'assets/js/inspiro-misc.js',
 				array(),
 				INSPIRO_THEME_VERSION,
 				true
@@ -251,5 +246,5 @@ if ( ! function_exists( 'inspiro_prisma_ports_enqueue' ) ) {
 		}
 	}
 }
-add_action( 'wp_enqueue_scripts', 'inspiro_prisma_ports_enqueue' );
+add_action( 'wp_enqueue_scripts', 'inspiro_misc_enqueue' );
 
