@@ -226,34 +226,16 @@ if ( ! function_exists( 'inspiro_preloader' ) ) {
 add_action( 'inspiro_after_body_open', 'inspiro_preloader' );
 
 /* ---------------------------------------------------------------------------
- * Enqueue the small companion stylesheet + script
+ * Enqueue the small companion script.
+ *
+ * CSS for these features lives in the main theme stylesheet (style.css, built
+ * from scss/misc/_prisma-ports.scss) — no separate stylesheet needed.
+ * The JS is its own file because it's only required when the back-to-top
+ * button or preloader is active, and it's tiny enough to skip otherwise.
  * ------------------------------------------------------------------------- */
 
 if ( ! function_exists( 'inspiro_prisma_ports_enqueue' ) ) {
-	/**
-	 * Enqueue CSS + JS for the ported features.
-	 *
-	 * Loads conditionally — nothing is added to the page unless at least one
-	 * of the ported features is enabled.
-	 */
 	function inspiro_prisma_ports_enqueue() {
-		$any_enabled =
-			inspiro_is_pre_footer_cta_enabled()
-			|| inspiro_is_topbar_enabled()
-			|| inspiro_is_back_to_top_enabled()
-			|| inspiro_is_preloader_enabled();
-
-		if ( ! $any_enabled && ! is_customize_preview() ) {
-			return;
-		}
-
-		wp_enqueue_style(
-			'inspiro-prisma-ports',
-			INSPIRO_THEME_URI . 'assets/css/prisma-ports.css',
-			array(),
-			INSPIRO_THEME_VERSION
-		);
-
 		if (
 			inspiro_is_back_to_top_enabled()
 			|| inspiro_is_preloader_enabled()
