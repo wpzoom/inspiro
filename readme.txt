@@ -2,7 +2,7 @@
 Contributors: WPZOOM
 Requires at least: 6.4
 Tested up to: 7.0
-Version: 2.1.15
+Version: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -109,6 +109,15 @@ License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
 == Changelog ==
+
+= 2.2.0 =
+* New: Build your site header and footer with the Elementor Pro Theme Builder
+* New: Top Bar above the header with custom left/right text and background color
+* New: Pre-Footer Call to Action section with custom heading, button, colors and display conditions
+* New: Back to Top button (Customizer → Misc Options)
+* New: Page Preloader (Customizer → Misc Options)
+* New: 5 block patterns — Case Study, Comparison Table, FAQ Accordion, Stats Counter, and Timeline / Process
+* Multiple bug fixes and improvements
 
 = 2.1.15 =
 * Minor bug fixes
