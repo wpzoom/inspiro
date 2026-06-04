@@ -29,10 +29,12 @@
 
 	<?php do_action( 'inspiro_before_header' ); ?>
 
-	<header id="masthead" class="site-header" role="banner">
-		<?php do_action( 'inspiro_masthead_start' ); ?>
-		<?php get_template_part( 'template-parts/navigation/navigation', 'primary' ); ?>
-	</header><!-- #masthead -->
+	<?php if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) : ?>
+		<header id="masthead" class="site-header" role="banner">
+			<?php do_action( 'inspiro_masthead_start' ); ?>
+			<?php get_template_part( 'template-parts/navigation/navigation', 'primary' ); ?>
+		</header><!-- #masthead -->
+	<?php endif; ?>
 
     <?php
         $hero_show = inspiro_get_theme_mod( 'hero_enable' );

@@ -99,6 +99,11 @@ require INSPIRO_THEME_DIR . 'inc/template-functions.php';
 require INSPIRO_THEME_DIR . 'inc/wc-custom-functions.php';
 
 /**
+ * Elementor compatibility — registers header/footer Theme Builder locations.
+ */
+require INSPIRO_THEME_DIR . 'inc/elementor-functions.php';
+
+/**
  * Editor Fonts
  */
 require INSPIRO_THEME_DIR . 'inc/editor-fonts.php';
