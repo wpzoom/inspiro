@@ -15,11 +15,15 @@ if ( ! inspiro_is_topbar_enabled() ) {
 	return;
 }
 
-$inspiro_topbar_left  = inspiro_get_theme_mod( 'topbar_left_text' );
-$inspiro_topbar_right = inspiro_get_theme_mod( 'topbar_right_text' );
-$inspiro_topbar_bg    = inspiro_get_theme_mod( 'topbar_bg_color' );
-$inspiro_topbar_text  = inspiro_get_theme_mod( 'topbar_text_color' );
-$inspiro_topbar_link  = inspiro_get_theme_mod( 'topbar_link_color' );
+// Defaults declared here mirror those in Inspiro_Topbar_Config — kept inline
+// because the constructor-style config doesn't publish its defaults into
+// Inspiro_Customizer::$customizer_data the way the static config() pattern
+// does, so inspiro_get_theme_mod() can't fall back to them automatically.
+$inspiro_topbar_left  = get_theme_mod( 'topbar_left_text', '' );
+$inspiro_topbar_right = get_theme_mod( 'topbar_right_text', '' );
+$inspiro_topbar_bg    = get_theme_mod( 'topbar_bg_color', '#000000' );
+$inspiro_topbar_text  = get_theme_mod( 'topbar_text_color', '#ffffff' );
+$inspiro_topbar_link  = get_theme_mod( 'topbar_link_color', '#ffffff' );
 
 $inspiro_topbar_style = '';
 if ( $inspiro_topbar_bg ) {
