@@ -270,6 +270,15 @@
                     "padding": "0px"
                 }
             },
+            "core/separator": {
+                "border": {
+                    "radius": "0",
+                    "width": "0"
+                },
+                "color": {
+                    "background": "var(--wp--preset--color--lightgrey)"
+                }
+            },
             "core/spacer": {
                 "spacing": {
                     "margin": {
