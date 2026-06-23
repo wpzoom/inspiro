@@ -88,6 +88,7 @@ if ( ! function_exists( 'inspiro_header_style' ) ) :
 		// header
 		$color_header_custom_logo_text       = inspiro_get_theme_mod( 'color_header_custom_logo_text' );
 		$color_header_custom_logo_hover_text = inspiro_get_theme_mod( 'color_header_custom_logo_hover_text' );
+		$color_header_tagline                = inspiro_get_theme_mod( 'color_header_tagline' );
 		$color_menu_search_icon_btn          = inspiro_get_theme_mod( 'color_menu_search_icon_btn' );
 		$color_menu_hamburger_btn            = inspiro_get_theme_mod( 'color_menu_hamburger_btn' );
         $color_menu_item                     = inspiro_get_theme_mod( 'color_header_menu_color' );
@@ -248,6 +249,14 @@ if ( ! function_exists( 'inspiro_header_style' ) ) :
 			<?php if ( '' !== $color_header_custom_logo_hover_text  ) : ?>
 			a.custom-logo-text:hover {
 				color: <?php echo $color_header_custom_logo_hover_text; ?>;
+			}
+
+			<?php endif; ?>
+
+			<?php if ( '' !== $color_header_tagline ) : ?>
+			.header-logo-wrapper .header-tagline {
+				color: <?php echo $color_header_tagline; ?>;
+				opacity: 1;
 			}
 
 			<?php endif; ?>

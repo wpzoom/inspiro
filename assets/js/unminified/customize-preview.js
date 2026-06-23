@@ -150,6 +150,15 @@ function inspiroBuildStyleTag(control, value, cssProperty) {
 			$('a.custom-logo-text').css('color', to);
 		});
 	});
+	// header tagline color
+	wp.customize('color_header_tagline', function (value) {
+		value.bind(function (to) {
+			$('.header-logo-wrapper .header-tagline').css({
+				color: to ? to : '',
+				opacity: to ? 1 : ''
+			});
+		});
+	});
     // menu items
     wp.customize('color_header_menu_color', function (value) {
         value.bind(function (to) {

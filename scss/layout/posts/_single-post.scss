@@ -204,6 +204,24 @@
     margin: auto;
 }
 
+/* Featured image displayed above the post title */
+.single-featured-image-above {
+    .inner-wrap {
+        margin-top: em(45);
+        margin-bottom: 0;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.single .single-featured-image-above .inner-wrap {
+    max-width: var(--container-width-narrow);
+}
+
 .wp-block-button {
 
     a {

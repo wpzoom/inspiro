@@ -57,15 +57,21 @@ function inspiro_body_classes( $classes ) {
 		}
 	}
 
+    $featured_image_show     = inspiro_get_theme_mod( 'display_featured_image' );
+    $featured_image_position = inspiro_get_theme_mod( 'featured_image_position' );
+
+    // The featured image only acts as a transparent header cover when it isn't
+    // displayed above the title. When it's above the title, the header stays
+    // solid, exactly like when the featured image is disabled.
+    $featured_image_as_cover = 'above_title' !== $featured_image_position;
+
 	// Add class if is single page and has post thumbnail.
-	if ( is_page()  && has_post_thumbnail() ) {
+	if ( is_page() && has_post_thumbnail() && $featured_image_as_cover ) {
 		$classes[] = 'has-header-image';
 	}
 
-    $featured_image_show = inspiro_get_theme_mod( 'display_featured_image' );
-
     // Add class if is single post and has post thumbnail.
-    if ( ( ( is_single() && 'post' === get_post_type() ) || ( is_single() && 'portfolio_item' === get_post_type() ) ) && has_post_thumbnail() && $featured_image_show ) {
+    if ( ( ( is_single() && 'post' === get_post_type() ) || ( is_single() && 'portfolio_item' === get_post_type() ) ) && has_post_thumbnail() && $featured_image_show && $featured_image_as_cover ) {
         $classes[] = 'has-header-image';
     }
 

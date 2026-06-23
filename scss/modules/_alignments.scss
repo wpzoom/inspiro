@@ -17,6 +17,20 @@
     height: auto;
 }
 
+/**
+ * Restore the default border style for images with a custom border.
+ *
+ * The `img { border-style: none; }` reset in normalize has the same specificity
+ * as WordPress core's `:where(.has-border-color)` rule but loads later, so it
+ * cancels editor borders on the front end. The `img` element here gives us the
+ * extra specificity needed to win.
+ */
+img.has-border-color,
+img[style*="border-width"],
+img[style*="border-color"] {
+    border-style: solid;
+}
+
 
 figure {
     margin: 0;

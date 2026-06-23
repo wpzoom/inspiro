@@ -180,6 +180,19 @@ function inspiro_is_blog_layout_grid() {
 }
 
 /**
+ * Return whether the featured image is enabled for single posts/pages.
+ *
+ * Used as the active_callback for the featured image position control.
+ *
+ * @since 2.2.1
+ *
+ * @return bool True if the featured image display option is enabled.
+ */
+function inspiro_is_featured_image_enabled() {
+	return (bool) inspiro_get_theme_mod( 'display_featured_image' );
+}
+
+/**
  * Get all registered image sizes with dimensions for select options.
  *
  * @since 2.1.9

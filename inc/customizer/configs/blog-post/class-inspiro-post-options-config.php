@@ -69,6 +69,14 @@ class Inspiro_Post_Options_Config {
                     ),
                 ),
                 array(
+                    'id'   => 'featured_image_position',
+                    'args' => array(
+                        'default'           => 'header',
+                        'sanitize_callback' => 'inspiro_sanitize_choices',
+                        'transport'         => 'refresh',
+                    ),
+                ),
+                array(
                     'id'   => 'blog_options_upgrade',
                     'args' => array(
                         'default' => null,
@@ -100,6 +108,21 @@ class Inspiro_Post_Options_Config {
                         'section' => 'single_post_section',
                         'type'    => 'checkbox',
                         'description' => esc_html__( 'Choose if you want to show the Featured Image in the header', 'inspiro' ),
+                    ),
+                ),
+                array(
+                    'id'   => 'featured_image_position',
+                    'args' => array(
+                        'priority'        => 2,
+                        'label'           => esc_html__( 'Featured Image Position', 'inspiro' ),
+                        'description'     => esc_html__( 'Choose where the Featured Image appears on single posts.', 'inspiro' ),
+                        'section'         => 'single_post_section',
+                        'type'            => 'select',
+                        'choices'         => array(
+                            'header'      => esc_html__( 'In the Header (background)', 'inspiro' ),
+                            'above_title' => esc_html__( 'Above the Title', 'inspiro' ),
+                        ),
+                        'active_callback' => 'inspiro_is_featured_image_enabled',
                     ),
                 ),
                 array(
