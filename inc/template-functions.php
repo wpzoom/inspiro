@@ -66,7 +66,7 @@ function inspiro_body_classes( $classes ) {
     $featured_image_as_cover = 'above_title' !== $featured_image_position;
 
 	// Add class if is single page and has post thumbnail.
-	if ( is_page() && has_post_thumbnail() && $featured_image_as_cover ) {
+	if ( is_page() && has_post_thumbnail() && $featured_image_as_cover && inspiro_page_featured_header_enabled() ) {
 		$classes[] = 'has-header-image';
 	}
 
@@ -253,6 +253,36 @@ function inspiro_remove_first_and_last_p_tags( $content ) {
  */
 function inspiro_is_frontpage() {
 	return ( is_front_page() && ! is_home() );
+}
+
+/**
+ * Whether the Featured Image is allowed to display as a header cover on a page.
+ *
+ * Reflects the global "Display Featured Image in Page Header" Customizer option
+ * and the per-page "Hide Featured Image" override. It does NOT check whether the
+ * page actually has a Featured Image — callers combine it with has_post_thumbnail().
+ *
+ * @since 2.2.1
+ *
+ * @param int|null $post_id Optional. Page ID. Defaults to the queried object.
+ * @return bool
+ */
+function inspiro_page_featured_header_enabled( $post_id = null ) {
+	// Global Customizer toggle.
+	if ( ! inspiro_get_theme_mod( 'display_page_featured_image' ) ) {
+		return false;
+	}
+
+	if ( null === $post_id ) {
+		$post_id = get_queried_object_id();
+	}
+
+	// Per-page override.
+	if ( $post_id && get_post_meta( $post_id, 'inspiro_hide_featured_image', true ) ) {
+		return false;
+	}
+
+	return true;
 }
 
 /**

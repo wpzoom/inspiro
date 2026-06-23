@@ -2,7 +2,7 @@
 Contributors: WPZOOM
 Requires at least: 6.4
 Tested up to: 7.0
-Version: 2.2.0
+Version: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -109,6 +109,15 @@ License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
 == Changelog ==
+
+= 2.2.1 =
+* New: "Featured Image Position" option for single posts — show the featured image above the title, with a size selector
+* New: Option to hide the Featured Image at the top in pages
+* New: Option to show or hide the previous post banner at the bottom of single posts
+* New: Tagline color option in Customizer → Colors → Header
+* Fixed: Border around images were not showing in the block editor
+* Improvement: Better table styling
+* Multiple bug fixes and improvements
 
 = 2.2.0 =
 * New: Build your site header and footer with the Elementor Pro Theme Builder

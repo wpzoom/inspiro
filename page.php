@@ -15,9 +15,16 @@
  * @version 1.0.0
  */
 
-get_header(); ?>
+get_header();
 
-<?php if ( ( is_page() && ! inspiro_is_frontpage() ) && ! has_post_thumbnail( get_queried_object_id() ) ) : ?>
+// Pages without a Featured Image header cover use a constrained content wrapper.
+// The cover is skipped when the page has no thumbnail, the global "Display
+// Featured Image in Page Header" option is off, or it's hidden for this page.
+$inspiro_page_without_cover = ( is_page() && ! inspiro_is_frontpage() )
+	&& ( ! has_post_thumbnail( get_queried_object_id() ) || ! inspiro_page_featured_header_enabled() );
+?>
+
+<?php if ( $inspiro_page_without_cover ) : ?>
 
 <div class="inner-wrap">
 	<div id="primary" class="content-area">
@@ -41,7 +48,7 @@ get_header(); ?>
 
 		</main><!-- #main -->
 
-<?php if ( ( is_page() && ! inspiro_is_frontpage() ) && ! has_post_thumbnail( get_queried_object_id() ) ) : ?>
+<?php if ( $inspiro_page_without_cover ) : ?>
 
 	</div><!-- #primary -->
 </div><!-- .inner-wrap -->

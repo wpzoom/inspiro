@@ -143,6 +143,9 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 				'logo'           => array(
 					'custom-logo-text',
 				),
+				'page'           => array(
+					'page-settings',
+				),
 				'theme-layout'   => array(
 					'theme-layout',
 				),

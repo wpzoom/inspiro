@@ -85,13 +85,8 @@ class Inspiro_Header_Area_Config
 			)
 		);
 
-		$wp_customize->add_setting(
-			'cover-size',
-			array(
-				'sanitize_callback' => 'sanitize_key',
-				'default' => 'cover_fixed_height'
-			)
-		);
+		// The 'cover-size' setting was moved to the Page Settings section
+		// (inc/customizer/configs/page/class-inspiro-page-settings-config.php).
 
 		$wp_customize->add_setting(
 			'header_title_subsection',
@@ -215,7 +210,7 @@ class Inspiro_Header_Area_Config
 					'settings' => array(),
 					'section' => 'header-area',
 					'accordion' => true,
-					'controls_to_wrap' => 4,
+					'controls_to_wrap' => 3,
 				)
 			)
 		);
@@ -229,19 +224,6 @@ class Inspiro_Header_Area_Config
 				'choices' => array(
 					'wpz_layout_narrow' => esc_html__('Narrow', 'inspiro'),
 					'wpz_layout_full' => esc_html__('Full-width', 'inspiro')
-				),
-			)
-		);
-
-		$wp_customize->add_control(
-			'cover-size',
-			array(
-				'label' => esc_html__('Featured Image Height in Posts and Pages', 'inspiro'),
-				'type' => 'radio',
-				'section' => 'header-area',
-				'choices' => array(
-					'cover_fixed_height' => esc_html__('Fixed height', 'inspiro'),
-					'cover_fullscreen' => esc_html__('Fullscreen', 'inspiro')
 				),
 			)
 		);

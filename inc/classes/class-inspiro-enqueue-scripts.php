@@ -50,6 +50,15 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 						return current_user_can( 'edit_posts' );
 					}
 			) );
+
+			register_post_meta( 'page', 'inspiro_hide_featured_image', array(
+					'type'         => 'boolean',
+					'single'       => true,
+					'show_in_rest' => true,
+					'auth_callback' => function() {
+						return current_user_can( 'edit_posts' );
+					}
+			) );
 		}
 
 		/**
