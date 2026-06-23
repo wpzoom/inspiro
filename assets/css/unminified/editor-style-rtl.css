@@ -166,6 +166,14 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
     border: 2px solid;
 }
 
+/* Center the caption for wide and full-width images, matching the front end. */
+.editor-styles-wrapper .wp-block-image.alignwide > figcaption,
+.editor-styles-wrapper .wp-block-image.alignfull > figcaption,
+.editor-styles-wrapper .wp-block[data-align=wide] .wp-block-image > figcaption,
+.editor-styles-wrapper .wp-block[data-align=full] .wp-block-image > figcaption {
+    text-align: center;
+}
+
 /* This targets the title wrapper only when our custom body class is present */
 .inspiro-hide-page-title .editor-visual-editor__post-title-wrapper {
     opacity: 0.2;

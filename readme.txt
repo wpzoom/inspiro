@@ -108,6 +108,8 @@ Starter content image, Copyright Bonnie Moreland
 License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
+Screenshot image: generated using AI (ChatGPT)
+
 == Changelog ==
 
 = 2.2.1 =

@@ -1,10 +1,15 @@
 .wp-block-image .aligncenter>figcaption,
 .wp-block-image .alignleft>figcaption,
 .wp-block-image .alignright>figcaption,
+.wp-block-image.alignwide>figcaption,
+.wp-block-image.alignfull>figcaption,
 .wp-block-image.is-resized>figcaption {
     display: block;
-    margin-top: 0;
-    font-size: 14px;
+}
+
+.wp-block-image>figcaption {
+    text-align: center;
+    opacity: .8;
 }
 
 .entry-content .wp-block-image img,
