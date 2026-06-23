@@ -1201,36 +1201,71 @@ table {
     border-collapse: collapse;
     margin: 0 0 1.5em;
     width: 100%;
+    font-size: 0.95em;
+    line-height: 1.5;
 }
 
-thead th {
-    border-bottom: 2px solid #bbb;
-    padding-bottom: 0.5em;
-}
-
-th {
-    padding: 0.4em;
+caption,
+.wp-block-table figcaption {
+    caption-side: bottom;
+    padding: 0.75em 0;
+    font-size: 0.85em;
+    font-style: italic;
+    color: #444444;
     text-align: left;
 }
 
-tr {
-    border-bottom: 1px solid #eee;
-}
-
-td {
-    padding: 0.4em;
+.wp-block-table table thead,
+.wp-block-table table tfoot {
+    border: 0;
 }
 
 th,
 td,
-th:first-child,
-td:first-child {
-    padding-left: 0;
+.wp-block-table table th,
+.wp-block-table table td {
+    border: 0;
+    padding: 0.85em 1em;
+    vertical-align: top;
 }
 
-th:last-child,
-td:last-child {
-    padding-right: 0;
+thead th,
+.wp-block-table table thead th {
+    background-color: transparent;
+    color: #6c6c77;
+    font-weight: 600;
+    font-size: 0.78em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0.9em 1em;
+    border-bottom: 1px solid rgba(68, 68, 68, 0.19);
+}
+
+tbody td,
+.wp-block-table table tbody td {
+    border-top: 1px solid rgba(68, 68, 68, 0.19);
+}
+
+tbody tr:nth-child(even),
+.wp-block-table table tbody tr:nth-child(even) {
+    background-color: rgba(242, 244, 246, 0.5);
+}
+
+tbody tr:hover,
+.wp-block-table table tbody tr:hover {
+    background-color: rgba(11, 180, 170, 0.06);
+}
+
+.wp-block-table {
+    overflow-x: auto;
+}
+.wp-block-table.is-style-stripes tbody td {
+    border-top: 0;
+}
+.wp-block-table.is-style-stripes tbody tr:nth-child(even) {
+    background-color: transparent;
 }
 
 /*--------------------------------------------------------------

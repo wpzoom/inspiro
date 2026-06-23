@@ -189,6 +189,23 @@ body.colors-dark.woocommerce div.product form.cart .button:hover, body.colors-da
 body.colors-dark .woocommerce table.shop_table {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+body.colors-dark .entry-content table thead th,
+body.colors-dark .wp-block-table table thead th {
+    color: #9a9aa3;
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+body.colors-dark .entry-content table td,
+body.colors-dark .wp-block-table table td {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+body.colors-dark .entry-content table tbody tr:nth-child(even),
+body.colors-dark .wp-block-table table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+body.colors-dark .entry-content table tbody tr:hover,
+body.colors-dark .wp-block-table table tbody tr:hover {
+    background-color: rgba(11, 180, 170, 0.1);
+}
 body.colors-dark #add_payment_method #payment,
 body.colors-dark .woocommerce-cart #payment,
 body.colors-dark .woocommerce-checkout #payment {

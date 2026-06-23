@@ -28,7 +28,7 @@ get_header(); ?>
 
 		$previous_post = get_previous_post();
 
-		if ( $previous_post ) {
+		if ( $previous_post && inspiro_get_theme_mod( 'display_post_navigation' ) ) {
 			$prev_image     = wp_get_attachment_image_src( get_post_thumbnail_id( $previous_post->ID ), 'inspiro-featured-image' );
 			$previous_cover = '';
 

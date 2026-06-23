@@ -2,34 +2,82 @@ table {
     border-collapse: collapse;
     margin: 0 0 1.5em;
     width: 100%;
+    font-size: 0.95em;
+    line-height: 1.5;
 }
 
-thead th {
-    border-bottom: 2px solid #bbb;
-    padding-bottom: 0.5em;
-}
-
-th {
-    padding: 0.4em;
+caption,
+.wp-block-table figcaption {
+    caption-side: bottom;
+    padding: 0.75em 0;
+    font-size: 0.85em;
+    font-style: italic;
+    color: $color-text-screen;
     text-align: left;
 }
 
-tr {
-    border-bottom: 1px solid #eee;
-}
-
-td {
-    padding: 0.4em;
+// Strip WordPress core's heavy borders: the 3px thead/tfoot rules and the full
+// 1px cell grid (core colors these with currentColor, so they render near-black).
+// The `.wp-block-table table` selectors outrank core's `.wp-block-table td/th`,
+// so this wins regardless of stylesheet load order.
+.wp-block-table table thead,
+.wp-block-table table tfoot {
+    border: 0;
 }
 
 th,
 td,
-th:first-child,
-td:first-child {
-    padding-left: 0;
+.wp-block-table table th,
+.wp-block-table table td {
+    border: 0;
+    padding: 0.85em 1em;
+    vertical-align: top;
 }
 
-th:last-child,
-td:last-child {
-    padding-right: 0;
+// Minimal header: muted, uppercase label — no fill, just a soft hairline underline.
+thead th,
+.wp-block-table table thead th {
+    background-color: transparent;
+    color: #6c6c77; // theme.json "Tertiary"
+    font-weight: 600;
+    font-size: 0.78em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0.9em 1em;
+    border-bottom: 1px solid $color-border;
+}
+
+// Soft horizontal hairlines between body rows — no vertical lines, no outer box.
+tbody td,
+.wp-block-table table tbody td {
+    border-top: 1px solid $color-border;
+}
+
+// Whisper-light zebra striping.
+tbody tr:nth-child(even),
+.wp-block-table table tbody tr:nth-child(even) {
+    background-color: rgba($light-grey-color, 0.5);
+}
+
+tbody tr:hover,
+.wp-block-table table tbody tr:hover {
+    background-color: rgba($primary-color, 0.06);
+}
+
+// Gutenberg table block: keep wide tables from breaking the layout on small screens.
+.wp-block-table {
+    overflow-x: auto;
+
+    // The core "Stripes" style brings its own striping; leave it untouched.
+    &.is-style-stripes {
+        tbody td {
+            border-top: 0;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: transparent;
+        }
+    }
 }

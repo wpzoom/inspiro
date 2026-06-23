@@ -12,8 +12,9 @@
 
 $cover_height = inspiro_get_theme_mod( 'cover-size' );
 
-$featured_image_show     = inspiro_get_theme_mod( 'display_featured_image' );
-$featured_image_position = inspiro_get_theme_mod( 'featured_image_position' );
+$featured_image_show       = inspiro_get_theme_mod( 'display_featured_image' );
+$featured_image_position   = inspiro_get_theme_mod( 'featured_image_position' );
+$featured_image_above_size = inspiro_get_theme_mod( 'featured_image_above_size' );
 
 /*
  * Whether a regular post or page (not the front page) should render the featured image,
@@ -46,7 +47,7 @@ if ( $featured_as_cover ) {
 if ( $featured_above_title ) {
 	echo '<div class="single-featured-image-above">';
 	echo '<div class="inner-wrap">';
-	echo get_the_post_thumbnail( get_the_ID(), 'inspiro-loop' );
+	echo get_the_post_thumbnail( get_the_ID(), $featured_image_above_size );
 	echo '</div><!-- .inner-wrap -->';
 	echo '</div><!-- .single-featured-image-above -->';
 }
