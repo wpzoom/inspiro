@@ -47,6 +47,7 @@ figure.aligncenter:not(.wp-block-gallery) {
     clear: both;
     margin-left: auto;
     margin-right: auto;
+    display: block;
 }
 
 .alignleft,
@@ -74,4 +75,47 @@ figure.aligncenter:not(.wp-block-gallery) {
     width: 100% !important;
     height: auto;
     margin-bottom: 20px;
+}
+
+
+.entry-content .wp-block-image img,
+.entry-content img.alignnone,
+.entry-content img.aligncenter,
+.entry-content img.alignleft,
+.entry-content img.alignright,
+.entry-content img.attachment-fullsize {
+    max-width: 100%;
+    height: auto;
+}
+
+/**
+ * Restore the default border style for images with a custom border.
+ *
+ * The `img { border-style: none; }` reset in normalize has the same specificity
+ * as WordPress core's `:where(.has-border-color)` rule but loads later, so it
+ * cancels editor borders on the front end. The `img` element here gives us the
+ * extra specificity needed to win.
+ */
+img.has-border-color,
+img[style*="border-width"],
+img[style*="border-color"] {
+    border-style: solid;
+}
+
+
+figure {
+    margin: 0;
+}
+
+
+.wp-block-image.alignfull, .wp-block-image.alignwide {
+    max-width: none;
+}
+
+.wp-block-image.alignfull img, .wp-block-image.alignwide img {
+    width: 100%;
+}
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+    max-width: 200px;
 }

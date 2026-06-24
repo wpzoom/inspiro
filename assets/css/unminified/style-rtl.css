@@ -397,63 +397,6 @@ template {
 }
 
 /*--------------------------------------------------------------
-3.0 Alignments
---------------------------------------------------------------*/
-.wp-block-image .aligncenter > figcaption,
-.wp-block-image .alignleft > figcaption,
-.wp-block-image .alignright > figcaption,
-.wp-block-image.alignwide > figcaption,
-.wp-block-image.alignfull > figcaption,
-.wp-block-image.is-resized > figcaption {
-    display: block;
-}
-
-.wp-block-image > figcaption {
-    text-align: center;
-    opacity: 0.8;
-}
-
-.entry-content .wp-block-image img,
-.entry-content img.alignnone,
-.entry-content img.aligncenter,
-.entry-content img.alignleft,
-.entry-content img.alignright,
-.entry-content img.attachment-fullsize {
-    max-width: 100%;
-    height: auto;
-}
-
-/**
- * Restore the default border style for images with a custom border.
- *
- * The `img { border-style: none; }` reset in normalize has the same specificity
- * as WordPress core's `:where(.has-border-color)` rule but loads later, so it
- * cancels editor borders on the front end. The `img` element here gives us the
- * extra specificity needed to win.
- */
-img.has-border-color,
-img[style*=border-width],
-img[style*=border-color] {
-    border-style: solid;
-}
-
-figure {
-    margin: 0;
-}
-
-.wp-block-image.alignfull, .wp-block-image.alignwide {
-    max-width: none;
-}
-
-.wp-block-image.alignfull img, .wp-block-image.alignwide img {
-    width: 100%;
-}
-
-.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-    max-width: 200px;
-}
-
-/*--------------------------------------------------------------
 4.0 Clearings
 --------------------------------------------------------------*/
 .clear:before,
@@ -4384,6 +4327,7 @@ figure.aligncenter:not(.wp-block-gallery) {
     clear: both;
     margin-right: auto;
     margin-left: auto;
+    display: block;
 }
 
 .alignleft,
@@ -4413,15 +4357,54 @@ figure.aligncenter:not(.wp-block-gallery) {
     margin-bottom: 20px;
 }
 
+.entry-content .wp-block-image img,
+.entry-content img.alignnone,
+.entry-content img.aligncenter,
+.entry-content img.alignleft,
+.entry-content img.alignright,
+.entry-content img.attachment-fullsize {
+    max-width: 100%;
+    height: auto;
+}
+
+/**
+ * Restore the default border style for images with a custom border.
+ *
+ * The `img { border-style: none; }` reset in normalize has the same specificity
+ * as WordPress core's `:where(.has-border-color)` rule but loads later, so it
+ * cancels editor borders on the front end. The `img` element here gives us the
+ * extra specificity needed to win.
+ */
+img.has-border-color,
+img[style*=border-width],
+img[style*=border-color] {
+    border-style: solid;
+}
+
+figure {
+    margin: 0;
+}
+
+.wp-block-image.alignfull, .wp-block-image.alignwide {
+    max-width: none;
+}
+
+.wp-block-image.alignfull img, .wp-block-image.alignwide img {
+    width: 100%;
+}
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+    max-width: 200px;
+}
+
 /* Caption */
 .wp-caption,
 .gallery-caption {
     color: #666;
-    font-size: 13px;
-    font-size: 0.8125rem;
-    font-style: italic;
+    font-size: 14px;
     margin-bottom: 1.5em;
     max-width: 100%;
+    line-height: 1.3;
 }
 
 .wp-caption img[class*=wp-image-] {
@@ -4431,10 +4414,9 @@ figure.aligncenter:not(.wp-block-gallery) {
 }
 .wp-caption .wp-caption-text {
     color: #8c888c;
-    font-size: 16px;
-    font-size: 1rem;
+    font-size: 14px;
     margin: 0.9375em 0;
-    font-style: italic;
+    line-height: 1.3;
 }
 .wp-caption.aligncenter {
     margin: 0 auto 15px;
@@ -4456,6 +4438,19 @@ figure.aligncenter:not(.wp-block-gallery) {
 }
 .entry-content .fullimg p {
     margin-bottom: 0;
+}
+
+.wp-block-image .aligncenter > figcaption,
+.wp-block-image.alignwide > figcaption,
+.wp-block-image.alignfull > figcaption {
+    display: block;
+}
+
+.wp-block-image > figcaption {
+    text-align: center;
+    opacity: 0.8;
+    line-height: 1.4;
+    font-size: 14px;
 }
 
 /* Media Elements */
@@ -4681,11 +4676,10 @@ figure.aligncenter:not(.wp-block-gallery) {
 
 .gallery-caption {
     color: #8c888c;
-    margin: 15px 0;
+    margin: 5px 0;
     display: block;
-    font-size: 12px;
-    font-style: italic;
-    line-height: 1.4;
+    font-size: 13px;
+    line-height: 1.3;
 }
 
 .gallery-columns-6 .gallery-caption,
@@ -4697,6 +4691,10 @@ figure.aligncenter:not(.wp-block-gallery) {
 
 .entry-content ul.blocks-gallery-grid {
     margin-bottom: 0;
+}
+
+.wp-block-gallery {
+    margin-bottom: 25px;
 }
 
 /*--------------------------------------------------------------

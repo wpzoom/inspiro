@@ -817,7 +817,7 @@ function inspiro_get_premium_demos_fallback() {
                                         'id' => 'inspiro-events',
                                         'title' => 'Events / Conference',
                                         'thumbnail_url' => 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/demo-events.png',
-                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-event/',
+                                        'demo_url' => 'https://demo.wpzoom.com/inspiro-event-elementor/',
                                         'name' => 'Events / Conference',
                                         'available_for' => 'Elementor',
                                         'premium_url' => 'https://www.wpzoom.com/themes/inspiro/starter-sites/events-conference/?utm_source=wpadmin&utm_medium=demos-inspiro-page&utm_campaign=upgrade-premium',

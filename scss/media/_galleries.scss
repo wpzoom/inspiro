@@ -63,11 +63,10 @@
 
 .gallery-caption {
     color: #8c888c;
-    margin: 15px 0;
+    margin: 5px 0;
     display: block;
-    font-size: 12px;
-    font-style: italic;
-    line-height: 1.4;
+    font-size: 13px;
+    line-height: 1.3;
 }
 
 .gallery-columns-6 .gallery-caption,
@@ -79,4 +78,8 @@
 
 .entry-content ul.blocks-gallery-grid {
     margin-bottom: 0;
+}
+
+.wp-block-gallery {
+    margin-bottom: 25px;
 }
