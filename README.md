@@ -8,7 +8,7 @@
 **Contributors:** [wpzoom](https://profiles.wordpress.org/wpzoom/)  
 **Requires at least:** 6.4  
 **Tested up to:** 7.0  
-**Version:** 2.2.1  
+**Version:** 2.2.2  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags:** one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready  
@@ -114,7 +114,12 @@ Starter content image, Copyright Bonnie Moreland
 License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 
+Screenshot image: generated using AI (ChatGPT)
+
 ## Changelog ##
+
+### 2.2.2 ###
+* Minor fixes for image captions
 
 ### 2.2.1 ###
 * New: "Featured Image Position" option for single posts — show the featured image above the title, with a size selector
