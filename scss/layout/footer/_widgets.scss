@@ -6,7 +6,15 @@
             color: $color-widget-title-footer;
         }
 
-        .widget_block > h2 {
+        // All heading levels: block widgets emit whatever level the user
+        // picked (h2-h6), not just h2 — without this, the global dark
+        // heading color makes them invisible on the dark footer.
+        .widget_block h1,
+        .widget_block h2,
+        .widget_block h3,
+        .widget_block h4,
+        .widget_block h5,
+        .widget_block h6 {
             margin: 0;
             font-size: 20px;
             text-transform: uppercase;

@@ -3645,7 +3645,12 @@ h4.jp-relatedposts-post-title {
 .site-footer .footer-widgets .title {
     color: #fff;
 }
-.site-footer .footer-widgets .widget_block > h2 {
+.site-footer .footer-widgets .widget_block h1,
+.site-footer .footer-widgets .widget_block h2,
+.site-footer .footer-widgets .widget_block h3,
+.site-footer .footer-widgets .widget_block h4,
+.site-footer .footer-widgets .widget_block h5,
+.site-footer .footer-widgets .widget_block h6 {
     margin: 0;
     font-size: 20px;
     text-transform: uppercase;
