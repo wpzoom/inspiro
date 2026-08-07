@@ -6,6 +6,7 @@
 	var ToggleControl = wp.components.ToggleControl;
 	var useSelect = wp.data.useSelect;
 	var useDispatch = wp.data.useDispatch;
+	var __ = wp.i18n.__;
 
 	var InspiroPageSettings = function () {
 		// Fetch the meta value
@@ -32,14 +33,14 @@
 			PluginDocumentSettingPanel,
 			{
 				name: "inspiro-settings-panel",
-				title: "Page Settings",
+				title: __("Page Settings", "inspiro"),
 			},
 			[
 				el(
 					PanelRow,
 					{},
 					el(ToggleControl, {
-						label: "Hide Page Title",
+						label: __("Hide Page Title", "inspiro"),
 						checked: isTitleHidden,
 						onChange: function (value) {
 							editPost({
@@ -55,8 +56,8 @@
 					PanelRow,
 					{},
 					el(ToggleControl, {
-						label: "Hide Featured Image",
-						help: "Hides the Featured Image banner at the top of this page on the Default page template. The image stays set for SEO and social sharing. To hide it on all pages, go to Customizer → Page Settings.",
+						label: __("Hide Featured Image", "inspiro"),
+						help: __("Hides the Featured Image banner at the top of this page on the Default page template. The image stays set for SEO and social sharing. To hide it on all pages, go to Customizer → Page Settings.", "inspiro"),
 						checked: isFeaturedImageHidden,
 						onChange: function (value) {
 							editPost({

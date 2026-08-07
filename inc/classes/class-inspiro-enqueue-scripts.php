@@ -159,6 +159,8 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 						true
 				);
 
+				wp_set_script_translations( 'inspiro-sidebar-controls', 'inspiro' );
+
 			}
 		}
 

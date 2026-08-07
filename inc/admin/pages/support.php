@@ -58,22 +58,22 @@
                                         <input aria-label="email" aria-required="true" type="email"
                                             value="<?php echo esc_attr( $current_user->user_email ); ?>"
                                             class="form-control" data-inputmask="" name="fields[email]"
-                                            placeholder="Email" autocomplete="email">
+                                            placeholder="<?php esc_attr_e( 'Email', 'inspiro' ); ?>" autocomplete="email">
                                         <input type="hidden" name="ml-submit" value="1">
                                             <span class="ml-form-embedSubmit">
-                                        <button type="submit" class="button button-primary">Subscribe</button>
+                                        <button type="submit" class="button button-primary"><?php esc_html_e( 'Subscribe', 'inspiro' ); ?></button>
                                         <button disabled="disabled" style="display:none" type="button"
                                             class="loading button-primary"> <div
                                             class="ml-form-embedSubmitLoad"></div> <span
-                                            class="sr-only">Loading...</span> </button>
+                                            class="sr-only"><?php esc_html_e( 'Loading...', 'inspiro' ); ?></span> </button>
                                             </span>
                                         <input type="hidden" name="anticsrf" value="true">
                                         </form>
                                     </div>
                                     <div class="ml-form-successBody row-success" style="display:none">
                                         <div class="ml-form-successContent">
-                                            <h3>Thank you!</h3>
-                                            <p>You have successfully joined our subscriber list.</p>
+                                            <h3><?php esc_html_e( 'Thank you!', 'inspiro' ); ?></h3>
+                                            <p><?php esc_html_e( 'You have successfully joined our subscriber list.', 'inspiro' ); ?></p>
                                         </div>
                                     </div>
                                 </div>

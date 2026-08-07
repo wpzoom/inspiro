@@ -354,7 +354,7 @@ if ( ! class_exists( 'Inspiro_Customizer' ) ) {
 			$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 			// Change label text, was 'Header Text Color'
-			$wp_customize->get_control( 'header_textcolor' )->label = 'Hero Text Color';
+			$wp_customize->get_control( 'header_textcolor' )->label = esc_html__( 'Hero Text Color', 'inspiro' );
 
 			// Change order priority
 			$wp_customize->get_control( 'header_textcolor' )->priority = 13;

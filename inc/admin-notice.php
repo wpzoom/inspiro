@@ -78,9 +78,9 @@ if ( ! function_exists( 'inspiro_welcome_notice' ) ) {
 		$note_html = '';
 		
 		if ( 'not_installed' === $plugin_status ) {
-			$note_html = __( 'Clicking "Starter Sites" will install and activate Inspiro Starter Sites plugin on your WordPress site.', 'inspiro' );
+			$note_html = __( 'Clicking the button will install and activate the free Inspiro Starter Sites plugin on your WordPress site.', 'inspiro' );
 		} elseif ( 'installed' === $plugin_status ) {
-			$note_html = __( 'Clicking "Starter Sites" will activate Inspiro Starter Sites plugin on your WordPress site.', 'inspiro' );
+			$note_html = __( 'Clicking the button will activate the free Inspiro Starter Sites plugin on your WordPress site.', 'inspiro' );
 		}
 	
 		?>
@@ -103,10 +103,10 @@ if ( ! function_exists( 'inspiro_welcome_notice' ) ) {
 				</div>
 
 				<div class="wpz-notice-text">
-					<p><?php esc_html_e( 'Explore a vast library of pre-designed sites within Inspiro. Visit our constantly growing collection of demos to find the perfect starting point for your project.', 'inspiro' ); ?></p>
+					<p><?php esc_html_e( '✨ NEW: Describe your website and let AI design and build a custom demo — pages, photos, menu and colors — in about two minutes. Prefer to browse? Start from our growing library of pre-designed starter sites instead. Both are included in the free Inspiro Starter Sites plugin.', 'inspiro' ); ?></p>
 
 					<div class="wpz-welcome-notice-button">
-						<a id="wpz-notice-inspiro-plugin-handle" class="button button-primary" data-plugin-status="<?php echo esc_attr( $plugin_status ); ?>" href="<?php echo esc_url( admin_Url( 'admin.php?page=inspiro-demo' ) ); ?>"><?php esc_html_e( 'Starter Sites', 'inspiro' ); ?></a>
+						<a id="wpz-notice-inspiro-plugin-handle" class="button button-primary" data-plugin-status="<?php echo esc_attr( $plugin_status ); ?>" href="<?php echo esc_url( admin_Url( 'admin.php?page=inspiro-demo' ) ); ?>"><?php esc_html_e( 'View Starter Sites', 'inspiro' ); ?></a>
 						<a class="button button-secondary" href="<?php echo esc_url( admin_url( 'admin.php?page=inspiro' ) ); ?>">
 							<?php esc_html_e( 'Theme Dashboard', 'inspiro' ); ?>
 						</a>
