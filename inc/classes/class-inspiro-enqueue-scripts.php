@@ -35,6 +35,40 @@ if ( ! class_exists( 'Inspiro_Enqueue_Scripts' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'block_editor_styles' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+
+			add_filter( 'load_script_textdomain_relative_path', array( $this, 'script_translations_relative_path' ), 10, 2 );
+		}
+
+		/**
+		 * Resolves script translations against the unminified source path.
+		 *
+		 * WordPress looks for a JSON translation file named after the MD5 hash of the
+		 * script's theme-relative path. Translation platforms only extract strings from
+		 * unminified sources — `*.min.js` is excluded from the string scan — so the JSON
+		 * that ships with the language pack is always keyed on `assets/js/unminified/…`.
+		 * When `SCRIPT_DEBUG` is off the theme enqueues `assets/js/minified/…`, the hashes
+		 * do not match and the strings are served untranslated.
+		 *
+		 * Core already rewrites the `.min.js` suffix back to `.js` after this filter runs,
+		 * so only the directory needs correcting here.
+		 *
+		 * @since Inspiro 2.2.4
+		 *
+		 * @param string|false $relative The relative path of the script.
+		 * @param string       $src      The full source URL of the script.
+		 * @return string|false The relative path pointing at the unminified source.
+		 */
+		public function script_translations_relative_path( $relative, $src ) {
+			if ( ! is_string( $relative ) || false === strpos( $relative, '/minified/' ) ) {
+				return $relative;
+			}
+
+			// Only rewrite scripts served from this theme.
+			if ( 0 !== strpos( $src, INSPIRO_THEME_URI ) ) {
+				return $relative;
+			}
+
+			return str_replace( '/minified/', '/unminified/', $relative );
 		}
 
 
