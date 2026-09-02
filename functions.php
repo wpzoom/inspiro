@@ -137,6 +137,13 @@ require INSPIRO_THEME_DIR . 'inc/customizer/footer-builder/loader.php';
 require INSPIRO_THEME_DIR . 'inc/icon-functions.php';
 
 /**
+ * Icon collection registration for the Icon block (WordPress 7.1+).
+ *
+ * @since Inspiro 2.2.4
+ */
+require INSPIRO_THEME_DIR . 'inc/icons.php';
+
+/**
  * Misc features — pre-footer CTA, topbar, back-to-top, preloader.
  *
  * @since Inspiro 2.2.0

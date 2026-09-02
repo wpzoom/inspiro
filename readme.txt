@@ -92,6 +92,12 @@ Included as part of the following classes and functions:
 - inspiro_get_theme_svg()
 - inspiro_dropdown_icon_to_menu_link()
 
+Heroicons, Copyright (c) Tailwind Labs, Inc.
+License: MIT
+Source: https://github.com/tailwindlabs/heroicons
+Included as the SVG files in assets/icons/, registered with the WordPress
+Icons API in inc/icons.php.
+
 Bundled header image, Jeremy Bishop
 License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/sea-ocean-ECZV5RZKSZ
