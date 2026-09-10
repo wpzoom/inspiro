@@ -98,6 +98,12 @@ Source: https://github.com/tailwindlabs/heroicons
 Included as the SVG files in assets/icons/, registered with the WordPress
 Icons API in inc/icons.php.
 
+Simple Icons
+License: CC0 1.0 Universal (CC0 1.0)
+Source: https://github.com/simple-icons/simple-icons
+Included as the SVG files in assets/icons/social/, registered with the
+WordPress Icons API in inc/icons.php.
+
 Bundled header image, Jeremy Bishop
 License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/sea-ocean-ECZV5RZKSZ
