@@ -2,7 +2,7 @@
 Contributors: WPZOOM
 Requires at least: 6.4
 Tested up to: 7.0
-Version: 2.2.3
+Version: 2.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -123,6 +123,10 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 Screenshot image: generated using AI (ChatGPT)
 
 == Changelog ==
+
+= 2.2.4 =
+* New: Icon collections registered with the Icons API in WordPress 7.1, making 80 theme icons selectable in the Icon block
+* New: "Social" icon collection with 19 social network icons, including Facebook, Instagram, X, YouTube and TikTok
 
 = 2.2.3 =
 * New: AI Demo Generator from the free Inspiro Starter Sites plugin
