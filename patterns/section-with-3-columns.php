@@ -32,9 +32,7 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}},"border":{"width":"0px","style":"none"}},"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default" style="border-style:none;border-width:0px;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:outermost/icon-block {"iconName":"","itemsJustification":"left","customIconColor":"#0bb4aa","iconColorValue":"#0bb4aa","align":"center"} -->
-<div class="wp-block-outermost-icon-block aligncenter items-justified-left"><div class="icon-container has-icon-color" style="color:#0bb4aa;width:48px"><svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="https://www.w3.org/2000/svg"><path d="M50 27.7778H31.6667L44.7222 40.8333L40.8333 44.7222L27.7778 31.6667V50H22.2222V31.3889L9.16667 44.4444L5.27778 40.5556L17.7778 27.7778H0V22.2222H18.3333L5.27778 9.16667L9.16667 5.27778L22.2222 18.3333V0H27.7778V17.7778L40.5556 5L44.4444 9.16667L31.3889 22.2222H50V27.7778Z" fill="var(--wp--preset--color--primary)"></path></svg></div></div>
-<!-- /wp:outermost/icon-block -->
+<div class="wp-block-column is-style-default" style="border-style:none;border-width:0px;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:icon {"icon":"inspiro/sparkles","textColor":"primary","style":{"dimensions":{"width":"48px"}}} /-->
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">Service 1</h2>
@@ -50,9 +48,7 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <!-- /wp:column -->
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}},"border":{"width":"0px","style":"none"}},"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default" style="border-style:none;border-width:0px;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:outermost/icon-block {"iconName":"","itemsJustification":"left","customIconColor":"#0bb4aa","iconColorValue":"#0bb4aa","align":"center"} -->
-<div class="wp-block-outermost-icon-block aligncenter items-justified-left"><div class="icon-container has-icon-color" style="color:#0bb4aa;width:48px"><svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="https://www.w3.org/2000/svg"><path d="M50 27.7778H31.6667L44.7222 40.8333L40.8333 44.7222L27.7778 31.6667V50H22.2222V31.3889L9.16667 44.4444L5.27778 40.5556L17.7778 27.7778H0V22.2222H18.3333L5.27778 9.16667L9.16667 5.27778L22.2222 18.3333V0H27.7778V17.7778L40.5556 5L44.4444 9.16667L31.3889 22.2222H50V27.7778Z" fill="var(--wp--preset--color--primary)"></path></svg></div></div>
-<!-- /wp:outermost/icon-block -->
+<div class="wp-block-column is-style-default" style="border-style:none;border-width:0px;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:icon {"icon":"inspiro/sparkles","textColor":"primary","style":{"dimensions":{"width":"48px"}}} /-->
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">Service 2</h2>
@@ -68,9 +64,7 @@ register_block_pattern_category( 'inspiro', [ 'label' => __( 'Inspiro', 'inspiro
 <!-- /wp:column -->
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}},"border":{"width":"0px","style":"none"}},"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default" style="border-style:none;border-width:0px;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:outermost/icon-block {"iconName":"","itemsJustification":"left","customIconColor":"#0bb4aa","iconColorValue":"#0bb4aa","align":"center"} -->
-<div class="wp-block-outermost-icon-block aligncenter items-justified-left"><div class="icon-container has-icon-color" style="color:#0bb4aa;width:48px"><svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="https://www.w3.org/2000/svg"><path d="M50 27.7778H31.6667L44.7222 40.8333L40.8333 44.7222L27.7778 31.6667V50H22.2222V31.3889L9.16667 44.4444L5.27778 40.5556L17.7778 27.7778H0V22.2222H18.3333L5.27778 9.16667L9.16667 5.27778L22.2222 18.3333V0H27.7778V17.7778L40.5556 5L44.4444 9.16667L31.3889 22.2222H50V27.7778Z" fill="var(--wp--preset--color--primary)"></path></svg></div></div>
-<!-- /wp:outermost/icon-block -->
+<div class="wp-block-column is-style-default" style="border-style:none;border-width:0px;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:icon {"icon":"inspiro/sparkles","textColor":"primary","style":{"dimensions":{"width":"48px"}}} /-->
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">Service 3</h2>
