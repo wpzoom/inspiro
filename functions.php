@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define Constants
  */
-define( 'INSPIRO_THEME_VERSION', '2.2.3' );
+define( 'INSPIRO_THEME_VERSION', '2.2.4' );
 define( 'INSPIRO_THEME_DIR', trailingslashit( get_template_directory() ) );
 define( 'INSPIRO_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
 define( 'INSPIRO_THEME_ASSETS_URI', INSPIRO_THEME_URI . 'dist' );
@@ -135,6 +135,13 @@ require INSPIRO_THEME_DIR . 'inc/customizer/footer-builder/loader.php';
  * SVG icons functions and filters.
  */
 require INSPIRO_THEME_DIR . 'inc/icon-functions.php';
+
+/**
+ * Icon collection registration for the Icon block (WordPress 7.1+).
+ *
+ * @since Inspiro 2.2.4
+ */
+require INSPIRO_THEME_DIR . 'inc/icons.php';
 
 /**
  * Misc features — pre-footer CTA, topbar, back-to-top, preloader.
