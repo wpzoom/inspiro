@@ -57,7 +57,7 @@
 			}
 
 			let called = false;
-			$( '.site' ).one( 'transitionend', function () {
+			$( '.side-nav__scrollable-container' ).one( 'transitionend', function () {
 				$( document.body ).removeClass( 'side-nav-transitioning' );
 				called = true;
 			} );
@@ -125,7 +125,26 @@
 		} );
 
 		return this.each( function () {
+			const el = this,
+				buttons = el.querySelectorAll( '.sb-search-button-open, .sb-search-button-close' ),
+				opener = el.querySelector( '.sb-search-button-open' );
+
 			new UISearch( this );
+
+			/* Keep aria-expanded in sync with the open state and hand focus back
+			   to the opener when the overlay closes (Escape, close button, click outside). */
+			if ( window.MutationObserver && buttons.length ) {
+				new MutationObserver( function () {
+					const isOpen = el.classList.contains( 'sb-search-open' );
+					buttons.forEach( function ( button ) {
+						button.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
+					} );
+					/* UISearch blurs the field before removing the class, so focus may already sit on <body>. */
+					if ( ! isOpen && opener && ( document.activeElement === document.body || el.contains( document.activeElement ) ) ) {
+						opener.focus( { preventScroll: true } );
+					}
+				} ).observe( el, { attributes: true, attributeFilter: [ 'class' ] } );
+			}
 		} );
 	};
 

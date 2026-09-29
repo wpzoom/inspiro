@@ -2,7 +2,7 @@
 Contributors: WPZOOM
 Requires at least: 6.4
 Tested up to: 7.0
-Version: 2.2.3
+Version: 2.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -111,6 +111,14 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 Screenshot image: generated using AI (ChatGPT)
 
 == Changelog ==
+
+= 2.2.4 =
+* New: refreshed hamburger icon (minimal two lines that turn into an X when the panel is open), matching Inspiro Premium
+* New: the menu panel now opens over the page (the page no longer slides sideways), dims it, and is slightly translucent with the page blurred behind it; a close button is always available in the panel. The header search overlay gets the same translucent blur
+* Improved: widgets in the menu panel: small muted titles, links as rows, dates and counts as secondary text, and a single rounded search field with the icon inside (Search block and classic Search widget)
+* Improved: the menu in the panel has a small "Menu" label, taller rows with hairlines, a larger chevron that flips when a sub-menu is open, and smaller muted sub-menu links; the Mobile Menu typography defaults are now 20px, medium weight, no uppercase
+* Improved: dropdown menus are rounded floating panels with a hairline border and highlighted rows, without the accent bar and arrow; top-level links fade on hover
+* Improved: header search buttons report their expanded state to screen readers and focus returns to the search icon when the overlay closes
 
 = 2.2.3 =
 * New: AI Demo Generator from the free Inspiro Starter Sites plugin

@@ -1,0 +1,616 @@
+/*--------------------------------------------------------------
+## Header, menu panel and search refresh (ported from Inspiro Premium 9.8)
+--------------------------------------------------------------
+Imported last so it wins over the older rules at equal specificity. Where the
+media-query rules are more specific, selectors carry an `html` prefix. */
+
+$refresh-line: rgba(255, 255, 255, 0.1);
+$refresh-muted: rgba(255, 255, 255, 0.45);
+$refresh-text: rgba(255, 255, 255, 0.7);
+$refresh-field: rgba(255, 255, 255, 0.08);
+
+@mixin refresh-visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* ---- Hamburger: minimal two-line icon, X when the panel is open ---------- */
+.navbar-toggle {
+    padding: 0 9px;
+    width: 40px;
+    height: 40px;
+    margin: 0 0 0 12px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+
+    .icon-bar {
+        width: 22px;
+        height: 2px;
+        margin: 0 0 0 auto;
+        border-radius: 2px;
+        background: currentColor;
+        transform: none;
+        transform-origin: center;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    }
+
+    .icon-bar + .icon-bar {
+        margin-top: 7px;
+    }
+
+    .icon-bar:nth-child(3) {
+        display: none;
+    }
+
+    .icon-bar:nth-child(4) {
+        width: 14px;
+    }
+
+    &:hover,
+    &:focus {
+        border: 0;
+        background: transparent;
+        color: #fff; /* the generic button:hover rule paints the accent colour */
+
+        .icon-bar {
+            width: 22px;
+            transform: none;
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+}
+
+body.side-nav-open .site .navbar-toggle .icon-bar,
+body .side-nav .side-nav__close-button .navbar-toggle .icon-bar {
+    width: 22px;
+}
+
+body.side-nav-open .site .navbar-toggle .icon-bar:nth-child(2),
+body .side-nav .side-nav__close-button .navbar-toggle .icon-bar:nth-child(2) {
+    transform: translateY(4.5px) rotate(45deg);
+}
+
+body.side-nav-open .site .navbar-toggle .icon-bar:nth-child(3),
+body .side-nav .side-nav__close-button .navbar-toggle .icon-bar:nth-child(3) {
+    display: none;
+    opacity: 0;
+}
+
+body.side-nav-open .site .navbar-toggle .icon-bar:nth-child(4),
+body .side-nav .side-nav__close-button .navbar-toggle .icon-bar:nth-child(4) {
+    transform: translateY(-4.5px) rotate(-45deg);
+}
+
+.side-nav .side-nav__close-button .navbar-toggle {
+    margin: 0;
+    padding: 0 9px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+        transform: scale(1.12);
+    }
+}
+
+/* ---- Main menu: hover fades, dropdown is a rounded floating panel --------- */
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a.sf-with-ul:hover {
+    border-bottom-color: transparent;
+    opacity: 0.72;
+}
+
+.navbar-nav > li.current-menu-item > a:hover,
+.navbar-nav > li.current_page_item > a:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (min-width: 1025px) {
+    .navbar-nav ul {
+        width: 240px;
+        margin-top: 12px;
+        padding: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    }
+
+    .navbar-nav > li > ul:before {
+        display: none;
+    }
+
+    /* Hover bridge over the gap between link and panel. */
+    .navbar-nav > li > ul:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 12px;
+    }
+
+    .navbar-nav ul li {
+        border-top: 0;
+    }
+
+    .navbar-nav ul a {
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.3;
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .navbar-nav ul a:hover,
+    .navbar-nav ul a:focus,
+    .navbar-nav ul .current-menu-item > a,
+    .navbar-nav ul .current_page_item > a {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+    }
+
+    .navbar-nav ul .menu-item-has-children .svg-icon {
+        right: 10px;
+    }
+
+    .navbar-nav ul ul {
+        margin-top: -8px;
+        margin-left: 4px;
+    }
+}
+
+/* ---- Menu panel: translucent over a blurred page ------------------------- */
+.side-nav__scrollable-container {
+    background-color: rgba(16, 16, 16, 0.85);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.side-nav__wrap {
+    padding: 92px 30px 60px;
+}
+
+/* ---- Panel widgets: quiet labels, rows, one soft search field ------------ */
+.side-nav {
+
+    .widget,
+    .widget_block {
+        margin-bottom: 34px;
+        font-family: $font-main;
+        font-size: 15px;
+        line-height: 1.55;
+        color: $refresh-text;
+    }
+
+    .widget .title,
+    .widget .widget-title,
+    .widget h2.wp-block-heading,
+    .widget .wp-block-group__inner-container > h2,
+    .widget .wp-block-search__label {
+        margin: 0 0 14px;
+        font-family: $font-main;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: $refresh-muted;
+    }
+
+    .widget a:not(.button):not(.btn):not(.wp-element-button) {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus {
+            color: var(--inspiro-primary-color);
+            text-decoration: none;
+        }
+    }
+
+    .widget p {
+        color: $refresh-text;
+    }
+
+    .widget_recent_entries ul,
+    .widget_pages ul,
+    .widget_categories ul,
+    .widget_archive ul,
+    .widget_meta ul,
+    .widget_nav_menu ul,
+    .widget_recent_comments ul,
+    .wp-block-latest-posts__list,
+    .wp-block-latest-comments,
+    .wp-block-categories-list,
+    .wp-block-archives-list,
+    .wp-block-page-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        > li {
+            margin: 0;
+            padding: 11px 0;
+            border-bottom: 1px solid $refresh-line;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: $refresh-muted;
+
+            &:first-child { padding-top: 0; }
+            &:last-child { border-bottom: 0; }
+        }
+
+        ul {
+            margin: 6px 0 0 14px;
+            padding: 0;
+            list-style: none;
+
+            li {
+                margin: 0;
+                padding: 5px 0;
+                border: 0;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+
+        .count,
+        .post-date,
+        .wp-block-latest-posts__post-date,
+        .wp-block-latest-comments__comment-date {
+            font-size: 13px;
+            font-weight: 400;
+            color: $refresh-muted;
+        }
+    }
+
+    .wp-block-latest-posts__list > li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 4px 12px;
+
+        > a {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .wp-block-latest-posts__post-date {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+
+        .wp-block-latest-posts__featured-image,
+        .wp-block-latest-posts__post-excerpt,
+        .wp-block-latest-posts__post-full-content {
+            flex: 0 0 100%;
+            margin: 4px 0 0;
+            font-size: 14px;
+            font-weight: 400;
+            color: $refresh-text;
+        }
+    }
+
+    .wp-block-latest-comments > li,
+    .widget_recent_comments ul > li {
+        font-weight: 400;
+        color: $refresh-text;
+
+        a:not(.wp-block-latest-comments__comment-author):not(.url) {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .wp-block-latest-comments__comment-author,
+        .url {
+            font-weight: 500;
+        }
+    }
+
+    .wp-block-latest-comments__comment {
+        margin-bottom: 0;
+    }
+
+    /* Search (block and classic widget) */
+    .wp-block-search,
+    .search-form {
+        position: relative;
+        margin: 0;
+    }
+
+    .wp-block-search .wp-block-search__inside-wrapper,
+    .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+        position: relative;
+        display: block;
+        padding: 0;
+        border: 0;
+        background: none;
+    }
+
+    .search-form label {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    .wp-block-search .wp-block-search__inside-wrapper::before,
+    .search-form::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        z-index: 1;
+        width: 18px;
+        height: 18px;
+        margin-top: -9px;
+        pointer-events: none;
+        background-color: rgba(255, 255, 255, 0.5);
+        -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.5-3.5'/></svg>") no-repeat center / contain;
+        mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.5-3.5'/></svg>") no-repeat center / contain;
+    }
+
+    .wp-block-search .wp-block-search__input,
+    .search-form .search-field {
+        display: block;
+        width: 100%;
+        height: 46px;
+        margin: 0;
+        padding: 0 16px 0 44px;
+        border: 0;
+        border-radius: 12px;
+        background: $refresh-field;
+        color: #fff;
+        font-family: $font-main;
+        font-size: 15px;
+        line-height: 46px;
+        box-shadow: none;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        -webkit-appearance: none;
+        appearance: none;
+
+        &::placeholder {
+            color: $refresh-muted;
+            opacity: 1;
+        }
+
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+        }
+
+        &:focus {
+            outline: 0;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 2px var(--inspiro-primary-color);
+        }
+    }
+
+    .wp-block-search .wp-block-search__button,
+    .search-form .search-submit {
+        @include refresh-visually-hidden;
+    }
+}
+
+/* ---- Panel menu: label, rows, chevron --------------------------------------- */
+html .side-nav .navbar-nav {
+    margin-bottom: 40px;
+
+    &::before {
+        content: attr(data-label);
+        display: block;
+        margin: 0 0 6px;
+        font-family: $font-main;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: $refresh-muted;
+    }
+
+    > li {
+        display: block;
+        float: none;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-bottom: 1px solid $refresh-line;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    > li > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0;
+        padding: 14px 0;
+        border: 0;
+        line-height: 1.25;
+        color: #fff;
+    }
+
+    li a:hover,
+    li a:focus {
+        color: var(--inspiro-primary-color);
+        border: 0;
+    }
+
+    li.menu-item-has-children > a .svg-icon {
+        flex: 0 0 auto;
+        float: none;
+        width: 24px;
+        height: 24px;
+        margin: 0 0 0 12px;
+        fill: #fff;
+        opacity: 0.6;
+        transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    li.menu-item-has-children.open > a .svg-icon {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+
+    ul {
+        margin: 0 0 10px;
+        padding: 0 0 0 16px;
+
+        li {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        li a {
+            display: block;
+            margin: 0;
+            padding: 8px 0;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.4;
+            text-transform: none;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        ul {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* ---- Header search overlay: translucent, blurred page, crisp type --------- */
+.sb-search.sb-search-open .sb-search-input {
+    background: rgba(16, 16, 16, 0.9);
+    opacity: 1;
+    font-size: clamp(22px, 3.2vw, 42px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.sb-search .sb-search-button-close .sb-icon-search .svg-icon {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sb-search .sb-search-button-close:hover .sb-icon-search .svg-icon {
+    transform: rotate(90deg);
+}
+
+.sb-search .sb-search-button-open:focus-visible,
+.sb-search .sb-search-button-close:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ---- Menu panel opens as an overlay (no page push), like Inspiro Premium ---- */
+.site {
+    transition: none;
+}
+
+body.side-nav-open .site,
+body.side-nav-transitioning .site {
+    transform: none;
+}
+
+/* The header used to lose its admin-bar offset while the page was pushed. */
+.admin-bar.side-nav-open .headroom {
+    top: var(--wp-admin--admin-bar--height, 32px);
+}
+
+.side-nav {
+    right: 0;
+    bottom: 0;
+    width: $sidebar-nav-width;
+    z-index: 9999;
+}
+
+.side-nav__scrollable-container {
+    padding-bottom: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+body.side-nav-open .side-nav {
+    z-index: 9999;
+}
+
+body.side-nav-open .side-nav__scrollable-container {
+    transform: translateX(0);
+}
+
+.side-nav-overlay {
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+body.side-nav-transitioning .side-nav-overlay,
+body.side-nav-open .side-nav-overlay {
+    display: block;
+    right: 0;
+    z-index: 9998;
+    opacity: 1;
+    cursor: e-resize;
+}
+
+/* Close button always available in the panel (the header toggle sits under the overlay). */
+.side-nav .side-nav__close-button {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 10001;
+}
+
+.admin-bar .side-nav .side-nav__close-button {
+    top: calc(20px + var(--wp-admin--admin-bar--height, 32px));
+}
+
+.admin-bar .side-nav__wrap {
+    padding-top: calc(92px + var(--wp-admin--admin-bar--height, 32px));
+}
+
+@media screen and (max-width: 480px) {
+    .side-nav {
+        width: $sidebar-nav-width-mobile;
+    }
+
+    body.side-nav-open .site {
+        transform: none;
+    }
+
+    body.side-nav-open .side-nav-overlay,
+    body.side-nav-transitioning .side-nav-overlay {
+        right: 0;
+    }
+
+    .side-nav__scrollable-container {
+        transform: translateX(100%);
+    }
+
+    body.side-nav-open .side-nav__scrollable-container {
+        transform: translateX(0);
+    }
+}

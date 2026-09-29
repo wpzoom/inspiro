@@ -31,6 +31,7 @@
 								'menu_class'     => 'nav navbar-nav',
 								'theme_location' => 'primary',
 								'container'      => '',
+								'items_wrap'     => '<ul id="%1$s" class="%2$s" data-label="' . esc_attr__( 'Menu', 'inspiro' ) . '">%3$s</ul>',
 							) 
 						);
 					?>

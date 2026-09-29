@@ -47,7 +47,7 @@ class Inspiro_Typo_Mobile_Menu_Config {
 				array(
 					'id'   => 'mobilemenu-font-size',
 					'args' => array(
-						'default'           => 16,
+						'default'           => 20,
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_integer',
 					),
@@ -55,7 +55,7 @@ class Inspiro_Typo_Mobile_Menu_Config {
 				array(
 					'id'   => 'mobilemenu-font-weight',
 					'args' => array(
-						'default'           => '600',
+						'default'           => '500',
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_font_weight',
 					),
@@ -63,7 +63,7 @@ class Inspiro_Typo_Mobile_Menu_Config {
 				array(
 					'id'   => 'mobilemenu-text-transform',
 					'args' => array(
-						'default'           => 'uppercase',
+						'default'           => 'none',
 						'transport'         => 'postMessage',
 						'sanitize_callback' => 'inspiro_sanitize_choices',
 					),

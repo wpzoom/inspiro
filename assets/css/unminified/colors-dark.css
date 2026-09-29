@@ -145,7 +145,7 @@ body.colors-dark .sticky .svg-icon-thumb-tack {
     background-color: #222;
 }
 body.colors-dark .sb-search.sb-search-open .sb-search-input {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 body.colors-dark .side-nav .search-form .search-submit:hover {
     color: var(--inspiro-primary-color);
