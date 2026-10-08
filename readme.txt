@@ -113,7 +113,7 @@ Screenshot image: generated using AI (ChatGPT)
 == Changelog ==
 
 = 2.2.5 =
-* Fixed: on-the-fly image size generation ran for non-image attachments such as PDFs, and retried sizes that could never be generated, on every media library request. With plugins that list the theme's image sizes in the media library (e.g. Beaver Builder) this made the Media Library extremely slow and could hit the PHP time limit (thanks to Fredy Neeser for the report)
+* Fixed: on-the-fly image size generation ran for non-image attachments such as PDFs, and retried sizes that could never be generated, on every media library request. With plugins that list the theme's image sizes in the media library (e.g. Beaver Builder) this made the Media Library extremely slow and could hit the PHP time limit
 
 = 2.2.4 =
 * New: refreshed hamburger icon (minimal two lines that turn into an X when the panel is open), matching Inspiro Premium
