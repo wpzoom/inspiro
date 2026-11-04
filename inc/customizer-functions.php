@@ -87,6 +87,31 @@ function inspiro_sanitize_blog_layout( $input ) {
 }
 
 /**
+ * Sanitize the number of columns of the blog grid.
+ *
+ * @since 2.3.0
+ *
+ * @param string $input Value from the Customizer.
+ * @return string '2' or '3'.
+ */
+function inspiro_sanitize_blog_grid_columns( $input ) {
+	return in_array( (string) $input, array( '2', '3' ), true ) ? (string) $input : '2';
+}
+
+/**
+ * CSS classes for the blog grid wrapper, including the column count.
+ *
+ * @since 2.3.0
+ *
+ * @return string
+ */
+function inspiro_get_post_grid_classes() {
+	$columns = inspiro_sanitize_blog_grid_columns( inspiro_get_theme_mod( 'blog_grid_columns' ) );
+
+	return 'post-grid post-grid-columns-' . $columns;
+}
+
+/**
  * Sanitize text alignment.
  *
  * @since 2.1.9

@@ -66,6 +66,30 @@ class Inspiro_Blog_Layout_Config {
 				)
 			)
 		);
+
+		$wp_customize->add_setting(
+			'blog_grid_columns',
+			array(
+				'default'           => '2',
+				'sanitize_callback' => 'inspiro_sanitize_blog_grid_columns',
+				'transport'         => 'refresh',
+			)
+		);
+
+		$wp_customize->add_control(
+			'blog_grid_columns',
+			array(
+				'type'            => 'select',
+				'priority'        => 2,
+				'section'         => 'blog_page_section',
+				'label'           => __( 'Grid columns', 'inspiro' ),
+				'active_callback' => 'inspiro_is_blog_layout_grid',
+				'choices'         => array(
+					'2' => esc_html__( '2 columns', 'inspiro' ),
+					'3' => esc_html__( '3 columns', 'inspiro' ),
+				),
+			)
+		);
 	}
 }
 new Inspiro_Blog_Layout_Config();

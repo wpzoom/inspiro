@@ -32,7 +32,7 @@ get_header(); ?>
 			$blog_layout = inspiro_get_theme_mod( 'blog_layout' );
 
 			if ( $blog_layout === 'grid' ) {
-				echo '<div class="post-grid">';
+				echo '<div class="' . esc_attr( inspiro_get_post_grid_classes() ) . '">';
 			}
 
 			?>

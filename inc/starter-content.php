@@ -26,20 +26,25 @@
  */
 function inspiro_get_starter_content_sets() {
 	$sets = array(
-		'agency' => array(
+		'agency'   => array(
 			'label'       => _x( 'Creative Agency', 'Starter content set', 'inspiro' ),
 			'description' => __( 'Still-image hero, services, projects and a team. The design from the theme preview.', 'inspiro' ),
 			'thumbnail'   => 'assets/images/starter/thumb-agency.jpg',
 		),
-		'video'  => array(
+		'video'    => array(
 			'label'       => _x( 'Video Hero', 'Starter content set', 'inspiro' ),
 			'description' => __( 'Full-screen video header with a short intro, services and your latest posts.', 'inspiro' ),
 			'thumbnail'   => 'assets/images/starter/thumb-video.jpg',
 		),
-		'blog'   => array(
+		'blog'     => array(
 			'label'       => _x( 'Personal Blog', 'Starter content set', 'inspiro' ),
 			'description' => __( 'No hero. Your latest posts with a sidebar, plus About and Contact pages.', 'inspiro' ),
 			'thumbnail'   => 'assets/images/starter/thumb-blog.jpg',
+		),
+		'magazine' => array(
+			'label'       => _x( 'Magazine', 'Starter content set', 'inspiro' ),
+			'description' => __( 'No hero. Your posts in a full-width three-column grid, plus About and Contact pages.', 'inspiro' ),
+			'thumbnail'   => 'assets/images/starter/thumb-magazine.jpg',
 		),
 	);
 

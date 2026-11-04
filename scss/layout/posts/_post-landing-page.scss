@@ -201,8 +201,25 @@
         @include font-size(26);
     }
 
+    &.post-grid-columns-3 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+
+        .entry-title {
+            @include font-size(22);
+        }
+
+        @media (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
     @media (max-width: 710px) {
         grid-template-columns: repeat(1, 1fr);
+
+        &.post-grid-columns-3 {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 
 }
