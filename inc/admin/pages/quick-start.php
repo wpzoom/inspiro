@@ -36,7 +36,7 @@
 		?>
 	<div class="theme-info-wrap inspiro-starter-sets-admin">
 		<h3 class="wpz-onboard_content-main-title"><?php esc_html_e( 'Choose your starting point', 'inspiro' ); ?></h3>
-		<p class="wpz-onboard_content-main-intro"><?php esc_html_e( 'Your site comes with a few starter pages built from regular blocks. Pick the layout you want to begin with and publish it from the Customizer. Need a complete site instead? Import a full demo from the Starter Sites page.', 'inspiro' ); ?></p>
+		<p class="wpz-onboard_content-main-intro"><?php esc_html_e( 'These are simple starter pages built from regular blocks: a home page, a few inner pages and some posts to fill the site while you work on it. Pick a layout and publish it from the Customizer. For a complete, ready-made website with all pages, images and plugins, import one of the full demos instead.', 'inspiro' ); ?></p>
 		<div class="inspiro-starter-sets-admin__grid">
 			<?php foreach ( $inspiro_starter_sets as $inspiro_set_id => $inspiro_set ) : ?>
 				<?php $inspiro_thumb = ! empty( $inspiro_set['thumbnail'] ) ? get_template_directory_uri() . '/' . ltrim( $inspiro_set['thumbnail'], '/' ) : ''; ?>
@@ -46,12 +46,13 @@
 							<img src="<?php echo esc_url( $inspiro_thumb ); ?>" alt="" width="600" height="400" loading="lazy" />
 						</a>
 					<?php endif; ?>
-					<h4>
-						<?php echo esc_html( $inspiro_set['label'] ); ?>
+					<h4><?php echo esc_html( $inspiro_set['label'] ); ?></h4>
+					<p class="inspiro-starter-sets-admin__badges">
+						<span class="inspiro-starter-sets-admin__badge is-starter"><?php esc_html_e( 'Starter pages', 'inspiro' ); ?></span>
 						<?php if ( $inspiro_set_id === $inspiro_current_set ) : ?>
 							<span class="inspiro-starter-sets-admin__badge"><?php esc_html_e( 'Selected', 'inspiro' ); ?></span>
 						<?php endif; ?>
-					</h4>
+					</p>
 					<?php if ( ! empty( $inspiro_set['description'] ) ) : ?>
 						<p class="about"><?php echo esc_html( $inspiro_set['description'] ); ?></p>
 					<?php endif; ?>
@@ -62,6 +63,27 @@
 					</p>
 				</div>
 			<?php endforeach; ?>
+		</div>
+		<?php
+		$inspiro_plugin_status = function_exists( 'inspiro_check_plugin_status' ) ? inspiro_check_plugin_status( 'inspiro-starter-sites/inspiro-starter-sites.php' ) : 'active';
+		$inspiro_plugin_note   = '';
+		if ( 'not_installed' === $inspiro_plugin_status ) {
+			$inspiro_plugin_note = __( 'Clicking the button will install and activate the free Inspiro Starter Sites plugin on your WordPress site.', 'inspiro' );
+		} elseif ( 'installed' === $inspiro_plugin_status ) {
+			$inspiro_plugin_note = __( 'Clicking the button will activate the free Inspiro Starter Sites plugin on your WordPress site.', 'inspiro' );
+		}
+		?>
+		<div class="inspiro-starter-sets-admin__footer">
+			<div>
+				<strong><?php esc_html_e( 'Want a complete website instead?', 'inspiro' ); ?></strong>
+				<p class="about"><?php esc_html_e( 'The free Inspiro Starter Sites plugin imports full demos with every page, image, menu and plugin set up, ready to edit.', 'inspiro' ); ?></p>
+			</div>
+			<p class="section_footer">
+				<a class="button button-primary js-inspiro-starter-sites-handle" data-plugin-status="<?php echo esc_attr( $inspiro_plugin_status ); ?>" href="<?php echo esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ); ?>"><?php esc_html_e( 'View all demos', 'inspiro' ); ?></a>
+				<?php if ( $inspiro_plugin_note ) : ?>
+					<span class="inspiro-starter-sets-admin__note"><?php echo esc_html( $inspiro_plugin_note ); ?></span>
+				<?php endif; ?>
+			</p>
 		</div>
 	</div>
 	<?php endif; ?>

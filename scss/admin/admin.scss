@@ -2067,11 +2067,15 @@
         }
 
         h4 {
-            display: flex;
-            align-items: center;
-            gap: 8px;
             margin: 14px 0 6px;
             font-size: 15px;
+        }
+
+        .inspiro-starter-sets-admin__badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0 0 8px;
         }
 
         .about {
@@ -2109,5 +2113,57 @@
         font-size: 11px;
         font-weight: 500;
         line-height: 1.6;
+
+        &.is-starter {
+            background: #f0f0f1;
+            color: #50575e;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-radius: 8px;
+        background: #f6f7f7;
+
+        strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .about {
+            margin: 0;
+            color: #646970;
+            font-size: 13px;
+        }
+
+        .section_footer {
+            margin: 0;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 782px) {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .section_footer {
+                text-align: left;
+            }
+        }
+    }
+
+    &__note {
+        display: block;
+        margin-top: 8px;
+        max-width: 320px;
+        color: #8c8f94;
+        font-size: 12px;
+        line-height: 1.4;
     }
 }

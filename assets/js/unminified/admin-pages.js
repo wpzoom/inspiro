@@ -49,7 +49,7 @@ jQuery(document).ready(($) => {
 		handleAjaxRequest(btn, btnTextContainer, originalText, spinIcon);
 	} );
 
-	$('#wpz-notice-inspiro-plugin-handle').on( 'click', function( e ) {
+	$('#wpz-notice-inspiro-plugin-handle, .js-inspiro-starter-sites-handle').on( 'click', function( e ) {
 		
 		const btn = $(this);
 		const dataPluginStatus = btn.data('plugin-status');

@@ -1681,11 +1681,14 @@
     box-shadow: 0 0 0 1px #2271b1;
 }
 .inspiro-starter-sets-admin__tile h4 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
     margin: 14px 0 6px;
     font-size: 15px;
+}
+.inspiro-starter-sets-admin__tile .inspiro-starter-sets-admin__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 8px;
 }
 .inspiro-starter-sets-admin__tile .about {
     margin: 0 0 14px;
@@ -1717,4 +1720,50 @@
     font-size: 11px;
     font-weight: 500;
     line-height: 1.6;
+}
+.inspiro-starter-sets-admin__badge.is-starter {
+    background: #f0f0f1;
+    color: #50575e;
+}
+.inspiro-starter-sets-admin__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 24px;
+    padding: 18px 20px;
+    border-radius: 8px;
+    background: #f6f7f7;
+}
+.inspiro-starter-sets-admin__footer strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+.inspiro-starter-sets-admin__footer .about {
+    margin: 0;
+    color: #646970;
+    font-size: 13px;
+}
+.inspiro-starter-sets-admin__footer .section_footer {
+    margin: 0;
+    text-align: left;
+    flex-shrink: 0;
+}
+@media (max-width: 782px) {
+    .inspiro-starter-sets-admin__footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .inspiro-starter-sets-admin__footer .section_footer {
+        text-align: right;
+    }
+}
+.inspiro-starter-sets-admin__note {
+    display: block;
+    margin-top: 8px;
+    max-width: 320px;
+    color: #8c8f94;
+    font-size: 12px;
+    line-height: 1.4;
 }
