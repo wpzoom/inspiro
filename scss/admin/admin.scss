@@ -2032,33 +2032,78 @@
     border-left-color: #7e8c93;
 }
 
-/* Starter content set tiles on the dashboard (fresh sites). */
-.inspiro-starter-sets-admin {
-    &__grid {
+/* "Start your site" on the dashboard (fresh sites): starter pages vs demo library. */
+.inspiro-start {
+    &__block {
+        margin-top: 28px;
+    }
+
+    &__heading {
+        margin-bottom: 14px;
+
+        h4 {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 6px;
+            font-size: 16px;
+        }
+
+        p {
+            margin: 0;
+            color: #646970;
+            font-size: 13px;
+            line-height: 1.5;
+            max-width: 760px;
+        }
+    }
+
+    &__tag {
+        display: inline-block;
+        padding: 2px 9px;
+        border-radius: 999px;
+        background: #f0f0f1;
+        color: #50575e;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.6;
+
+        &.is-plugin {
+            background: #e5f1fb;
+            color: #1d5d93;
+        }
+    }
+
+    // Starter pages: a compact strip.
+    &__starters {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 24px;
-        margin-top: 24px;
+        gap: 14px;
 
         @media (max-width: 1200px) {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-
-        @media (max-width: 600px) {
-            grid-template-columns: minmax(0, 1fr);
-        }
     }
 
-    &__tile {
+    &__starter {
+        display: flex;
+        align-items: center;
+        gap: 12px;
         min-width: 0;
+        padding: 8px;
         border: 1px solid #e3e4e6;
         border-radius: 8px;
-        padding: 16px;
         background: #fff;
+        text-decoration: none;
+        color: #1d2327;
         transition: border-color .15s, box-shadow .15s;
 
-        &:hover {
-            border-color: #b5b7bb;
+        &:hover,
+        &:focus {
+            border-color: #8c8f94;
+            color: #1d2327;
+            box-shadow: none;
         }
 
         &.is-current {
@@ -2066,104 +2111,133 @@
             box-shadow: 0 0 0 1px #2271b1;
         }
 
-        h4 {
-            margin: 14px 0 6px;
-            font-size: 15px;
+        &-thumb {
+            flex: 0 0 96px;
+            border-radius: 5px;
+            overflow: hidden;
+            line-height: 0;
+
+            img {
+                width: 96px;
+                height: 64px;
+                object-fit: cover;
+            }
         }
 
-        .inspiro-starter-sets-admin__badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin: 0 0 8px;
+        &-text {
+            min-width: 0;
+
+            strong {
+                display: block;
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 1.3;
+            }
+
+            em {
+                display: block;
+                margin-top: 3px;
+                font-style: normal;
+                font-size: 12px;
+                color: #2271b1;
+            }
         }
 
-        .about {
-            margin: 0 0 14px;
-            color: #646970;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .section_footer {
-            margin: 0;
-        }
-    }
-
-    &__thumb {
-        display: block;
-        border-radius: 6px;
-        overflow: hidden;
-        line-height: 0;
-
-        img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 3 / 2;
-            object-fit: cover;
-        }
-    }
-
-    &__badge {
-        display: inline-block;
-        padding: 2px 8px;
-        border-radius: 999px;
-        background: #2271b1;
-        color: #fff;
-        font-size: 11px;
-        font-weight: 500;
-        line-height: 1.6;
-
-        &.is-starter {
-            background: #f0f0f1;
+        &.is-current &-text em {
             color: #50575e;
         }
     }
 
-    &__footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        margin-top: 24px;
-        padding: 18px 20px;
+    // Demo library: a grid that fades out, with the call to action over the fade.
+    &__library {
+        position: relative;
+        max-height: 420px;
+        overflow: hidden;
         border-radius: 8px;
-        background: #f6f7f7;
 
-        strong {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 4px;
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 240px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 78%);
+            pointer-events: none;
         }
+    }
 
-        .about {
-            margin: 0;
-            color: #646970;
-            font-size: 13px;
-        }
+    &__library-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
 
-        .section_footer {
-            margin: 0;
-            text-align: right;
-            flex-shrink: 0;
+        @media (max-width: 1200px) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         @media (max-width: 782px) {
-            flex-direction: column;
-            align-items: flex-start;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
 
-            .section_footer {
-                text-align: left;
+    &__demo {
+        display: block;
+        min-width: 0;
+        text-decoration: none;
+        color: #1d2327;
+
+        &:hover &-thumb,
+        &:focus &-thumb {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .14);
+        }
+
+        &-thumb {
+            display: block;
+            border: 1px solid #e3e4e6;
+            border-radius: 6px;
+            overflow: hidden;
+            line-height: 0;
+            background: #f6f7f7;
+            transition: box-shadow .15s;
+
+            img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+                object-position: top;
             }
+        }
+
+        &-title {
+            display: block;
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+    }
+
+    &__library-more {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 24px;
+        z-index: 1;
+        text-align: center;
+
+        .button-hero {
+            font-size: 14px;
+            padding: 0 26px;
+            min-height: 42px;
+            line-height: 40px;
         }
     }
 
     &__note {
         display: block;
         margin-top: 8px;
-        max-width: 320px;
-        color: #8c8f94;
+        color: #646970;
         font-size: 12px;
-        line-height: 1.4;
     }
 }
