@@ -344,7 +344,7 @@
 		},
 
 		_lineBreaksToParagraphs( message ) {
-			return '<p>' + message.replace( '\n\n', '</p><p>' ) + '</p>';
+			return '<p>' + message.replace( /\n\n/g, '</p><p>' ) + '</p>';
 		},
 	}
 

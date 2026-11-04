@@ -173,27 +173,30 @@ if ( ! class_exists( 'Inspiro_Customizer_Guided_Tour' ) ) {
 		 * @since 1.9.4
 		 */
 		public function get_guided_tour_steps() {
-			$steps = [
-				[
-					'title'       => __( 'Customize Inspiro', 'inspiro' ),
-					'message'     => sprintf( __( 'Here you can control the overall look and feel of your website.%sAre you ready? Let\'s start the tour!', 'inspiro' ), PHP_EOL . PHP_EOL ),
-					'button_text' => __( 'Take the tour', 'inspiro' ),
-					'section'     => '#customize-info',
-				],
-			];
-
-			// On a fresh site the starter content picker is the first thing worth seeing.
 			if ( $this->is_starter_content_section_available() ) {
-				$steps[] = [
-					'title'   => __( 'Choose your starter content', 'inspiro' ),
-					'message' => sprintf(
-						/* translators: 1: paragraph break, 2: opening link tag to the demo importer, 3: closing link tag. */
-						__( 'We added a few starter pages so your site is not empty: a home page, About, Contact and some posts, all built with regular blocks. Open this section to switch to a different starting point, like a video hero or a simple blog.%1$sNeed a complete site instead? The %2$sStarter Sites importer%3$s installs full demos with every page, image and plugin, ready to edit.', 'inspiro' ),
-						PHP_EOL . PHP_EOL,
-						'<a href="' . esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ) . '" target="_blank" rel="noopener">',
-						'</a>'
-					),
-					'section' => 'inspiro_starter_content_notice',
+				// Fresh site: the tour opens on the starter content picker.
+				$steps = [
+					[
+						'title'       => __( 'Choose your starter content', 'inspiro' ),
+						'message'     => sprintf(
+							/* translators: 1: paragraph break, 2: opening link tag to the demo importer, 3: closing link tag. */
+							__( 'We added a few starter pages so your site is not empty: a home page, About, Contact and some posts, all built with regular blocks. Open this section to switch to a different starting point, like a video hero or a simple blog.%1$sNeed a complete site instead? The %2$sStarter Sites importer%3$s installs full demos with every page, image and plugin, ready to edit.%1$sReady? Let\'s take a quick tour of the Customizer.', 'inspiro' ),
+							PHP_EOL . PHP_EOL,
+							'<a href="' . esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ) . '" target="_blank" rel="noopener">',
+							'</a>'
+						),
+						'button_text' => __( 'Take the tour', 'inspiro' ),
+						'section'     => 'inspiro_starter_content_notice',
+					],
+				];
+			} else {
+				$steps = [
+					[
+						'title'       => __( 'Customize Inspiro', 'inspiro' ),
+						'message'     => sprintf( __( 'Here you can control the overall look and feel of your website.%sAre you ready? Let\'s start the tour!', 'inspiro' ), PHP_EOL . PHP_EOL ),
+						'button_text' => __( 'Take the tour', 'inspiro' ),
+						'section'     => '#customize-info',
+					],
 				];
 			}
 
