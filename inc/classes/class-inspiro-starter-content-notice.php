@@ -23,6 +23,100 @@ class Inspiro_Starter_Content_Notice {
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_scripts' ) );
 		add_action( 'wp_ajax_inspiro_dismiss_starter_content', array( $this, 'handle_starter_content_decision' ) );
 		add_action( 'wp_ajax_inspiro_switch_starter_content', array( $this, 'handle_starter_content_switch' ) );
+		add_action( 'after_setup_theme', array( $this, 'maybe_select_set_from_url' ), 5 );
+	}
+
+	/**
+	 * Whether the starter content prompt applies to this site: Inspiro is the
+	 * active theme, the site is still fresh and the prompt was not dismissed.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @return bool
+	 */
+	public static function is_available() {
+		if ( get_template() !== 'inspiro' ) {
+			return false;
+		}
+
+		if ( get_theme_mod( 'inspiro_starter_content_dismissed', false ) ) {
+			return false;
+		}
+
+		if ( get_option( 'fresh_site' ) ) {
+			return true;
+		}
+
+		// Not flagged fresh, but still only starter content on the site.
+		$user_posts = get_posts(
+			array(
+				'post_type'      => array( 'post', 'page' ),
+				'post_status'    => 'publish',
+				'posts_per_page' => 1,
+				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+					array(
+						'key'     => '_customize_starter_content_theme',
+						'compare' => 'NOT EXISTS',
+					),
+				),
+			)
+		);
+
+		return empty( $user_posts );
+	}
+
+	/**
+	 * Customizer URL that preselects a starter content set and opens the picker.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $set Set id.
+	 * @return string
+	 */
+	public static function get_customize_url( $set ) {
+		$url = add_query_arg(
+			array(
+				'inspiro_starter_set' => $set,
+				'autofocus[section]'  => 'inspiro_starter_content_notice',
+			),
+			admin_url( 'customize.php' )
+		);
+
+		return wp_nonce_url( $url, 'inspiro-starter-set' );
+	}
+
+	/**
+	 * Select a starter content set from a dashboard link before the
+	 * Customizer imports starter content (after_setup_theme:100).
+	 *
+	 * @since 2.3.0
+	 */
+	public function maybe_select_set_from_url() {
+		global $pagenow;
+
+		if ( 'customize.php' !== $pagenow || empty( $_GET['inspiro_starter_set'] ) ) {
+			return;
+		}
+
+		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'inspiro-starter-set' ) ) {
+			return;
+		}
+
+		if ( ! current_user_can( 'customize' ) || ! get_option( 'fresh_site' ) ) {
+			return;
+		}
+
+		// This runs before the theme setup (after_setup_theme:10) loads the registry.
+		if ( ! function_exists( 'inspiro_get_starter_content_sets' ) ) {
+			require_once INSPIRO_THEME_DIR . 'inc/starter-content.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		}
+
+		$set  = sanitize_key( wp_unslash( $_GET['inspiro_starter_set'] ) );
+		$sets = inspiro_get_starter_content_sets();
+
+		if ( isset( $sets[ $set ] ) ) {
+			update_option( 'inspiro_starter_content_set', $set, false );
+		}
 	}
 
 	/**

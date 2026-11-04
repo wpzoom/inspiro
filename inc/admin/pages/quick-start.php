@@ -29,6 +29,43 @@
 		</div>
 	</div>
 
+	<?php
+	$inspiro_starter_sets = ( class_exists( 'Inspiro_Starter_Content_Notice' ) && Inspiro_Starter_Content_Notice::is_available() && function_exists( 'inspiro_get_starter_content_sets' ) ) ? inspiro_get_starter_content_sets() : array();
+	if ( ! empty( $inspiro_starter_sets ) ) :
+		$inspiro_current_set = function_exists( 'inspiro_get_starter_content_set' ) ? inspiro_get_starter_content_set() : '';
+		?>
+	<div class="theme-info-wrap inspiro-starter-sets-admin">
+		<h3 class="wpz-onboard_content-main-title"><?php esc_html_e( 'Choose your starting point', 'inspiro' ); ?></h3>
+		<p class="wpz-onboard_content-main-intro"><?php esc_html_e( 'Your site comes with a few starter pages built from regular blocks. Pick the layout you want to begin with and publish it from the Customizer. Need a complete site instead? Import a full demo from the Starter Sites page.', 'inspiro' ); ?></p>
+		<div class="inspiro-starter-sets-admin__grid">
+			<?php foreach ( $inspiro_starter_sets as $inspiro_set_id => $inspiro_set ) : ?>
+				<?php $inspiro_thumb = ! empty( $inspiro_set['thumbnail'] ) ? get_template_directory_uri() . '/' . ltrim( $inspiro_set['thumbnail'], '/' ) : ''; ?>
+				<div class="inspiro-starter-sets-admin__tile<?php echo $inspiro_set_id === $inspiro_current_set ? ' is-current' : ''; ?>">
+					<?php if ( $inspiro_thumb ) : ?>
+						<a class="inspiro-starter-sets-admin__thumb" href="<?php echo esc_url( Inspiro_Starter_Content_Notice::get_customize_url( $inspiro_set_id ) ); ?>">
+							<img src="<?php echo esc_url( $inspiro_thumb ); ?>" alt="" width="600" height="400" loading="lazy" />
+						</a>
+					<?php endif; ?>
+					<h4>
+						<?php echo esc_html( $inspiro_set['label'] ); ?>
+						<?php if ( $inspiro_set_id === $inspiro_current_set ) : ?>
+							<span class="inspiro-starter-sets-admin__badge"><?php esc_html_e( 'Selected', 'inspiro' ); ?></span>
+						<?php endif; ?>
+					</h4>
+					<?php if ( ! empty( $inspiro_set['description'] ) ) : ?>
+						<p class="about"><?php echo esc_html( $inspiro_set['description'] ); ?></p>
+					<?php endif; ?>
+					<p class="section_footer">
+						<a href="<?php echo esc_url( Inspiro_Starter_Content_Notice::get_customize_url( $inspiro_set_id ) ); ?>" class="button <?php echo $inspiro_set_id === $inspiro_current_set ? 'button-primary' : 'button-secondary'; ?>">
+							<?php esc_html_e( 'Preview in Customizer', 'inspiro' ); ?>
+						</a>
+					</p>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+	<?php endif; ?>
+
 	<div class="theme-info-wrap">
 		<h3 class="wpz-onboard_content-main-title"><?php esc_html_e( 'Customize & Configure', 'inspiro' ); ?></h3>
 		<div class="wpz-grid-wrap three premium-features-grid">

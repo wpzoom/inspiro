@@ -198,7 +198,7 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
 			 * its AJAX handler need it); the content itself is only built in the
 			 * Customizer, as it is a one-off operation needed there.
 			 */
-			require INSPIRO_THEME_DIR . 'inc/starter-content.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require_once INSPIRO_THEME_DIR . 'inc/starter-content.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			if ( is_customize_preview() ) {
 				add_theme_support( 'starter-content', inspiro_get_starter_content() );
 			}
