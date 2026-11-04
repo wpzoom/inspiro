@@ -15,15 +15,22 @@
 .blog .site-main > article:not(.sticky),
 .archive .site-main > article:not(.sticky),
 .search .site-main > article:not(.sticky) {
-    padding-bottom: em(60);
+    // Whitespace separates posts; no divider line.
+    padding-bottom: em(72);
+}
 
-    &:after {
-        content: "";
-        display: block;
-        width: 130px;
-        height: 1px;
-        background: $color-border;
-        margin: 50px auto 0;
+// List titles: a fixed size instead of the Heading 1 size, which was
+// too large for a list of posts.
+body.blog .site-main > article .entry-title,
+body.archive .site-main > article .entry-title,
+body.search .site-main > article .entry-title {
+    @include font-size(32);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 14px;
+
+    @media (max-width: 640px) {
+        @include font-size(26);
     }
 }
 
@@ -92,12 +99,23 @@ body:not(.page-layout-sidebar-right) {
 .archive,
 .search {
     .entry-meta {
+        @include font-size(14);
+        color: #8a8a8a;
+        margin-bottom: 16px;
+
+        span + span:before {
+            content: " \00b7  ";
+            margin: 0 6px;
+            opacity: 1;
+            color: #c4c4c4;
+        }
+
         a {
-            border-bottom: 1px solid rgba(68, 68, 68, 0.19);
-            padding-bottom: 2px;
+            color: #555;
+            border-bottom: 0;
+            padding-bottom: 0;
 
             &:hover {
-                // color: var(--inspiro-primary-color);
                 color: var(--inspiro-primary-color);
             }
         }
