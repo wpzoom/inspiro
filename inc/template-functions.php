@@ -136,6 +136,11 @@ function inspiro_body_classes( $classes ) {
 		$classes[] = 'layout-' . sanitize_html_class( $demo_layout );
 	}
 
+	// Grid list layout on the blog, archives and search results.
+	if ( ( is_home() || is_archive() || is_search() ) && function_exists( 'inspiro_is_blog_layout_grid' ) && inspiro_is_blog_layout_grid() ) {
+		$classes[] = 'blog-layout-grid';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'inspiro_body_classes' );

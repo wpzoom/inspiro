@@ -2990,6 +2990,9 @@ body:not(.page-layout-sidebar-right) #primary .entry-content {
 body:not(.page-layout-sidebar-right).blog #primary, body:not(.page-layout-sidebar-right).archive #primary, body:not(.page-layout-sidebar-right).search #primary {
     max-width: calc(var(--container-width-narrow) + 20px);
 }
+body:not(.page-layout-sidebar-right).blog-layout-grid.blog #primary, body:not(.page-layout-sidebar-right).blog-layout-grid.archive #primary, body:not(.page-layout-sidebar-right).blog-layout-grid.search #primary {
+    max-width: calc(var(--container-width) + 20px);
+}
 body:not(.page-layout-sidebar-right).blog .site-main article, body:not(.page-layout-sidebar-right).archive .site-main article, body:not(.page-layout-sidebar-right).search .site-main article {
     text-align: center;
 }

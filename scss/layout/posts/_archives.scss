@@ -65,6 +65,17 @@ body:not(.page-layout-sidebar-right) {
 
     }
 
+    // The grid layout uses the full container width, not the reading width.
+    &.blog-layout-grid.blog,
+    &.blog-layout-grid.archive,
+    &.blog-layout-grid.search {
+
+        #primary {
+            max-width: calc( var(--container-width) + 20px );
+        }
+
+    }
+
 
     &.blog .site-main article,
     &.archive .site-main article,
