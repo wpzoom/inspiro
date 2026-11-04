@@ -25,7 +25,58 @@
 			
 			handleStarterContentDecision( action );
 		} );
+
+		// Switch between starter content sets.
+		$( document ).on( 'change', '.inspiro-starter-sets input[type="radio"]', function() {
+			var $input = $( this );
+			var $sets  = $input.closest( '.inspiro-starter-sets' );
+
+			$sets.find( '.inspiro-starter-set' ).removeClass( 'is-selected' );
+			$input.closest( '.inspiro-starter-set' ).addClass( 'is-selected' );
+
+			switchStarterContentSet( $input.val(), $sets );
+		} );
 	} );
+
+	// Store the chosen set, drop the current starter changeset and reload the customizer.
+	function switchStarterContentSet( set, $sets ) {
+		var $section = $( '#accordion-section-inspiro_starter_content_notice' );
+		var uuid     = api.settings && api.settings.changeset ? api.settings.changeset.uuid : '';
+
+		$sets.addClass( 'is-busy' );
+		$section.addClass( 'busy' );
+		$sets.find( 'input' ).prop( 'disabled', true );
+		$( '.inspiro-starter-content-buttons .button' ).prop( 'disabled', true );
+
+		if ( api.state && api.state( 'saved' ) ) {
+			// Nothing else is pending: a reload will not prompt about unsaved changes.
+			api.state( 'saved' ).set( true );
+		}
+
+		$.post( inspiroStarterContent.ajaxUrl, {
+			action: 'inspiro_switch_starter_content',
+			set: set,
+			changeset_uuid: uuid,
+			nonce: inspiroStarterContent.nonce
+		}, function( response ) {
+			if ( response.success ) {
+				$( window ).off( 'beforeunload.customize-confirm' );
+				window.location.href = inspiroStarterContent.customizeUrl;
+			} else {
+				$sets.removeClass( 'is-busy' );
+				$section.removeClass( 'busy' );
+				$sets.find( 'input' ).prop( 'disabled', false );
+				$( '.inspiro-starter-content-buttons .button' ).prop( 'disabled', false );
+				alert( response.data && response.data.message ? response.data.message : 'Something went wrong. Please try again.' );
+			}
+		} ).fail( function() {
+			$sets.removeClass( 'is-busy' );
+			$section.removeClass( 'busy' );
+			$sets.find( 'input' ).prop( 'disabled', false );
+			$( '.inspiro-starter-content-buttons .button' ).prop( 'disabled', false );
+			alert( 'Something went wrong. Please try again.' );
+		} );
+	}
 
 	// Handle the decision
 	function handleStarterContentDecision( action ) {

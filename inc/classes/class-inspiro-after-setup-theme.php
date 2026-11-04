@@ -194,11 +194,12 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
 
 			/*
 			 * Adds starter content to highlight the theme on fresh sites.
-			 * This is done conditionally to avoid loading the starter content on every
-			 * page load, as it is a one-off operation only needed once in the customizer.
+			 * The registry of sets is always available (the Customizer control and
+			 * its AJAX handler need it); the content itself is only built in the
+			 * Customizer, as it is a one-off operation needed there.
 			 */
+			require INSPIRO_THEME_DIR . 'inc/starter-content.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			if ( is_customize_preview() ) {
-				require INSPIRO_THEME_DIR . 'inc/starter-content.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 				add_theme_support( 'starter-content', inspiro_get_starter_content() );
 			}
 

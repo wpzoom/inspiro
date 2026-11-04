@@ -22,6 +22,7 @@ class Inspiro_Starter_Content_Notice {
 		add_action( 'customize_register', array( $this, 'add_starter_content_notice' ), 999 );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_scripts' ) );
 		add_action( 'wp_ajax_inspiro_dismiss_starter_content', array( $this, 'handle_starter_content_decision' ) );
+		add_action( 'wp_ajax_inspiro_switch_starter_content', array( $this, 'handle_starter_content_switch' ) );
 	}
 
 	/**
@@ -143,6 +144,8 @@ class Inspiro_Starter_Content_Notice {
 				'keepButton'  => __( 'Keep the starter content', 'inspiro' ),
 				'cleanButton' => __( 'Start with a clean slate', 'inspiro' ),
 				'noteText'    => __( 'Don\'t worry - you can import fully working demos from the Dashboard', 'inspiro' ),
+				'customizeUrl'  => admin_url( 'customize.php' ),
+				'switchingText' => __( 'Switching starter content…', 'inspiro' ),
 			)
 		);
 
@@ -167,6 +170,51 @@ class Inspiro_Starter_Content_Notice {
 		set_theme_mod( 'inspiro_starter_content_dismissed', true );
 
 		wp_send_json_success();
+	}
+
+	/**
+	 * Switch to another starter content set via AJAX.
+	 *
+	 * Stores the chosen set, drops the auto-draft changeset that holds the
+	 * current starter content (WordPress deletes its dependent auto-draft
+	 * posts and attachments with it) and lets the Customizer reload. On the
+	 * next load WordPress imports the newly chosen set, because the site is
+	 * still fresh.
+	 *
+	 * @since 2.3.0
+	 */
+	public function handle_starter_content_switch() {
+		check_ajax_referer( 'inspiro-starter-content', 'nonce' );
+
+		if ( ! current_user_can( 'customize' ) ) {
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to do this.', 'inspiro' ) ), 403 );
+		}
+
+		$set  = isset( $_POST['set'] ) ? sanitize_key( wp_unslash( $_POST['set'] ) ) : '';
+		$sets = function_exists( 'inspiro_get_starter_content_sets' ) ? inspiro_get_starter_content_sets() : array();
+
+		if ( '' === $set || ! isset( $sets[ $set ] ) ) {
+			wp_send_json_error( array( 'message' => __( 'Unknown starter content set.', 'inspiro' ) ), 400 );
+		}
+
+		if ( ! get_option( 'fresh_site' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Starter content can only be switched before the first publish. Use the demo importer instead.', 'inspiro' ) ), 400 );
+		}
+
+		$uuid = isset( $_POST['changeset_uuid'] ) ? sanitize_text_field( wp_unslash( $_POST['changeset_uuid'] ) ) : '';
+
+		if ( '' !== $uuid && wp_is_uuid( $uuid ) ) {
+			$changeset = get_page_by_path( $uuid, OBJECT, 'customize_changeset' );
+
+			if ( $changeset instanceof WP_Post && 'auto-draft' === $changeset->post_status ) {
+				// Deleting the changeset also removes its auto-draft posts and attachments.
+				wp_delete_post( $changeset->ID, true );
+			}
+		}
+
+		update_option( 'inspiro_starter_content_set', $set, false );
+
+		wp_send_json_success( array( 'set' => $set ) );
 	}
 
 	/**
@@ -274,49 +322,131 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 * Render the control
 		 */
 		public function render_content() {
-            ?>
-            <div class="inspiro-starter-content-buttons">
-                <button type="button" class="button button-primary inspiro-keep-starter" data-action="keep">
-                    <?php esc_html_e( 'Keep these helpful pages', 'inspiro' ); ?>
-                </button>
-                <button type="button" class="button inspiro-clean-slate" data-action="clean">
-                    <?php esc_html_e( 'Start with a clean slate', 'inspiro' ); ?>
-                </button>
-                <a href="<?php echo esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ); ?>" class="button button-secondary inspiro-import-demos">
-                    <?php esc_html_e( 'Import Demos', 'inspiro' ); ?>
-                </a>
-                <p class="description" style="margin-top: 10px;">
-                    <?php
-                    printf(
-                        esc_html__( 'Don\'t worry - you can import fully working demos from the %s.', 'inspiro' ),
-                        '<a href="' . esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ) . '">' . esc_html__( 'Dashboard', 'inspiro' ) . '</a>'
-                    );
-                    ?>
-                </p>
-            </div>
-            <style>
-                .inspiro-starter-content-buttons {
-                    margin-top: 10px;
-                }
-                .inspiro-starter-content-buttons .button {
-                    display: block;
-                    width: 100%;
-                    margin-bottom: 8px;
-                    text-align: center;
-                }
-                .inspiro-clean-slate {
-                    background: #fff !important;
-                    color: #0073aa !important;
-                    border-color: #0073aa !important;
-                }
-                .inspiro-clean-slate:hover {
-                    background: #f1f1f1 !important;
-                    color: #005a87 !important;
-                    border-color: #005a87 !important;
-                }
-            </style>
-            <?php
-        }
+			$sets    = function_exists( 'inspiro_get_starter_content_sets' ) ? inspiro_get_starter_content_sets() : array();
+			$current = function_exists( 'inspiro_get_starter_content_set' ) ? inspiro_get_starter_content_set() : '';
+			?>
+			<?php if ( count( $sets ) > 1 ) : ?>
+			<p class="description inspiro-starter-sets-intro"><?php esc_html_e( 'Pick a starting point. You can change it until you publish.', 'inspiro' ); ?></p>
+			<div class="inspiro-starter-sets" role="radiogroup">
+				<?php foreach ( $sets as $id => $set ) : ?>
+					<?php
+					$input_id = 'inspiro-starter-set-' . sanitize_html_class( $id );
+					$thumb    = ! empty( $set['thumbnail'] ) ? get_template_directory_uri() . '/' . ltrim( $set['thumbnail'], '/' ) : '';
+					?>
+					<label class="inspiro-starter-set<?php echo $id === $current ? ' is-selected' : ''; ?>" for="<?php echo esc_attr( $input_id ); ?>">
+						<input type="radio" id="<?php echo esc_attr( $input_id ); ?>" name="inspiro_starter_set" value="<?php echo esc_attr( $id ); ?>" <?php checked( $id, $current ); ?> />
+						<?php if ( $thumb ) : ?>
+							<img class="inspiro-starter-set__thumb" src="<?php echo esc_url( $thumb ); ?>" alt="" width="300" height="200" loading="lazy" />
+						<?php endif; ?>
+						<span class="inspiro-starter-set__text">
+							<strong><?php echo esc_html( $set['label'] ); ?></strong>
+							<?php if ( ! empty( $set['description'] ) ) : ?>
+								<span class="inspiro-starter-set__desc"><?php echo esc_html( $set['description'] ); ?></span>
+							<?php endif; ?>
+						</span>
+					</label>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
+			<div class="inspiro-starter-content-buttons">
+				<button type="button" class="button button-primary inspiro-keep-starter" data-action="keep">
+					<?php esc_html_e( 'Keep these helpful pages', 'inspiro' ); ?>
+				</button>
+				<button type="button" class="button inspiro-clean-slate" data-action="clean">
+					<?php esc_html_e( 'Start with a clean slate', 'inspiro' ); ?>
+				</button>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ); ?>" class="button button-secondary inspiro-import-demos">
+					<?php esc_html_e( 'Import Demos', 'inspiro' ); ?>
+				</a>
+				<p class="description" style="margin-top: 10px;">
+					<?php
+					printf(
+						esc_html__( 'Don\'t worry - you can import fully working demos from the %s.', 'inspiro' ),
+						'<a href="' . esc_url( admin_url( 'admin.php?page=inspiro-demo' ) ) . '">' . esc_html__( 'Dashboard', 'inspiro' ) . '</a>'
+					);
+					?>
+				</p>
+			</div>
+			<style>
+				.inspiro-starter-sets-intro {
+					margin: 0 0 10px;
+				}
+				.inspiro-starter-sets {
+					display: flex;
+					flex-direction: column;
+					gap: 8px;
+					margin-bottom: 16px;
+				}
+				.inspiro-starter-set {
+					display: block;
+					position: relative;
+					border: 1px solid #dcdcde;
+					border-radius: 4px;
+					background: #fff;
+					cursor: pointer;
+					overflow: hidden;
+					transition: border-color .15s, box-shadow .15s;
+				}
+				.inspiro-starter-set:hover {
+					border-color: #8c8f94;
+				}
+				.inspiro-starter-set.is-selected {
+					border-color: #2271b1;
+					box-shadow: 0 0 0 1px #2271b1;
+				}
+				.inspiro-starter-set input {
+					position: absolute;
+					top: 10px;
+					left: 10px;
+					margin: 0;
+					z-index: 1;
+				}
+				.inspiro-starter-set__thumb {
+					display: block;
+					width: 100%;
+					height: auto;
+					aspect-ratio: 3 / 2;
+					object-fit: cover;
+					border-bottom: 1px solid #f0f0f1;
+				}
+				.inspiro-starter-set__text {
+					display: block;
+					padding: 10px 12px 12px;
+				}
+				.inspiro-starter-set__text strong {
+					display: block;
+					font-size: 13px;
+				}
+				.inspiro-starter-set__desc {
+					display: block;
+					margin-top: 2px;
+					color: #646970;
+					font-size: 12px;
+					line-height: 1.4;
+				}
+				.inspiro-starter-sets.is-busy {
+					opacity: .5;
+					pointer-events: none;
+				}
+				.inspiro-starter-content-buttons .button {
+					display: block;
+					width: 100%;
+					margin-bottom: 8px;
+					text-align: center;
+				}
+				.inspiro-clean-slate {
+					background: #fff !important;
+					color: #0073aa !important;
+					border-color: #0073aa !important;
+				}
+				.inspiro-clean-slate:hover {
+					background: #f1f1f1 !important;
+					color: #005a87 !important;
+					border-color: #005a87 !important;
+				}
+			</style>
+			<?php
+		}
 
 	}
 }

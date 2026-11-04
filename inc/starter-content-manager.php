@@ -240,3 +240,81 @@ function inspiro_ajax_delete_starter_content() {
 	wp_send_json( $result );
 }
 add_action( 'wp_ajax_inspiro_delete_starter_content', 'inspiro_ajax_delete_starter_content' );
+/**
+ * Show starter content posts in archives and query loops while previewing.
+ *
+ * Starter content posts are auto-drafts until the Customizer publishes the
+ * changeset, so a "latest posts" list in the preview would only show
+ * "Hello world". While the site is fresh, let queries for posts include the
+ * auto-drafts that belong to the current changeset.
+ *
+ * @since 2.3.0
+ *
+ * @param WP_Customize_Manager $wp_customize Customizer manager.
+ */
+function inspiro_preview_starter_content_posts( $wp_customize ) {
+	if ( ! get_option( 'fresh_site' ) || ! $wp_customize instanceof WP_Customize_Manager ) {
+		return;
+	}
+
+	$setting = $wp_customize->get_setting( 'nav_menus_created_posts' );
+	$ids     = $setting ? $setting->post_value( array() ) : array();
+	$ids     = array_filter( array_map( 'intval', (array) $ids ) );
+
+	if ( empty( $ids ) ) {
+		return;
+	}
+
+	$post_ids = array();
+	foreach ( $ids as $id ) {
+		if ( 'post' === get_post_type( $id ) && 'auto-draft' === get_post_status( $id ) ) {
+			$post_ids[] = $id;
+		}
+	}
+
+	if ( empty( $post_ids ) ) {
+		return;
+	}
+
+	add_action(
+		'pre_get_posts',
+		function ( $query ) use ( $post_ids ) {
+			if ( is_admin() || $query->get( 'p' ) || $query->get( 'page_id' ) || $query->get( 'name' ) ) {
+				return;
+			}
+
+			$post_type = $query->get( 'post_type' );
+			if ( ! empty( $post_type ) && 'post' !== $post_type && ! ( is_array( $post_type ) && in_array( 'post', $post_type, true ) ) ) {
+				return;
+			}
+
+			$status = $query->get( 'post_status' );
+			if ( ! empty( $status ) && 'publish' !== $status ) {
+				return;
+			}
+
+			$query->set( 'post_status', array( 'publish', 'auto-draft' ) );
+			$query->set( 'inspiro_starter_post_ids', $post_ids );
+		}
+	);
+
+	add_filter(
+		'posts_where',
+		function ( $where, $query ) {
+			global $wpdb;
+
+			$post_ids = $query->get( 'inspiro_starter_post_ids' );
+			if ( empty( $post_ids ) ) {
+				return $where;
+			}
+
+			$ids    = implode( ',', array_map( 'intval', (array) $post_ids ) );
+			$where .= " AND ( {$wpdb->posts}.post_status <> 'auto-draft' OR {$wpdb->posts}.ID IN ( {$ids} ) )";
+
+			return $where;
+		},
+		10,
+		2
+	);
+}
+add_action( 'customize_preview_init', 'inspiro_preview_starter_content_posts' );
