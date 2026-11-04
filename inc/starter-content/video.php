@@ -2,15 +2,15 @@
 /**
  * Starter content set: Video Hero
  *
- * The classic Inspiro start: a full-screen video header, followed by an
- * intro with key numbers, three services, a grid of films, reasons to work
- * with the studio, a testimonial, the latest posts and a call to action.
- * Inner pages and posts are shared with the Creative Agency set.
+ * The classic Inspiro start: the centered full-screen video header, intro,
+ * three service covers, key numbers, about and process, a dark portfolio
+ * band, clients, team, a testimonial, the parallax call to action and the
+ * latest news. Inner pages and posts are shared with the Creative Agency set.
  *
  * @package Inspiro
  * @subpackage Inspiro_Lite
  * @since Inspiro 1.0.0
- * @since Inspiro 2.3.0 Moved into its own set and rebuilt below the hero.
+ * @since Inspiro 2.3.0 Moved into its own set; plugin blocks replaced, numbers and testimonial added.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,71 +20,107 @@ if ( ! defined( 'ABSPATH' ) ) {
 $inspiro_img = get_template_directory_uri() . '/assets/images/';
 
 $inspiro_video_home = <<<'HTML'
-<!-- wp:cover {"url":"https://demo.wpzoom.com/inspiro-lite/files/2022/03/Pexels-Videos-1409899-1.mp4","id":6672,"dimRatio":100,"customGradient":"linear-gradient(0deg,rgb(16,16,16) 0%,rgba(16,16,16,0.2) 45%,rgba(16,16,16,0) 100%)","isUserOverlayColor":true,"backgroundType":"video","minHeight":100,"minHeightUnit":"vh","contentPosition":"bottom center","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"},"margin":{"bottom":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-cover alignfull has-custom-content-position is-position-bottom-center" style="margin-bottom:0;padding-top:var(--wp--preset--spacing--x-large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small);min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim wp-block-cover__gradient-background has-background-gradient" style="background:linear-gradient(0deg,rgb(16,16,16) 0%,rgba(16,16,16,0.2) 45%,rgba(16,16,16,0) 100%)"></span><video class="wp-block-cover__video-background intrinsic-ignore" autoplay muted loop playsinline src="https://demo.wpzoom.com/inspiro-lite/files/2022/03/Pexels-Videos-1409899-1.mp4" data-object-fit="cover"></video><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"bottom"} -->
-<div class="wp-block-columns are-vertically-aligned-bottom"><!-- wp:column {"verticalAlignment":"bottom","width":"60%","style":{"spacing":{"blockGap":"var:preset|spacing|x-small"}}} -->
-<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:60%"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"2px","textTransform":"uppercase"}},"textColor":"white","fontSize":"x-small"} -->
-<p class="has-white-color has-text-color has-x-small-font-size" style="letter-spacing:2px;text-transform:uppercase">Video production studio</p>
+<!-- wp:cover {"url":"https://demo.wpzoom.com/inspiro-lite/files/2022/03/Pexels-Videos-1409899-1.mp4","id":6672,"dimRatio":20,"backgroundType":"video","minHeight":100,"minHeightUnit":"vh","contentPosition":"center center","isDark":false,"align":"full","layout":{"type":"constrained"}} -->
+<div class="wp-block-cover alignfull is-light" style="min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-20 has-background-dim"></span><video class="wp-block-cover__video-background intrinsic-ignore" autoplay muted loop playsinline src="https://demo.wpzoom.com/inspiro-lite/files/2022/03/Pexels-Videos-1409899-1.mp4" data-object-fit="cover"></video><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","style":{"typography":{"fontStyle":"normal","fontWeight":"900","lineHeight":"1.2"}},"textColor":"white","fontSize":"max-60"} -->
+<p class="has-text-align-center has-white-color has-text-color has-max-60-font-size" style="font-style:normal;font-weight:900;line-height:1.2"><strong>Create. Amaze. Inspire.</strong></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":1,"style":{"typography":{"fontStyle":"normal","fontWeight":"600","lineHeight":"1.05"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"white","fontSize":"max-60"} -->
-<h1 class="wp-block-heading has-white-color has-text-color has-max-60-font-size" style="margin-top:0;margin-bottom:0;font-style:normal;font-weight:600;line-height:1.05">Create. Amaze. Inspire.</h1>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"style":{"color":{"text":"#d6d6d6"}},"fontSize":"small"} -->
-<p class="has-text-color has-small-font-size" style="color:#d6d6d6">Inspiro is a portfolio and photography theme with a full-screen video header. This area plays self-hosted videos as well as videos from YouTube and Vimeo.</p>
+<!-- wp:paragraph {"align":"center","textColor":"white","fontSize":"medium"} -->
+<p class="has-text-align-center has-white-color has-text-color has-medium-font-size">Inspiro is a Portfolio &amp; Photography WordPress Theme. This area supports self-hosted videos as well as videos from YouTube and Vimeo.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"white","textColor":"primary","style":{"border":{"radius":"4px"}},"fontSize":"small"} -->
-<div class="wp-block-button has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-primary-color has-white-background-color has-text-color has-background wp-element-button" href="#work" style="border-radius:4px">See our work</a></div>
-<!-- /wp:button -->
+<!-- wp:spacer {"height":"55px"} -->
+<div style="height:55px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-<!-- wp:button {"textColor":"white","style":{"border":{"radius":"4px"}},"className":"is-style-outline","fontSize":"small"} -->
-<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="#" style="border-radius:4px">Get in touch</a></div>
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"textColor":"white","style":{"border":{"radius":"0px"}},"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="#services" style="border-radius:0px">Learn More</a></div>
 <!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"verticalAlignment":"bottom","width":"40%"} -->
-<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:40%"><!-- wp:paragraph {"align":"right","style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"small"} -->
-<p class="has-text-align-right has-white-color has-text-color has-small-font-size" style="margin-bottom:0">★★★★★ &nbsp;4.9/5</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"align":"right","style":{"color":{"text":"#b5b5b5"},"spacing":{"margin":{"bottom":"0"}}},"fontSize":"x-small"} -->
-<p class="has-text-align-right has-text-color has-x-small-font-size" style="color:#b5b5b5;margin-bottom:0">Trusted by 120+ studios and startups</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div></div>
+<!-- /wp:buttons --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--x-large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column {"width":"55%"} -->
-<div class="wp-block-column" style="flex-basis:55%"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"tertiary","fontSize":"x-small"} -->
-<p class="has-tertiary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">About the studio</p>
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"860px"}} -->
+<div class="wp-block-group"><!-- wp:spacer {"height":"80px"} -->
+<div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading {"textAlign":"center","style":{"typography":{"letterSpacing":"1px"}},"fontSize":"medium"} -->
+<h2 class="wp-block-heading has-text-align-center has-medium-font-size" style="letter-spacing:1px">WE ARE A VIDEO PRODUCTION STUDIO IN AMSTERDAM</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","textColor":"tertiary"} -->
+<p class="has-text-align-center has-tertiary-color has-text-color">We write, shoot and finish brand films, campaign content and documentary series for clients across Europe. A senior crew on every job, and a director who stays from the first call to the final grade.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"500","lineHeight":"1.2"}},"fontSize":"large"} -->
-<h2 class="wp-block-heading has-large-font-size" style="font-style:normal;font-weight:500;line-height:1.2">We make films for brands that want to be felt, not just seen.</h2>
-<!-- /wp:heading --></div>
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center","orientation":"horizontal"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"style":{"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="#" style="border-radius:0px">ABOUT US</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:spacer {"height":"80px"} -->
+<div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"backgroundColor":"background","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-background-background-color has-background" id="services" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">LET'S WORK TOGETHER!</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Our Services</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"tertiary"} -->
+<p class="has-tertiary-color has-text-color">From the first creative conversation to the final exported frame, the same people stay on your project. Three services, one crew, every stage of production.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":"30px"} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}StockSnap_356BERTH29.jpg","dimRatio":60,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":380,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"},"spacing":{"padding":{"top":"var:preset|spacing|small","right":"var:preset|spacing|x-small","bottom":"var:preset|spacing|small","left":"var:preset|spacing|x-small"}}}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;padding-top:var(--wp--preset--spacing--small);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--small);padding-left:var(--wp--preset--spacing--x-small);min-height:380px"><img class="wp-block-cover__image-background" alt="" src="{{img}}StockSnap_356BERTH29.jpg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-60 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
+<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-top:0;margin-bottom:0">Video<br>Production</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color has-link-color" style="margin-top:0;margin-bottom:0"><a href="#">Explore more →</a></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"width":"45%","style":{"spacing":{"padding":{"left":"var:preset|spacing|small"}}}} -->
-<div class="wp-block-column" style="padding-left:var(--wp--preset--spacing--small);flex-basis:45%"><!-- wp:paragraph {"textColor":"tertiary"} -->
-<p class="has-tertiary-color has-text-color">Inspiro is a small production studio in Amsterdam. We write, shoot and finish brand films, campaign content and documentary series for clients across Europe, with a senior crew on every job and a director who stays from the first call to the final grade.</p>
-<!-- /wp:paragraph -->
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}StockSnap_KV0WLH355C.jpg","dimRatio":60,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":380,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"},"spacing":{"padding":{"top":"var:preset|spacing|small","right":"var:preset|spacing|x-small","bottom":"var:preset|spacing|small","left":"var:preset|spacing|x-small"}}}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;padding-top:var(--wp--preset--spacing--small);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--small);padding-left:var(--wp--preset--spacing--x-small);min-height:380px"><img class="wp-block-cover__image-background" alt="" src="{{img}}StockSnap_KV0WLH355C.jpg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-60 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
+<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-top:0;margin-bottom:0">Professional<br>Editing</h3>
+<!-- /wp:heading -->
 
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"style":{"border":{"radius":"4px"}},"fontSize":"small"} -->
-<div class="wp-block-button has-custom-font-size has-small-font-size"><a class="wp-block-button__link wp-element-button" href="#" style="border-radius:4px">About us</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color has-link-color" style="margin-top:0;margin-bottom:0"><a href="#">Explore more →</a></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}StockSnap_M6D1GS9PSL.jpg","dimRatio":60,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":380,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"},"spacing":{"padding":{"top":"var:preset|spacing|small","right":"var:preset|spacing|x-small","bottom":"var:preset|spacing|small","left":"var:preset|spacing|x-small"}}}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;padding-top:var(--wp--preset--spacing--small);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--small);padding-left:var(--wp--preset--spacing--x-small);min-height:380px"><img class="wp-block-cover__image-background" alt="" src="{{img}}StockSnap_M6D1GS9PSL.jpg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-60 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
+<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-top:0;margin-bottom:0">Aerial<br>Video</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}},"textColor":"secondary"} -->
+<p class="has-secondary-color has-text-color has-link-color" style="margin-top:0;margin-bottom:0"><a href="#">Explore more →</a></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:spacer {"height":"var:preset|spacing|small"} -->
-<div style="height:var(--wp--preset--spacing--small)" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- wp:spacer {"height":"60px"} -->
+<div style="height:60px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
 <!-- wp:columns -->
@@ -130,190 +166,254 @@ $inspiro_video_home = <<<'HTML'
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"backgroundColor":"background","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-background-background-color has-background" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column {"width":"55%"} -->
-<div class="wp-block-column" style="flex-basis:55%"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"tertiary","fontSize":"x-small"} -->
-<p class="has-tertiary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">What we do</p>
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|small"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--small)"><!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|medium"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">WHO WE ARE</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"500","lineHeight":"1.2"}},"fontSize":"large"} -->
-<h2 class="wp-block-heading has-large-font-size" style="font-style:normal;font-weight:500;line-height:1.2">Three services, one crew, every stage of production.</h2>
-<!-- /wp:heading --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"width":"45%","style":{"spacing":{"padding":{"left":"var:preset|spacing|small"}}}} -->
-<div class="wp-block-column" style="padding-left:var(--wp--preset--spacing--small);flex-basis:45%"><!-- wp:paragraph {"textColor":"tertiary"} -->
-<p class="has-tertiary-color has-text-color">From the first creative conversation to the final exported frame, the same people stay on your project. No handoffs, no telephone game.</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:spacer {"height":"var:preset|spacing|small"} -->
-<div style="height:var(--wp--preset--spacing--small)" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
-
-<!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
-<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}StockSnap_356BERTH29.jpg" alt="" style="border-radius:12px"/></figure>
-<!-- /wp:image -->
-
-<!-- wp:heading {"level":3,"fontSize":"medium"} -->
-<h3 class="wp-block-heading has-medium-font-size">Video production</h3>
+<!-- wp:heading -->
+<h2 class="wp-block-heading">About us</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"textColor":"tertiary","fontSize":"small"} -->
-<p class="has-tertiary-color has-text-color has-small-font-size">Brand films, campaign spots and music videos. We develop the concept, direct the shoot and deliver every cutdown you need.</p>
+<!-- wp:paragraph {"textColor":"tertiary"} -->
+<p class="has-tertiary-color has-text-color">Inspiro was founded in 2011 by two documentary filmmakers who got tired of watching brands play it safe. The first office was a converted warehouse in Amsterdam, and the first clients were social enterprises with a story and no budget.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size"><a href="#">Learn more</a></p>
-<!-- /wp:paragraph --></div>
+<!-- wp:paragraph {"textColor":"tertiary"} -->
+<p class="has-tertiary-color has-text-color">Today a crew of twelve produces campaign films, brand documentaries and content series for clients across Europe and the US.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left","orientation":"horizontal"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"style":{"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="#" style="border-radius:0px">READ MORE</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:column -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
-<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}StockSnap_KV0WLH355C.jpg" alt="" style="border-radius:12px"/></figure>
-<!-- /wp:image -->
-
-<!-- wp:heading {"level":3,"fontSize":"medium"} -->
-<h3 class="wp-block-heading has-medium-font-size">Editing and finishing</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"textColor":"tertiary","fontSize":"small"} -->
-<p class="has-tertiary-color has-text-color has-small-font-size">Have footage already? Our editors, colourists and sound designers turn it into something broadcast-ready for every screen.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size"><a href="#">Learn more</a></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
-<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}StockSnap_M6D1GS9PSL.jpg" alt="" style="border-radius:12px"/></figure>
-<!-- /wp:image -->
-
-<!-- wp:heading {"level":3,"fontSize":"medium"} -->
-<h3 class="wp-block-heading has-medium-font-size">Aerial video</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"textColor":"tertiary","fontSize":"small"} -->
-<p class="has-tertiary-color has-text-color has-small-font-size">Licensed drone pilots and stabilised rigs for the shots that make a location feel bigger than it is.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size"><a href="#">Learn more</a></p>
-<!-- /wp:paragraph --></div>
+<!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}StockSnap_PT8C3EOE19.jpg" alt="" style="border-radius:12px"/></figure>
+<!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" id="work" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"tertiary","fontSize":"x-small"} -->
-<p class="has-tertiary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">From the portfolio</p>
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|small","bottom":"var:preset|spacing|large"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--small);padding-bottom:var(--wp--preset--spacing--large)"><!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|medium"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}video-1.jpeg" alt="" style="border-radius:12px"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">HOW WE WORK</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"500","lineHeight":"1.2"}},"fontSize":"large"} -->
-<h2 class="wp-block-heading has-large-font-size" style="font-style:normal;font-weight:500;line-height:1.2">A few of the films we are proud of.</h2>
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Our Process</h2>
 <!-- /wp:heading -->
 
-<!-- wp:spacer {"height":"var:preset|spacing|small"} -->
-<div style="height:var(--wp--preset--spacing--small)" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- wp:paragraph {"textColor":"tertiary"} -->
+<p class="has-tertiary-color has-text-color">Discovery takes a week. Script and storyboard take two. Production is one to three days, and post is three weeks. Most films are delivered 21 days after the brief is confirmed, with every cutdown included.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"style":{"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="#" style="border-radius:0px">OUR SERVICES</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|x-large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"},"margin":{"top":"0px"}}},"backgroundColor":"black","textColor":"white","className":"portfolio-dark","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull portfolio-dark has-white-color has-black-background-color has-text-color has-background" style="margin-top:0px;padding-top:var(--wp--preset--spacing--x-large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--x-large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:paragraph {"align":"center","style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-text-align-center has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">FROM THE PORTFOLIO</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"textAlign":"center","textColor":"white"} -->
+<h2 class="wp-block-heading has-text-align-center has-white-color has-text-color">Our Work</h2>
+<!-- /wp:heading -->
+
+<!-- wp:spacer {"height":"44px"} -->
+<div style="height:44px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}video-1.jpeg","dimRatio":30,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":460,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"}}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;min-height:460px"><img class="wp-block-cover__image-background" alt="" src="{{img}}video-1.jpeg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
-<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-bottom:0">Northline Launch</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"textColor":"white","fontSize":"x-small"} -->
-<p class="has-white-color has-text-color has-x-small-font-size">Brand film</p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:cover --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}video-2.jpeg","dimRatio":30,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":460,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"}}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;min-height:460px"><img class="wp-block-cover__image-background" alt="" src="{{img}}video-2.jpeg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
+<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}video-2.jpeg","dimRatio":30,"overlayColor":"black","isUserOverlayColor":true,"minHeight":420,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"}}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;min-height:420px"><img class="wp-block-cover__image-background" alt="" src="{{img}}video-2.jpeg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
 <h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-bottom:0">The Long Way Home</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"textColor":"white","fontSize":"x-small"} -->
-<p class="has-white-color has-text-color has-x-small-font-size">Documentary series</p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:cover --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}video-3.jpeg","dimRatio":30,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":460,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"}}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;min-height:460px"><img class="wp-block-cover__image-background" alt="" src="{{img}}video-3.jpeg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
-<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-bottom:0">Golden Hour</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"textColor":"white","fontSize":"x-small"} -->
-<p class="has-white-color has-text-color has-x-small-font-size">Campaign film</p>
+<!-- wp:paragraph {"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size">Documentary series</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}StockSnap_PT8C3EOE19.jpg","dimRatio":30,"overlayColor":"primary","isUserOverlayColor":true,"minHeight":460,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"}}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;min-height:460px"><img class="wp-block-cover__image-background" alt="" src="{{img}}StockSnap_PT8C3EOE19.jpg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
-<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-bottom:0">Midnight Session</h3>
+<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}video-3.jpeg","dimRatio":30,"overlayColor":"black","isUserOverlayColor":true,"minHeight":420,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"}}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;min-height:420px"><img class="wp-block-cover__image-background" alt="" src="{{img}}video-3.jpeg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
+<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-bottom:0">Golden Hour</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"textColor":"white","fontSize":"x-small"} -->
-<p class="has-white-color has-text-color has-x-small-font-size">Music video</p>
+<!-- wp:paragraph {"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size">Campaign film</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:cover {"url":"{{img}}StockSnap_KV0WLH355C.jpg","dimRatio":30,"overlayColor":"black","isUserOverlayColor":true,"minHeight":420,"minHeightUnit":"px","contentPosition":"bottom left","style":{"border":{"radius":"12px"}}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left" style="border-radius:12px;min-height:420px"><img class="wp-block-cover__image-background" alt="" src="{{img}}StockSnap_KV0WLH355C.jpg" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"textColor":"white","fontSize":"medium"} -->
+<h3 class="wp-block-heading has-white-color has-text-color has-medium-font-size" style="margin-bottom:0">Northline Launch</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size">Brand film</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover --></div>
 <!-- /wp:column --></div>
-<!-- /wp:columns --></div>
+<!-- /wp:columns -->
+
+<!-- wp:spacer {"height":"44px"} -->
+<div style="height:44px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"textColor":"white","style":{"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="#" style="border-radius:0px">VIEW ALL PROJECTS</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"backgroundColor":"primary","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-white-color has-primary-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column {"width":"45%"} -->
-<div class="wp-block-column" style="flex-basis:45%"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"},"color":{"text":"#b5b5b5"}},"fontSize":"x-small"} -->
-<p class="has-text-color has-x-small-font-size" style="color:#b5b5b5;letter-spacing:1px">Why Inspiro</p>
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--large)"><!-- wp:paragraph {"align":"center","style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-text-align-center has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">WE WORK WITH</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"500","lineHeight":"1.2"}},"textColor":"white","fontSize":"large"} -->
-<h2 class="wp-block-heading has-white-color has-text-color has-large-font-size" style="font-style:normal;font-weight:500;line-height:1.2">A partner that stays until the film works.</h2>
+<!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Our Clients</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"style":{"color":{"text":"#b5b5b5"}}} -->
-<p class="has-text-color" style="color:#b5b5b5">We do not hand you a treatment and disappear. The same crew is with you through the shoot, the edit and the launch.</p>
+<!-- wp:paragraph {"align":"center","textColor":"tertiary"} -->
+<p class="has-text-align-center has-tertiary-color has-text-color">Trusted by 120+ studios and startups, from early-stage teams to established European names.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":"20px"} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|medium"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600","letterSpacing":"2px"}},"textColor":"tertiary","fontSize":"medium"} -->
+<p class="has-tertiary-color has-text-color has-medium-font-size" style="font-style:normal;font-weight:600;letter-spacing:2px">AURUM</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600","letterSpacing":"2px"}},"textColor":"tertiary","fontSize":"medium"} -->
+<p class="has-tertiary-color has-text-color has-medium-font-size" style="font-style:normal;font-weight:600;letter-spacing:2px">DWELL</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600","letterSpacing":"2px"}},"textColor":"tertiary","fontSize":"medium"} -->
+<p class="has-tertiary-color has-text-color has-medium-font-size" style="font-style:normal;font-weight:600;letter-spacing:2px">FIELDWORK</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600","letterSpacing":"2px"}},"textColor":"tertiary","fontSize":"medium"} -->
+<p class="has-tertiary-color has-text-color has-medium-font-size" style="font-style:normal;font-weight:600;letter-spacing:2px">NORTHLINE</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600","letterSpacing":"2px"}},"textColor":"tertiary","fontSize":"medium"} -->
+<p class="has-tertiary-color has-text-color has-medium-font-size" style="font-style:normal;font-weight:600;letter-spacing:2px">VANTARA</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"backgroundColor":"background","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-background-background-color has-background" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:paragraph {"align":"center","style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-text-align-center has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">MEET US</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Our Team</h2>
+<!-- /wp:heading -->
+
+<!-- wp:spacer {"height":"27px"} -->
+<div style="height:27px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}team1.jpg" alt="" style="border-radius:12px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"fontSize":"medium"} -->
+<h3 class="wp-block-heading has-medium-font-size" style="margin-bottom:0">Lena Vasquez</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">EXECUTIVE PRODUCER</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"tertiary","fontSize":"small"} -->
+<p class="has-tertiary-color has-text-color has-small-font-size">Lena keeps the wheels turning without letting them show. She has managed productions across 14 countries and has never missed a delivery date.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"width":"55%","style":{"spacing":{"padding":{"left":"var:preset|spacing|small"}}}} -->
-<div class="wp-block-column" style="padding-left:var(--wp--preset--spacing--small);flex-basis:55%"><!-- wp:paragraph {"style":{"border":{"bottom":{"color":"#333333","width":"1px"}},"spacing":{"padding":{"top":"var:preset|spacing|x-small","bottom":"var:preset|spacing|x-small"},"margin":{"bottom":"0"}}},"textColor":"white"} -->
-<p class="has-white-color has-text-color" style="border-bottom-color:#333333;border-bottom-width:1px;margin-bottom:0;padding-top:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--x-small)">One director from the first call to the final grade</p>
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}team2.jpg" alt="" style="border-radius:12px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"fontSize":"medium"} -->
+<h3 class="wp-block-heading has-medium-font-size" style="margin-bottom:0">Marco den Hartog</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">FOUNDER AND DIRECTOR</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"style":{"border":{"bottom":{"color":"#333333","width":"1px"}},"spacing":{"padding":{"top":"var:preset|spacing|x-small","bottom":"var:preset|spacing|x-small"},"margin":{"top":"0","bottom":"0"}}},"textColor":"white"} -->
-<p class="has-white-color has-text-color" style="border-bottom-color:#333333;border-bottom-width:1px;margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--x-small)">Fixed scope and a price you know before we shoot</p>
+<!-- wp:paragraph {"textColor":"tertiary","fontSize":"small"} -->
+<p class="has-tertiary-color has-text-color has-small-font-size">Marco has directed over 200 brand films across Europe. He started in documentary, and it shows: every frame is there because something true is happening in it.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"12px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="{{img}}team3.jpg" alt="" style="border-radius:12px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"0"}}},"fontSize":"medium"} -->
+<h3 class="wp-block-heading has-medium-font-size" style="margin-bottom:0">Daan Hoekstra</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">DIRECTOR OF PHOTOGRAPHY</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"style":{"border":{"bottom":{"color":"#333333","width":"1px"}},"spacing":{"padding":{"top":"var:preset|spacing|x-small","bottom":"var:preset|spacing|x-small"},"margin":{"top":"0","bottom":"0"}}},"textColor":"white"} -->
-<p class="has-white-color has-text-color" style="border-bottom-color:#333333;border-bottom-width:1px;margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--x-small)">Every cutdown included: 60s, 30s, 15s and 6s</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"style":{"spacing":{"padding":{"top":"var:preset|spacing|x-small","bottom":"var:preset|spacing|x-small"},"margin":{"top":"0","bottom":"0"}}},"textColor":"white"} -->
-<p class="has-white-color has-text-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--x-small)">Most films delivered 21 days after the brief</p>
+<!-- wp:paragraph {"textColor":"tertiary","fontSize":"small"} -->
+<p class="has-tertiary-color has-text-color has-small-font-size">Daan has shot campaigns for global brands and intimate social stories. An eye for available light is why clients keep asking for the same crew.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
-<!-- /wp:columns --></div>
+<!-- /wp:columns -->
+
+<!-- wp:spacer {"height":"40px"} -->
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"style":{"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="#" style="border-radius:0px">JOIN OUR TEAM</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"layout":{"type":"constrained","contentSize":"860px"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:paragraph {"align":"center","textColor":"secondary","fontSize":"small"} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large"}}},"layout":{"type":"constrained","contentSize":"860px"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--large)"><!-- wp:paragraph {"align":"center","textColor":"secondary","fontSize":"small"} -->
 <p class="has-text-align-center has-secondary-color has-text-color has-small-font-size">★★★★★</p>
 <!-- /wp:paragraph -->
 
@@ -326,17 +426,43 @@ $inspiro_video_home = <<<'HTML'
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"backgroundColor":"background","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-background-background-color has-background" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"tertiary","fontSize":"x-small"} -->
-<p class="has-tertiary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">From the blog</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"500","lineHeight":"1.2"}},"fontSize":"large"} -->
-<h2 class="wp-block-heading has-large-font-size" style="font-style:normal;font-weight:500;line-height:1.2">Latest news</h2>
+<!-- wp:cover {"url":"{{img}}StockSnap_M6D1GS9PSL.jpg","id":24,"hasParallax":true,"dimRatio":40,"overlayColor":"black","minHeightUnit":"px","contentPosition":"center center","align":"full","style":{"border":{"radius":"0px"},"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|x-large"}}},"className":"is-position-center-center"} -->
+<div class="wp-block-cover alignfull has-parallax is-position-center-center" style="border-radius:0px;padding-top:var(--wp--preset--spacing--x-large);padding-bottom:var(--wp--preset--spacing--x-large)"><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-40 has-background-dim"></span><div role="img" class="wp-block-cover__image-background wp-image-24 has-parallax" style="background-position:50% 50%;background-image:url({{img}}StockSnap_M6D1GS9PSL.jpg)"></div><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"760px"}} -->
+<div class="wp-block-group"><!-- wp:heading {"textAlign":"center","level":3,"style":{"color":{"text":"#fffffa"},"typography":{"textTransform":"uppercase"}},"fontSize":"medium"} -->
+<h3 class="wp-block-heading has-text-align-center has-text-color has-medium-font-size" style="color:#fffffa;text-transform:uppercase">Unleash your creativity with Inspiro</h3>
 <!-- /wp:heading -->
 
-<!-- wp:spacer {"height":"var:preset|spacing|small"} -->
-<div style="height:var(--wp--preset--spacing--small)" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- wp:paragraph {"align":"center","textColor":"white"} -->
+<p class="has-text-align-center has-white-color has-text-color">Every great film starts with a single conversation. Tell us what you're building and we'll tell you what's possible, and what it will take to get there.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":"31px"} -->
+<div style="height:31px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center","orientation":"horizontal"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"textColor":"white","style":{"border":{"radius":"0px"}},"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="#" style="border-radius:0px">CONTACT US</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div id="news" class="wp-block-group"><!-- wp:spacer {"height":"108px"} -->
+<div style="height:108px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"secondary","fontSize":"x-small"} -->
+<p class="has-secondary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">FROM THE BLOG</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Latest News</h2>
+<!-- /wp:heading -->
+
+<!-- wp:spacer {"height":"33px"} -->
+<div style="height:33px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
 <!-- wp:query {"queryId":4,"query":{"perPage":"3","pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false}} -->
@@ -348,6 +474,8 @@ $inspiro_video_home = <<<'HTML'
 <!-- wp:post-title {"level":3,"isLink":true,"style":{"elements":{"link":{"color":{"text":"var:preset|color|foreground"}}},"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|x-small"}}},"fontSize":"medium"} /-->
 
 <!-- wp:post-excerpt {"excerptLength":24,"style":{"elements":{"link":{"color":{"text":"var:preset|color|tertiary"}}}},"textColor":"tertiary","fontSize":"small"} /-->
+
+<!-- wp:read-more {"style":{"border":{"width":"2px"},"spacing":{"padding":{"right":"var:preset|spacing|x-small","left":"var:preset|spacing|x-small","top":"10px","bottom":"10px"}},"typography":{"textTransform":"uppercase"}},"textColor":"foreground","fontSize":"x-small"} /-->
 <!-- /wp:post-template -->
 
 <!-- wp:query-no-results -->
@@ -355,41 +483,11 @@ $inspiro_video_home = <<<'HTML'
 <p></p>
 <!-- /wp:paragraph -->
 <!-- /wp:query-no-results --></div>
-<!-- /wp:query --></div>
-<!-- /wp:group -->
+<!-- /wp:query -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|x-large","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--x-large);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"60%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%"><!-- wp:paragraph {"style":{"typography":{"letterSpacing":"1px"}},"textColor":"tertiary","fontSize":"x-small"} -->
-<p class="has-tertiary-color has-text-color has-x-small-font-size" style="letter-spacing:1px">Start a project</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"500","lineHeight":"1.1"}},"fontSize":"x-large"} -->
-<h2 class="wp-block-heading has-x-large-font-size" style="font-style:normal;font-weight:500;line-height:1.1">Let's make something.</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"textColor":"tertiary"} -->
-<p class="has-tertiary-color has-text-color">Every great film starts with a single conversation. Tell us what you're building and we'll tell you what's possible.</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%"><!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"0"}}},"fontSize":"medium"} -->
-<p class="has-medium-font-size" style="margin-bottom:0">+31 10 000 0000</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"fontSize":"medium"} -->
-<p class="has-medium-font-size">hello@inspiro.com</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"style":{"border":{"radius":"4px"}},"fontSize":"small"} -->
-<div class="wp-block-button has-custom-font-size has-small-font-size"><a class="wp-block-button__link wp-element-button" href="#" style="border-radius:4px">Get in touch</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
+<!-- wp:spacer {"height":"85px"} -->
+<div style="height:85px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:group -->
 HTML;
 
