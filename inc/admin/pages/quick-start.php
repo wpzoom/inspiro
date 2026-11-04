@@ -34,13 +34,16 @@
 	if ( ! empty( $inspiro_starter_sets ) ) :
 		$inspiro_current_set = function_exists( 'inspiro_get_starter_content_set' ) ? inspiro_get_starter_content_set() : '';
 
-		// A taste of the demo library, from the same feed as the Premium Starter Sites tab.
-		$inspiro_demo_library = function_exists( 'inspiro_get_premium_demos' ) ? inspiro_get_premium_demos() : array();
-		if ( empty( $inspiro_demo_library ) && function_exists( 'inspiro_get_premium_demos_fallback' ) ) {
-			$inspiro_demo_library = inspiro_get_premium_demos_fallback();
+		// The free demo library. Premium designs only stand in, labelled, when the free feed is unavailable.
+		$inspiro_free_demos    = function_exists( 'inspiro_get_free_demos' ) ? inspiro_get_free_demos() : array();
+		$inspiro_premium_demos = function_exists( 'inspiro_get_premium_demos' ) ? inspiro_get_premium_demos() : array();
+		if ( empty( $inspiro_premium_demos ) && function_exists( 'inspiro_get_premium_demos_fallback' ) ) {
+			$inspiro_premium_demos = inspiro_get_premium_demos_fallback();
 		}
-		$inspiro_premium_count = count( $inspiro_demo_library );
-		$inspiro_free_count    = (int) apply_filters( 'inspiro/free_demos_count', 25 );
+		$inspiro_free_count    = ! empty( $inspiro_free_demos ) ? count( $inspiro_free_demos ) : (int) apply_filters( 'inspiro/free_demos_count', 25 );
+		$inspiro_premium_count = count( $inspiro_premium_demos );
+		$inspiro_library_is_premium = empty( $inspiro_free_demos );
+		$inspiro_demo_library  = $inspiro_library_is_premium ? $inspiro_premium_demos : $inspiro_free_demos;
 		$inspiro_demo_library  = array_slice( array_filter( $inspiro_demo_library, function ( $demo ) { return ! empty( $demo['thumbnail_url'] ); } ), 0, 8 );
 
 		$inspiro_plugin_status = function_exists( 'inspiro_check_plugin_status' ) ? inspiro_check_plugin_status( 'inspiro-starter-sites/inspiro-starter-sites.php' ) : 'active';
@@ -87,11 +90,18 @@
 				<p>
 					<?php
 					printf(
-						/* translators: 1: number of free demos, 2: number of premium demos. */
-						esc_html__( '%1$d free and %2$d premium demos: complete websites for agencies, shops, restaurants, portfolios and more, imported in one click with all pages, images, menus and plugins set up.', 'inspiro' ),
-						(int) $inspiro_free_count,
-						(int) $inspiro_premium_count
+						/* translators: %d: number of free demos. */
+						esc_html__( '%d free demos: complete websites for agencies, shops, restaurants, portfolios and more, imported in one click with all pages, images, menus and plugins set up.', 'inspiro' ),
+						(int) $inspiro_free_count
 					);
+					if ( $inspiro_premium_count ) {
+						echo ' ';
+						printf(
+							/* translators: %d: number of premium demos. */
+							esc_html__( 'Inspiro Premium adds %d more designs.', 'inspiro' ),
+							(int) $inspiro_premium_count
+						);
+					}
 					?>
 				</p>
 			</div>
@@ -101,7 +111,12 @@
 					<?php foreach ( $inspiro_demo_library as $inspiro_demo ) : ?>
 						<a class="inspiro-start__demo js-inspiro-starter-sites-handle" data-plugin-status="<?php echo esc_attr( $inspiro_plugin_status ); ?>" href="<?php echo esc_url( $inspiro_importer_url ); ?>">
 							<span class="inspiro-start__demo-thumb"><img src="<?php echo esc_url( $inspiro_demo['thumbnail_url'] ); ?>" alt="" loading="lazy" /></span>
-							<span class="inspiro-start__demo-title"><?php echo esc_html( $inspiro_demo['title'] ); ?></span>
+							<span class="inspiro-start__demo-title">
+								<?php echo esc_html( $inspiro_demo['title'] ); ?>
+								<?php if ( $inspiro_library_is_premium ) : ?>
+									<span class="inspiro-start__tag"><?php esc_html_e( 'Premium', 'inspiro' ); ?></span>
+								<?php endif; ?>
+							</span>
 						</a>
 					<?php endforeach; ?>
 				</div>
@@ -109,9 +124,9 @@
 					<a class="button button-primary button-hero js-inspiro-starter-sites-handle" data-plugin-status="<?php echo esc_attr( $inspiro_plugin_status ); ?>" href="<?php echo esc_url( $inspiro_importer_url ); ?>">
 						<?php
 						printf(
-							/* translators: %d: total number of demos. */
-							esc_html__( 'Browse all %d demos', 'inspiro' ),
-							(int) ( $inspiro_free_count + $inspiro_premium_count )
+							/* translators: %d: number of free demos. */
+							esc_html__( 'Browse all %d free demos', 'inspiro' ),
+							(int) $inspiro_free_count
 						);
 						?>
 					</a>
@@ -122,7 +137,7 @@
 			</div>
 			<?php else : ?>
 			<p class="section_footer">
-				<a class="button button-primary js-inspiro-starter-sites-handle" data-plugin-status="<?php echo esc_attr( $inspiro_plugin_status ); ?>" href="<?php echo esc_url( $inspiro_importer_url ); ?>"><?php esc_html_e( 'Browse all demos', 'inspiro' ); ?></a>
+				<a class="button button-primary js-inspiro-starter-sites-handle" data-plugin-status="<?php echo esc_attr( $inspiro_plugin_status ); ?>" href="<?php echo esc_url( $inspiro_importer_url ); ?>"><?php esc_html_e( 'Browse the free demos', 'inspiro' ); ?></a>
 			</p>
 			<?php endif; ?>
 		</div>

@@ -342,6 +342,64 @@ function inspiro_display_black_friday_banner() {
 <?php echo ob_get_clean(); }
 
 /**
+ * Free demos of the Inspiro Starter Sites plugin, for the dashboard.
+ *
+ * Fetched from the WPZOOM feed (cached for a day). Each item has title,
+ * thumbnail_url, demo_url and builders. Returns an empty array when the
+ * feed is unavailable.
+ *
+ * @since 2.3.0
+ *
+ * @return array
+ */
+function inspiro_get_free_demos() {
+	$cache_key = 'inspiro_free_demos_remote';
+	$cached    = get_transient( $cache_key );
+
+	if ( false !== $cached ) {
+		return is_array( $cached ) ? $cached : array();
+	}
+
+	$url = apply_filters(
+		'inspiro/free_demos_remote_url',
+		'https://www.wpzoom.com/frame/inspiro-lite-starter-sites.json'
+	);
+
+	$response = wp_remote_get( $url, array( 'timeout' => 10 ) );
+
+	if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
+		set_transient( $cache_key, array(), HOUR_IN_SECONDS );
+		return array();
+	}
+
+	$data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+	if ( empty( $data['demos'] ) || ! is_array( $data['demos'] ) ) {
+		set_transient( $cache_key, array(), HOUR_IN_SECONDS );
+		return array();
+	}
+
+	$demos = array();
+	foreach ( $data['demos'] as $demo ) {
+		if ( empty( $demo['title'] ) || empty( $demo['image'] ) ) {
+			continue;
+		}
+
+		$demos[] = array(
+			'id'            => isset( $demo['id'] ) ? sanitize_key( $demo['id'] ) : '',
+			'title'         => sanitize_text_field( $demo['title'] ),
+			'thumbnail_url' => esc_url_raw( $demo['image'] ),
+			'demo_url'      => ! empty( $demo['demo'] ) ? esc_url_raw( $demo['demo'] ) : '',
+			'builders'      => ( ! empty( $demo['builders'] ) && is_array( $demo['builders'] ) ) ? array_map( 'sanitize_key', $demo['builders'] ) : array(),
+		);
+	}
+
+	set_transient( $cache_key, $demos, empty( $demos ) ? HOUR_IN_SECONDS : apply_filters( 'inspiro/premium_demos_cache_ttl', DAY_IN_SECONDS ) );
+
+	return $demos;
+}
+
+/**
  * Premium demos shown on the Inspiro > Demos admin tab.
  *
  * Fetches the list from the remote WPZOOM endpoint (cached for a day) so new
