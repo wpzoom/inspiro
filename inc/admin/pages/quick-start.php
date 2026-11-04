@@ -32,7 +32,11 @@
 	<?php
 	$inspiro_starter_sets = ( class_exists( 'Inspiro_Starter_Content_Notice' ) && Inspiro_Starter_Content_Notice::is_available() && function_exists( 'inspiro_get_starter_content_sets' ) ) ? inspiro_get_starter_content_sets() : array();
 	if ( ! empty( $inspiro_starter_sets ) ) :
-		$inspiro_current_set = function_exists( 'inspiro_get_starter_content_set' ) ? inspiro_get_starter_content_set() : '';
+		// Only a set the user explicitly chose counts as selected; the default is just a default.
+		$inspiro_current_set = get_option( 'inspiro_starter_content_set', '' );
+		if ( ! is_string( $inspiro_current_set ) || ! isset( $inspiro_starter_sets[ $inspiro_current_set ] ) ) {
+			$inspiro_current_set = '';
+		}
 
 		// The free demo library. Premium designs only stand in, labelled, when the free feed is unavailable.
 		$inspiro_free_demos    = function_exists( 'inspiro_get_free_demos' ) ? inspiro_get_free_demos() : array();
