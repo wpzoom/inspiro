@@ -206,15 +206,28 @@ function inspiro_excerpt_more( $link ) {
 		return $link;
 	}
 
-	$link = sprintf(
+	return ' &hellip; ' . inspiro_get_read_more_link();
+}
+add_filter( 'excerpt_more', 'inspiro_excerpt_more' );
+
+/**
+ * The "Read more" link for the current post in a list.
+ *
+ * WordPress only applies `excerpt_more` to automatically generated
+ * excerpts, so posts with a manual excerpt use this directly.
+ *
+ * @since Inspiro 2.3.0
+ *
+ * @return string
+ */
+function inspiro_get_read_more_link() {
+	return sprintf(
 		'<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
 		esc_url( get_permalink( get_the_ID() ) ),
 		/* translators: %s: Post title. */
 		sprintf( __( 'Read more<span class="screen-reader-text"> "%s"</span>', 'inspiro' ), get_the_title( get_the_ID() ) )
 	);
-	return ' &hellip; ' . $link;
 }
-add_filter( 'excerpt_more', 'inspiro_excerpt_more' );
 
 /**
  * Filters the `sizes` value in the header image markup.

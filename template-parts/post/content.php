@@ -18,7 +18,14 @@
 
 	<?php if ( ! is_single() && 'excerpt' === inspiro_get_theme_mod( 'display_content' ) ) : ?>
 		<div class="entry-summary">
-			<?php the_excerpt(); ?>
+			<?php
+			the_excerpt();
+
+			// Manual excerpts bypass the excerpt_more filter; add the link ourselves.
+			if ( has_excerpt() ) {
+				echo inspiro_get_read_more_link(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+			?>
 		</div><!-- .entry-summary -->
 	<?php endif ?>
 
