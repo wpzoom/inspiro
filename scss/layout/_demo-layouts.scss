@@ -50,3 +50,51 @@
 		}
 	}
 }
+
+/* Photographer Demo Layout (Mara Ellis): WPZOOM Portfolio grids, series pages, contact form */
+.layout-photographer {
+	/* Portfolio grid: align to the 1200px column */
+	.photog-work.wpzoom-blocks_portfolio-block { margin: 0; }
+	.photog-work .wpzoom-blocks_portfolio-block_filter { margin: 0 0 36px; }
+	.photog-work .wpzoom-blocks_portfolio-block_filter ul { text-align: left; }
+	.photog-work .wpzoom-blocks_portfolio-block_filter ul li a { margin: 0 24px 0 0; }
+	.photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 32px; padding: 0; max-width: none; }
+	.photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list .wpzoom-blocks_portfolio-block_item { margin: 0; flex-direction: column; }
+	.photog-work .wpzoom-blocks_portfolio-block_item-thumbnail { margin: 0 0 14px !important; }
+	.photog-work .wpzoom-blocks_portfolio-block_item-thumbnail img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+	.photog-work.layout-list .wpzoom-blocks_portfolio-block_item .wpzoom-blocks_portfolio-block_item-title { font-size: 17px; font-weight: 500; }
+	@media (max-width: 900px) { .photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	@media (max-width: 600px) { .photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list { grid-template-columns: minmax(0, 1fr); } }
+	/* Home (grid): staggered three-column work grid */
+	.photog-masonry.wpzoom-blocks_portfolio-block { margin: 0; }
+	.photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list { display: block; columns: 3; column-gap: 32px; padding: 0; max-width: none; }
+	.photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list .wpzoom-blocks_portfolio-block_item { display: block; width: 100% !important; margin: 0 0 44px !important; break-inside: avoid; }
+	.photog-masonry .wpzoom-blocks_portfolio-block_item-thumbnail { margin: 0 0 14px !important; }
+	.photog-masonry .wpzoom-blocks_portfolio-block_item-thumbnail img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+	.photog-masonry .wpzoom-blocks_portfolio-block_item:nth-child(6n+2) img, .photog-masonry .wpzoom-blocks_portfolio-block_item:nth-child(6n+3) img, .photog-masonry .wpzoom-blocks_portfolio-block_item:nth-child(6n) img { aspect-ratio: 3 / 2; object-position: 50% 35%; }
+	.photog-masonry.layout-list .wpzoom-blocks_portfolio-block_item .wpzoom-blocks_portfolio-block_item-title { font-size: 17px; font-weight: 500; }
+	@media (max-width: 900px) { .photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list { columns: 2; } }
+	@media (max-width: 600px) { .photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list { columns: 1; } }
+	/* Hero text on the 1200px column; buttons in sentence case */
+	.wp-block-cover.photog-hero .wp-block-cover__inner-container { width: 100% !important; max-width: 1200px; margin-left: auto !important; margin-right: auto !important; padding-left: 0; padding-right: 0; }
+	.entry-content .wp-block-button__link { text-transform: none; letter-spacing: 0; }
+	/* Footer credit links */
+	.site-footer a { color: inherit; }
+	/* Journal posts: author name and author box hidden (demo persona) */
+	&.single-post .entry-author, &.single-post .post-author { display: none; }
+	&.single-post .entry-meta .entry-date::before { content: none; }
+	/* Series pages */
+	&.single-portfolio_item .single-featured-image-above { display: none; }
+	.photog-series figure.wp-block-image { margin: 0; }
+	.photog-series .wp-block-columns { margin: 0; }
+	&.single-portfolio_item .photog-series, &.single-portfolio_item .photog-next { padding-left: 0 !important; padding-right: 0 !important; }
+	&.single-portfolio_item .photog-series { padding-top: 0 !important; padding-bottom: 0 !important; }
+	.photog-series > * + * { margin-top: 32px !important; }
+	.photog-next__label { display: block; font-size: 13px; font-weight: 400; color: #6C6C77; margin-bottom: 4px; }
+	/* Contact: keep faces in the wide crop */
+	.photog-contact-image img { object-position: 50% 40%; }
+	/* Contact form */
+	.photog-form .wp-block-wpzoom-forms-form label { font-size: 14px; margin-bottom: 6px; display: block; }
+	.photog-form .wp-block-wpzoom-forms-form input:not([type=submit]), .photog-form .wp-block-wpzoom-forms-form textarea { width: 100%; background: #fff; margin-bottom: 20px; }
+	.photog-form .wp-block-wpzoom-forms-submit-field { text-transform: none; letter-spacing: 0; font-size: 15px; font-weight: 500; padding: 14px 28px; }
+}

@@ -2621,6 +2621,173 @@ body:not(.has-header-image):not(.has-header-video) #scroll-to-content {
     fill: #ffffff !important;
 }
 
+/* Photographer Demo Layout (Mara Ellis): WPZOOM Portfolio grids, series pages, contact form */
+.layout-photographer {
+    /* Portfolio grid: align to the 1200px column */
+    /* Home (grid): staggered three-column work grid */
+    /* Hero text on the 1200px column; buttons in sentence case */
+    /* Footer credit links */
+    /* Journal posts: author name and author box hidden (demo persona) */
+    /* Series pages */
+    /* Contact: keep faces in the wide crop */
+    /* Contact form */
+}
+.layout-photographer .photog-work.wpzoom-blocks_portfolio-block {
+    margin: 0;
+}
+.layout-photographer .photog-work .wpzoom-blocks_portfolio-block_filter {
+    margin: 0 0 36px;
+}
+.layout-photographer .photog-work .wpzoom-blocks_portfolio-block_filter ul {
+    text-align: right;
+}
+.layout-photographer .photog-work .wpzoom-blocks_portfolio-block_filter ul li a {
+    margin: 0 0 0 24px;
+}
+.layout-photographer .photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px 32px;
+    padding: 0;
+    max-width: none;
+}
+.layout-photographer .photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list .wpzoom-blocks_portfolio-block_item {
+    margin: 0;
+    flex-direction: column;
+}
+.layout-photographer .photog-work .wpzoom-blocks_portfolio-block_item-thumbnail {
+    margin: 0 0 14px !important;
+}
+.layout-photographer .photog-work .wpzoom-blocks_portfolio-block_item-thumbnail img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+}
+.layout-photographer .photog-work.layout-list .wpzoom-blocks_portfolio-block_item .wpzoom-blocks_portfolio-block_item-title {
+    font-size: 17px;
+    font-weight: 500;
+}
+@media (max-width: 900px) {
+    .layout-photographer .photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 600px) {
+    .layout-photographer .photog-work.layout-list .wpzoom-blocks_portfolio-block_items-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+.layout-photographer .photog-masonry.wpzoom-blocks_portfolio-block {
+    margin: 0;
+}
+.layout-photographer .photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list {
+    display: block;
+    columns: 3;
+    column-gap: 32px;
+    padding: 0;
+    max-width: none;
+}
+.layout-photographer .photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list .wpzoom-blocks_portfolio-block_item {
+    display: block;
+    width: 100% !important;
+    margin: 0 0 44px !important;
+    break-inside: avoid;
+}
+.layout-photographer .photog-masonry .wpzoom-blocks_portfolio-block_item-thumbnail {
+    margin: 0 0 14px !important;
+}
+.layout-photographer .photog-masonry .wpzoom-blocks_portfolio-block_item-thumbnail img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+}
+.layout-photographer .photog-masonry .wpzoom-blocks_portfolio-block_item:nth-child(6n+2) img, .layout-photographer .photog-masonry .wpzoom-blocks_portfolio-block_item:nth-child(6n+3) img, .layout-photographer .photog-masonry .wpzoom-blocks_portfolio-block_item:nth-child(6n) img {
+    aspect-ratio: 3/2;
+    object-position: 50% 35%;
+}
+.layout-photographer .photog-masonry.layout-list .wpzoom-blocks_portfolio-block_item .wpzoom-blocks_portfolio-block_item-title {
+    font-size: 17px;
+    font-weight: 500;
+}
+@media (max-width: 900px) {
+    .layout-photographer .photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list {
+        columns: 2;
+    }
+}
+@media (max-width: 600px) {
+    .layout-photographer .photog-masonry.layout-list .wpzoom-blocks_portfolio-block_items-list {
+        columns: 1;
+    }
+}
+.layout-photographer .wp-block-cover.photog-hero .wp-block-cover__inner-container {
+    width: 100% !important;
+    max-width: 1200px;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding-right: 0;
+    padding-left: 0;
+}
+.layout-photographer .entry-content .wp-block-button__link {
+    text-transform: none;
+    letter-spacing: 0;
+}
+.layout-photographer .site-footer a {
+    color: inherit;
+}
+.layout-photographer.single-post .entry-author, .layout-photographer.single-post .post-author {
+    display: none;
+}
+.layout-photographer.single-post .entry-meta .entry-date::before {
+    content: none;
+}
+.layout-photographer.single-portfolio_item .single-featured-image-above {
+    display: none;
+}
+.layout-photographer .photog-series figure.wp-block-image {
+    margin: 0;
+}
+.layout-photographer .photog-series .wp-block-columns {
+    margin: 0;
+}
+.layout-photographer.single-portfolio_item .photog-series, .layout-photographer.single-portfolio_item .photog-next {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+.layout-photographer.single-portfolio_item .photog-series {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.layout-photographer .photog-series > * + * {
+    margin-top: 32px !important;
+}
+.layout-photographer .photog-next__label {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6C6C77;
+    margin-bottom: 4px;
+}
+.layout-photographer .photog-contact-image img {
+    object-position: 50% 40%;
+}
+.layout-photographer .photog-form .wp-block-wpzoom-forms-form label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+}
+.layout-photographer .photog-form .wp-block-wpzoom-forms-form input:not([type=submit]), .layout-photographer .photog-form .wp-block-wpzoom-forms-form textarea {
+    width: 100%;
+    background: #fff;
+    margin-bottom: 20px;
+}
+.layout-photographer .photog-form .wp-block-wpzoom-forms-submit-field {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 28px;
+}
+
 /*--------------------------------------------------------------
 13.2 Front Page
 --------------------------------------------------------------*/
