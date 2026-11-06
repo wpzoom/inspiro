@@ -8,7 +8,7 @@
 **Contributors:** [wpzoom](https://profiles.wordpress.org/wpzoom/)  
 **Requires at least:** 6.4  
 **Tested up to:** 7.1  
-**Version:** 2.2.5  
+**Version:** 2.3.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags:** one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready  
@@ -118,8 +118,17 @@ Screenshot image: generated using AI (ChatGPT)
 
 ## Changelog ##
 
+### 2.3.0 ###
+* New: Choose your starting point. A fresh site can start as Creative Agency, Video Hero, Personal Blog or Magazine, picked and previewed in the Customizer before anything is published
+* New: The Inspiro dashboard shows the starter content sets and the library of free demos, with one button that installs Inspiro Starter Sites and opens the demo library
+* New: "Blog grid columns" option (2 or 3 columns); the blog grid now uses the full container width
+* New: Styles for the new Photographer and Landscape demos in Inspiro Starter Sites
+* Improved: On a fresh site the guided tour starts at the starter content picker
+* Improved: Blog grid and list layouts: landscape images, smaller titles and quieter post details
+* Improved: Posts with a manual excerpt now show the "Read more" link in the blog list
+
 ### 2.2.5 ###
-* Fixed: on-the-fly image size generation ran for non-image attachments such as PDFs, and retried sizes that could never be generated, on every media library request. With plugins that list the theme's image sizes in the media library (e.g. Beaver Builder) this made the Media Library extremely slow and could hit the PHP time limit (thanks to Fredy Neeser for the report)
+* Fixed: on-the-fly image size generation ran for non-image attachments such as PDFs, and retried sizes that could never be generated, on every media library request. With plugins that list the theme's image sizes in the media library (e.g. Beaver Builder) this made the Media Library extremely slow and could hit the PHP time limit
 
 ### 2.2.4 ###
 * New: refreshed hamburger icon (minimal two lines that turn into an X when the panel is open), matching Inspiro Premium
