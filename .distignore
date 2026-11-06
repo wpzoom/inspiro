@@ -11,6 +11,7 @@
 .git
 .github
 .gitignore
+.gitattributes
 .gitlab-ci.yml
 .travis.yml
 .DS_Store
@@ -40,9 +41,10 @@ tests
 webpack.config.js
 .wordpress-org
 wp-cli.local.yml
-vendor
+/vendor
 yarn.lock
 CLAUDE.md
+.claude
 scss
 backups
 README_DEV.md

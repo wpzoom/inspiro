@@ -1,0 +1,61 @@
+name: Deploy to WordPress.org
+
+# Publishing a GitHub release (tag v2.3.0 or 2.3.0) commits the tagged files to
+# https://themes.svn.wordpress.org/inspiro/<version>/. Theme versions on SVN cannot be
+# edited after the commit, so the checks below stop the deploy on any version mismatch.
+# Needs the repository secrets WPORG_SVN_USERNAME and WPORG_SVN_PASSWORD.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: # manual runs are always a dry run: build the version folder, show svn status, commit nothing
+
+jobs:
+  deploy:
+    name: Deploy theme
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check versions
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TAG="${GITHUB_REF#refs/tags/}"; TAG="${TAG#v}"
+          fi
+          STYLE=$(grep -m1 '^Version:' style.css | awk '{print $2}' | tr -d '\r')
+          README=$(grep -m1 '^Version:' readme.txt | awk '{print $2}' | tr -d '\r')
+          FUNCS=$(grep -oP "INSPIRO_THEME_VERSION', '\K[^']+" functions.php)
+          echo "tag=${TAG:-none} style.css=$STYLE readme.txt=$README functions.php=$FUNCS"
+          [ "$STYLE" = "$README" ] && [ "$STYLE" = "$FUNCS" ] || { echo "::error::Version numbers in style.css, readme.txt and functions.php differ"; exit 1; }
+          if [ -n "$TAG" ] && [ "$TAG" != "$STYLE" ]; then echo "::error::Release tag $TAG does not match the theme version $STYLE"; exit 1; fi
+          grep -q "^= $STYLE =" readme.txt || { echo "::error::readme.txt has no changelog entry for $STYLE"; exit 1; }
+          echo "version=$STYLE" >> "$GITHUB_OUTPUT"
+
+      - name: Check the version is new on WordPress.org
+        if: github.event_name == 'release'
+        run: |
+          if svn ls "https://themes.svn.wordpress.org/inspiro/${{ steps.version.outputs.version }}/" > /dev/null 2>&1; then
+            echo "::error::Version ${{ steps.version.outputs.version }} already exists on WordPress.org. Bump the version and release again."
+            exit 1
+          fi
+
+      - name: WordPress Theme Deploy
+        id: deploy
+        uses: kishanjasani/action-wordpress-theme-deploy@f50bbab0a17cf3967ed80b457cb7326902353d95
+        with:
+          generate-zip: true
+          dry-run: ${{ github.event_name != 'release' }}
+        env:
+          SLUG: inspiro
+          VERSION: ${{ steps.version.outputs.version }}
+          SVN_USERNAME: ${{ secrets.WPORG_SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.WPORG_SVN_PASSWORD }}
+
+      - name: Attach the zip to the release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.deploy.outputs.zip-path }}
