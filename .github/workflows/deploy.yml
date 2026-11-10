@@ -3,7 +3,7 @@ name: Deploy to WordPress.org
 # Publishing a GitHub release (tag v2.3.0 or 2.3.0) commits the tagged files to
 # https://themes.svn.wordpress.org/inspiro/<version>/. Theme versions on SVN cannot be
 # edited after the commit, so the checks below stop the deploy on any version mismatch.
-# Needs the repository secrets WPORG_SVN_USERNAME and WPORG_SVN_PASSWORD.
+# Needs the repository secrets SVN_USERNAME and SVN_PASSWORD (the WordPress.org account, same names as in the plugin repos).
 
 on:
   release:
@@ -51,8 +51,8 @@ jobs:
         env:
           SLUG: inspiro
           VERSION: ${{ steps.version.outputs.version }}
-          SVN_USERNAME: ${{ secrets.WPORG_SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.WPORG_SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
 
       - name: Attach the zip to the release
         if: github.event_name == 'release'
