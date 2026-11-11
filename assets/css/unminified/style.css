@@ -3948,6 +3948,614 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
     letter-spacing: 0;
 }
 
+/* ---- Travel (Terrain) demo: tour operator built with Elementor ---- */
+.layout-travel {
+    --tr-ink: #161512;
+    --tr-text: #3a3732;
+    --tr-muted: #6b6760;
+    --tr-accent: #c4622d;
+    --tr-line: #e3ded4;
+    --tr-sand: #f4efe6;
+}
+
+.layout-travel .entry-content a {
+    color: var(--tr-ink);
+}
+
+.layout-travel .entry-content a:hover {
+    color: var(--tr-accent);
+}
+
+/* Header: full width, logo and menu as in the mock-up */
+.layout-travel .site-header .inner-wrap, .layout-travel .navbar .inner-wrap {
+    max-width: none;
+    width: calc(100% - 80px);
+}
+
+.layout-travel .site-title a, .layout-travel .custom-logo-text {
+    letter-spacing: -0.02em;
+    text-transform: none;
+}
+
+.layout-travel .site-footer .inner-wrap {
+    max-width: 1200px;
+}
+
+.layout-travel .site-footer {
+    border-top: 1px solid var(--tr-line);
+}
+
+.layout-travel .site-footer .widget-title {
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--tr-ink);
+}
+
+.layout-travel .site-footer .widget_text, .layout-travel .site-footer .widget_text a {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--tr-muted);
+    text-decoration: none;
+}
+
+.layout-travel .site-footer .widget_text a:hover {
+    color: var(--tr-accent);
+}
+
+@media (max-width: 900px) {
+    .layout-travel .site-header .inner-wrap, .layout-travel .navbar .inner-wrap {
+        width: calc(100% - 40px);
+    }
+}
+/* Images and cards */
+.layout-travel .tr-img img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.layout-travel .tr-ratio-4-3 img {
+    aspect-ratio: 4/3;
+}
+
+.layout-travel .tr-ratio-3-2 img {
+    aspect-ratio: 3/2;
+}
+
+.layout-travel .tr-ratio-21-9 img {
+    aspect-ratio: 21/9;
+}
+
+.layout-travel .tr-card .elementor-widget-heading a {
+    text-decoration: none;
+}
+
+.layout-travel .tr-card .elementor-widget-heading a:hover {
+    color: var(--tr-accent);
+}
+
+.layout-travel .tr-private {
+    border: 1px solid var(--tr-line);
+    border-radius: 8px;
+    padding: 32px;
+}
+
+.layout-travel .tr-row-head .elementor-column {
+    display: flex;
+    align-items: flex-end;
+}
+
+.layout-travel .tr-row-head {
+    margin-bottom: 28px;
+}
+
+.layout-travel .tr-more a {
+    text-decoration: none;
+}
+
+.layout-travel .tr-more a:hover {
+    color: var(--tr-accent);
+}
+
+.layout-travel .tr-list ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.layout-travel .tr-list li {
+    margin-bottom: 6px;
+}
+
+/* Hero */
+.layout-travel .tr-hero .elementor-background-video-container {
+    opacity: 1;
+}
+
+.layout-travel .tr-hero-title {
+    max-width: 800px;
+}
+
+.layout-travel .tr-hero-sub {
+    max-width: 560px;
+}
+
+.layout-travel .tr-hero-sub p {
+    margin: 0;
+}
+
+.layout-travel .tr-hero-actions .elementor-column-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+}
+
+.layout-travel .tr-hero-actions .elementor-widget-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+    align-items: center;
+}
+
+.layout-travel .tr-inline {
+    width: auto !important;
+}
+
+.layout-travel .tr-watch .wpz-video-lightbox-trigger, .layout-travel .tr-watch a, .layout-travel .tr-watch button {
+    color: #fff;
+    font-family: "Instrument Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.layout-travel .tr-crumb a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+}
+
+/* Destination tiles (Image Box widget) */
+.layout-travel .tr-dest .wpz-image-box-title, .layout-travel .tr-dest h2, .layout-travel .tr-dest h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: #fff;
+}
+
+.layout-travel .tr-dest .wpz-image-box, .layout-travel .tr-dest .wpzoom-image-box {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Departures table */
+.layout-travel table.tr-departures {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid var(--tr-line);
+    margin: 0;
+}
+
+.layout-travel table.tr-departures td {
+    padding: 18px 16px 18px 0;
+    border-bottom: 1px solid var(--tr-line);
+    vertical-align: middle;
+    color: var(--tr-text);
+    font-size: 16px;
+}
+
+.layout-travel table.tr-departures td.tr-dep-tour a {
+    font-weight: 600;
+    color: var(--tr-ink);
+    text-decoration: none;
+}
+
+.layout-travel table.tr-departures td.tr-dep-price {
+    color: var(--tr-ink);
+    white-space: nowrap;
+}
+
+.layout-travel table.tr-departures td.tr-dep-btn {
+    text-align: right;
+    padding-right: 0;
+    width: 1%;
+    white-space: nowrap;
+}
+
+.layout-travel .tr-btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--tr-ink);
+    border-radius: 6px;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tr-ink);
+    text-decoration: none;
+}
+
+.layout-travel .tr-btn-outline:hover {
+    background: var(--tr-ink);
+    color: #fff;
+}
+
+@media (max-width: 700px) {
+    .layout-travel table.tr-departures, .layout-travel table.tr-departures tbody, .layout-travel table.tr-departures tr, .layout-travel table.tr-departures td {
+        display: block;
+    }
+    .layout-travel table.tr-departures td {
+        border: 0;
+        padding: 2px 0;
+    }
+    .layout-travel table.tr-departures tr {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--tr-line);
+    }
+    .layout-travel table.tr-departures td.tr-dep-btn {
+        text-align: left;
+        padding-top: 10px;
+    }
+}
+/* Quotes */
+.layout-travel .tr-quote-box {
+    border: 1px solid var(--tr-line);
+    border-radius: 8px;
+    padding: 36px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.layout-travel .tr-quote-box p.tr-quote {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 500;
+    margin: 0 0 18px;
+    color: var(--tr-ink);
+}
+
+.layout-travel .tr-quote-box p.tr-quote-by {
+    font-size: 15px;
+    color: var(--tr-muted);
+    margin: 0;
+}
+
+.layout-travel .tr-quote-box > .elementor-widget-container {
+    height: 100%;
+}
+
+/* Journal grid (Posts Grid widget) */
+.layout-travel .tr-journal .wpz-grid-wrap .meta, .layout-travel .tr-journal .post-grid-meta {
+    font-size: 14px;
+    color: var(--tr-muted);
+}
+
+.layout-travel .tr-journal .wpz-grid-wrap img {
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    width: 100%;
+}
+
+.layout-travel .tr-journal h3 a {
+    text-decoration: none;
+}
+
+/* CTA band */
+.layout-travel .tr-cta .elementor-column-wrap, .layout-travel .tr-cta .elementor-widget-wrap {
+    align-content: center;
+}
+
+/* Tours page filters */
+.layout-travel p.tr-filters {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin: 0 0 14px;
+    font-weight: 500;
+}
+
+.layout-travel p.tr-filters a {
+    color: var(--tr-muted);
+    text-decoration: none;
+}
+
+.layout-travel p.tr-filters a:hover {
+    color: var(--tr-ink);
+}
+
+/* Tour page */
+.layout-travel .tr-facts {
+    border-top: 1px solid var(--tr-line);
+    border-bottom: 1px solid var(--tr-line);
+}
+
+.layout-travel .tr-days {
+    border-top: 1px solid var(--tr-line);
+}
+
+.layout-travel .tr-day {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--tr-line);
+    align-items: baseline;
+}
+
+.layout-travel .tr-day-n {
+    font-weight: 600;
+    color: var(--tr-ink);
+}
+
+.layout-travel .tr-day-body strong {
+    display: block;
+    color: var(--tr-ink);
+    margin-bottom: 6px;
+}
+
+.layout-travel .tr-day-body p {
+    margin: 0;
+    color: var(--tr-text);
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+.layout-travel .tr-day-stay {
+    font-size: 14px;
+    color: var(--tr-muted);
+    white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+    .layout-travel .tr-day {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+}
+.layout-travel .tr-pp {
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--tr-muted);
+}
+
+.layout-travel table.tr-dates {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid var(--tr-line);
+    margin: 0 0 20px;
+}
+
+.layout-travel table.tr-dates td {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--tr-line);
+    font-size: 15px;
+    color: var(--tr-ink);
+}
+
+.layout-travel table.tr-dates td:last-child {
+    text-align: right;
+    color: var(--tr-muted);
+}
+
+.layout-travel table.tr-dates td.tr-few {
+    color: var(--tr-accent);
+    font-weight: 600;
+}
+
+.layout-travel table.tr-dates td.tr-soldout {
+    color: var(--tr-muted);
+}
+
+.layout-travel .tr-aside {
+    position: sticky;
+    top: 110px;
+    align-self: flex-start;
+}
+
+.layout-travel .tr-gallery .gallery-item img {
+    border-radius: 6px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    width: 100%;
+}
+
+.layout-travel .tr-ask {
+    font-size: 15px;
+}
+
+/* Forms (WPZOOM Forms) */
+.layout-travel .tr-form .wp-block-wpzoom-forms-form label, .layout-travel .tr-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 6px;
+    color: var(--tr-ink);
+}
+
+.layout-travel .tr-form .wp-block-wpzoom-forms-form label span {
+    font-weight: 500;
+}
+
+.layout-travel .tr-form input[type=text], .layout-travel .tr-form input[type=email], .layout-travel .tr-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #cfc9bd;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 15px;
+    background: #fff;
+    margin: 0 0 14px;
+}
+
+.layout-travel .tr-form input[type=submit] {
+    width: 100%;
+    background: var(--tr-accent);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 15px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.layout-travel .tr-form input[type=submit]:hover {
+    background: #a9501f;
+}
+
+.layout-travel .tr-form .wp-block-wpzoom-forms-required {
+    color: var(--tr-accent);
+}
+
+/* Team (Team Members widget) */
+.layout-travel .tr-member img {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.layout-travel .tr-member h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 14px 0 2px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.layout-travel .tr-member .wpz-team-member-job, .layout-travel .tr-member .job-title {
+    font-size: 14px;
+    color: var(--tr-accent);
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.layout-travel .tr-member .wpz-team-member-bio, .layout-travel .tr-member .bio, .layout-travel .tr-member p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--tr-text);
+}
+
+/* Blog (journal) */
+.layout-travel.blog .entry-title a, .layout-travel.archive .entry-title a {
+    text-transform: none;
+    letter-spacing: -0.01em;
+}
+
+.layout-travel .entry-content {
+    font-size: 17px;
+}
+
+/* Fixed header: push content down on normal pages; white text over the hero on transparent-header pages */
+.layout-travel:not(.page-template-full-width-transparent) #main {
+    padding-top: 83px;
+}
+
+@media (max-width: 900px) {
+    .layout-travel:not(.page-template-full-width-transparent) #main {
+        padding-top: 66px;
+    }
+}
+.layout-travel.page-template-full-width-transparent .site-header.headroom--top .custom-logo-text,
+.layout-travel.page-template-full-width-transparent .site-header.headroom--top .site-title a,
+.layout-travel.page-template-full-width-transparent .site-header.headroom--top .navbar-nav > li > a,
+.layout-travel.page-template-full-width-transparent .site-header.headroom--top .navbar-toggle {
+    color: #fff;
+}
+
+.layout-travel.page-template-full-width-transparent .site-header.headroom--top .navbar-nav > li > a:hover,
+.layout-travel.page-template-full-width-transparent .site-header.headroom--top .navbar-nav > li.current-menu-item > a {
+    color: #fff;
+    opacity: 0.8;
+}
+
+.layout-travel.page-template-full-width-transparent .site-header.headroom--top .navbar {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Destination tiles: name bottom-left */
+.layout-travel .tr-dest .wpzoom-elementor-addons-image-box h3 a {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 18px;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.layout-travel .tr-dest .wpzoom-elementor-addons-image-box h3 a span {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: #fff;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Journal grid images */
+.layout-travel .tr-journal .wpz-grid img {
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+/* Blog list: no author or comment meta, sentence-case read more */
+.layout-travel .entry-meta .entry-author, .layout-travel .entry-meta .entry-comments {
+    display: none;
+}
+
+.layout-travel .page-title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: none;
+}
+
+.layout-travel .entry-title, .layout-travel .entry-title a {
+    text-transform: none;
+    letter-spacing: -0.01em;
+}
+
+.layout-travel .read-more, .layout-travel .more-link, .layout-travel .entry-content .more-link {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+}
+
+/* Card spacing: tight stack under the image */
+.layout-travel .tr-card .elementor-widget:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.layout-travel .tr-card .elementor-widget-image {
+    margin-bottom: 14px;
+}
+
+.layout-travel .tr-card .elementor-widget-heading h3 {
+    margin: 0;
+}
+
+.layout-travel .tr-cards > .elementor-container > .elementor-column > .elementor-widget-wrap {
+    padding-top: 0;
+}
+
+@media (max-width: 767px) {
+    .layout-travel .tr-card {
+        margin-bottom: 36px;
+    }
+}
 /*--------------------------------------------------------------
 13.2 Front Page
 --------------------------------------------------------------*/
