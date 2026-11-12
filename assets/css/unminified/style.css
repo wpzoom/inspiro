@@ -4099,6 +4099,25 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
     pointer-events: none;
 }
 
+/* Hero copy stacks in one left-aligned column (title, line, buttons), like the mock; Elementor's widget wrap is a wrapping row by default and let the line float beside the title. */
+html .layout-travel .tr-hero > .elementor-container > .elementor-column > .elementor-widget-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: flex-end;
+    gap: 22px;
+}
+
+.layout-travel .tr-hero > .elementor-container > .elementor-column > .elementor-widget-wrap > .elementor-element {
+    width: 100%;
+}
+
+.layout-travel .tr-hero-actions > .elementor-container {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+}
+
 .layout-travel .tr-hero-title {
     max-width: 800px;
 }
