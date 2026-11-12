@@ -369,7 +369,7 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
 
 /* Hero */
 .layout-travel .tr-hero .elementor-background-video-container { opacity: 1; }
-.layout-travel .tr-hero::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 300px; background: linear-gradient(to bottom, rgba(20,15,8,0.55), rgba(20,15,8,0)); z-index: 1; pointer-events: none; }
+.layout-travel .tr-hero::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 360px; background: linear-gradient(to bottom, rgba(20,15,8,0.72), rgba(20,15,8,0.3) 45%, rgba(20,15,8,0)); z-index: 1; pointer-events: none; }
 .layout-travel .tr-hero-title { max-width: 800px; }
 .layout-travel .tr-hero-sub { max-width: 560px; }
 .layout-travel .tr-hero-sub p { margin: 0; }

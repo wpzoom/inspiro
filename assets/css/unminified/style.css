@@ -4093,8 +4093,8 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
     left: 0;
     right: 0;
     top: 0;
-    height: 300px;
-    background: linear-gradient(to bottom, rgba(20, 15, 8, 0.55), rgba(20, 15, 8, 0));
+    height: 360px;
+    background: linear-gradient(to bottom, rgba(20, 15, 8, 0.72), rgba(20, 15, 8, 0.3) 45%, rgba(20, 15, 8, 0));
     z-index: 1;
     pointer-events: none;
 }
