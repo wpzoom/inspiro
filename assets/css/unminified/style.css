@@ -3958,6 +3958,10 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
     --tr-sand: #f4efe6;
 }
 
+.layout-travel body, .layout-travel {
+    font-family: "Instrument Sans", Arial, sans-serif;
+}
+
 .layout-travel .entry-content a {
     color: var(--tr-ink);
 }
@@ -3985,13 +3989,22 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
     border-top: 1px solid var(--tr-line);
 }
 
-.layout-travel .site-footer .widget-title {
+.layout-travel .site-footer .footer-widgets .title, .layout-travel .site-footer .widget-title {
     font-family: "Instrument Sans", sans-serif;
     font-size: 15px;
     font-weight: 600;
     text-transform: none;
     letter-spacing: 0;
     color: var(--tr-ink);
+    margin: 0 0 14px;
+}
+
+.layout-travel .site-footer .site-info, .layout-travel .site-footer .site-info a {
+    color: var(--tr-muted);
+}
+
+.layout-travel .site-footer .site-info a:hover {
+    color: var(--tr-accent);
 }
 
 .layout-travel .site-footer .widget_text, .layout-travel .site-footer .widget_text a {
@@ -4072,6 +4085,18 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
 /* Hero */
 .layout-travel .tr-hero .elementor-background-video-container {
     opacity: 1;
+}
+
+.layout-travel .tr-hero::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(20, 15, 8, 0.55), rgba(20, 15, 8, 0));
+    z-index: 1;
+    pointer-events: none;
 }
 
 .layout-travel .tr-hero-title {
@@ -4482,17 +4507,21 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
     box-shadow: none;
 }
 
-/* Destination tiles: name bottom-left */
-.layout-travel .tr-dest .wpzoom-elementor-addons-image-box h3 a {
+/* Destination tiles: name bottom-left, 3:4 tile (the widget puts the ratio on the label span, which sizes the tile by the text) */
+html .layout-travel .tr-dest .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
+    aspect-ratio: 3/4;
     padding: 18px;
     text-align: left;
     border-radius: 8px;
 }
 
-.layout-travel .tr-dest .wpzoom-elementor-addons-image-box h3 a span {
+html .layout-travel .tr-dest .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span {
+    aspect-ratio: auto;
+    width: auto;
+    min-height: 0;
     font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 600;
     font-size: 26px;
@@ -4534,16 +4563,12 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
     font-weight: 600;
 }
 
-/* Card spacing: tight stack under the image */
-.layout-travel .tr-card .elementor-widget:not(:last-child) {
-    margin-bottom: 0;
+/* Widget spacing: the layout sets explicit margins, so drop Elementor's extra kit spacing and the theme's heading margin */
+.layout-travel .elementor-widget:not(:last-child) {
+    --kit-widget-spacing: 0px;
 }
 
-.layout-travel .tr-card .elementor-widget-image {
-    margin-bottom: 14px;
-}
-
-.layout-travel .tr-card .elementor-widget-heading h3 {
+.layout-travel .elementor-widget-heading .elementor-heading-title {
     margin: 0;
 }
 
@@ -4556,6 +4581,15 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
         margin-bottom: 36px;
     }
 }
+/* Side panel menu */
+html .layout-travel .side-nav .navbar-nav > li > a {
+    color: #fff;
+}
+
+html .layout-travel .side-nav .navbar-nav li.current-menu-item > a, html .layout-travel .side-nav .navbar-nav li.current_page_item > a, html .layout-travel .side-nav .navbar-nav li a:hover, html .layout-travel .side-nav .navbar-nav li a:focus {
+    color: var(--tr-accent);
+}
+
 /*--------------------------------------------------------------
 13.2 Front Page
 --------------------------------------------------------------*/

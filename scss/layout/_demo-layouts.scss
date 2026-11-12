@@ -336,6 +336,7 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
 
 /* ---- Travel (Terrain) demo: tour operator built with Elementor ---- */
 .layout-travel { --tr-ink: #161512; --tr-text: #3a3732; --tr-muted: #6b6760; --tr-accent: #c4622d; --tr-line: #e3ded4; --tr-sand: #f4efe6; }
+.layout-travel body, .layout-travel { font-family: 'Instrument Sans', Arial, sans-serif; }
 .layout-travel .entry-content a { color: var(--tr-ink); }
 .layout-travel .entry-content a:hover { color: var(--tr-accent); }
 
@@ -344,7 +345,9 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
 .layout-travel .site-title a, .layout-travel .custom-logo-text { letter-spacing: -0.02em; text-transform: none; }
 .layout-travel .site-footer .inner-wrap { max-width: 1200px; }
 .layout-travel .site-footer { border-top: 1px solid var(--tr-line); }
-.layout-travel .site-footer .widget-title { font-family: 'Instrument Sans', sans-serif; font-size: 15px; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--tr-ink); }
+.layout-travel .site-footer .footer-widgets .title, .layout-travel .site-footer .widget-title { font-family: 'Instrument Sans', sans-serif; font-size: 15px; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--tr-ink); margin: 0 0 14px; }
+.layout-travel .site-footer .site-info, .layout-travel .site-footer .site-info a { color: var(--tr-muted); }
+.layout-travel .site-footer .site-info a:hover { color: var(--tr-accent); }
 .layout-travel .site-footer .widget_text, .layout-travel .site-footer .widget_text a { font-size: 15px; line-height: 1.7; color: var(--tr-muted); text-decoration: none; }
 .layout-travel .site-footer .widget_text a:hover { color: var(--tr-accent); }
 @media (max-width: 900px) { .layout-travel .site-header .inner-wrap, .layout-travel .navbar .inner-wrap { width: calc(100% - 40px); } }
@@ -366,6 +369,7 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
 
 /* Hero */
 .layout-travel .tr-hero .elementor-background-video-container { opacity: 1; }
+.layout-travel .tr-hero::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 300px; background: linear-gradient(to bottom, rgba(20,15,8,0.55), rgba(20,15,8,0)); z-index: 1; pointer-events: none; }
 .layout-travel .tr-hero-title { max-width: 800px; }
 .layout-travel .tr-hero-sub { max-width: 560px; }
 .layout-travel .tr-hero-sub p { margin: 0; }
@@ -456,9 +460,9 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
 .layout-travel.page-template-full-width-transparent .site-header.headroom--top .navbar-nav > li.current-menu-item > a { color: #fff; opacity: .8; }
 .layout-travel.page-template-full-width-transparent .site-header.headroom--top .navbar { background: transparent; box-shadow: none; }
 
-/* Destination tiles: name bottom-left */
-.layout-travel .tr-dest .wpzoom-elementor-addons-image-box h3 a { display: flex; align-items: flex-end; justify-content: flex-start; padding: 18px; text-align: left; border-radius: 8px; }
-.layout-travel .tr-dest .wpzoom-elementor-addons-image-box h3 a span { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.01em; text-transform: none; color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,.4); }
+/* Destination tiles: name bottom-left, 3:4 tile (the widget puts the ratio on the label span, which sizes the tile by the text) */
+html .layout-travel .tr-dest .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link { display: flex; align-items: flex-end; justify-content: flex-start; aspect-ratio: 3 / 4; padding: 18px; text-align: left; border-radius: 8px; }
+html .layout-travel .tr-dest .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span { aspect-ratio: auto; width: auto; min-height: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.01em; text-transform: none; color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,.4); }
 
 /* Journal grid images */
 .layout-travel .tr-journal .wpz-grid img { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; height: auto; }
@@ -469,9 +473,12 @@ body.layout-boutique #content ul.products li.product .price, body.layout-boutiqu
 .layout-travel .entry-title, .layout-travel .entry-title a { text-transform: none; letter-spacing: -0.01em; }
 .layout-travel .read-more, .layout-travel .more-link, .layout-travel .entry-content .more-link { text-transform: none; letter-spacing: 0; font-weight: 600; }
 
-/* Card spacing: tight stack under the image */
-.layout-travel .tr-card .elementor-widget:not(:last-child) { margin-bottom: 0; }
-.layout-travel .tr-card .elementor-widget-image { margin-bottom: 14px; }
-.layout-travel .tr-card .elementor-widget-heading h3 { margin: 0; }
+/* Widget spacing: the layout sets explicit margins, so drop Elementor's extra kit spacing and the theme's heading margin */
+.layout-travel .elementor-widget:not(:last-child) { --kit-widget-spacing: 0px; }
+.layout-travel .elementor-widget-heading .elementor-heading-title { margin: 0; }
 .layout-travel .tr-cards > .elementor-container > .elementor-column > .elementor-widget-wrap { padding-top: 0; }
 @media (max-width: 767px) { .layout-travel .tr-card { margin-bottom: 36px; } }
+
+/* Side panel menu */
+html .layout-travel .side-nav .navbar-nav > li > a { color: #fff; }
+html .layout-travel .side-nav .navbar-nav li.current-menu-item > a, html .layout-travel .side-nav .navbar-nav li.current_page_item > a, html .layout-travel .side-nav .navbar-nav li a:hover, html .layout-travel .side-nav .navbar-nav li a:focus { color: var(--tr-accent); }
