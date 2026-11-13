@@ -521,6 +521,15 @@ html .layout-personal-blog.has-header-image .sb-search svg { fill: var(--wk-ink)
 html .layout-personal-blog.has-header-image .navbar-toggle .icon-bar { background-color: var(--wk-ink); }
 html .layout-personal-blog .entry-cover-image .entry-header .entry-meta, html .layout-personal-blog .entry-cover-image .entry-header .entry-meta a { color: rgba(255, 255, 255, 0.86); }
 
+/* Side panel (phones, and the menu button when a sidebar is set): white links on the dark panel on every page type */
+html body.layout-personal-blog .side-nav .navbar-nav > li > a, html body.layout-personal-blog .side-nav .navbar-nav .sub-menu a { color: #fff; }
+html body.layout-personal-blog .side-nav .navbar-nav .sub-menu a { color: rgba(255, 255, 255, 0.72); }
+html body.layout-personal-blog .side-nav .navbar-nav li > a:hover, html body.layout-personal-blog .side-nav .navbar-nav li > a:focus { color: #a8a8a8; }
+html body.layout-personal-blog .side-nav .navbar-nav li:is(.current-menu-item, .current_page_item, .current-menu-parent, .current-post-parent) > a { color: #fff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+html body.layout-personal-blog .side-nav .navbar-nav > li.wk-menu-button { margin: 28px 0 0; border: 0; }
+html body.layout-personal-blog .side-nav .navbar-nav > li.wk-menu-button > a { display: inline-block; background: #fff; color: #111; padding: 12px 26px; font-size: 18px; font-weight: 700; line-height: 1.3; }
+html body.layout-personal-blog .side-nav .navbar-nav > li.wk-menu-button > a:hover { background: #d9d9d9; color: #111; }
+
 /* Shared bits: category label, meta line */
 html .layout-personal-blog .wk-label a { display: inline-block; background: #fff; color: #111; font-family: var(--wk-sans); font-size: 12px; font-weight: 700; line-height: 1; padding: 6px 9px; border-radius: 0; text-decoration: none; }
 html .layout-personal-blog .wk-cat a, html .layout-personal-blog .wk-mini__cat a { color: var(--wk-accent); font-family: var(--wk-sans); text-decoration: none; }
