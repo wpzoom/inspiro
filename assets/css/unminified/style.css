@@ -6056,10 +6056,25 @@ html .layout-travel-blog .site-header .custom-logo-text {
         font-size: 54px;
         line-height: 1;
     }
+    html .layout-travel-blog .site-header .navbar {
+        padding-bottom: 0;
+    }
     .layout-travel-blog .site-header .header-navigation-wrapper {
         width: 100%;
         justify-content: center;
-        border-top: 1px solid var(--sm-line);
+        position: relative;
+        padding: 14px 0;
+    }
+    /* the rule above the menu runs edge to edge, like the navbar's bottom border */
+    .layout-travel-blog .site-header .header-navigation-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100vw;
+        height: 1px;
+        transform: translateX(-50%);
+        background: var(--sm-line);
     }
     .layout-travel-blog .site-header .header-navigation-wrapper .primary-menu-wrapper {
         margin: 0 auto;

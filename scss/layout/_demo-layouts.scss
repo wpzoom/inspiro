@@ -800,7 +800,10 @@ html .layout-travel-blog .site-header .custom-logo-text { font-family: var(--sm-
 	.layout-travel-blog .site-header .header-inner { flex-wrap: wrap; justify-content: center; position: relative; }
 	.layout-travel-blog .site-header .header-logo-wrapper { width: 100%; max-width: none; justify-content: center; padding: 30px 0 22px; }
 	html .layout-travel-blog .site-header .custom-logo-text { font-size: 54px; line-height: 1; }
-	.layout-travel-blog .site-header .header-navigation-wrapper { width: 100%; justify-content: center; border-top: 1px solid var(--sm-line); }
+	html .layout-travel-blog .site-header .navbar { padding-bottom: 0; }
+	.layout-travel-blog .site-header .header-navigation-wrapper { width: 100%; justify-content: center; position: relative; padding: 14px 0; }
+	/* the rule above the menu runs edge to edge, like the navbar's bottom border */
+	.layout-travel-blog .site-header .header-navigation-wrapper::before { content: ''; position: absolute; top: 0; left: 50%; width: 100vw; height: 1px; transform: translateX(-50%); background: var(--sm-line); }
 	.layout-travel-blog .site-header .header-navigation-wrapper .primary-menu-wrapper { margin: 0 auto; }
 	.layout-travel-blog .site-header .header-widgets-wrapper { position: absolute; right: 0; top: 34px; }
 	html .layout-travel-blog .navbar-nav > li > a { font-size: 16px; font-weight: 500; }
