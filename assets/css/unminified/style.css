@@ -7575,6 +7575,946 @@ html body.layout-travel-blog #comments .bypostauthor > div .comment-author cite:
     background: var(--sm-accent);
 }
 
+/* ---- Education (Fieldwork) demo: online school for photography and film, built with Elementor ---- */
+.layout-education {
+    --fw-ink: #111111;
+    --fw-text: #3a3a3a;
+    --fw-muted: #5c5c5c;
+    --fw-grey: #f2f2ef;
+    --fw-line: #e3e3e0;
+    --fw-yellow: #ffd23f;
+}
+
+.layout-education body, .layout-education {
+    font-family: "Geist", Arial, sans-serif;
+}
+
+.layout-education .entry-content a {
+    color: var(--fw-ink);
+}
+
+.layout-education .entry-content a:hover {
+    color: var(--fw-muted);
+}
+
+/* Header: wide, logo in the serif, menu button; the header is fixed, so pages start below it */
+.layout-education #main {
+    padding-top: 98px;
+}
+
+@media (max-width: 900px) {
+    .layout-education #main {
+        padding-top: 77px;
+    }
+}
+.layout-education .site-header .inner-wrap, .layout-education .navbar .inner-wrap {
+    max-width: none;
+    width: calc(100% - 80px);
+}
+
+.layout-education .site-title a, .layout-education .custom-logo-text {
+    letter-spacing: -0.01em;
+    text-transform: none;
+}
+
+.layout-education .navbar {
+    border-bottom: 1px solid var(--fw-line);
+}
+
+.layout-education .navbar-nav > li > a {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.layout-education .navbar-nav > li.fw-menu-button {
+    margin-left: 10px;
+}
+
+html .layout-education .navbar-nav > li.fw-menu-button > a {
+    background: var(--fw-ink);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+html .layout-education .navbar-nav > li.fw-menu-button > a:hover {
+    background: #333;
+    color: #fff;
+}
+
+.layout-education .navbar-nav > li.fw-menu-button > a::before, .layout-education .navbar-nav > li.fw-menu-button > a::after {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .layout-education .site-header .inner-wrap, .layout-education .navbar .inner-wrap {
+        width: calc(100% - 40px);
+    }
+}
+/* Side panel (mobile menu) */
+html .layout-education .side-nav .navbar-nav > li > a {
+    color: #fff;
+}
+
+html .layout-education .side-nav .navbar-nav li.current-menu-item > a, html .layout-education .side-nav .navbar-nav li.current_page_item > a, html .layout-education .side-nav .navbar-nav li a:hover, html .layout-education .side-nav .navbar-nav li a:focus {
+    color: var(--fw-yellow);
+}
+
+html body.layout-education .side-nav .navbar-nav > li.fw-menu-button {
+    margin: 28px 0 0;
+    border: 0;
+}
+
+html body.layout-education .side-nav .navbar-nav > li.fw-menu-button > a {
+    display: inline-block;
+    background: var(--fw-yellow);
+    color: var(--fw-ink);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+html body.layout-education .side-nav .navbar-nav > li.fw-menu-button > a:hover {
+    background: #f5c400;
+    color: var(--fw-ink);
+}
+
+/* Footer */
+.layout-education .site-footer {
+    border-top: 1px solid var(--fw-line);
+}
+
+.layout-education .site-footer .inner-wrap {
+    max-width: 1200px;
+}
+
+.layout-education .site-footer .footer-widgets .title, .layout-education .site-footer .widget-title {
+    font-family: "Geist", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--fw-ink);
+    margin: 0 0 14px;
+}
+
+.layout-education .site-footer .widget_text, .layout-education .site-footer .widget_text a {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--fw-muted);
+    text-decoration: none;
+}
+
+.layout-education .site-footer .widget_text a:hover, .layout-education .site-footer .site-info a:hover {
+    color: var(--fw-ink);
+}
+
+.layout-education .site-footer .site-info, .layout-education .site-footer .site-info a {
+    color: var(--fw-muted);
+}
+
+/* Widget spacing: the layout sets explicit margins */
+.layout-education .elementor-widget:not(:last-child) {
+    --kit-widget-spacing: 0px;
+}
+
+.layout-education .elementor-widget-heading .elementor-heading-title {
+    margin: 0;
+    text-wrap: balance;
+}
+
+.layout-education .elementor-widget-text-editor p:last-child, .layout-education .elementor-widget-text-editor ul:last-child {
+    margin-bottom: 0;
+}
+
+.layout-education .elementor-widget-heading .elementor-heading-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Images */
+.layout-education .fw-img img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.layout-education .fw-ratio-hero img {
+    aspect-ratio: 4/4.4;
+}
+
+.layout-education .fw-ratio-4-3 img {
+    aspect-ratio: 4/3;
+}
+
+.layout-education .fw-ratio-5-4 img {
+    aspect-ratio: 5/4;
+}
+
+.layout-education .fw-ratio-4-5 img {
+    aspect-ratio: 4/5;
+}
+
+.layout-education .fw-ratio-3-4 img {
+    aspect-ratio: 3/4;
+}
+
+.layout-education .fw-ratio-hero img, .layout-education .fw-ratio-5-4 img {
+    border-radius: 16px;
+}
+
+/* Rows, links, inline buttons */
+.layout-education .fw-row-head .elementor-column > .elementor-widget-wrap {
+    align-content: flex-end;
+}
+
+.layout-education .fw-more a {
+    color: var(--fw-ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
+.layout-education .fw-more a:hover {
+    color: var(--fw-muted);
+}
+
+.layout-education .fw-actions > .elementor-container {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+}
+
+html .layout-education .fw-actions .elementor-widget-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    align-items: center;
+}
+
+.layout-education .fw-inline {
+    width: auto !important;
+    max-width: 100%;
+    margin: 0 !important;
+}
+
+.layout-education .elementor-button {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* Chips */
+.layout-education p.fw-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 28px;
+}
+
+.layout-education p.fw-chips a {
+    display: inline-block;
+    padding: 7px 15px;
+    border-radius: 8px;
+    background: var(--fw-grey);
+    color: var(--fw-ink);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.layout-education p.fw-chips a:hover {
+    background: var(--fw-line);
+}
+
+.layout-education p.fw-chips a.is-active {
+    background: var(--fw-ink);
+    color: #fff;
+}
+
+/* Hero */
+.layout-education .fw-hero-title {
+    max-width: 620px;
+}
+
+.layout-education .fw-hero-sub {
+    max-width: 520px;
+}
+
+.layout-education .fw-hero-media > .elementor-widget-wrap {
+    position: relative;
+}
+
+.layout-education .fw-hero-note {
+    position: absolute !important;
+    left: 20px;
+    bottom: 20px;
+    width: auto !important;
+    max-width: calc(100% - 40px);
+    margin: 0 !important;
+}
+
+.layout-education .fw-hero-note p {
+    margin: 0;
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.layout-education .fw-hero-note span {
+    display: block;
+    font-size: 13px;
+    color: var(--fw-muted);
+    margin-bottom: 2px;
+}
+
+.layout-education .fw-hero-note a {
+    color: var(--fw-ink);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.layout-education .fw-hero-note a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Lightbox buttons (WPZOOM Video Lightbox Button) */
+.layout-education .fw-watch .wpzoom-video-lightbox-button, .layout-education .fw-watch a {
+    text-decoration: none;
+}
+
+.layout-education .fw-play {
+    width: auto !important;
+}
+
+.layout-education .fw-play .elementor-widget-container {
+    display: flex;
+    justify-content: center;
+}
+
+html .layout-education .fw-play .wpz-vlb-trigger {
+    width: 84px !important;
+    height: 84px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+html .layout-education .fw-play .wpz-vlb-trigger:hover {
+    transform: scale(1.05);
+}
+
+.layout-education .fw-play .wpz-vlb-trigger__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+html .layout-education .fw-play .wpz-vlb-trigger__icon svg {
+    width: 22px !important;
+    height: 22px !important;
+    margin-left: 4px;
+}
+
+.layout-education .fw-watch .wpz-vlb-trigger {
+    text-decoration: none;
+}
+
+.layout-education .fw-trailer > .elementor-container > .elementor-column > .elementor-widget-wrap {
+    justify-content: center;
+    align-content: center;
+}
+
+.layout-education .fw-trailer {
+    overflow: hidden;
+}
+
+/* Cards */
+.layout-education .fw-cards > .elementor-container > .elementor-column > .elementor-widget-wrap {
+    padding-top: 0;
+}
+
+/* Inner grids with a gutter: pull the outer columns back to the content edge so cards line up with headings */
+.layout-education .elementor-inner-section > .elementor-container.elementor-column-gap-extended {
+    width: calc(100% + 30px);
+    max-width: none;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.layout-education .elementor-inner-section > .elementor-column-gap-extended > .elementor-column > .elementor-element-populated {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.layout-education .fw-cards + .fw-cards {
+    margin-top: 48px;
+}
+
+.layout-education .fw-card .elementor-widget-image a {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.layout-education .fw-card .elementor-widget-image img {
+    transition: transform 0.4s ease;
+}
+
+.layout-education .fw-card .elementor-widget-image a:hover img {
+    transform: scale(1.03);
+}
+
+.layout-education .fw-card .elementor-widget-heading a:hover {
+    color: var(--fw-muted);
+}
+
+@media (max-width: 767px) {
+    .layout-education .fw-card {
+        margin-bottom: 40px;
+    }
+    .layout-education .fw-cards + .fw-cards {
+        margin-top: 0;
+    }
+    .layout-education .fw-card:empty, .layout-education .fw-cards .elementor-column:not(.fw-card) {
+        display: none;
+    }
+}
+/* Teacher quote, testimonials, student work */
+.layout-education .fw-quote .elementor-heading-title {
+    text-wrap: pretty;
+}
+
+.layout-education .fw-testimonial blockquote, .layout-education .fw-reviews blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    quotes: none;
+}
+
+.layout-education .fw-testimonial blockquote, .layout-education .fw-reviews blockquote {
+    text-align: left;
+}
+
+.layout-education .fw-testimonial blockquote::before, .layout-education .fw-reviews blockquote::before, .layout-education .fw-testimonial blockquote::after, .layout-education .fw-reviews blockquote::after {
+    display: none;
+    content: none;
+}
+
+.layout-education .fw-testimonial blockquote p, .layout-education .fw-reviews blockquote p {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 26px;
+    line-height: 1.25;
+    color: var(--fw-ink);
+    margin: 0 0 14px;
+    font-style: normal;
+}
+
+.layout-education .fw-testimonial cite, .layout-education .fw-reviews cite {
+    display: block;
+    font-style: normal;
+    font-size: 15px;
+    color: var(--fw-muted);
+}
+
+.layout-education .fw-reviews blockquote + blockquote {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--fw-line);
+}
+
+.layout-education .fw-caption p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--fw-muted);
+}
+
+.layout-education .fw-caption strong {
+    color: var(--fw-ink);
+    font-weight: 600;
+}
+
+@media (max-width: 767px) {
+    .layout-education .fw-works .elementor-column, .layout-education .fw-testimonial {
+        margin-bottom: 32px;
+    }
+}
+/* Plans */
+.layout-education .fw-plans > .elementor-container > .elementor-column > .elementor-widget-wrap {
+    padding-top: 0;
+}
+
+.layout-education .fw-plan {
+    height: 100%;
+}
+
+.layout-education .fw-plans > .elementor-container > .elementor-column > .elementor-widget-wrap > .elementor-element {
+    height: 100%;
+}
+
+.layout-education .fw-per {
+    font-family: "Geist", sans-serif;
+    font-size: 17px;
+    letter-spacing: 0;
+    color: #bdbdbd;
+}
+
+.layout-education .fw-list ul, .layout-education .fw-includes ul, .layout-education ul.fw-check, .layout-education ul.fw-lessons {
+    list-style: none;
+}
+
+.layout-education .fw-list li, .layout-education .fw-includes li, .layout-education ul.fw-check li, .layout-education ul.fw-lessons li {
+    list-style: none;
+}
+
+.layout-education .fw-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.layout-education .fw-list li {
+    position: relative;
+    padding: 0 0 0 26px;
+    margin: 0 0 10px;
+}
+
+.layout-education .fw-list li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.55em;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    color: var(--fw-ink);
+}
+
+.layout-education .fw-list--light li::before {
+    color: var(--fw-yellow);
+}
+
+@media (max-width: 767px) {
+    .layout-education .fw-plans .elementor-column + .elementor-column {
+        margin-top: 20px;
+    }
+}
+/* Accordion (FAQ, week by week) */
+.layout-education .fw-accordion .elementor-accordion-item {
+    border: 0 !important;
+    border-bottom: 1px solid var(--fw-line) !important;
+}
+
+.layout-education .fw-accordion .elementor-accordion-item:first-child {
+    border-top: 1px solid var(--fw-line) !important;
+}
+
+.layout-education .fw-accordion .elementor-tab-title {
+    border: 0 !important;
+}
+
+.layout-education .fw-accordion .elementor-tab-content {
+    border: 0 !important;
+}
+
+.layout-education .fw-accordion .elementor-tab-content p {
+    margin: 0 0 10px;
+}
+
+.layout-education .fw-accordion .elementor-accordion-icon {
+    font-size: 14px;
+}
+
+.layout-education .fw-accordion .elementor-accordion-title {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.layout-education .fw-week-meta {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--fw-muted);
+    margin-top: 4px;
+}
+
+.layout-education ul.fw-lessons {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.layout-education ul.fw-lessons li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    color: var(--fw-text);
+}
+
+.layout-education ul.fw-lessons li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 14px;
+    border-style: solid;
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent var(--fw-ink);
+}
+
+.layout-education ul.fw-lessons li.fw-assignment {
+    margin-top: 6px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: var(--fw-grey);
+    color: var(--fw-ink);
+    font-weight: 500;
+}
+
+.layout-education ul.fw-lessons li.fw-assignment::before {
+    display: none;
+}
+
+/* Course page */
+.layout-education .fw-crumb a {
+    color: var(--fw-muted);
+    text-decoration: none;
+}
+
+.layout-education .fw-crumb a:hover {
+    color: var(--fw-ink);
+}
+
+.layout-education .fw-teacher-mini .elementor-column > .elementor-widget-wrap {
+    padding: 0;
+}
+
+.layout-education .fw-teacher-mini > .elementor-container {
+    align-items: center;
+}
+
+.layout-education .fw-teacher-mini .elementor-column:first-child {
+    width: 72px !important;
+    flex: 0 0 72px;
+}
+
+.layout-education .fw-teacher-mini .elementor-column:last-child {
+    width: auto !important;
+    flex: 1;
+}
+
+.layout-education .fw-avatar img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.layout-education p.fw-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 40px;
+    margin: 0;
+    padding: 18px 0;
+    border-top: 1px solid var(--fw-line);
+    border-bottom: 1px solid var(--fw-line);
+}
+
+.layout-education p.fw-facts strong {
+    color: var(--fw-ink);
+    font-weight: 600;
+}
+
+.layout-education ul.fw-check {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 32px;
+}
+
+.layout-education ul.fw-check li {
+    position: relative;
+    padding-left: 30px;
+    line-height: 1.5;
+}
+
+.layout-education ul.fw-check li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--fw-yellow);
+}
+
+.layout-education ul.fw-check li::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid var(--fw-ink);
+    border-bottom: 2px solid var(--fw-ink);
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 767px) {
+    .layout-education ul.fw-check {
+        grid-template-columns: 1fr;
+    }
+}
+.layout-education .fw-aside > .elementor-widget-wrap {
+    display: block;
+}
+
+@media (min-width: 1025px) {
+    .layout-education .fw-course-body > .elementor-container {
+        align-items: flex-start;
+    }
+    .layout-education .fw-aside {
+        position: sticky;
+        top: 110px;
+        align-self: flex-start;
+    }
+}
+.layout-education .fw-enrol .elementor-button {
+    width: 100%;
+}
+
+.layout-education .fw-includes ul {
+    margin: 0;
+    padding: 16px 0 0;
+    list-style: none;
+    border-top: 1px solid var(--fw-line);
+}
+
+.layout-education .fw-includes li {
+    padding: 4px 0 4px 22px;
+    position: relative;
+}
+
+.layout-education .fw-includes li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.7em;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid var(--fw-ink);
+    border-bottom: 2px solid var(--fw-ink);
+    transform: rotate(-45deg);
+}
+
+.layout-education .fw-teacher-card .elementor-widget-image img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+}
+
+/* Teachers page */
+.layout-education .fw-teaches {
+    font-size: 15px;
+    color: var(--fw-muted);
+}
+
+.layout-education .fw-teaches a {
+    color: var(--fw-ink);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.layout-education .fw-teaches a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+    .layout-education .fw-teacher {
+        margin-bottom: 40px;
+    }
+}
+/* Forms (WPZOOM Forms) */
+.layout-education .fw-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 6px;
+    color: var(--fw-ink);
+}
+
+.layout-education .fw-form input[type=text], .layout-education .fw-form input[type=email], .layout-education .fw-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #d6d6d2;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 16px;
+    background: #fff;
+    margin: 0 0 16px;
+    color: var(--fw-ink);
+}
+
+.layout-education .fw-form input:focus, .layout-education .fw-form textarea:focus {
+    outline: 2px solid var(--fw-ink);
+    outline-offset: 1px;
+    border-color: var(--fw-ink);
+}
+
+.layout-education .fw-form input[type=submit] {
+    background: var(--fw-yellow);
+    color: var(--fw-ink);
+    border: 0;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.layout-education .fw-form input[type=submit]:hover {
+    background: #f5c400;
+}
+
+.layout-education .fw-form .wp-block-wpzoom-forms-required {
+    color: var(--fw-muted);
+}
+
+/* CTA band */
+.layout-education .fw-cta .elementor-column > .elementor-widget-wrap {
+    align-content: center;
+}
+
+/* Journal (blog) */
+.layout-education .page-title, .layout-education .entry-title, .layout-education .entry-title a {
+    text-transform: none;
+    letter-spacing: -0.01em;
+}
+
+.layout-education .page-title {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 56px;
+}
+
+.layout-education .entry-meta .entry-author, .layout-education .entry-meta .entry-comments {
+    display: none;
+}
+
+.layout-education .read-more, .layout-education .more-link, .layout-education .entry-content .more-link {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+}
+
+.layout-education .entry-content {
+    font-size: 18px;
+}
+
+.layout-education .entry-thumbnail img, .layout-education .post-thumbnail img {
+    border-radius: 12px;
+}
+
+/* Courses page catalogue rows */
+.layout-education .fw-course-row {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--fw-line);
+}
+
+.layout-education .fw-course-row:last-child {
+    border-bottom: 0;
+}
+
+.layout-education .fw-course-row .elementor-widget-image a {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.layout-education .fw-course-row .elementor-widget-heading a:hover {
+    color: var(--fw-muted);
+}
+
+.layout-education .fw-measure {
+    max-width: 560px;
+}
+
+/* Footer social icons sit on the column edge */
+.layout-education .site-footer .zoom-social-icons-list {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.layout-education .site-footer .zoom-social-icons-list .zoom-social_icons-list__item:first-child {
+    margin-left: 0;
+}
+
+/* Journal: serif titles at their real weight, button-like read more, no author box (posts are written by the school) */
+html .layout-education .entry-title, html .layout-education .entry-title a {
+    font-weight: 400;
+}
+
+html .layout-education.blog .entry-title, html .layout-education.archive .entry-title {
+    font-size: 28px;
+    line-height: 1.12;
+}
+
+html .layout-education.single .entry-title {
+    font-size: 56px;
+    line-height: 1.05;
+}
+
+@media (max-width: 767px) {
+    html .layout-education.single .entry-title {
+        font-size: 40px;
+    }
+}
+html .layout-education .more-link {
+    border: 1px solid var(--fw-ink);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 15px;
+    color: var(--fw-ink);
+    background: transparent;
+}
+
+html .layout-education .more-link:hover {
+    background: var(--fw-grey);
+    color: var(--fw-ink);
+}
+
+.layout-education.single .entry-footer .post-author {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .layout-education .fw-row-head .fw-more, .layout-education .fw-row-head .elementor-column + .elementor-column {
+        margin-top: 10px;
+    }
+}
 /*--------------------------------------------------------------
 13.2 Front Page
 --------------------------------------------------------------*/
