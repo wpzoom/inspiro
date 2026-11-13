@@ -5523,6 +5523,7 @@ html .layout-personal-blog.single .entry-footer .post-author .section-title {
 html .layout-personal-blog.single .entry-footer .post-author img {
     grid-column: 1;
     grid-row: 1/span 2;
+    align-self: start;
     width: 64px;
     height: 64px;
     border-radius: 50%;
@@ -5554,6 +5555,24 @@ html .layout-personal-blog.single .entry-footer .post-author > a {
     text-decoration: none;
 }
 
+html .layout-personal-blog.single .entry-footer .post-author .post-author__bio {
+    grid-column: 2;
+    grid-row: 3;
+    max-width: 560px;
+    margin: 8px 0 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--wk-text);
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    html .layout-personal-blog.single .entry-footer .post-author .post-author__bio {
+        grid-column: 1/-1;
+        margin-top: 14px;
+    }
+}
 html .layout-personal-blog.single .entry-footer .tags-links {
     margin: 0 0 24px;
     text-align: left;
@@ -7050,6 +7069,7 @@ html .layout-travel-blog.single .entry-footer .post-author .section-title {
 html .layout-travel-blog.single .entry-footer .post-author img {
     grid-column: 1;
     grid-row: 1/span 2;
+    align-self: start;
     width: 64px;
     height: 64px;
     border-radius: 50%;
@@ -7081,6 +7101,24 @@ html .layout-travel-blog.single .entry-footer .post-author > a {
     text-decoration: none;
 }
 
+html .layout-travel-blog.single .entry-footer .post-author .post-author__bio {
+    grid-column: 2;
+    grid-row: 3;
+    max-width: 560px;
+    margin: 8px 0 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--sm-text);
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    html .layout-travel-blog.single .entry-footer .post-author .post-author__bio {
+        grid-column: 1/-1;
+        margin-top: 14px;
+    }
+}
 html .layout-travel-blog.single .entry-footer .tags-links {
     margin: 0 0 24px;
     text-align: left;
@@ -8351,6 +8389,21 @@ body > .is-root-container,
 .entry-footer .post-author a:hover {
     text-decoration: none;
     color: var(--inspiro-primary-color);
+}
+.entry-footer .post-author .post-author__bio {
+    max-width: 560px;
+    margin: 12px auto 0;
+    font-size: 15px;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #555;
+    text-transform: none;
+}
+.entry-footer .post-author .post-author__bio a {
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: underline;
 }
 .entry-footer .tags-links,
 .entry-footer .post-author {

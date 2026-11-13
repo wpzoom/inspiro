@@ -688,9 +688,11 @@ html .layout-personal-blog .wp-block-wpzoom-blocks-social-sharing svg { fill: #f
 html .layout-personal-blog.single .entry-footer .post-author { display: grid; grid-template-columns: 64px 1fr; column-gap: 18px; align-items: center; justify-items: start; text-align: left; margin: 0; padding: 26px 0; border-top: 1px solid var(--wk-line); border-bottom: 1px solid var(--wk-line); }
 html .layout-personal-blog.single .entry-footer .post-author::before, html .layout-personal-blog.single .entry-footer .post-author::after { display: none; }
 html .layout-personal-blog.single .entry-footer .post-author .section-title { display: none; }
-html .layout-personal-blog.single .entry-footer .post-author img { grid-column: 1; grid-row: 1 / span 2; width: 64px; height: 64px; border-radius: 50%; margin: 0; }
+html .layout-personal-blog.single .entry-footer .post-author img { grid-column: 1; grid-row: 1 / span 2; align-self: start; width: 64px; height: 64px; border-radius: 50%; margin: 0; }
 html .layout-personal-blog.single .entry-footer .post-author > span { grid-column: 2; grid-row: 1; align-self: end; font-size: 13px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--wk-muted); margin: 0; }
 html .layout-personal-blog.single .entry-footer .post-author > a { grid-column: 2; grid-row: 2; align-self: start; font-family: var(--wk-head); font-size: 20px; font-weight: 800; letter-spacing: -0.01em; color: var(--wk-ink); border: 0; text-decoration: none; }
+html .layout-personal-blog.single .entry-footer .post-author .post-author__bio { grid-column: 2; grid-row: 3; max-width: 560px; margin: 8px 0 0; font-size: 15px; font-weight: 400; line-height: 1.6; color: var(--wk-text); text-align: left; }
+@media (max-width: 767px) { html .layout-personal-blog.single .entry-footer .post-author .post-author__bio { grid-column: 1 / -1; margin-top: 14px; } }
 html .layout-personal-blog.single .entry-footer .tags-links { margin: 0 0 24px; text-align: left; }
 
 /* Comments */
@@ -997,9 +999,11 @@ html .layout-travel-blog.single .entry-footer::before, html .layout-travel-blog.
 html .layout-travel-blog.single .entry-footer .post-author { display: grid; grid-template-columns: 64px 1fr; column-gap: 18px; align-items: center; justify-items: start; text-align: left; margin: 0; padding: 26px 0; border-top: 1px solid var(--sm-line); border-bottom: 1px solid var(--sm-line); }
 html .layout-travel-blog.single .entry-footer .post-author::before, html .layout-travel-blog.single .entry-footer .post-author::after { display: none; }
 html .layout-travel-blog.single .entry-footer .post-author .section-title { display: none; }
-html .layout-travel-blog.single .entry-footer .post-author img { grid-column: 1; grid-row: 1 / span 2; width: 64px; height: 64px; border-radius: 50%; margin: 0; }
+html .layout-travel-blog.single .entry-footer .post-author img { grid-column: 1; grid-row: 1 / span 2; align-self: start; width: 64px; height: 64px; border-radius: 50%; margin: 0; }
 html .layout-travel-blog.single .entry-footer .post-author > span { grid-column: 2; grid-row: 1; align-self: end; font-size: 13px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--sm-muted); margin: 0; }
 html .layout-travel-blog.single .entry-footer .post-author > a { grid-column: 2; grid-row: 2; align-self: start; font-family: var(--sm-font); font-size: 20px; font-weight: 800; letter-spacing: -0.01em; color: var(--sm-ink); border: 0; text-decoration: none; }
+html .layout-travel-blog.single .entry-footer .post-author .post-author__bio { grid-column: 2; grid-row: 3; max-width: 560px; margin: 8px 0 0; font-size: 15px; font-weight: 400; line-height: 1.6; color: var(--sm-text); text-align: left; }
+@media (max-width: 767px) { html .layout-travel-blog.single .entry-footer .post-author .post-author__bio { grid-column: 1 / -1; margin-top: 14px; } }
 html .layout-travel-blog.single .entry-footer .tags-links { margin: 0 0 24px; text-align: left; }
 
 /* Comments */
