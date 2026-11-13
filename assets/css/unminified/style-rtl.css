@@ -5401,7 +5401,7 @@ html .layout-personal-blog .wp-block-wpzoom-blocks-social-sharing svg {
         grid-column: 1/-1;
         grid-row: 1;
     }
-    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content {
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content, html .layout-personal-blog.single.page-layout-sidebar-right article.post > .entry-content {
         grid-column: 2;
         grid-row: 2;
         float: none;
@@ -5410,7 +5410,7 @@ html .layout-personal-blog .wp-block-wpzoom-blocks-social-sharing svg {
         margin: 64px 0 0;
         padding: 0;
     }
-    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary {
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary, html .layout-personal-blog.single.page-layout-sidebar-right article.post > #secondary {
         grid-column: 3;
         grid-row: 2/6;
         float: none;
@@ -5456,7 +5456,7 @@ html .layout-personal-blog .wp-block-wpzoom-blocks-social-sharing svg {
     .layout-personal-blog.single.page-layout-sidebar-right .entry-cover-image {
         order: 1;
     }
-    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content {
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content, html .layout-personal-blog.single.page-layout-sidebar-right article.post > .entry-content {
         order: 2;
         float: none;
         width: auto;
@@ -5478,7 +5478,7 @@ html .layout-personal-blog .wp-block-wpzoom-blocks-social-sharing svg {
         margin: 48px 20px 0;
         padding: 0;
     }
-    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary {
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary, html .layout-personal-blog.single.page-layout-sidebar-right article.post > #secondary {
         order: 5;
         float: none;
         width: auto;
@@ -6716,7 +6716,7 @@ html .layout-travel-blog .site-footer .zoom-social_icons-list__link:hover .socic
         margin: 44px 0 0;
         padding: 0;
     }
-    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content {
+    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content, html .layout-travel-blog.single.page-layout-sidebar-right article.post > .entry-content {
         grid-column: 2;
         grid-row: 3;
         float: none;
@@ -6725,7 +6725,7 @@ html .layout-travel-blog .site-footer .zoom-social_icons-list__link:hover .socic
         margin: 32px 0 0;
         padding: 0;
     }
-    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary {
+    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary, html .layout-travel-blog.single.page-layout-sidebar-right article.post > #secondary {
         grid-column: 3;
         grid-row: 2/7;
         float: none;
@@ -6779,7 +6779,7 @@ html .layout-travel-blog .site-footer .zoom-social_icons-list__link:hover .socic
         margin: 28px 20px 0;
         padding: 0;
     }
-    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content {
+    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content, html .layout-travel-blog.single.page-layout-sidebar-right article.post > .entry-content {
         order: 3;
         float: none;
         width: auto;
@@ -6801,7 +6801,7 @@ html .layout-travel-blog .site-footer .zoom-social_icons-list__link:hover .socic
         margin: 48px 20px 0;
         padding: 0;
     }
-    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary {
+    html .layout-travel-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary, html .layout-travel-blog.single.page-layout-sidebar-right article.post > #secondary {
         order: 6;
         float: none;
         width: auto;
@@ -6821,6 +6821,11 @@ html .layout-travel-blog .site-footer .zoom-social_icons-list__link:hover .socic
         padding-right: 0;
     }
 }
+/* Video posts lead with the clip, not the poster photo as well */
+html .layout-travel-blog.single.single-format-video .single-featured-image-above {
+    display: none;
+}
+
 html .layout-travel-blog.single .single-featured-image-above .inner-wrap {
     max-width: none;
     padding: 0;
@@ -7245,6 +7250,239 @@ html body.layout-travel-blog .side-nav .navbar-nav li:is(.current-menu-item, .cu
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
+}
+
+/* Refresh (2026-11-13): no rules, outlines or square boxes; soft fills, rounded corners and spacing instead */
+.layout-travel-blog {
+    --sm-soft: #f1f3f4;
+    --sm-radius: 14px;
+}
+
+/* Post list */
+html body.layout-travel-blog:is(.blog, .archive, .search) .site-main article.post {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 72px;
+}
+
+html body.layout-travel-blog:is(.blog, .archive, .search) article.post .post-thumbnail img, html body.layout-travel-blog :is(.entry-video, .entry-content .wp-block-video) video {
+    border-radius: var(--sm-radius);
+}
+
+html body.layout-travel-blog:is(.blog, .archive, .search) .site-main article.format-quote {
+    border-radius: 18px;
+}
+
+html body.layout-travel-blog:is(.blog, .archive, .search) article.format-quote .post-thumbnail img {
+    border-radius: 0;
+}
+
+html body.layout-travel-blog .entry-meta span + span::before, html body.layout-travel-blog .entry-meta > span + span::before {
+    content: "·";
+    margin: 0 8px;
+    color: var(--sm-muted);
+    opacity: 0.7;
+}
+
+html body.layout-travel-blog .navigation.pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 0;
+}
+
+html body.layout-travel-blog .navigation.pagination .page-numbers.current {
+    background: var(--sm-ink);
+    color: #fff;
+    border: 0;
+}
+
+/* Sidebar: quiet labels, no rules */
+html body.layout-travel-blog #secondary .widget {
+    margin-bottom: 40px;
+}
+
+html body.layout-travel-blog #secondary :is(.sm-box__title, .widget .title, .widget-title) {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--sm-muted);
+    border: 0;
+    padding: 0;
+    margin: 0 0 14px;
+}
+
+html body.layout-travel-blog .sm-box__photo img, html body.layout-travel-blog .sm-mini__image img {
+    border-radius: 10px;
+}
+
+html body.layout-travel-blog .sm-search .wp-block-search__inside-wrapper {
+    border: 0;
+    background: var(--sm-soft);
+    border-radius: 12px;
+}
+
+html body.layout-travel-blog .sm-search .wp-block-search__input {
+    height: 48px;
+    padding: 0 16px;
+}
+
+html body.layout-travel-blog .sm-tags a, html body.layout-travel-blog.single .entry-footer .tags-links a {
+    border: 0;
+    background: var(--sm-soft);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px !important;
+    font-weight: 500;
+    color: var(--sm-ink);
+}
+
+html body.layout-travel-blog .sm-tags a:hover, html body.layout-travel-blog.single .entry-footer .tags-links a:hover {
+    background: var(--sm-accent);
+    color: #fff;
+}
+
+html body.layout-travel-blog .zoom-social_icons-list__link .socicon {
+    background: transparent !important;
+    color: var(--sm-ink) !important;
+    padding-right: 0 !important;
+    padding-left: 14px !important;
+}
+
+html body.layout-travel-blog .zoom-social_icons-list__link:hover .socicon {
+    background: transparent !important;
+    color: var(--sm-accent) !important;
+}
+
+html body.layout-travel-blog .site-footer .zoom-social_icons-list__link .socicon {
+    color: #fff !important;
+}
+
+html body.layout-travel-blog .site-footer .zoom-social_icons-list__link:hover .socicon {
+    color: #9fd3e6 !important;
+}
+
+/* Single post */
+html body.layout-travel-blog.single .single-featured-image-above img {
+    border-radius: 18px;
+}
+
+html body.layout-travel-blog.single .entry-footer .tags-links .section-title {
+    display: none;
+}
+
+html body.layout-travel-blog.single .entry-footer .post-author {
+    border: 0;
+    background: var(--sm-soft);
+    border-radius: 16px;
+    padding: 20px 22px;
+}
+
+html body.layout-travel-blog #comments .commentlist li > div {
+    border-top: 0;
+    padding: 18px 0;
+}
+
+html body.layout-travel-blog #comments .commentlist .children > li > div {
+    padding-right: 18px;
+    border-right: 2px solid var(--sm-soft);
+}
+
+html body.layout-travel-blog #comments .comment-respond {
+    border-top: 0;
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--sm-soft);
+    border-radius: 18px;
+}
+
+html body.layout-travel-blog #comments .comment-form :is(input[type=text], input[type=email], input[type=url], textarea) {
+    border: 0;
+    background: #fff;
+    border-radius: 10px;
+    padding: 13px 16px;
+}
+
+html body.layout-travel-blog #comments .comment-form :is(input, textarea):focus {
+    outline: 2px solid var(--sm-accent);
+    outline-offset: 0;
+}
+
+html body.layout-travel-blog #comments .comment-form .form-submit input[type=submit], html body.layout-travel-blog .pre-footer-cta-button.button {
+    border-radius: 10px;
+}
+
+html body.layout-travel-blog #comments .comment-form .form-submit input[type=submit] {
+    background: var(--sm-ink);
+    border-color: var(--sm-ink);
+}
+
+html body.layout-travel-blog .wp-block-wpzoom-blocks-social-sharing .social-sharing-icon {
+    border-radius: 10px !important;
+    background-color: var(--sm-soft) !important;
+    color: var(--sm-ink) !important;
+}
+
+html body.layout-travel-blog .wp-block-wpzoom-blocks-social-sharing svg {
+    fill: var(--sm-ink) !important;
+}
+
+html body.layout-travel-blog .wp-block-wpzoom-blocks-social-sharing .social-sharing-icon:hover {
+    background-color: var(--sm-accent) !important;
+    color: #fff !important;
+}
+
+html body.layout-travel-blog .wp-block-wpzoom-blocks-social-sharing .social-sharing-icon:hover svg {
+    fill: #fff !important;
+}
+
+/* Pages and forms */
+html body.layout-travel-blog .sm-about img, html body.layout-travel-blog .sm-wide img {
+    border-radius: 18px;
+}
+
+html body.layout-travel-blog .sm-form {
+    border-radius: 18px;
+}
+
+html body.layout-travel-blog .sm-form :is(input[type=text], input[type=email], textarea) {
+    border: 0 !important;
+    border-radius: 10px !important;
+}
+
+html body.layout-travel-blog .sm-form input[type=submit] {
+    border-radius: 10px !important;
+}
+
+/* Footer photo grid */
+html body.layout-travel-blog .sm-grid__image img {
+    border-radius: 8px;
+}
+
+html body.layout-travel-blog #secondary .zoom-social_icons-list__link .socicon, html body.layout-travel-blog .site-footer .zoom-social_icons-list__link .socicon {
+    background: transparent !important;
+    padding-right: 0 !important;
+    padding-left: 16px !important;
+}
+
+html body.layout-travel-blog #secondary .zoom-social_icons-list__link .socicon {
+    color: var(--sm-ink) !important;
+}
+
+html body.layout-travel-blog #secondary .zoom-social_icons-list__link:hover .socicon {
+    color: var(--sm-accent) !important;
+}
+
+html body.layout-travel-blog:is(.blog, .archive, .search) .site-main article.post.format-quote {
+    padding-bottom: 44px;
+}
+
+html body.layout-travel-blog #comments .bypostauthor > div .comment-author cite::after {
+    border-radius: 4px;
+    background: var(--sm-accent);
 }
 
 /*--------------------------------------------------------------
