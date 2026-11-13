@@ -5331,6 +5331,353 @@ html .layout-personal-blog .wp-block-wpzoom-blocks-social-sharing svg {
     height: 16px;
 }
 
+/* Single post with the sidebar: content, author box and comments share the left column, the sidebar runs beside all three.
+   Lite floats .entry-content and #secondary inside .entry-wrapper and prints the author box and comments after it,
+   so the post is laid out as one grid on main (article and wrapper become display: contents). */
+@media (min-width: 1024px) {
+    .layout-personal-blog.single.page-layout-sidebar-right main.site-main {
+        display: grid;
+        grid-template-columns: minmax(20px, 1fr) minmax(0, 852px) 300px minmax(20px, 1fr);
+        grid-template-rows: auto auto auto auto minmax(0, 1fr) auto;
+        column-gap: 48px;
+    }
+    .layout-personal-blog.single.page-layout-sidebar-right main.site-main > article.post, .layout-personal-blog.single.page-layout-sidebar-right article.post > .entry-wrapper {
+        display: contents;
+    }
+    .layout-personal-blog.single.page-layout-sidebar-right article.post > .clear {
+        display: none;
+    }
+    .layout-personal-blog.single.page-layout-sidebar-right .entry-cover-image {
+        grid-column: 1/-1;
+        grid-row: 1;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content {
+        grid-column: 2;
+        grid-row: 2;
+        float: none;
+        width: auto;
+        max-width: none;
+        margin: 64px 0 0;
+        padding: 0;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary {
+        grid-column: 3;
+        grid-row: 2/6;
+        float: none;
+        width: auto;
+        margin: 64px 0 0;
+        padding: 0;
+        align-self: start;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right article.post > .entry-footer {
+        grid-column: 2;
+        grid-row: 3;
+        width: auto;
+        max-width: none;
+        margin: 48px 0 0;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right main.site-main > #comments {
+        grid-column: 2;
+        grid-row: 4;
+        width: auto;
+        max-width: none;
+        margin: 56px 0 0;
+        padding: 0;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right main.site-main > .previous-post-cover {
+        grid-column: 1/-1;
+        grid-row: 6;
+        width: auto;
+        max-width: none;
+        margin: 96px 0 0;
+    }
+}
+@media (max-width: 1023px) {
+    .layout-personal-blog.single.page-layout-sidebar-right main.site-main {
+        display: flex;
+        flex-direction: column;
+    }
+    .layout-personal-blog.single.page-layout-sidebar-right main.site-main > article.post, .layout-personal-blog.single.page-layout-sidebar-right article.post > .entry-wrapper {
+        display: contents;
+    }
+    .layout-personal-blog.single.page-layout-sidebar-right article.post > .clear {
+        display: none;
+    }
+    .layout-personal-blog.single.page-layout-sidebar-right .entry-cover-image {
+        order: 1;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > .entry-content {
+        order: 2;
+        float: none;
+        width: auto;
+        max-width: none;
+        margin: 40px 20px 0;
+        padding: 0;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right article.post > .entry-footer {
+        order: 3;
+        width: auto;
+        max-width: none;
+        margin: 40px 20px 0;
+        padding: 0;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right main.site-main > #comments {
+        order: 4;
+        width: auto;
+        max-width: none;
+        margin: 48px 20px 0;
+        padding: 0;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right .entry-wrapper > #secondary {
+        order: 5;
+        float: none;
+        width: auto;
+        margin: 56px 20px 0;
+        padding: 0;
+    }
+    html .layout-personal-blog.single.page-layout-sidebar-right main.site-main > .previous-post-cover {
+        order: 6;
+        width: auto;
+        max-width: none;
+        margin: 56px 0 0;
+    }
+    html .layout-personal-blog #comments .commentlist .children {
+        margin-left: 24px;
+    }
+    html .layout-personal-blog #comments .comment-body {
+        padding-left: 0;
+    }
+}
+/* Author box: avatar, "Written by", name, in one row between hairlines */
+html .layout-personal-blog.single .entry-footer .post-author {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    column-gap: 18px;
+    align-items: center;
+    justify-items: start;
+    text-align: left;
+    margin: 0;
+    padding: 26px 0;
+    border-top: 1px solid var(--wk-line);
+    border-bottom: 1px solid var(--wk-line);
+}
+
+html .layout-personal-blog.single .entry-footer .post-author::before, html .layout-personal-blog.single .entry-footer .post-author::after {
+    display: none;
+}
+
+html .layout-personal-blog.single .entry-footer .post-author .section-title {
+    display: none;
+}
+
+html .layout-personal-blog.single .entry-footer .post-author img {
+    grid-column: 1;
+    grid-row: 1/span 2;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+html .layout-personal-blog.single .entry-footer .post-author > span {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--wk-muted);
+    margin: 0;
+}
+
+html .layout-personal-blog.single .entry-footer .post-author > a {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    font-family: var(--wk-head);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--wk-ink);
+    border: 0;
+    text-decoration: none;
+}
+
+html .layout-personal-blog.single .entry-footer .tags-links {
+    margin: 0 0 24px;
+    text-align: left;
+}
+
+/* Comments */
+html .layout-personal-blog #comments > h3, html .layout-personal-blog #comments .comment-reply-title {
+    font-family: var(--wk-head);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    color: var(--wk-ink);
+    text-align: left;
+    margin: 0 0 8px;
+}
+
+html .layout-personal-blog #comments .commentlist, html .layout-personal-blog #comments .commentlist .children {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+html .layout-personal-blog #comments .commentlist .children {
+    margin-left: 62px;
+}
+
+html .layout-personal-blog #comments .commentlist li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+html .layout-personal-blog #comments .commentlist li > div {
+    padding: 24px 0;
+    border-top: 1px solid var(--wk-line);
+}
+
+html .layout-personal-blog #comments > h3::after, html .layout-personal-blog #comments .comment-reply-title::after, html .layout-personal-blog #comments .commentlist li::after, html .layout-personal-blog #comments .comment-author::before, html .layout-personal-blog #comments .comment-author::after {
+    content: none;
+    display: none;
+}
+
+html .layout-personal-blog #comments .comment-author {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 16px;
+    align-items: center;
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+html .layout-personal-blog #comments .comment-author img {
+    grid-column: 1;
+    grid-row: 1/span 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    margin: 0;
+    float: none;
+}
+
+html .layout-personal-blog #comments .comment-author cite {
+    grid-column: 2;
+    grid-row: 1;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--wk-ink);
+}
+
+html .layout-personal-blog #comments .bypostauthor > div .comment-author cite::after {
+    content: "Author";
+    display: inline-block;
+    margin-left: 8px;
+    padding: 3px 7px;
+    background: var(--wk-ink);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: 2px;
+}
+
+html .layout-personal-blog #comments .comment-meta {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 13px;
+    color: var(--wk-muted);
+    margin: 0;
+}
+
+html .layout-personal-blog #comments .comment-meta a {
+    color: var(--wk-muted);
+    text-decoration: none;
+    border: 0;
+}
+
+html .layout-personal-blog #comments .comment-meta a.comment-reply-link {
+    color: var(--wk-ink);
+    font-weight: 700;
+}
+
+html .layout-personal-blog #comments .comment-body {
+    padding-left: 60px;
+}
+
+html .layout-personal-blog #comments .comment-body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--wk-text);
+    margin: 0 0 10px;
+}
+
+html .layout-personal-blog #comments .comment-respond {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--wk-ink);
+}
+
+html .layout-personal-blog #comments .comment-respond small a {
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+html .layout-personal-blog #comments .comment-form {
+    text-align: left;
+}
+
+html .layout-personal-blog #comments .comment-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--wk-ink);
+    margin: 0 0 6px;
+}
+
+html .layout-personal-blog #comments .comment-form :is(input[type=text], input[type=email], input[type=url], textarea) {
+    width: 100%;
+    max-width: none;
+    border: 1px solid #d4d4d4;
+    border-radius: 0;
+    padding: 11px 14px;
+    font-size: 15px;
+    box-shadow: none;
+    background: #fff;
+}
+
+html .layout-personal-blog #comments .comment-form :is(input, textarea):focus {
+    border-color: var(--wk-ink);
+    outline: none;
+}
+
+html .layout-personal-blog #comments .comment-form .form-submit input[type=submit] {
+    background: var(--wk-ink);
+    border: 1px solid var(--wk-ink);
+    color: #fff;
+    border-radius: 0;
+    padding: 13px 28px;
+    font-family: var(--wk-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    cursor: pointer;
+}
+
+html .layout-personal-blog #comments .comment-form .form-submit input[type=submit]:hover {
+    background: #3a3a3a;
+    border-color: #3a3a3a;
+}
+
 /* Pages: About, Contact, The letter */
 .layout-personal-blog .wk-lead {
     font-family: var(--wk-sans);
