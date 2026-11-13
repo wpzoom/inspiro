@@ -6101,6 +6101,43 @@ html .layout-travel-blog .site-header .custom-logo-text {
     padding-top: 40px;
 }
 
+/* Archives have no sidebar in Lite: the header shares the 970px post column, "Category:" becomes a small label above the name */
+html body.layout-travel-blog:is(.archive, .search) .page-header {
+    max-width: 970px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+html body.layout-travel-blog:is(.archive, .search) .page-header .page-title {
+    margin: 64px 0 44px;
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--sm-muted);
+}
+
+html body.layout-travel-blog:is(.archive, .search) .page-header .page-title span {
+    display: block;
+    margin-top: 6px;
+    font-size: 52px;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--sm-ink);
+}
+
+@media (max-width: 767px) {
+    html body.layout-travel-blog:is(.archive, .search) .page-header {
+        padding: 0;
+    }
+    html body.layout-travel-blog:is(.archive, .search) .page-header .page-title {
+        margin: 36px 0 28px;
+    }
+    html body.layout-travel-blog:is(.archive, .search) .page-header .page-title span {
+        font-size: 36px;
+    }
+}
 html .layout-travel-blog:is(.blog, .archive, .search) .page-title {
     font-family: var(--sm-font);
     font-size: 44px;
