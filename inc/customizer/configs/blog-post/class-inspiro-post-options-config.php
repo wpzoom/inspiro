@@ -95,7 +95,7 @@ class Inspiro_Post_Options_Config {
                 array(
                     'id'   => 'display_author_bio',
                     'args' => array(
-                        'default'           => true,
+                        'default'           => false, // off: sites that update keep the author box they had
                         'sanitize_callback' => 'inspiro_sanitize_checkbox',
                         'transport'         => 'refresh',
                     ),
