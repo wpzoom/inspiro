@@ -33,6 +33,12 @@
 		if ( $( '#wpadminbar' ).length ) {
 			navigationOuterHeight += $( '#wpadminbar' ).outerHeight();
 		}
+		// The optional topbar sits above the menu bar inside the fixed header,
+		// so the content has to clear it as well.
+		const $topbar = $( '#inspiro-topbar' );
+		if ( $topbar.length && $topbar.is( ':visible' ) ) {
+			navigationOuterHeight += $topbar.outerHeight();
+		}
 	}
 
 	// Set margins of custom header.
