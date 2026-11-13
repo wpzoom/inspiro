@@ -4611,14 +4611,14 @@ html .layout-travel .side-nav .navbar-nav li.current-menu-item > a, html .layout
 
 /* ---- Personal Blog (Well Kept) demo: ported from the Prisma Core Simple Blog demo ---- */
 .layout-personal-blog {
-    --wk-ink: #23282d;
-    --wk-text: #30373e;
-    --wk-muted: #6b7177;
-    --wk-accent: #3857f1;
-    --wk-sand: #e4e5d3;
-    --wk-line: rgba(0, 0, 0, 0.09);
-    --wk-serif: "Merriweather", Georgia, serif;
-    --wk-sans: "Noto Sans", Helvetica, Arial, sans-serif;
+    --wk-ink: #1f2420;
+    --wk-text: #3a403b;
+    --wk-muted: #6d736e;
+    --wk-accent: #2f6b4f;
+    --wk-sand: #f1ece1;
+    --wk-line: rgba(31, 36, 32, 0.1);
+    --wk-serif: "Newsreader", Georgia, serif;
+    --wk-sans: "Figtree", Helvetica, Arial, sans-serif;
 }
 
 .layout-personal-blog .site-main a, .layout-personal-blog .widget-area a {
@@ -4701,6 +4701,10 @@ html .layout-personal-blog.has-header-image .navbar-nav > li > a {
 
 html .layout-personal-blog.has-header-image .navbar-nav > li > a:hover {
     color: var(--wk-accent);
+}
+
+html .layout-personal-blog.has-header-image .navbar-nav > li.wk-menu-button > a, html .layout-personal-blog.has-header-image .navbar-nav > li.wk-menu-button > a:hover {
+    color: #fff;
 }
 
 html .layout-personal-blog.has-header-image .sb-search, html .layout-personal-blog.has-header-image .header-navigation-wrapper, html .layout-personal-blog.has-header-image .header-inner {
@@ -4805,9 +4809,10 @@ html .layout-personal-blog .wk-cat a, html .layout-personal-blog .wk-mini__cat a
 
 html .layout-personal-blog .wk-featured__title {
     font-family: var(--wk-serif);
-    font-size: 26px;
-    line-height: 1.32;
-    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin: 14px 0 14px;
 }
 
@@ -4864,9 +4869,10 @@ html .layout-personal-blog .wk-featured__title a {
 
 html .layout-personal-blog .wk-card__title {
     font-family: var(--wk-serif);
-    font-size: 28px;
-    line-height: 1.32;
-    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin: 0 0 16px;
 }
 
@@ -4906,9 +4912,9 @@ html .layout-personal-blog .wk-card__title a:hover, html .layout-personal-blog .
     align-items: center;
     gap: 14px;
     font-family: var(--wk-serif);
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 600;
     color: var(--wk-ink);
     text-transform: none;
     letter-spacing: 0;
@@ -4981,9 +4987,9 @@ html .layout-personal-blog .wk-more a {
 }
 
 html .layout-personal-blog .wk-mini__title {
-    font-family: var(--wk-sans);
-    font-size: 14px;
-    line-height: 1.4;
+    font-family: var(--wk-serif);
+    font-size: 17px;
+    line-height: 1.25;
     font-weight: 600;
     margin: 0 0 4px;
 }
@@ -4998,7 +5004,7 @@ html .layout-personal-blog .wk-mini__cat a {
 }
 
 .layout-personal-blog .wk-search .wp-block-search__inside-wrapper {
-    border: 1px solid #d5d8db;
+    border: 1px solid #d6d9d3;
     border-radius: 3px;
     padding: 0;
 }
@@ -5132,9 +5138,10 @@ html .layout-personal-blog:is(.blog, html .archive, html .search) article.post .
     grid-column: 1/3;
     grid-row: 3;
     font-family: var(--wk-serif);
-    font-size: 28px;
-    line-height: 1.32;
-    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin: 0 0 16px;
     text-align: right;
 }
@@ -5256,11 +5263,20 @@ html .layout-personal-blog:is(.blog, .archive, .search) article.post .entry-titl
     border-right: 0;
 }
 
+/* Pull quotes in the posts */
+html .layout-personal-blog .entry-content .wp-block-quote p {
+    font-family: var(--wk-serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--wk-ink);
+}
+
 /* Pages: About, Contact, The letter */
 .layout-personal-blog .wk-lead {
     font-family: var(--wk-serif);
-    font-size: 21px;
-    line-height: 1.6;
+    font-size: 24px;
+    line-height: 1.45;
     color: var(--wk-ink);
 }
 
@@ -5336,9 +5352,10 @@ html .layout-personal-blog .wk-form input[type=submit]:hover {
 
 .layout-personal-blog .pre-footer-cta-text p {
     font-family: var(--wk-serif);
-    font-size: 24px;
-    line-height: 1.5;
-    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     max-width: 640px;
     margin: 0;
 }
@@ -5369,8 +5386,8 @@ html .layout-personal-blog .pre-footer-cta-button.button:hover {
 
 .layout-personal-blog .site-footer .footer-widgets .title, .layout-personal-blog .site-footer .widget-title {
     font-family: var(--wk-serif);
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: 600;
     text-transform: none;
     letter-spacing: 0;
     color: #fff;
@@ -5378,7 +5395,7 @@ html .layout-personal-blog .pre-footer-cta-button.button:hover {
 }
 
 html .layout-personal-blog .site-footer .footer-widgets a {
-    color: #c9cdd1;
+    color: #d3dcd6;
     text-decoration: none;
 }
 
@@ -5400,7 +5417,7 @@ html .layout-personal-blog .site-footer .footer-widgets a:hover {
 }
 
 html .layout-personal-blog .site-footer .zoom-social_icons-list__link .socicon {
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     color: #fff !important;
     border-radius: 3px;
 }
@@ -5452,7 +5469,7 @@ html .layout-personal-blog .site-footer .site-info a {
         aspect-ratio: 3/2 !important;
     }
     .layout-personal-blog .wk-card__title, .layout-personal-blog:is(.blog, .archive, .search) article.post .entry-title {
-        font-size: 23px;
+        font-size: 26px;
     }
     .layout-personal-blog:is(.blog, .archive, .search) .site-main article.post {
         grid-template-columns: auto 1fr;
