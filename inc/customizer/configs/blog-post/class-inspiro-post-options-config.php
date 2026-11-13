@@ -93,6 +93,14 @@ class Inspiro_Post_Options_Config {
                     ),
                 ),
                 array(
+                    'id'   => 'display_author_bio',
+                    'args' => array(
+                        'default'           => true,
+                        'sanitize_callback' => 'inspiro_sanitize_checkbox',
+                        'transport'         => 'refresh',
+                    ),
+                ),
+                array(
                     'id'   => 'blog_options_upgrade',
                     'args' => array(
                         'default' => null,
@@ -165,6 +173,16 @@ class Inspiro_Post_Options_Config {
                         'section'     => 'single_post_section',
                         'type'        => 'checkbox',
                         'description' => esc_html__( 'Show the large banner with the previous post\'s featured image at the bottom of single posts.', 'inspiro' ),
+                    ),
+                ),
+                array(
+                    'id'   => 'display_author_bio',
+                    'args' => array(
+                        'priority'    => 5,
+                        'label'       => esc_html__( 'Display the Author Bio', 'inspiro' ),
+                        'section'     => 'single_post_section',
+                        'type'        => 'checkbox',
+                        'description' => esc_html__( 'Show the author\'s Biographical Info (Users > Profile) in the author box below single posts.', 'inspiro' ),
                     ),
                 ),
                 array(

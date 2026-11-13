@@ -194,8 +194,8 @@ if ( ! function_exists( 'inspiro_entry_footer' ) ) :
 				'</div>'
 			);
 
-			// The author's Biographical Info (Users > Profile), when filled in.
-			$inspiro_author_bio = trim( (string) get_the_author_meta( 'description' ) );
+			// The author's Biographical Info (Users > Profile), when filled in and not switched off in the Customizer.
+			$inspiro_author_bio = inspiro_get_theme_mod( 'display_author_bio' ) ? trim( (string) get_the_author_meta( 'description' ) ) : '';
 
 			echo sprintf(
 				'<div class="post-author"><span class="section-title">%s</span>%s<span>%s</span>%s%s</div>',
