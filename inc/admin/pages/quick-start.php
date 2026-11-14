@@ -171,6 +171,47 @@
 				</p>
 			</div>
 
+			<?php
+			// WPZOOM AI Connect: install, activate or open it. Only where it can run (WordPress 6.9+, the Abilities API).
+			if ( function_exists( 'wp_register_ability' ) ) :
+				$inspiro_ai_file   = 'wpzoom-ai-connect/wpzoom-ai-connect.php';
+				$inspiro_ai_status = function_exists( 'inspiro_check_plugin_status' ) ? inspiro_check_plugin_status( $inspiro_ai_file ) : 'not_installed';
+				$inspiro_ai_action = null;
+				if ( 'active' === $inspiro_ai_status ) {
+					$inspiro_ai_action = array( __( 'Open AI Connect', 'inspiro' ), add_query_arg( array( 'page' => 'wpzoom-ai-connect', 'ref' => 'inspiro-theme-dashboard' ), admin_url( 'admin.php' ) ) );
+				} elseif ( 'installed' === $inspiro_ai_status && current_user_can( 'activate_plugin', $inspiro_ai_file ) ) {
+					$inspiro_ai_action = array( __( 'Activate AI Connect', 'inspiro' ), wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . rawurlencode( $inspiro_ai_file ) ), 'activate-plugin_' . $inspiro_ai_file ) );
+				} elseif ( 'not_installed' === $inspiro_ai_status && current_user_can( 'install_plugins' ) ) {
+					$inspiro_ai_action = array( __( 'Install AI Connect', 'inspiro' ), admin_url( 'plugin-install.php?s=wpzoom%2520ai%2520connect&tab=search&type=term' ) );
+				}
+				?>
+			<div class="section">
+				<h4>
+					<svg width="20" height="20" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M3.98359 8.70108L5.58302 9.30884C6.78512 9.76562 7.73437 10.7149 8.19115 11.917L8.7989 13.5164C8.90953 13.8075 9.18856 14 9.49999 14C9.81143 14 10.0905 13.8075 10.2011 13.5164L10.8088 11.917C11.2656 10.7149 12.2149 9.76562 13.417 9.30884L15.0164 8.70108C15.3075 8.59046 15.5 8.31143 15.5 7.99999C15.5 7.68856 15.3075 7.40953 15.0164 7.2989L13.417 6.69115C12.2149 6.23437 11.2656 5.28512 10.8088 4.08302L10.2011 2.48359C10.0905 2.19247 9.81143 2 9.49999 2C9.18856 2 8.90953 2.19247 8.7989 2.48359L8.19115 4.08302C7.73437 5.28512 6.78513 6.23437 5.58302 6.69115L3.98359 7.2989C3.69247 7.40953 3.5 7.68856 3.5 7.99999C3.5 8.31143 3.69247 8.59046 3.98359 8.70108Z" stroke="#242628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M3.5 14.75V11.75" stroke="#242628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M2 13.25H5" stroke="#242628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M2.75 4.25V1.25" stroke="#242628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M1.25 2.75H4.25" stroke="#242628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<?php esc_html_e( 'Edit with AI', 'inspiro' ); ?>
+				</h4>
+				<p class="about">
+					<?php esc_html_e( 'Connect Claude or ChatGPT to your site with the free WPZOOM AI Connect plugin, then just ask: change colors and layouts, add pages and sections, or replace the demo content with your own.', 'inspiro' ); ?>
+				</p>
+				<p class="section_footer">
+					<?php if ( $inspiro_ai_action ) : ?>
+					<a href="<?php echo esc_url( $inspiro_ai_action[1] ); ?>" class="button button-primary">
+						<?php echo esc_html( $inspiro_ai_action[0] ); ?>
+					</a>
+					<?php endif; ?>
+					<a href="<?php echo esc_url( 'https://www.wpzoom.com/ai-connect/' ); ?>" target="_blank" class="button button-secondary-gray">
+						<?php esc_html_e( 'Learn more', 'inspiro' ); ?>
+					</a>
+				</p>
+			</div>
+			<?php endif; ?>
+
 			<div class="section">
 				<h4>
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

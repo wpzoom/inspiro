@@ -485,6 +485,29 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
 
 			);
 
+			// WPZOOM AI Connect, right after Starter Sites. It needs the Abilities API (WordPress 6.9+), so it is only
+			// recommended where it can run.
+			if ( function_exists( 'wp_register_ability' ) ) {
+				array_splice(
+					$plugins,
+					1,
+					0,
+					array(
+						array(
+							'name'            => 'WPZOOM AI Connect',
+							'slug'            => 'wpzoom-ai-connect',
+							'description'     => 'Edit your site by chatting with Claude or ChatGPT: change pages, colors and layouts, add sections and forms, or turn a starter site into your own.',
+							'required'        => false,
+							'thumbnail'       => 'https://ps.w.org/wpzoom-ai-connect/assets/icon-256x256.png',
+							'external_url'    => 'https://wordpress.org/plugins/wpzoom-ai-connect/',
+							'category'        => 'AI',
+							'rating'          => 0,
+							'active_installs' => 0,
+						),
+					)
+				);
+			}
+
 			/*
 			 * Array of configuration settings. Amend each line as needed.
 			 *
