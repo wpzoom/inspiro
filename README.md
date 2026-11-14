@@ -118,6 +118,16 @@ Screenshot image: generated using AI (ChatGPT)
 
 ## Changelog ##
 
+### 2.3.2 ###
+* New: Styles for four new demos in Inspiro Starter Sites: Travel Agency, Personal Blog, Travel Blog and Online Courses (an online school for photography and film, built with Elementor)
+* New: The author box below single posts can show the author's Biographical Info (Users > Profile). Turn it on in Customizer > Blog Post > Single Post > Display the Author Bio
+* New: "Edit with AI" on the Inspiro dashboard and in the recommended plugins: connect Claude or ChatGPT to your site with the free WPZOOM AI Connect plugin (WordPress 6.9 and newer)
+* Fixed: With the top bar enabled, the first lines of every page sat under the fixed header
+
+### 2.3.1 ###
+* New: Styles for the Boutique Store demo in Inspiro Starter Sites, a small WooCommerce shop layout
+* Improved: Theme releases now go to WordPress.org straight from GitHub
+
 ### 2.3.0 ###
 * New: Choose your starting point. A fresh site can start as Creative Agency, Video Hero, Personal Blog or Magazine, picked and previewed in the Customizer before anything is published
 * New: The Inspiro dashboard shows the starter content sets and the library of free demos, with one button that installs Inspiro Starter Sites and opens the demo library
