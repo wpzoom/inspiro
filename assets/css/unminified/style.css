@@ -7808,13 +7808,12 @@ html .layout-education .fw-actions .elementor-widget-wrap {
 }
 
 /* Chips */
-.layout-education p.fw-chips {
+.layout-education .elementor-widget-text-editor p.fw-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin: 0 0 28px;
-}
-
+} /* beats the p:last-child reset above */
 .layout-education p.fw-chips a {
     display: inline-block;
     padding: 7px 15px;

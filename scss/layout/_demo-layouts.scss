@@ -1155,7 +1155,7 @@ html .layout-education .fw-actions .elementor-widget-wrap { display: flex; flex-
 .layout-education .elementor-button { text-transform: none; letter-spacing: 0; }
 
 /* Chips */
-.layout-education p.fw-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.layout-education .elementor-widget-text-editor p.fw-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; } /* beats the p:last-child reset above */
 .layout-education p.fw-chips a { display: inline-block; padding: 7px 15px; border-radius: 8px; background: var(--fw-grey); color: var(--fw-ink); font-size: 15px; font-weight: 500; text-decoration: none; }
 .layout-education p.fw-chips a:hover { background: var(--fw-line); }
 .layout-education p.fw-chips a.is-active { background: var(--fw-ink); color: #fff; }
