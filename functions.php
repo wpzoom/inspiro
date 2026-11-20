@@ -150,6 +150,7 @@ require INSPIRO_THEME_DIR . 'inc/inspiro-misc-functions.php';
 if ( is_admin() ) {
 	require INSPIRO_THEME_DIR . 'inc/admin-notice.php';
 	require INSPIRO_THEME_DIR . 'inc/admin/admin-api.php';
+	require INSPIRO_THEME_DIR . 'inc/admin/design-library-button.php';
 
 	// temporary marketing black friday functionality
 	require INSPIRO_THEME_DIR . 'inc/marketing-functions.php';
