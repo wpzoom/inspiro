@@ -451,11 +451,11 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'            => 'instagram-widget-by-wpzoom',
                     'description'     => 'Formerly known as "Instagram Widget by WPZOOM". Simple and lightweight widget for WordPress to display your Instagram feed.',
                     'required'        => false,
-                    'thumbnail'       => 'https://ps.w.org/instagram-widget-by-wpzoom/assets/icon-256x256.png',
+                    'thumbnail'       => 'https://ps.w.org/instagram-widget-by-wpzoom/assets/icon-256x256.gif?rev=3710657',
                     'external_url'    => 'https://wordpress.org/plugins/instagram-widget-by-wpzoom/',
                     'category'        => 'Social Media',
                     'rating'          => 86,
-                    'active_installs' => 60000,
+                    'active_installs' => 50000,
                 ),
 
                 array(
@@ -463,11 +463,11 @@ if ( ! class_exists( 'Inspiro_After_Setup_Theme' ) ) {
                     'slug'            => 'social-icons-widget-by-wpzoom',
                     'description'     => 'Add social media icons and sharing buttons to your website! Social Icons & Sharing Buttons includes 400+ icons and customizable sharing buttons.',
                     'required'        => false,
-                    'thumbnail'       => 'https://ps.w.org/social-icons-widget-by-wpzoom/assets/icon-256x256.png?rev=3272153',
+                    'thumbnail'       => 'https://ps.w.org/social-icons-widget-by-wpzoom/assets/icon-256x256.gif?rev=3706100',
                     'external_url'    => 'https://wordpress.org/plugins/social-icons-widget-by-wpzoom/',
                     'category'        => 'Social Media',
                     'rating'          => 98,
-                    'active_installs' => 100000,
+                    'active_installs' => 90000,
                 ),
 
                 array(
