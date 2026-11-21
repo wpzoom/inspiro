@@ -2,7 +2,7 @@
 Contributors: WPZOOM
 Requires at least: 6.4
 Tested up to: 7.1
-Version: 2.3.3
+Version: 2.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -111,6 +111,9 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 Screenshot image: generated using AI (ChatGPT)
 
 == Changelog ==
+
+= 2.3.4 =
+* Minor fixes and improvements
 
 = 2.3.3 =
 * Fixed: Imported Online Courses, Personal Blog and Travel Blog demos could look different from the live preview, because Elementor and some theme styles overrode parts of the demo layout
