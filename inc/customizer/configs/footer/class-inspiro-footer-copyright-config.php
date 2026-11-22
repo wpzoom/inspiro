@@ -40,7 +40,7 @@ class Inspiro_Footer_Copyright_Config {
 		$wp_customize->add_setting(
 			'footer_copyright_text_setting',
 			array(
-				'default'           => 'Copyright {copyright} {current-year} {site-title}',
+				'default'           => /* translators: Keep the {copyright}, {current-year} and {site-title} placeholders. */ __( 'Copyright {copyright} {current-year} {site-title}', 'inspiro' ),
 				'sanitize_callback' => 'inspiro_custom_sanitize_callback', // Sanitize HTML content
 				'transport'         => 'refresh', // Enable live preview
 			)

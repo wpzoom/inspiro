@@ -10,7 +10,7 @@
 
 // It’s essential to include a default value here,
 // which should match the one defined in class-inspiro-footer-copyright-config.php for consistency.
-$customizer_copyright_text = get_theme_mod( 'footer_copyright_text_setting', 'Copyright {copyright} {current-year} {site-title}' );
+$customizer_copyright_text = get_theme_mod( 'footer_copyright_text_setting', /* translators: Keep the {copyright}, {current-year} and {site-title} placeholders. */ __( 'Copyright {copyright} {current-year} {site-title}', 'inspiro' ) );
 ?>
 
 <div class="site-info">

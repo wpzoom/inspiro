@@ -4,6 +4,9 @@
             <key name="header_site_title"/>
             <key name="header_site_description"/>
             <key name="header_button_url"/>
-            <key name="header_button_title" /></key>
+            <key name="header_button_title"/>
+            <key name="footer_copyright_text_setting"/>
+            <key name="custom_logo_text"/>
+        </key>
     </admin-texts>
 </wpml-config>

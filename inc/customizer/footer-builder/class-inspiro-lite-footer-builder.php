@@ -602,7 +602,7 @@ if ( ! class_exists( 'Inspiro_Lite_Footer_Builder' ) ) {
 					echo '</nav>';
 					break;
 				case 'copyright':
-					$customizer_copyright_text = get_theme_mod( 'footer_copyright_text_setting', 'Copyright {copyright} {current-year} {site-title}' );
+					$customizer_copyright_text = get_theme_mod( 'footer_copyright_text_setting', /* translators: Keep the {copyright}, {current-year} and {site-title} placeholders. */ __( 'Copyright {copyright} {current-year} {site-title}', 'inspiro' ) );
 					echo '<div class="ifb-component ifb-component-copyright site-info">';
 					echo '<span class="copyright"><span>' . wp_kses_post( get_footer_copyright_text( $customizer_copyright_text ) ) . '</span></span>';
 					echo '</div>';
