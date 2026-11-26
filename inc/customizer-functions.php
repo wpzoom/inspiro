@@ -70,6 +70,28 @@ function inspiro_sanitize_display_content( $input ) {
 	return 'excerpt';
 }
 
+/**
+ * Read the "display content" setting in this theme's own vocabulary.
+ *
+ * The upgrade to Inspiro Premium stores this setting the way the premium theme spells it
+ * ("Excerpt", "Full Content", "None"). If the site comes back to this theme, those values
+ * have to keep working, otherwise the blog stops showing excerpts.
+ *
+ * @param mixed $value Stored theme mod value.
+ *
+ * @return mixed
+ */
+function inspiro_normalize_display_content( $value ) {
+	$premium_values = array(
+		'Excerpt'      => 'excerpt',
+		'Full Content' => 'full-content',
+		'None'         => 'none',
+	);
+
+	return ( is_string( $value ) && isset( $premium_values[ $value ] ) ) ? $premium_values[ $value ] : $value;
+}
+add_filter( 'theme_mod_display_content', 'inspiro_normalize_display_content' );
+
 
 /**
  * Sanitize the blog layout.

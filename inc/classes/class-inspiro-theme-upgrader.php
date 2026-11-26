@@ -69,14 +69,64 @@ class Inspiro_Theme_Upgrader {
 	 *
 	 */
 	public function set_inspiro_pro_theme( $install_actions, $api, $stylesheet, $theme_info ) {
+		/*
+		 * A different WPZOOM theme was installed next to Inspiro (for example one of the other
+		 * themes in a bundle). It lives in its own folder, so it keeps its own settings and none
+		 * of the Inspiro customizations carry over. Say so before the user activates it.
+		 *
+		 * The settings migration is intentionally not run here: it writes Inspiro Premium keys
+		 * into this theme's settings, which another theme never reads.
+		 */
+		if ( ! ( $theme_info instanceof WP_Theme ) || 'inspiro' === $theme_info->get_template() ) {
+			return $install_actions;
+		}
 
-		if ( 'wpzoom-inspiro-pro' === $theme_info->template ) {
-			$this->migrate_customizer_settings();
-			$this->setup_slider_item();
-			$this->set_upgrader_option();
+		$is_wpzoom_theme = 'wpzoom' === $theme_info->get( 'TextDomain' ) || false !== stripos( (string) $theme_info->get( 'Author' ), 'WPZOOM' );
+
+		if ( $is_wpzoom_theme ) {
+			printf(
+				'<div class="notice notice-warning inline"><p><strong>%1$s</strong> %2$s</p></div>',
+				/* translators: %s: Name of the theme that was just installed. */
+				esc_html( sprintf( __( '%s is not the upgrade for the Inspiro theme you are using.', 'inspiro' ), $theme_info->get( 'Name' ) ) ),
+				esc_html__( 'It is a separate theme: if you activate it, your current Customizer settings, header, footer and homepage layout will not carry over. The direct upgrade that keeps your settings is Inspiro Premium.', 'inspiro' )
+			);
 		}
 
 		return $install_actions;
+	}
+
+	/**
+	 * Check if an unpacked theme package is a WPZOOM premium theme (it ships the ZOOM Framework).
+	 *
+	 * This is what tells Inspiro Premium apart from a copy of this free theme, which has used
+	 * the same name ("Inspiro") in the past.
+	 *
+	 * @param string $source Path to the unpacked theme package.
+	 *
+	 * @return boolean
+	 */
+	private function is_premium_package( $source ) {
+		return is_string( $source ) && file_exists( trailingslashit( $source ) . 'functions/wpzoom/init.php' );
+	}
+
+	/**
+	 * Keep a copy of everything the migration is about to change, so the site can be put back
+	 * the way it was if the upgrade is reverted.
+	 *
+	 * @return void
+	 */
+	private function save_pre_upgrade_snapshot() {
+		$snapshot = array(
+			'time'             => time(),
+			'theme_version'    => INSPIRO_THEME_VERSION,
+			'stylesheet'       => get_stylesheet(),
+			'theme_mods'       => get_theme_mods(),
+			'sidebars_widgets' => get_option( 'sidebars_widgets' ),
+			'blogname'         => get_option( 'blogname' ),
+		);
+
+		// Not autoloaded: it is only read when someone restores it.
+		update_option( 'inspiro_pre_upgrade_snapshot', $snapshot, false );
 	}
 
 	/**
@@ -109,9 +159,19 @@ class Inspiro_Theme_Upgrader {
 
 			return $this->uploaded_premium;
 		}
-		if ( version_compare( $data['Version'], '1.4.4', '>=' ) ) {
-			$this->uploaded_premium = true;
+		/*
+		 * Inspiro Premium was also called "Inspiro" before its 9.0.0 release, the same name as
+		 * this free theme. A package with that name is only treated as premium when it is a
+		 * higher major version than this theme, so uploading a copy of the free theme (a manual
+		 * update or reinstall) is never mistaken for an upgrade to premium.
+		 */
+		if ( 'Inspiro' === $data['Name'] && (int) $data['Version'] <= (int) INSPIRO_THEME_VERSION ) {
+			$this->uploaded_premium = false;
+
+			return $this->uploaded_premium;
 		}
+
+		$this->uploaded_premium = version_compare( $data['Version'], '1.4.4', '>=' );
 
 		return $this->uploaded_premium;
 	}
@@ -239,7 +299,8 @@ class Inspiro_Theme_Upgrader {
 
 		if ( ( isset( $hook_extra['type'] ) && 'theme' === $hook_extra['type'] ) && 'update-theme' === $overwrite ) {
 			// Allow migration only if premium version is overwrite.
-			if ( $this->check_new_theme_version( $this->wp_upgrader->new_theme_data ) ) {
+			if ( $this->check_new_theme_version( $this->wp_upgrader->new_theme_data ) && $this->is_premium_package( $source ) ) {
+				$this->save_pre_upgrade_snapshot();
 				$this->migrate_customizer_settings();
 				$this->setup_slider_item();
 				$this->set_upgrader_option();
