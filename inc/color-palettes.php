@@ -387,3 +387,107 @@ function inspiro_clear_theme_json_cache() {
 	}
 }
 add_action( 'customize_save_after', 'inspiro_clear_theme_json_cache' );
+
+/**
+ * Swap the "primary" and "secondary" palette colors in saved block markup.
+ *
+ * Inspiro: primary is the dark color, secondary is the accent color.
+ * Inspiro Premium: primary is the accent color, secondary is the dark color.
+ *
+ * @since Inspiro 2.3.6
+ *
+ * @param string $content Block markup or global styles JSON.
+ * @return string
+ */
+function inspiro_swap_block_palette_slugs( $content ) {
+	if ( ! is_string( $content ) || ( false === strpos( $content, 'primary' ) && false === strpos( $content, 'secondary' ) ) ) {
+		return $content;
+	}
+
+	$pattern = '/(has-)(primary|secondary)(?=-(?:background-|border-)?color(?![\w-]))'
+		. '|(Color":"|color\||color--|color\\\\u002d\\\\u002d)(primary|secondary)(?![\w-])/';
+
+	$result = preg_replace_callback(
+		$pattern,
+		static function ( $m ) {
+			$prefix = '' !== $m[1] ? $m[1] : $m[3];
+			$slug   = '' !== $m[1] ? $m[2] : $m[4];
+
+			return $prefix . ( 'primary' === $slug ? 'secondary' : 'primary' );
+		},
+		$content
+	);
+
+	return is_string( $result ) ? $result : $content;
+}
+
+/**
+ * Put block colors back after a site returns from Inspiro Premium.
+ *
+ * Inspiro Premium rewrites the two palette colors in saved content when a site upgrades, and
+ * records that in the `inspiro_block_palette` option. If this theme is active again while the
+ * option still says "premium", the content is swapped back once.
+ *
+ * @since Inspiro 2.3.6
+ */
+function inspiro_restore_block_palette() {
+	global $wpdb;
+
+	if ( 'premium' !== get_option( 'inspiro_block_palette' ) ) {
+		return;
+	}
+
+	// Claim it in one query, so two simultaneous requests cannot both swap.
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+	$claimed = $wpdb->update(
+		$wpdb->options,
+		array( 'option_value' => 'lite' ),
+		array(
+			'option_name'  => 'inspiro_block_palette',
+			'option_value' => 'premium',
+		)
+	);
+	wp_cache_delete( 'alloptions', 'options' );
+	wp_cache_delete( 'inspiro_block_palette', 'options' );
+
+	if ( ! $claimed ) {
+		return;
+	}
+
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+	$ids = $wpdb->get_col(
+		"SELECT ID FROM {$wpdb->posts}
+		WHERE post_type <> 'revision' AND post_status NOT IN ( 'auto-draft', 'trash' )
+		AND ( post_content LIKE '%primary%' OR post_content LIKE '%secondary%' )"
+	);
+
+	foreach ( $ids as $id ) {
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$content = $wpdb->get_var( $wpdb->prepare( "SELECT post_content FROM {$wpdb->posts} WHERE ID = %d", $id ) );
+		$new     = inspiro_swap_block_palette_slugs( $content );
+
+		if ( $new !== $content ) {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->update( $wpdb->posts, array( 'post_content' => $new ), array( 'ID' => (int) $id ) );
+			clean_post_cache( (int) $id );
+		}
+	}
+
+	$widgets = get_option( 'widget_block' );
+	if ( is_array( $widgets ) ) {
+		$dirty = false;
+		foreach ( $widgets as $key => $widget ) {
+			if ( is_array( $widget ) && isset( $widget['content'] ) ) {
+				$new = inspiro_swap_block_palette_slugs( $widget['content'] );
+				if ( $new !== $widget['content'] ) {
+					$widgets[ $key ]['content'] = $new;
+					$dirty                      = true;
+				}
+			}
+		}
+		if ( $dirty ) {
+			update_option( 'widget_block', $widgets );
+		}
+	}
+}
+add_action( 'init', 'inspiro_restore_block_palette' );

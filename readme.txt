@@ -1,8 +1,8 @@
 === Inspiro ===
 Contributors: WPZOOM
 Requires at least: 6.4
-Tested up to: 7.1
-Version: 2.3.5
+Tested up to: 7.2
+Version: 2.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -111,6 +111,12 @@ Source: https://stocksnap.io/photo/autumn-trees-WV0YTVMU7P
 Screenshot image: generated using AI (ChatGPT)
 
 == Changelog ==
+
+= 2.3.6 =
+* Improved: Upgrading to Inspiro Premium: a copy of your theme settings and widgets is saved before the upgrade starts, and your settings are only converted when the uploaded file really is Inspiro Premium
+* New: When you upload a different WPZOOM theme while Inspiro is active, the "theme installed" screen now explains that it is a separate theme, and that Inspiro Premium is the upgrade that keeps your settings
+* Fixed: After going back from Inspiro Premium to this theme, the Primary and Secondary colors in block content were swapped (accent color on image overlays, dark links)
+* Fixed: The blog "Content" setting (Excerpt, Full Content, None) had no effect on a site that had been upgraded to Inspiro Premium and then came back
 
 = 2.3.5 =
 * Fixed: With WPML, the footer copyright text and the logo text (shown when there is no logo image) can now be translated in WPML > String Translation
